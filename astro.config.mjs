@@ -62,6 +62,7 @@ export default defineConfig({
         {
           label: 'Configuration',
           items: [
+            { label: 'Salons', slug: 'configuration/salons' },
             { label: 'Accès aux commandes', slug: 'configuration/commandes' },
           ],
         },
