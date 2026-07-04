@@ -1,0 +1,101 @@
+---
+title: Appels de bannissement (Ban Appeals)
+description: Offrez un portail d'appel professionnel (similaire à appeals.gg) pour permettre aux membres bannis de soumettre un recours et automatiser les décisions du staff.
+---
+
+<p class="doc-lead">Le module <strong>Appels de bannissement</strong> permet aux utilisateurs bannis de votre serveur Discord de postuler à une demande de réintégration en ligne. Ce système gère l'authentification Discord OAuth2, la vérification des bannissements en temps réel et la prise de décision automatisée par votre staff.</p>
+
+:::tip[Fonctionnalité Premium]
+Ce système agit comme un outil dédié de type *appeals.gg*, mais directement intégré et hébergé sous l'écosystème de votre bot Kotbo.
+:::
+
+:::note[Accès]
+Gérez la configuration générale depuis la section **Modération → Appels de ban** de votre dashboard : [Configurer les Appels de ban ↗](https://dash.kotbo.fr/appeals).
+:::
+
+---
+
+## Comment ça fonctionne ?
+
+1. Un utilisateur banni se rend sur votre URL publique d'appel de ban (ex: `https://appeals.kotbo.fr/votre-serveur`).
+2. Il se connecte via Discord. Kotbo vérifie automatiquement s'il est bien présent dans la liste des bannissements de votre serveur Discord et récupère la raison originale du bannissement.
+3. L'utilisateur remplit le formulaire de questions personnalisé.
+4. Une notification interactive (Embed) est envoyée dans le salon Discord de votre staff.
+5. Les modérateurs cliquent sur les boutons Discord pour accepter, refuser ou demander des détails.
+
+---
+
+## Configuration du module
+
+Dans l'onglet de configuration du dashboard, paramétrez les éléments suivants :
+
+### 1. Paramètres de formulaire
+* **Activer le module** : Active ou désactive le portail public.
+* **Formulaire d'appel** : Sélectionnez le formulaire de questions. Vous devez préalablement créer ce formulaire dans le module **Formulaires** (cela vous permet de définir vos propres questions, d'ajouter votre logo/bannière et d'y appliquer vos styles CSS personnalisés).
+
+### 2. Intégration Discord
+* **Salon Staff (Réception)** : Le salon Discord privé de votre équipe dans lequel Kotbo enverra la fiche de demande d'appel avec les boutons d'action.
+* **Salon d'invitation** : Le salon qui servira de point de chute pour générer un lien d'invitation à usage unique lors de l'acceptation d'un appel.
+
+### 3. Règles et Cooldown
+* **Délai avant ré-appel (en jours)** : Le nombre de jours qu'un utilisateur doit attendre après un refus avant de pouvoir soumettre un nouvel appel (par défaut : 30 jours).
+
+### 4. Textes personnalisés
+Adaptez la communication avec les utilisateurs :
+* **Texte d'accueil** : Le texte d'explication ou règlement affiché en haut de la page publique de connexion.
+* **Message d'acceptation (DM)** : Le message privé que Kotbo enverra automatiquement à l'utilisateur lors de sa réintégration. *Astuce : utilisez la variable `{invite}` pour y inclure automatiquement l'invitation à usage unique générée.*
+* **Message de refus (DM)** : Le message privé envoyé à l'utilisateur en cas de rejet de sa demande.
+
+---
+
+## Traitement des demandes (Côté Staff sur Discord)
+
+Lorsqu'une demande d'appel est soumise, Kotbo publie une fiche complète dans votre **Salon Staff** :
+
+```
+🎫 Nouvel Appel de Bannissement - @Pseudo (ID: 123456)
+-----------------------------------------------------------
+Raison du ban (Discord) : "Utilisation de cheats"
+
+[Questions & Réponses du formulaire]
+Q: Pourquoi devrions-nous vous débannir ?
+R: J'ai compris mes erreurs et j'ai supprimé mes logiciels tiers...
+
+-----------------------------------------------------------
+[ Accepter ]  [ Refuser ]  [ Refuser Définitivement ]  [ Demander Infos ]
+```
+
+Votre équipe dispose de quatre actions rapides sous forme de boutons interactifs :
+
+### 1. Accepter (Accept)
+* Retire automatiquement le bannissement du joueur sur votre serveur Discord.
+* Génère un lien d'invitation Discord unique et temporaire (1 utilisation, expire sous 24h).
+* Envoie un DM à l'utilisateur contenant votre message d'acceptation personnalisé et le lien d'invitation.
+* Marque la demande comme <span class="dash-badge active">ACCEPTED</span>.
+
+### 2. Refuser (Deny)
+* Envoie un DM à l'utilisateur l'informant du refus de sa demande.
+* Bloque la possibilité pour l'utilisateur de soumettre un nouvel appel pendant le nombre de jours défini dans votre configuration de cooldown (ex: 30 jours).
+* Marque la demande comme <span class="dash-badge ban">DENIED</span>.
+
+### 3. Refuser Définitivement (Permanently Deny)
+* Envoie un DM à l'utilisateur l'informant du refus.
+* **Bloque à vie** l'accès au portail d'appel pour ce compte Discord. L'utilisateur ne pourra plus jamais soumettre de demande de recours pour ce serveur.
+* Marque la demande comme <span class="dash-badge ban">DENIED_PERMANENT</span>.
+
+### 4. Demander plus d'infos (Needs Info)
+Si les motivations du joueur sont floues, vous pouvez lui demander des éclaircissements :
+1. Cliquez sur **Demander Infos**.
+2. Une boîte de dialogue (Modal) s'ouvre sur Discord pour vous permettre de saisir votre question (ex: *« Pouvez-vous fournir des preuves ou le pseudonyme de votre complice ? »*).
+3. L'utilisateur reçoit une notification et sa page d'appel publique affiche votre question avec un champ de réponse.
+4. Dès qu'il répond en ligne, Kotbo met à jour le message staff Discord pour vous notifier et afficher ses explications complémentaires.
+5. Marque temporairement la demande comme <span class="dash-badge timeout">NEEDS_INFO</span>.
+
+---
+
+## Gestion et Liste noire (Blacklist)
+
+Depuis le dashboard de Kotbo, vous avez accès à l'historique complet des dossiers d'appels :
+* **Filtrer et Rechercher** : Visualisez les demandes en attente, acceptées, refusées ou nécessitant des informations.
+* **Consulter les motifs** : Lisez les logs de décision avec le nom du modérateur ayant statué et la raison associée.
+* **Blacklist des Appels** : Permet d'inscrire manuellement des identifiants Discord d'utilisateurs afin de leur interdire immédiatement l'accès au formulaire d'appel de ban, sans qu'ils aient besoin d'en soumettre un. C'est idéal pour exclure à l'avance les fauteurs de troubles majeurs du processus de réintégration.

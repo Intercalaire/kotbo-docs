@@ -49,6 +49,7 @@ export default defineConfig({
               items: [
                 { label: 'Modération automatique', slug: 'dashboard/moderation/automod' },
                 { label: 'Doubles comptes', slug: 'dashboard/moderation/double-comptes' },
+                { label: 'Appels de bannissement', slug: 'dashboard/moderation/appels-ban' },
               ],
             },
             {
@@ -60,6 +61,7 @@ export default defineConfig({
                 { label: 'Salons Fun', slug: 'dashboard/communaute/salons-fun' },
                 { label: 'Tickets de support', slug: 'dashboard/communaute/tickets' },
                 { label: 'Daily Algo', slug: 'dashboard/communaute/daily-algo' },
+                { label: 'Formulaires & Style Custom', slug: 'dashboard/communaute/formulaires' },
               ],
             },
             {

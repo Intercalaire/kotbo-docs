@@ -1,0 +1,147 @@
+---
+title: Formulaires & Style Custom
+description: Créez des formulaires personnalisés pour vos recrutements, événements et sondages, et adaptez leur style grâce à un éditeur visuel et du CSS personnalisé.
+---
+
+<p class="doc-lead">Le module <strong>Formulaires</strong> vous permet de générer des formulaires publics en ligne (accessibles via un navigateur) pour collecter des candidatures de recrutement, des inscriptions à des événements ou des avis, le tout lié directement à votre serveur Discord.</p>
+
+:::note[Accès]
+Ce module est disponible sur votre dashboard depuis l'onglet **Modération/Communauté → Formulaires** : [Gérer mes Formulaires ↗](https://dash.kotbo.fr/forms).
+:::
+
+---
+
+## Créer un formulaire (Form Builder)
+
+L'éditeur de formulaire en ligne de Kotbo offre une interface glisser-déposer pour concevoir vos questions.
+
+### 1. Types de champs disponibles
+Vous pouvez composer vos formulaires avec une grande variété de types de réponses :
+* **Ligne courte** (`short_text`) : Idéal pour des réponses concises (pseudonyme, prénom, âge).
+* **Paragraphe** (`paragraph`) : Permet des réponses rédigées et détaillées (motivations, expérience).
+* **Email** (`email`) : Valide automatiquement le format de l'adresse email saisie.
+* **Nombre** (`number`) : Restreint la saisie aux valeurs numériques avec possibilité de définir des limites minimales et maximales.
+* **Choix multiple** (`multiple_choice`) : Boutons radio permettant de choisir **une seule** option parmi une liste.
+* **Cases à cocher** (`checkboxes`) : Permet aux répondants de choisir **une ou plusieurs** options.
+* **Menu déroulant** (`dropdown`) : Liste de sélection compacte pour choisir une option.
+* **Échelle linéaire** (`linear_scale`) : Permet de donner une note sur une échelle personnalisable (ex: de 1 à 5 ou de 1 à 10) avec des libellés pour les valeurs minimales et maximales.
+* **Date & Heure** (`date` / `time`) : Sélecteurs de calendrier et d'heure standardisés.
+* **Grilles de cases/choix** (`multiple_choice_grid` / `checkbox_grid`) : Tableaux matriciels pour évaluer plusieurs lignes selon les mêmes colonnes d'options.
+
+### 2. Options de configuration par champ
+Pour chaque question ajoutée, vous pouvez définir :
+* Le **Libellé (Label)** : Le titre de la question.
+* La **Description** : Une explication optionnelle ou un exemple de réponse.
+* Le statut **Obligatoire (Required)** : Bloque la soumission du formulaire si le champ n'est pas rempli.
+* Un **Placeholder** : Une indication grisée affichée dans le champ avant saisie.
+* Des **Validations spécifiques** : Min/Max pour les nombres ou longueur de texte minimale/maximale.
+
+---
+
+## Personnalisation visuelle (Onglet Apparence)
+
+Pour donner un aspect unique et professionnel à vos formulaires (comme un portail de recrutement d'équipe ou une page de guilde), Kotbo intègre des paramètres de thématisation poussés.
+
+### 1. Médias d'en-tête
+* **Bannière (Banner URL)** : L'image d'en-tête affichée en haut du formulaire. Format recommandé : PNG/JPEG en 1200x400px.
+* **Logo (Logo URL)** : L'avatar ou logo de votre serveur affiché dans un cadre flottant au-dessus du formulaire.
+
+### 2. Palette de couleurs
+Vous pouvez configurer précisément les teintes de la page publique :
+* **Couleur d'accentuation** : Utilisée pour les boutons principaux, les bordures de focus, les cases cochées et les états actifs.
+* **Couleur de fond (Background)** : Teinte générale de la page Web.
+* **Couleur de la carte (Card Color)** : Couleur des blocs contenant les questions.
+* **Couleur du texte** : Couleur générale des libellés et descriptions.
+
+### 3. Typographie (Polices Google Fonts)
+Une sélection de polices modernes est directement intégrée. Kotbo charge dynamiquement les polices suivantes sur la page du répondant :
+* *Inter*, *Poppins*, *Roboto*, *Montserrat*, *Open Sans*, *Lato*, *Nunito*, *Raleway*, *Outfit*, *Space Grotesk*, *JetBrains Mono*, *Playfair Display*.
+
+### 4. Styles de conteneur
+* **Arrondi des bordures (Border Radius)** : Ajustez l'arrondi des cartes de questions (de 0px pour des angles droits à 24px pour un style très arrondi).
+* **Effet de flou (Glassmorphism)** : Activez cet effet pour rendre les cartes semi-transparentes avec un flou d'arrière-plan élégant, parfait par-dessus un arrière-plan coloré ou dégradé.
+
+---
+
+## Style Custom (Éditeur CSS)
+
+Pour aller encore plus loin, un éditeur de **CSS personnalisé (Custom CSS)** est disponible en bas des réglages d'apparence. Il vous permet de surcharger complètement le style de la page.
+
+### 1. Variables CSS disponibles
+La page de formulaire applique des variables CSS à la racine (`.pf-root`). Vous pouvez les redéfinir facilement :
+```css
+:root {
+  --form-color: #6366f1;   /* Couleur d'accentuation */
+  --form-bg: #0f172a;      /* Couleur de fond */
+  --form-card: #1e293b;    /* Couleur de fond des cartes */
+  --form-text: #f8fafc;    /* Couleur du texte */
+  --form-font: 'Inter';    /* Police d'écriture */
+  --form-radius: 12px;     /* Arrondi général */
+}
+```
+
+### 2. Classes CSS principales
+Voici la structure des classes de la page publique pour cibler précisément les éléments :
+* `.pf-root` : Le conteneur principal recouvrant toute la page.
+* `.pf-card` : Toutes les cartes de la page (carte d'en-tête et cartes de questions).
+* `.pf-banner` : Le bloc contenant l'image de la bannière.
+* `.pf-logo` : L'image ronde/carrée du logo.
+* `.pf-field` : Le bloc spécifique à chaque champ de question (hérite de `.pf-card`).
+* `.pf-submit` : Le bouton de soumission du formulaire.
+* `.pf-error` : Le message d'erreur rouge s'affichant sous une question invalide.
+
+### 3. Exemples concrets de personnalisation CSS
+
+#### Ajouter une lueur au focus sur les champs de saisie
+```css
+.pf-root input:focus, 
+.pf-root textarea:focus, 
+.pf-root select:focus {
+  border-color: var(--form-color) !important;
+  box-shadow: 0 0 10px var(--form-color) !important;
+}
+```
+
+#### Rendre le bouton de soumission brillant avec un dégradé
+```css
+.pf-submit {
+  background: linear-gradient(135deg, var(--form-color), #ec4899) !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4) !important;
+}
+.pf-submit:hover {
+  filter: brightness(1.1);
+}
+```
+
+#### Modifier le fond de page avec un dégradé animé
+```css
+.pf-root {
+  background: linear-gradient(-45deg, #0f172a, #1e1b4b, #311042, #0f172a) !important;
+  background-size: 400% 400% !important;
+  animation: gradientBG 15s ease infinite !important;
+}
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+```
+
+---
+
+## Partage, Sécurité et Réponses
+
+Une fois votre formulaire enregistré :
+
+### 1. Authentification Discord Obligatoire (`requiresDiscordAuth`)
+Vous pouvez forcer les répondants à se connecter avec leur compte Discord (OAuth2) avant d'accéder au formulaire.
+* **Avantage** : Enregistre automatiquement leur identifiant Discord (User ID) et leur tag avec leur réponse.
+* **Sécurité** : Prévient le spam en limitant la soumission à un seul envoi par compte Discord.
+* *Note* : Cette option est obligatoirement activée pour les formulaires de recrutement.
+
+### 2. Suivi des réponses
+Dans l'onglet **Réponses** de votre formulaire :
+* Vous visualisez la liste chronologique de toutes les soumissions.
+* Cliquez sur une ligne pour voir le détail des réponses dans une fenêtre modale claire.
+* Un bouton vous permet d'exporter l'ensemble des réponses sous format tableur.
