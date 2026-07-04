@@ -1,11 +1,13 @@
 ---
 title: Suggestions
-description: Consultez et modérez les suggestions de votre communauté avec vote en temps réel.
+description: Consultez et modérez les suggestions de votre communauté avec vote en temps réel depuis le dashboard.
 ---
 
-import DiscordCommand from '../../../components/DiscordCommand.astro';
-
 <p class="doc-lead">Le module <strong>Suggestions</strong> permet à vos membres de soumettre des propositions d'amélioration pour le serveur, d'y voter (pour/contre) directement sur Discord, et de vous laisser y répondre depuis le dashboard.</p>
+
+:::tip[Côté Discord]
+Pour voir comment soumettre des propositions et voter sur Discord, consultez le [Guide Discord des Suggestions](/discord/communaute/suggestions).
+:::
 
 :::note[Disponibilité]
 Le système de suggestions est configurable depuis la section **Communauté → Suggestions** de votre dashboard : [Accéder au module Suggestions ↗](https://dash.kotbo.fr/suggestions).
@@ -22,19 +24,6 @@ Pour commencer à recevoir des suggestions de vos membres, vous devez activer le
 2. Activez l'interrupteur **Système de suggestions** (dans le bloc *Configuration*).
 3. Dans le menu déroulant **Salon des suggestions**, choisissez le salon Discord où Kotbo publiera les nouvelles propositions.
 4. Enregistrez les modifications à l'aide de la barre d'action au bas de l'écran.
-
----
-
-## Soumettre et voter sur Discord
-
-Une fois le module actif, les membres peuvent utiliser la commande de soumission `/suggest` sur Discord :
-
-<DiscordCommand command="/suggest suggestion:Votre idée ou suggestion détaillée" />
-
-Kotbo crée alors un message formaté dans le salon choisi contenant :
-* Le nom de l'auteur.
-* La description de la suggestion.
-* Deux boutons ou réactions de vote (Upvote/Downvote) pour permettre à la communauté de s'exprimer.
 
 ---
 

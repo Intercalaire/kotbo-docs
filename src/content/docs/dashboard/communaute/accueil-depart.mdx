@@ -1,11 +1,15 @@
 ---
 title: Messages d’accueil & de départ
-description: Configurer les messages automatiques envoyés lors de l’arrivée ou du départ d’un membre.
+description: Apprenez à configurer les messages automatiques envoyés lors de l’arrivée ou du départ d’un membre depuis le dashboard.
 ---
 
-import DashboardScreenshot from '../../../components/DashboardScreenshot.astro';
+import DashboardScreenshot from '../../../../components/DashboardScreenshot.astro';
 
 <p class="doc-lead">Souhaitez la bienvenue aux nouveaux membres et informez votre communauté des départs avec des messages automatiquement personnalisés.</p>
+
+:::tip[Côté Discord]
+Pour voir des exemples de rendu de ces messages sur Discord et tester la configuration, consultez le [Rendu des messages sur Discord](/discord/communaute/accueil-depart).
+:::
 
 Dans la barre latérale, ouvrez **Communauté → Annonces & Auto-Rôle** ([Accéder aux Annonces ↗](https://dash.kotbo.fr/announcement)), puis choisissez l’onglet **Accueil** ou **Départ**.
 
@@ -55,16 +59,3 @@ Choisissez une image large, lisible et peu chargée. Testez son rendu en thème 
 ## Configurer le message de départ
 
 Ouvrez l’onglet **Départ** en haut de la même page. Le formulaire fonctionne de la même manière : activez le message, choisissez un salon et rédigez le texte. La variable <code>{'{user}'}</code> peut ne plus produire une mention cliquable après le départ ; utilisez <code>{'{username}'}</code> si vous souhaitez seulement afficher le nom.
-
-## Tester la configuration
-
-L’aperçu vérifie le contenu, mais pas les permissions Discord. Avant la mise en service :
-
-1. vérifiez que Kotbo peut **Voir le salon** et **Envoyer des messages** ;
-2. enregistrez la configuration ;
-3. faites rejoindre un compte de test ;
-4. corrigez le salon ou le message si nécessaire.
-
-:::caution
-Ne testez pas en faisant quitter un vrai membre du staff. Utilisez un compte secondaire ou un serveur de test.
-:::

@@ -1,0 +1,63 @@
+---
+title: Utilisation des Suggestions sur Discord
+description: Découvrez comment soumettre des suggestions et voter en temps réel directement depuis Discord.
+---
+
+import DiscordCommand from '../../../../components/DiscordCommand.astro';
+
+<p class="doc-lead">Sur Discord, le module <strong>Suggestions</strong> permet aux membres de participer activement à l'amélioration du serveur en soumettant des idées et en votant sur les propositions de la communauté.</p>
+
+:::tip[Configuration du Dashboard]
+Pour configurer le salon des suggestions et modérer/répondre aux propositions, consultez le [Guide de modération des Suggestions](/dashboard/communaute/suggestions).
+:::
+
+---
+
+## Soumettre une suggestion
+
+Une fois le module actif, n'importe quel membre autorisé peut soumettre une proposition à l'aide de la commande slash suivante :
+
+<DiscordCommand
+  command="/suggest suggestion:Votre idée ou suggestion détaillée"
+  embedTitle="💡 Nouvelle Suggestion"
+  embedDescription="Votre idée ou suggestion détaillée\n\n*Soumis par JeanDupont*"
+  embedColor="#4f545c"
+  buttons="👍 Upvote (0), 👎 Downvote (0)"
+/>
+
+Dès validation de la commande, Kotbo publie un encart (embed) structuré dans le salon de suggestions désigné.
+
+---
+
+## Rendu visuel de l'embed sur Discord
+
+L'encart généré par Kotbo contient les informations suivantes :
+* **Auteur** : Le pseudonyme et l'avatar du membre ayant proposé l'idée.
+* **Contenu** : L'énoncé détaillé de la suggestion.
+* **Statut de départ** : Indiqué par une couleur grise (En attente).
+
+### Boutons de vote interactifs
+Au bas de l'embed, deux boutons permettent aux membres de réagir :
+* **Upvote (👍)** : Pour soutenir la suggestion.
+* **Downvote (👎)** : Pour marquer son désaccord.
+
+Chaque membre ne peut voter qu'une seule fois par bouton. Les compteurs de votes sont mis à jour dynamiquement sur le bouton.
+
+---
+
+## Évolution en direct lors d'une décision staff
+
+Dès qu'un modérateur ou administrateur valide ou rejette la suggestion depuis son dashboard :
+
+### 1. Changement de couleur de l'embed
+La couleur de bordure de l'embed s'adapte instantanément au statut décidé :
+* **Vert** : Suggestion approuvée.
+* **Rouge** : Suggestion rejetée.
+* **Bleu** : Suggestion implémentée.
+
+### 2. Ajout de la réponse du staff
+L'embed se met à jour sur Discord pour afficher :
+* Le statut officiel de la suggestion.
+* Le pseudonyme du membre du staff ayant traité la suggestion.
+* Le **commentaire obligatoire** rédigé par le staff sur le dashboard (justifiant la validation, le refus, ou détaillant le déploiement).
+* Les boutons de vote peuvent être désactivés ou masqués selon le statut final pour figer le résultat.

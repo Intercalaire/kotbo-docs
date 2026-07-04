@@ -1,9 +1,13 @@
 ---
 title: Détection des doubles comptes
-description: Détectez les comptes alternatifs suspects et mettez en place des barrières de vérification Captcha/VPN.
+description: Détectez les comptes alternatifs suspects et configurez les barrières de vérification depuis le dashboard.
 ---
 
 <p class="doc-lead">Le module <strong>Doubles Comptes</strong> est un outil de sécurité essentiel pour protéger votre serveur contre les raids de bots, le contournement de bannissement et les utilisateurs malveillants utilisant plusieurs comptes.</p>
+
+:::tip[Côté Discord]
+Pour comprendre le parcours de vérification par Captcha imposé à un utilisateur suspect sur Discord, consultez le [Guide de vérification Discord](/discord/moderation/double-comptes).
+:::
 
 :::note[Permissions requises]
 La gestion de la sécurité se fait depuis la section **Modération → Doubles comptes** de votre dashboard : [Accéder au module Doubles comptes ↗](https://dash.kotbo.fr/double-accounts).
@@ -47,10 +51,7 @@ C’est le panneau de contrôle de surveillance active.
   * Cliquez sur son nom pour ouvrir directement son **Dossier de modération** et lui appliquer une sanction (timeout/ban).
 
 ### 3. Vérification (Verification)
-Cet onglet présente le parcours utilisateur imposé aux membres bloqués ou suspectés par le bot :
-* Si un utilisateur est classé comme suspect, le bot restreint ses permissions Discord et lui envoie un message privé contenant un lien de vérification.
-* En cliquant sur ce lien, l'utilisateur est redirigé vers une page web externe sécurisée lui demandant de résoudre un **Captcha de sécurité** (anti-robot) et vérifiant qu'il n'utilise pas un VPN de spam.
-* Une fois validé, Kotbo lui attribue son rôle de membre et l'autorise à écrire sur le serveur.
+Cet onglet présente le parcours utilisateur imposé aux membres bloqués ou suspectés par le bot. Depuis le dashboard, vous pouvez visualiser l'état de ce parcours et les statistiques d'accès.
 
 ### 4. Configuration (Config)
 Ajustez la sensibilité du bot et les sanctions automatiques.

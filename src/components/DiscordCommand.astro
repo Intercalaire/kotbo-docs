@@ -1,9 +1,16 @@
 ---
 interface Props {
   command: string;
+  botResponse?: string;
+  embedTitle?: string;
+  embedDescription?: string;
+  embedColor?: string;
+  buttons?: string;
 }
 
-const { command } = Astro.props;
+const { command, botResponse, embedTitle, embedDescription, embedColor, buttons } = Astro.props;
+
+const hasResponse = !!(botResponse || embedTitle || embedDescription || buttons);
 
 // Parser for the Discord command string:
 // e.g. "/link salon salon-source:#salon-A salon-cible:#salon-B"
@@ -31,70 +38,210 @@ const params = tokens.slice(paramsStartIdx).map(token => {
     value: token.slice(colonIdx + 1)   // e.g. "#salon-A"
   };
 });
+
+// Helper to parse basic Discord Markdown to HTML
+function parseMarkdown(text?: string) {
+  if (!text) return '';
+  
+  // Escape HTML to prevent injection
+  let html = text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+    
+  // Bold: **text** -> <strong>text</strong>
+  html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+  
+  // Italics: *text* -> <em>text</em>
+  html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+  
+  // Underline: __text__ -> <u>text</u>
+  html = html.replace(/__(.*?)__/g, '<u>$1</u>');
+  
+  // Strikethrough: ~~text~~ -> <del>text</del>
+  html = html.replace(/~~(.*?)~~/g, '<del>$1</del>');
+  
+  // Inline Code: `code` -> <code>code</code>
+  html = html.replace(/`(.*?)`/g, '<code>$1</code>');
+  
+  // Newlines: \n or literal newlines -> <br />
+  html = html.replace(/\n/g, '<br />');
+  
+  return html;
+}
 ---
 
-<div class="discord-input">
-  <span class="plus-icon">+</span>
-  <span class="slash">{slash}</span><span class="command-name">{commandName}</span>
-  
-  {params.map(p => (
-    <span class="param-group">
-      {p.name && <span class="param-name">{p.name}</span>}
-      <span class="param-value">{p.value}</span>
-    </span>
-  ))}
+{hasResponse ? (
+  <div class="discord-command-wrapper">
+    <div class="discord-input">
+      <span class="plus-icon">+</span>
+      <span class="slash">{slash}</span><span class="command-name">{commandName}</span>
+      
+      {params.map(p => (
+        <span class="param-group">
+          {p.name && <span class="param-name">{p.name}</span>}
+          <span class="param-value">{p.value}</span>
+        </span>
+      ))}
 
-  <button class="copy-btn" data-command={command} title="Copier la commande">
-    <!-- Copy Icon (Lucide Copy) -->
-    <svg class="copy-svg" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
-      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
-    </svg>
-    <!-- Check Icon (Lucide Check) -->
-    <svg class="check-svg" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
-      <path d="M20 6 9 17l-5-5"/>
-    </svg>
-  </button>
-</div>
+      <div class="discord-actions">
+        <button class="copy-btn" data-command={command} title="Copier la commande">
+          <!-- Copy Icon (Lucide Copy) -->
+          <svg class="copy-svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+            <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+          </svg>
+          <!-- Check Icon (Lucide Check) -->
+          <svg class="check-svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+            <path d="M20 6 9 17l-5-5"/>
+          </svg>
+        </button>
+
+        <button class="exec-btn" title="Exécuter et voir la réponse">
+          <!-- Play Icon (Lucide Play) -->
+          <svg class="play-svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="6 3 20 12 6 21 6 3"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="discord-response" style="display: none;">
+      <div class="discord-avatar">
+        <img src="/favicon.svg" alt="Kotbo Avatar" />
+      </div>
+      
+      <!-- Typing/Loading State -->
+      <div class="discord-loading-content" style="display: flex; align-items: center; gap: 8px;">
+        <div class="discord-typing">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+        <span class="discord-timestamp" style="font-style: italic;">Kotbo réfléchit...</span>
+      </div>
+
+      <!-- Real Response content (initially hidden) -->
+      <div class="discord-message-content" style="display: none;">
+        <div class="discord-header">
+          <span class="discord-author">Kotbo</span>
+          <span class="discord-bot-tag">BOT</span>
+          <span class="discord-timestamp">Aujourd'hui à 12:00</span>
+        </div>
+        {botResponse && <div class="discord-text" set:html={parseMarkdown(botResponse.replace(/\\n/g, '\n'))} />}
+        {(embedTitle || embedDescription) && (
+          <div class="discord-embed" style={embedColor ? `border-left-color: ${embedColor}` : ''}>
+            {embedTitle && <div class="discord-embed-title" set:html={parseMarkdown(embedTitle.replace(/\\n/g, '\n'))} />}
+            {embedDescription && <div class="discord-embed-description" set:html={parseMarkdown(embedDescription.replace(/\\n/g, '\n'))} />}
+          </div>
+        )}
+        {buttons && (
+          <div class="discord-buttons">
+            {buttons.split(',').map((btnLabel, idx) => {
+              const label = btnLabel.trim();
+              const isPrimary = idx === 0 && !label.includes('👎');
+              const isSuccess = label.includes('👍') || label.includes('accept') || label.includes('oui') || label.includes('Approuver');
+              return (
+                <button class={`discord-btn ${isPrimary ? 'discord-btn-primary' : ''} ${isSuccess ? 'discord-btn-success' : ''}`}>
+                  {label}
+                </button>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+) : (
+  <div class="discord-input">
+    <span class="plus-icon">+</span>
+    <span class="slash">{slash}</span><span class="command-name">{commandName}</span>
+    
+    {params.map(p => (
+      <span class="param-group">
+        {p.name && <span class="param-name">{p.name}</span>}
+        <span class="param-value">{p.value}</span>
+      </span>
+    ))}
+
+    <div class="discord-actions">
+      <button class="copy-btn" data-command={command} title="Copier la commande">
+        <svg class="copy-svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+          <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+        </svg>
+        <svg class="check-svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+          <path d="M20 6 9 17l-5-5"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+)}
 
 <script>
-  // Script executes in the browser to add copy event handlers
-  function setupCopyButtons() {
-    const buttons = document.querySelectorAll('.discord-input .copy-btn');
-    buttons.forEach(button => {
-      // Prevent double listener attachment
+  function setupButtons() {
+    // 1. Copy Buttons listeners
+    const copyButtons = document.querySelectorAll('.discord-input .copy-btn');
+    copyButtons.forEach(button => {
       if (button.getAttribute('data-has-listener') === 'true') return;
       button.setAttribute('data-has-listener', 'true');
 
-      button.addEventListener('click', () => {
+      button.addEventListener('click', (e) => {
+        e.stopPropagation();
         const text = button.getAttribute('data-command');
         if (text) {
           navigator.clipboard.writeText(text).then(() => {
             button.classList.add('copied');
-            const copySvg = button.querySelector('.copy-svg') as HTMLElement;
-            const checkSvg = button.querySelector('.check-svg') as HTMLElement;
-            
-            if (copySvg && checkSvg) {
-              copySvg.style.display = 'none';
-              checkSvg.style.display = 'inline';
-              
-              setTimeout(() => {
-                button.classList.remove('copied');
-                copySvg.style.display = 'inline';
-                checkSvg.style.display = 'none';
-              }, 2000);
-            }
+            setTimeout(() => {
+              button.classList.remove('copied');
+            }, 2000);
           }).catch(err => {
             console.error('Failed to copy text: ', err);
           });
         }
       });
     });
+
+    // 2. Interactive Run Buttons listeners with loading simulation
+    const wrappers = document.querySelectorAll('.discord-command-wrapper');
+    wrappers.forEach(wrapper => {
+      if (wrapper.getAttribute('data-has-interactive-listener') === 'true') return;
+      wrapper.setAttribute('data-has-interactive-listener', 'true');
+
+      const execBtn = wrapper.querySelector('.exec-btn');
+      const response = wrapper.querySelector('.discord-response') as HTMLElement;
+
+      if (execBtn && response) {
+        const loading = response.querySelector('.discord-loading-content') as HTMLElement;
+        const messageContent = response.querySelector('.discord-message-content') as HTMLElement;
+        let timeoutId: any = null;
+
+        execBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (response.style.display === 'none') {
+            response.style.display = 'flex';
+            execBtn.classList.add('active');
+
+            if (loading && messageContent) {
+              loading.style.display = 'flex';
+              messageContent.style.display = 'none';
+
+              if (timeoutId) clearTimeout(timeoutId);
+              timeoutId = setTimeout(() => {
+                loading.style.display = 'none';
+                messageContent.style.display = 'flex';
+              }, 600); // 600ms typing loader simulator
+            }
+          } else {
+            response.style.display = 'none';
+            execBtn.classList.remove('active');
+            if (timeoutId) clearTimeout(timeoutId);
+          }
+        });
+      }
+    });
   }
 
-  // Run on initial load
-  setupCopyButtons();
-
-  // Run on Astro page navigation if using transition animations (Starlight page swaps)
-  document.addEventListener('astro:after-swap', setupCopyButtons);
+  setupButtons();
+  document.addEventListener('astro:after-swap', setupButtons);
 </script>

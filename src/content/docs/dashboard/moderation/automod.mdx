@@ -1,9 +1,13 @@
 ---
 title: Modération automatique (AutoMod)
-description: Configurez les filtres de sécurité automatiques pour protéger votre serveur en temps réel.
+description: Configurez les filtres de sécurité automatiques pour protéger votre serveur en temps réel depuis le dashboard.
 ---
 
 <p class="doc-lead">Le module <strong>Modération automatique (AutoMod)</strong> permet de bloquer instantanément les comportements néfastes et les messages indésirables avant même qu’un modérateur n’ait à intervenir.</p>
+
+:::tip[Côté Discord]
+Pour voir comment l'AutoMod se comporte sur Discord et comment les sanctions s'appliquent en direct, consultez le [Guide AutoMod sur Discord](/discord/moderation/automod).
+:::
 
 :::note[Permissions requises]
 Cette page est accessible depuis le menu **Modération → Modération auto** : [Accéder à l'AutoMod ↗](https://dash.kotbo.fr/automod).
@@ -34,7 +38,7 @@ Limite le nombre de messages qu'un utilisateur peut envoyer rapidement.
 
 ### 2. Filtre de Liens
 Empêche le partage d'adresses web non approuvées.
-* **Liste blanche des domaines** : Saisissez les domaines autorisés (un par ligne, ex: `google.com`, `docs.kotbo.fr`). Tout autre domaine déclenchera la sanction.
+* **Liste blanche des domaines** : Saisissez les domaines autorisés (un par ligne, ex: `google.com`, `docs.kotbo.fr`). Tout domaine ne figurant pas sur cette liste blanche déclenchera la sanction.
 
 ### 3. Filtre Majuscules (Caps)
 Bloque les messages abusant des majuscules.
@@ -70,15 +74,11 @@ Bloque le partage d'invitations vers d'autres serveurs Discord.
 * **Serveurs autorisés** : Liste des identifiants (IDs) de serveurs Discord partenaires dont les invitations sont autorisées.
 
 ### 11. Anti-Bot
-
 Empêche l'intégration de robots (bots) malveillants ou non autorisés.
-
 :::caution[Restriction propriétaire]
 Ce filtre est **uniquement configurable par le propriétaire (owner) du serveur Discord**. Les autres membres du staff, même s'ils ont accès aux réglages du dashboard, ne peuvent pas modifier cette option.
 :::
-
 * **Membres autorisés à inviter** : Liste des identifiants (IDs) d'utilisateurs du staff ayant le droit d'inviter des bots sur le serveur. Tout bot invité par une autre personne sera immédiatement expulsé (*KICK*).
-
 
 ---
 
@@ -97,8 +97,4 @@ Vous pouvez définir des exclusions globales pour éviter que l'AutoMod ne pertu
 L'AutoMod de Kotbo s'appuie en partie sur l'AutoMod natif de Discord pour des performances optimales. Dès qu'une modification est effectuée sur le dashboard :
 1. Cliquez sur le bouton **Enregistrer** dans la barre inférieure pour sauvegarder les réglages.
 2. Le bot synchronise alors automatiquement les règles avec les paramètres de sécurité de votre serveur Discord. Un avertissement s'affichera sur le dashboard si une règle n'a pas pu être synchronisée par manque de permissions Discord.
-:::
-
-:::note[Enregistrement]
-N'oubliez pas de cliquer sur **Enregistrer** en bas du dashboard pour appliquer vos modifications.
 :::

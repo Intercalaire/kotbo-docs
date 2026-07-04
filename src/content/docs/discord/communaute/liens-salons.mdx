@@ -1,0 +1,86 @@
+---
+title: Commandes Discord & Relais (Bridges)
+description: Utilisez les commandes slash Discord pour lier des salons et découvrez comment les messages sont relayés.
+---
+
+import DiscordCommand from '../../../../components/DiscordCommand.astro';
+
+<p class="doc-lead">Sur Discord, le module <strong>Liens de salons</strong> permet de gérer les ponts de communication et de relayer les messages en temps réel entre différents canaux.</p>
+
+:::tip[Configuration du Dashboard]
+Pour configurer les ponts et personnaliser le contenu relayé (filtres texte/images/réactions), consultez le [Guide de configuration des Liens de salons](/dashboard/communaute/liens-salons).
+:::
+
+---
+
+## Commandes slash de gestion des liens
+
+Vous pouvez administrer vos liaisons directement depuis Discord à l'aide de l'outil de commandes slash de Kotbo.
+
+Pour afficher la liste des liaisons actives sur votre serveur et obtenir leur identifiant unique :
+<DiscordCommand
+  command="/link list"
+  botResponse="🔗 **Liens de salons actifs sur ce serveur :**\n• **Lien #1** : Bidirectionnel entre #salon-A et #salon-B (Mode: Webhook)\n• **Lien #2** : Unidirectionnel de #salon-local vers #salon-distant sur le serveur ID: 987654321 (Mode: Embed)"
+/>
+
+### 1. Lier deux salons locaux
+Pour connecter deux salons situés sur votre serveur actuel :
+<DiscordCommand
+  command="/link salon salon-source:#salon-A salon-cible:#salon-B direction:Bidirectionnel mode:Webhook"
+  botResponse="✅ **Liaison établie avec succès !**\nLe salon #salon-A est désormais connecté à #salon-B en mode bidirectionnel (Webhook)."
+/>
+
+### 2. Lier directement un serveur distant (Staff)
+Si vous êtes administrateur sur les deux serveurs, utilisez l'identifiant (ID) du serveur et du salon cibles :
+<DiscordCommand
+  command="/link direct salon-source:#salon-local serveur-cible:ID_SERVEUR_CIBLE salon-cible:ID_SALON_CIBLE"
+  botResponse="✅ **Liaison directe effectuée !**\nLe salon local #salon-local a été connecté avec succès au salon cible ID `ID_SALON_CIBLE` sur le serveur distant `ID_SERVEUR_CIBLE`."
+/>
+
+### 3. Liaison par invitation (Serveur A — Initiation)
+Pour proposer une liaison à un administrateur tiers, générez un code de liaison :
+<DiscordCommand
+  command="/link invite salon:#salon-local direction:Bidirectionnel mode:Webhook invitation-serveur:Vrai"
+  botResponse="✅ **Code d'invitation généré !**\nCode : `A1B2C3D4`\n\nTransmettez ce code à l'administrateur de l'autre serveur pour qu'il l'accepte."
+/>
+*Le bot renvoie un code unique (ex: `A1B2C3D4`) à transmettre au destinataire.*
+
+### 4. Accepter une invitation de liaison (Serveur B — Cible)
+Pour accepter la demande d'un autre serveur en utilisant le code d'invitation reçu :
+<DiscordCommand
+  command="/link accept code:CODE_D_INVITATION salon:#salon-local-cible"
+  botResponse="✅ **Invitation acceptée !**\nLe salon local #salon-local-cible est désormais lié au salon d'origine."
+/>
+
+### 5. Supprimer une liaison active
+Pour rompre un pont de salons en utilisant son identifiant (que vous pouvez trouver via `/link list`) :
+<DiscordCommand
+  command="/link remove id:ID_DU_LIEN"
+  botResponse="✅ **Lien de salon supprimé !**\nLe pont avec l'identifiant `ID_DU_LIEN` a été désactivé."
+/>
+
+---
+
+## Fonctionnement du relais sur Discord
+
+### Mode Webhook (Miroir)
+*   **Affichage propre** : Kotbo crée un webhook temporaire dans le salon cible. Le message relayé s'affiche sous le pseudonyme et avec l'avatar réel de l'auteur original.
+*   **Expérience naturelle** : Pour les utilisateurs du salon récepteur, le rendu est identique à une discussion normale, avec un petit badge `BOT` à côté du pseudo signalant le relais.
+
+### Mode Embed
+*   Le message est encapsulé dans un encart (embed) coloré au nom de Kotbo.
+*   Il mentionne explicitement le serveur et l'auteur d'origine en en-tête.
+
+---
+
+## Synchronisation avancée
+
+Lorsque les options correspondantes sont actives sur le dashboard, Kotbo répercute ces actions en direct sur Discord :
+*   **Édition de message** : Modifier un message d'un côté met à jour instantanément la copie de l'autre côté.
+*   **Suppression de message** : Supprimer un message efface également le message relayé dans le salon distant.
+*   **Pièces jointes** : Les images et documents sont transférés et hébergés pour s'afficher dans le canal cible.
+*   **Réactions** : Ajouter un émoji de réaction est synchronisé si le bot dispose des permissions nécessaires sur les deux serveurs.
+
+:::warning[Permissions Discord requises]
+Pour que le mode **Webhook (Miroir)** et le relais des pièces jointes fonctionnent correctement, veillez à ce que le rôle de Kotbo dispose des permissions **Gérer les Webhooks** (`MANAGE_WEBHOOKS`) et **Ajouter des fichiers** (`ATTACH_FILES`) dans les salons concernés sur les deux serveurs.
+:::

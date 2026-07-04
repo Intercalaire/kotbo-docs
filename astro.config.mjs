@@ -42,28 +42,63 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Modération',
+          label: 'Configuration (Dashboard)',
           items: [
-            { label: 'Modération automatique', slug: 'moderation/automod' },
-            { label: 'Doubles comptes', slug: 'moderation/double-comptes' },
+            {
+              label: 'Modération',
+              items: [
+                { label: 'Modération automatique', slug: 'dashboard/moderation/automod' },
+                { label: 'Doubles comptes', slug: 'dashboard/moderation/double-comptes' },
+              ],
+            },
+            {
+              label: 'Communauté',
+              items: [
+                { label: 'Messages d’accueil & départ', slug: 'dashboard/communaute/accueil-depart' },
+                { label: 'Lier des salons', slug: 'dashboard/communaute/liens-salons' },
+                { label: 'Suggestions', slug: 'dashboard/communaute/suggestions' },
+                { label: 'Salons Fun', slug: 'dashboard/communaute/salons-fun' },
+                { label: 'Tickets de support', slug: 'dashboard/communaute/tickets' },
+                { label: 'Daily Algo', slug: 'dashboard/communaute/daily-algo' },
+              ],
+            },
+            {
+              label: 'Configuration',
+              items: [
+                { label: 'Salons', slug: 'dashboard/configuration/salons' },
+                { label: 'Accès aux commandes', slug: 'dashboard/configuration/commandes' },
+              ],
+            },
           ],
         },
         {
-          label: 'Communauté',
+          label: 'Utilisation & Commandes (Discord)',
           items: [
-            { label: 'Messages d’accueil & départ', slug: 'communaute/accueil-depart' },
-            { label: 'Lier des salons', slug: 'communaute/liens-salons' },
-            { label: 'Suggestions', slug: 'communaute/suggestions' },
-            { label: 'Salons Fun', slug: 'communaute/salons-fun' },
-            { label: 'Tickets de support', slug: 'communaute/tickets' },
-            { label: 'Daily Algo', slug: 'communaute/daily-algo' },
-          ],
-        },
-        {
-          label: 'Configuration',
-          items: [
-            { label: 'Salons', slug: 'configuration/salons' },
-            { label: 'Accès aux commandes', slug: 'configuration/commandes' },
+            {
+              label: 'Modération',
+              items: [
+                { label: 'Modération automatique', slug: 'discord/moderation/automod' },
+                { label: 'Doubles comptes', slug: 'discord/moderation/double-comptes' },
+              ],
+            },
+            {
+              label: 'Communauté',
+              items: [
+                { label: 'Messages d’accueil & départ', slug: 'discord/communaute/accueil-depart' },
+                { label: 'Lier des salons', slug: 'discord/communaute/liens-salons' },
+                { label: 'Suggestions', slug: 'discord/communaute/suggestions' },
+                { label: 'Salons Fun', slug: 'discord/communaute/salons-fun' },
+                { label: 'Tickets de support', slug: 'discord/communaute/tickets' },
+                { label: 'Daily Algo', slug: 'discord/communaute/daily-algo' },
+              ],
+            },
+            {
+              label: 'Configuration',
+              items: [
+                { label: 'Salons', slug: 'discord/configuration/salons' },
+                { label: 'Accès aux commandes', slug: 'discord/configuration/commandes' },
+              ],
+            },
           ],
         },
         {

@@ -1,0 +1,56 @@
+---
+title: Modération automatique (AutoMod) sur Discord
+description: Comprenez comment l'AutoMod de Kotbo protège votre serveur Discord et applique des sanctions en temps réel.
+---
+
+<p class="doc-lead">Sur Discord, le module <strong>AutoMod</strong> s'exécute de manière totalement transparente pour analyser les messages envoyés et appliquer instantanément les sanctions configurées en cas d'infraction aux règles de sécurité.</p>
+
+:::tip[Configuration du Dashboard]
+Pour configurer les filtres, les sanctions et les listes blanches/noires de l'AutoMod, consultez le [Guide de configuration AutoMod](/dashboard/moderation/automod).
+:::
+
+---
+
+## Comportement des sanctions sur Discord
+
+Lorsqu'un membre commet une infraction à une règle AutoMod active, le bot applique directement l'une des sanctions suivantes sur Discord :
+
+### 1. Blocage (<span class="dash-badge active">BLOCK</span>)
+* Le message de l'utilisateur est immédiatement supprimé du salon Discord.
+* L'utilisateur ne reçoit aucune notification en message privé, le message disparaît simplement du fil de discussion.
+
+### 2. Avertissement automatique (<span class="dash-badge warn">WARN</span>)
+* Le message fautif est supprimé.
+* Kotbo envoie un message privé (DM) automatique à l'utilisateur pour lui signaler son infraction (ex: spam, insultes ou liens non autorisés) et lui indiquer qu'un avertissement a été enregistré à son encontre.
+
+### 3. Exclusion temporaire (<span class="dash-badge timeout">TIMEOUT</span>)
+* L'utilisateur est mis en sourdine nativité sur Discord (Timeout).
+* Pendant la durée configurée (ex: 10 minutes, 1 heure, 28 jours), il lui est impossible de parler dans les salons textuels, de se connecter aux salons vocaux ou de réagir aux messages.
+* Un message privé lui est adressé pour lui notifier la raison et la durée de la mise en sourdine.
+
+### 4. Expulsion (<span class="dash-badge kick">KICK</span>)
+* L'utilisateur est immédiatement expulsé du serveur Discord.
+* Il recevra un message privé l'informant de son expulsion avant d'être retiré du serveur. Il peut réintégrer le serveur s'il dispose d'un lien d'invitation valide.
+
+### 5. Alerte de logs (<span class="dash-badge resolved">ALERT</span>)
+* Le message de l'utilisateur n'est pas modifié ou supprimé.
+* Kotbo envoie une notification d'alerte silencieuse dans le salon de logs des modérateurs pour signaler le comportement suspect (ex: Ghost Ping).
+
+---
+
+## Ce que voient les modérateurs (Logs Discord)
+
+Toutes les actions entreprises par l'AutoMod de Kotbo sont consignées dans le salon de logs configuré sur votre serveur Discord. Les modérateurs y voient un embed contenant :
+* Le membre concerné (avec sa mention et son ID Discord).
+* Le salon Discord où l'incident a eu lieu.
+* Le type de filtre déclenché (Spam, Caps, Grossièretés, Mots interdits, etc.).
+* La sanction appliquée par le bot.
+* Un extrait ou la totalité du message ayant déclenché le filtre (utile pour le contrôle des faux-positifs).
+
+---
+
+## Rôles et Salons ignorés
+
+Par défaut, si les exclusions ont été configurées sur le dashboard, certains membres ou espaces du serveur contournent les filtres :
+* **Membres exemptés** : Les utilisateurs possédant un rôle configuré comme "Rôle ignoré" (comme le staff) peuvent envoyer des messages sans restriction.
+* **Zones blanches** : Aucun message envoyé dans les "Salons ignorés" ne fera l'objet d'une analyse par le bot.

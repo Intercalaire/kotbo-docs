@@ -1,0 +1,53 @@
+---
+title: Rendu des messages d’accueil & de départ
+description: Découvrez comment se présentent les messages d'accueil et cartes illustrées sur Discord, et comment tester la configuration.
+---
+
+<p class="doc-lead">Sur Discord, les messages d'accueil et de départ permettent de guider les nouveaux membres et de notifier la communauté de manière claire et visuelle.</p>
+
+:::tip[Configuration du Dashboard]
+Pour rédiger les messages, choisir le salon de diffusion et définir le bandeau d'accueil, consultez le [Guide de configuration des messages d'accueil](/dashboard/communaute/accueil-depart).
+:::
+
+---
+
+## Rendu visuel sur Discord
+
+### 1. Le message textuel
+Le message configuré s'affiche dans le salon de diffusion choisi. Les variables sont résolues dynamiquement par Discord :
+* `{user}` est remplacé par une mention cliquable de l'utilisateur (ex: `@JeanDupont`). Le membre reçoit une notification de mention à son arrivée si son rôle lui permet de lire le salon.
+* `{username}` affiche son nom brut sans mentionner (ex: `JeanDupont`), évitant ainsi un ping inutile.
+* `{server}` affiche le nom exact de votre serveur Discord.
+* `{memberCount}` indique la position numérique du membre dans le serveur (ex: `1500`e membre).
+
+### 2. La carte de bienvenue (Image)
+Si l'option **Image de bienvenue** est activée, Kotbo génère une carte d'accueil personnalisée :
+* L'image inclut l'avatar circulaire du membre nouvellement arrivé.
+* Elle affiche son pseudonyme de manière stylisée.
+* Elle utilise le fond d'image personnalisé fourni (ou le fond par défaut de Kotbo).
+* Elle est envoyée sous forme de fichier joint directement à la suite du message textuel.
+
+---
+
+## Permissions Discord requises
+
+Pour que Kotbo puisse envoyer les annonces et images sans encombre, assurez-vous que son rôle possède les permissions suivantes dans le salon de diffusion choisi (ex: `#bienvenue`) :
+1. **Voir le salon** (`VIEW_CHANNEL`) : indispensable pour que le bot détecte et accède au salon.
+2. **Envoyer des messages** (`SEND_MESSAGES`) : requis pour poster le texte d'accueil ou de départ.
+3. **Intégrer des liens** (`EMBED_LINKS`) : recommandé pour le formatage propre des messages.
+4. **Attacher des fichiers** (`ATTACH_FILES`) : **obligatoire** si vous utilisez les cartes d'images de bienvenue. Sans cette permission, l'envoi de la carte échouera.
+
+---
+
+## Procédure de test sur Discord
+
+L'aperçu sur le dashboard simule le rendu visuel, mais ne teste pas les droits du bot sur votre serveur. Avant de rendre le salon public :
+
+1. Enregistrez vos modifications sur le dashboard.
+2. Invitez un compte secondaire (compte de test) sur votre serveur Discord.
+3. Vérifiez que le message s'envoie correctement et que la carte s'affiche.
+4. Faites quitter le compte de test pour valider également le message de départ.
+
+:::caution[Ne pas tester avec le staff]
+Ne faites pas quitter un membre actuel de votre équipe de modération ou d'administration pour tester. Utilisez uniquement un compte de test afin d'éviter les perturbations dans les rôles et permissions du staff.
+:::

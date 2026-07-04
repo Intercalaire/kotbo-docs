@@ -1,9 +1,13 @@
 ---
 title: Gestion des salons
-description: Configurez l'Auto-Thread, les salons de statistiques dynamiques, les salons vocaux temporaires et le système Honeypot.
+description: Configurez l'Auto-Thread, les salons de statistiques dynamiques, les salons vocaux temporaires et le système Honeypot depuis le dashboard.
 ---
 
 <p class="doc-lead">Le module <strong>Salons</strong> regroupe toutes les fonctionnalités d'automatisation, de statistiques vocales et de sécurité liées aux salons de votre serveur Discord.</p>
+
+:::tip[Côté Discord]
+Pour voir le fonctionnement de l'Auto-Thread, des salons de statistiques, de la création de salon temporaire avec l'embed de contrôle et du piège Honeypot, consultez le [Guide Discord de gestion des salons](/discord/configuration/salons).
+:::
 
 :::note[Disponibilité]
 Ce module est accessible depuis la section **Configuration → Salons** de votre dashboard : [Accéder au module Salons ↗](https://dash.kotbo.fr/channels-management).
@@ -76,23 +80,6 @@ Ce module permet aux utilisateurs de créer leur propre salon vocal temporaire e
 * **Rôle requis** : Restreint la possibilité de créer des salons temporaires aux seuls possesseurs d'un rôle spécifique (laisser vide pour ouvrir à tous).
 * **Générateurs additionnels** : Vous pouvez configurer plusieurs générateurs indépendants (chacun avec son salon déclencheur, sa catégorie cible, son modèle de nom et son rôle requis).
 
-### Embed de gestion interactif
-À la création du salon vocal temporaire, Kotbo envoie un message d'administration interactif (Embed) dans le chat textuel associé au salon. Ce panneau permet au créateur de piloter son salon grâce aux boutons suivants :
-
-* **Verrouiller** (🔒) / **Déverrouiller** (🔓) : Rend le salon privé ou public. Si le salon est verrouillé, les autres membres ne peuvent plus s'y connecter.
-* **Limite** (👥) : Ouvre un formulaire Discord pour définir le nombre maximum de connexions autorisées.
-* **Renommer** (✏️) : Ouvre un formulaire pour modifier à la volée le nom du salon.
-* **Expulser** (👢) : Expulse un utilisateur actuellement connecté dans votre vocal.
-* **Bannir** (🚫) : Expulse et interdit définitivement à un utilisateur de rejoindre le salon vocal en cours.
-* **Ajouter** (➕) : Autorise explicitement un membre spécifique à rejoindre le salon, même si celui-ci est verrouillé.
-* **Transférer** (👑) : Cède la propriété du salon (et le contrôle de l'embed) à un autre membre présent dans le vocal.
-* **Récupérer** (🙋) : Permet de revendiquer la propriété du salon si le créateur d'origine est parti et que le salon est devenu orphelin.
-* **Réserver** (🛡️) : Restreint l'accès à un rôle Discord sélectionné depuis un menu déroulant.
-
-:::note[Nettoyage automatique]
-Dès que le dernier utilisateur quitte un salon temporaire, celui-ci est **automatiquement et définitivement supprimé** par le bot pour garder votre serveur propre.
-:::
-
 ### Supervision depuis le Dashboard
 En bas de l'onglet, la section **Salons Temporaires Actifs** liste tous les salons actuellement ouverts sur le serveur. Les administrateurs peuvent :
 * Visualiser le nom du salon, son créateur actuel et le nombre de membres connectés.
@@ -106,12 +93,6 @@ En bas de l'onglet, la section **Salons Temporaires Actifs** liste tous les salo
 
 Le **Salon Honeypot** est un outil de sécurité radical conçu pour détecter et neutraliser instantanément les bots de spam ou les comptes d'utilisateurs piratés (self-bots) qui rejoignent votre serveur.
 
-### Principe de fonctionnement
-Vous configurez ou créez un salon textuel piège (ex: `#do-not-type-here`). Ce salon est rendu visible à tous les membres (y compris les nouveaux arrivants), mais les règles d'utilisation interdisent d'y écrire. 
-
-* **Déclenchement** : Si un compte envoie un message dans ce salon, Kotbo supprime le message immédiatement et lui applique une sanction automatique sans préavis.
-* **Exclusion du Staff** : Les administrateurs du serveur ainsi que les membres possédant l'un des rôles de staff configurés sur Kotbo (Staff de test, Modérateur, Staff principal) sont automatiquement ignorés par le piège s'ils y écrivent par erreur.
-
 ### Configuration du piège
 * **Salon Piège (Honeypot)** : Sélectionnez le salon à utiliser ou cliquez sur **Créer automatiquement**. Le bot créera un salon avec les permissions adaptées et y enverra un message embed d'avertissement.
 * **Sanction à appliquer** :
@@ -120,7 +101,8 @@ Vous configurez ou créez un salon textuel piège (ex: `#do-not-type-here`). Ce 
   * **Softban** : Bannit le membre puis le débannit immédiatement, ce qui a pour effet de purger tous ses messages récents sur le serveur.
   * **Exclusion Simple (Kick)** : Exclut le membre du serveur.
   * **Avertissement Simple (Warn)** : Enregistre un avertissement dans le dossier disciplinaire du membre.
-* **Réinvitation automatique (Optionnel - Kick uniquement)** : Si activé, Kotbo enverra un DM à l'utilisateur exclu contenant un lien d'invitation unique valable 24h. Cela permet aux utilisateurs humains réels s'étant trompés de réintégrer facilement le serveur.
+* **Réinvitation automatique (Optionnel - Kick uniquement)** : Si activé, Kotbo enverra un DM à l'utilisateur exclu contenant un lien d'invitation unique valable 24h.
+* Cliquez sur **Enregistrer** dans la barre inférieure verte après chaque modification.
 
 :::caution[Avertissement de Sécurité]
 Le Honeypot est une mesure de sécurité stricte. Veillez à ce que le nom du salon piège ou sa description soient explicites pour éviter que des membres légitimes ne se fassent sanctionner par curiosité ou inattention.

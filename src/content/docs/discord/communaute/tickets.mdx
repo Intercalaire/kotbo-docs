@@ -1,0 +1,57 @@
+---
+title: Utilisation des Tickets sur Discord
+description: Découvrez comment les membres ouvrent un ticket et comment le staff interagit directement sur Discord.
+---
+
+<p class="doc-lead">Sur Discord, le module <strong>Tickets</strong> offre une interface fluide et sécurisée pour permettre aux membres d'entrer en relation privée avec l'équipe de support du serveur.</p>
+
+:::tip[Configuration du Dashboard]
+Pour configurer les panels, les catégories de tickets et suivre la satisfaction, consultez le [Guide de configuration des Tickets](/dashboard/communaute/tickets).
+:::
+
+---
+
+## L'ouverture d'un ticket par un membre
+
+### 1. Le panel d'accueil
+Dans le salon de support désigné (ex: `#support-tickets`), les membres font face à un message de présentation (Embed) contenant :
+* Le titre et les consignes rédigés par l'administrateur.
+* **Le sélecteur d'ouverture** : soit des **Boutons** de couleurs (ex: `Signaler un bug`, `Boutique`), soit un **Menu déroulant** contenant toutes les catégories de support disponibles.
+
+### 2. La création de l'espace privé
+Dès que le membre clique sur un bouton ou sélectionne une option :
+* Kotbo crée l'espace de discussion selon le mode actif :
+  * **Salon textuel temporaire** (ex: `#ticket-jean-001`) placé dans la catégorie de tickets configurée.
+  * **Fil privé (Thread)** créé sous le salon du panel.
+  * **Messages privés (DM)** : le membre discute directement en privé avec le bot, qui relaie ses messages au staff.
+* Seuls le membre demandeur, les administrateurs et les possesseurs du **Rôle Staff** configuré (ex: `@Support Staff`) ont accès à ce nouvel espace.
+
+---
+
+## Déroulement du support sur Discord
+
+Une fois le ticket ouvert, le membre et les modérateurs peuvent échanger. Kotbo envoie un message d'introduction dans le salon contenant les actions rapides :
+
+### 1. Prendre en charge le ticket (Claim)
+* Les membres du staff peuvent cliquer sur le bouton **Prendre en charge** (`Claim`).
+* Kotbo renomme le salon ou met à jour les permissions pour notifier que ce modérateur s'occupe personnellement du dossier.
+
+### 2. Échanges de messages
+* Les membres du staff peuvent répondre directement sur Discord.
+* Leurs réponses sont également retranscrites en temps réel sur l'interface du dashboard de Kotbo, permettant à d'autres modérateurs de suivre l'avancement.
+
+### 3. Fermeture du ticket
+Quand la demande est résolue :
+* Le membre ou le staff clique sur le bouton **Fermer** (`Close`).
+* Le bot demande une justification (motif de fermeture).
+* Le salon Discord est verrouillé, archivé ou supprimé après un court délai de sécurité.
+
+---
+
+## Enquête de satisfaction de fin de ticket
+
+Dès la fermeture du ticket :
+* Kotbo envoie un message privé à l'utilisateur (ou un message dans le salon avant suppression).
+* Le message invite l'utilisateur à donner une note de **1 à 5 étoiles** en cliquant sur des boutons interactifs de smileys.
+* Un formulaire s'ouvre pour lui permettre de rédiger un commentaire sur l'accueil ou la résolution de sa demande.
+* Ces avis alimentent directement les graphiques de l'onglet **Satisfaction** du dashboard.

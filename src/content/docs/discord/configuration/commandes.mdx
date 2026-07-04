@@ -1,0 +1,39 @@
+---
+title: Impact des restrictions sur les commandes
+description: Découvrez comment les permissions configurées sur le dashboard affectent l'utilisation des commandes slash sur Discord.
+---
+
+<p class="doc-lead">Sur Discord, le module de <strong>Gestion de l'accès aux commandes</strong> applique les filtres en temps réel lors de l'exécution ou de l'auto-complétion des commandes slash.</p>
+
+:::tip[Configuration du Dashboard]
+Pour restreindre des commandes, résoudre des conflits de rôles et sauvegarder les configurations, consultez le [Guide de configuration des permissions des commandes](/dashboard/configuration/commandes).
+:::
+
+---
+
+## Comment les restrictions s'appliquent sur Discord
+
+Lorsqu'un membre tente d'utiliser une commande slash de Kotbo sur Discord :
+
+### 1. Masquage des commandes (Autocomplétion)
+* Si les permissions Discord globales l'autorisent, les commandes slash apparaissent dans le menu de saisie de Discord en tapant `/`.
+* Si un utilisateur est explicitement bloqué ou ne possède pas le rôle requis pour une commande sur le dashboard Kotbo, la commande peut toujours apparaître dans son menu Discord (en raison du cache de Discord), mais son exécution sera rejetée.
+
+### 2. Rejet à l'exécution
+Si un membre tente de lancer une commande restreinte (ou dans un salon bloqué) :
+* Kotbo intercepte l'exécution de la commande slash.
+* Le bot renvoie un message d'erreur éphémère (visible uniquement par l'utilisateur ayant lancé la commande) :
+  > **❌ Erreur de permissions**
+  > Vous n'êtes pas autorisé à utiliser cette commande dans ce salon ou avec vos rôles actuels.
+* La commande n'a aucun effet sur le serveur et n'est pas exécutée par le bot.
+
+---
+
+## Niveaux d'accès par défaut (Héritage)
+
+Par défaut, sans configuration spécifique sur le dashboard, Kotbo applique trois niveaux d'accès standardisés :
+* **Tous** : La commande est utilisable par tous les membres (ex: `/suggest`).
+* **Mod** : La commande nécessite que le membre possède un rôle défini comme modérateur dans le dashboard ou la permission Discord *Gérer les messages* (ex: `/warn`).
+* **Admin** : La commande nécessite la permission Discord *Administrateur* (ex: `/link`).
+
+Les restrictions personnalisées par salon, rôle ou utilisateur saisies sur le dashboard écrasent et affinent ces comportements natifs de Discord.

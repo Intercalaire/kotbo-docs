@@ -1,0 +1,46 @@
+---
+title: Parcours de vérification (Double Comptes)
+description: Comprenez le parcours de vérification par Captcha imposé sur Discord aux comptes suspects ou alts.
+---
+
+<p class="doc-lead">Sur Discord, le système de <strong>Détection des doubles comptes</strong> intervient de manière ciblée pour sécuriser votre serveur en imposant un protocole de vérification strict aux comptes suspectés d'être des alts ou des robots de spam.</p>
+
+:::tip[Configuration du Dashboard]
+Pour configurer les seuils de suspicion, gérer les détections et configurer les rôles, consultez le [Guide de configuration de la détection des alts](/dashboard/moderation/double-comptes).
+:::
+
+---
+
+## Le parcours utilisateur suspect sur Discord
+
+Lorsqu'un nouvel utilisateur rejoint le serveur et que son score de suspicion dépasse le seuil défini sur votre dashboard :
+
+### Étape 1 : Restriction des droits
+* Kotbo applique immédiatement au nouveau membre le **Rôle de validation** configuré (par exemple `@Non-Vérifié`).
+* Ce rôle restreint l'accès en écriture et en lecture à la quasi-totalité des salons du serveur, limitant le membre à un salon d'accueil ou de transition.
+
+### Étape 2 : Réception du message privé (DM)
+Le bot envoie automatiquement un message privé à l'utilisateur contenant :
+* Un message d'accueil expliquant que son compte a été détecté comme potentiellement suspect.
+* Un **bouton de vérification** ou un lien web unique crypté et sécurisé.
+
+### Étape 3 : La vérification web externe
+En cliquant sur le lien, l'utilisateur est redirigé vers une page web hébergée par Kotbo :
+1. **Résolution du Captcha** : L'utilisateur doit résoudre un test de Captcha interactif afin de prouver qu'il est un être humain.
+2. **Scan de l'empreinte de connexion** : Kotbo vérifie la présence de proxies, de VPNs de spam, ainsi que les cookies de navigateur associés pour détecter les comptes multiples connectés à la même session.
+
+---
+
+## Sortie de vérification et sanctions
+
+Une fois l'analyse terminée sur la page web :
+
+### En cas de réussite
+* Le serveur web valide la session.
+* Kotbo retire instantanément le **Rôle de validation** (`@Non-Vérifié`) de l'utilisateur sur Discord.
+* Kotbo lui attribue le rôle de membre standard ou lui redonne l'accès complet au serveur.
+
+### En cas d'échec ou d'alt avéré
+* Si l'utilisateur échoue à la vérification ou est formellement identifié comme un double compte non autorisé :
+* Kotbo lui attribue le **Rôle de sanction** (ex: `@Double-Compte-Bloqué`) restreignant tout accès, ou l'exclut/bannit directement du serveur selon les paramètres actifs.
+* L'incident est notifié aux modérateurs dans le canal d'alertes du staff sur Discord.

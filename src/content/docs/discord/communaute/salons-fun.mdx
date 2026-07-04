@@ -1,0 +1,56 @@
+---
+title: Guide de jeu (Salons Fun) sur Discord
+description: Découvrez les règles de fonctionnement et l'expérience de jeu sur Discord pour les Salons Fun.
+---
+
+<p class="doc-lead">Sur Discord, le module <strong>Salons Fun</strong> régule de manière autonome les salons de jeu afin de divertir vos membres sans surcharger l'équipe de modération.</p>
+
+:::tip[Configuration du Dashboard]
+Pour attribuer les salons et réinitialiser les scores, consultez le [Guide de configuration des Salons Fun](/dashboard/communaute/salons-fun).
+:::
+
+---
+
+## 1. Le Salon de comptage (Counting)
+
+L'objectif est de compter le plus loin possible collectivement sans commettre d'erreur.
+
+### Règles d'écriture
+* **Uniquement des chiffres** : Chaque message envoyé dans ce salon doit commencer par le chiffre suivant dans la suite logique (ex: si le dernier nombre était `14`, le message suivant doit être `15`).
+* **Pas d'auto-réponse** : Un utilisateur ne peut pas envoyer deux nombres consécutivement. Il doit attendre qu'un autre membre valide le nombre suivant.
+
+### Réaction de Kotbo en cas d'erreur
+Si un joueur envoie un mauvais nombre, du texte, ou tente de double-poster :
+* Kotbo supprime instantanément le message fautif.
+* Le bot peut envoyer une réaction d'avertissement.
+* Le score actuel est conservé ou réinitialisé selon les paramètres (si réinitialisé, les joueurs doivent recommencer depuis `1`).
+
+---
+
+## 2. One Word Story (Une histoire, un mot)
+
+La communauté collabore pour rédiger une histoire infinie en écrivant un seul mot à la fois.
+
+### Règles d'écriture
+* **Un seul mot par message** : Les messages contenant des espaces, de la ponctuation complexe ou plusieurs mots sont proscrits.
+* **Pas de double participation** : Il est interdit d'envoyer deux mots de suite. Un autre joueur doit ajouter un mot avant que vous ne puissiez réécrire.
+
+### Réaction de Kotbo
+* Tout message comportant plus d'un mot ou envoyé à la suite par le même auteur est supprimé automatiquement par le bot dans la seconde.
+* L'histoire se lit de haut en bas de manière fluide dans le salon.
+
+---
+
+## 3. Nombre Mystère (Guess the Number)
+
+Kotbo génère un nombre secret en arrière-plan, et les joueurs doivent le deviner en proposant des valeurs dans le salon.
+
+### Déroulement de la partie
+1. Les joueurs envoient des nombres dans le salon (ex: `42`).
+2. Kotbo analyse la proposition et répond publiquement :
+   * **« C'est plus grand ! »** (si le nombre mystère est supérieur).
+   * **« C'est plus petit ! »** (si le nombre mystère est inférieur).
+3. Les joueurs ajustent leurs propositions successives.
+4. Dès qu'un membre trouve le nombre exact :
+   * Le bot annonce la victoire en mentionnant le gagnant.
+   * La partie prend fin, et un nouveau nombre mystère est généré automatiquement (ou manuellement par le staff depuis le dashboard).
