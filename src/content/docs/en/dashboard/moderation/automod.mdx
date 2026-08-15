@@ -1,0 +1,100 @@
+---
+title: Auto moderation (AutoMod)
+description: Configure the automatic security filters that protect your server in real time from the dashboard.
+---
+
+<p class="doc-lead">The <strong>Auto moderation (AutoMod)</strong> module instantly blocks harmful behaviour and unwanted messages before a moderator ever has to step in.</p>
+
+:::tip[On the Discord side]
+To see how AutoMod behaves on Discord and how sanctions are applied live, read the [AutoMod guide on Discord](/en/discord/moderation/automod).
+:::
+
+:::note[Required permissions]
+This page lives under **Moderation → Auto moderation**: [Open AutoMod ↗](https://dash.kotbo.fr/automod).
+You must be a server administrator to change these settings. Make sure Kotbo's Discord role sits high enough in the role hierarchy to apply sanctions (such as a kick or a timeout).
+:::
+
+---
+
+## How it works
+
+Every AutoMod filter can be enabled on its own. When a violation is detected, Kotbo applies the sanction you configured. The sanctions available on the dashboard map to the following moderation outcomes:
+
+* <span class="dash-badge active">BLOCK</span>: the message is deleted or blocked.
+* <span class="dash-badge warn">WARN</span>: the message is deleted and the user receives an automatic warning.
+* <span class="dash-badge timeout">TIMEOUT</span>: the user is temporarily muted on the server.
+* <span class="dash-badge kick">KICK</span>: the user is kicked from the server.
+* <span class="dash-badge resolved">ALERT</span>: the bot sends a log alert without touching the message.
+
+---
+
+## Available filters
+
+### 1. Anti-spam filter
+Limits how many messages a user can send in quick succession.
+* **Maximum number of messages**: the allowed limit (for example 5 messages).
+* **Time window**: the rolling window used for the count, in seconds (for example 5 seconds).
+* **Sanction**: the action applied when the limit is exceeded (for example *TIMEOUT*).
+
+### 2. Link filter
+Prevents unapproved web addresses from being shared.
+* **Domain allowlist**: enter the permitted domains (one per line, for example `google.com`, `docs.kotbo.fr`). Any domain missing from this allowlist triggers the sanction.
+
+### 3. Caps filter
+Blocks messages that overuse capital letters.
+* **Threshold in %**: the share of uppercase letters at which the message is blocked (for example 80%).
+* **Minimum message length**: the minimum number of characters before the check applies (for example 10 characters, which avoids blocking short words like "OK").
+
+### 4. Emoji filter
+* **Emoji limit**: the maximum number of emoji allowed in a single message.
+
+### 5. Mention filter
+* **Mention limit**: the maximum number of user pings allowed per message (this blocks mass ping spam).
+
+### 6. Ghost ping filter
+Detects and reports ghost pings (when a user sends a message mentioning someone and then immediately deletes it).
+* **Sanction**: *ALERT* is recommended (it reports the ghost ping in the moderator logs).
+
+### 7. Anti-Everyone filter
+Blocks attempts to mention the whole server (`@everyone` or `@here`) by members who are not allowed to.
+
+### 8. Custom words
+Build your own blocklist of terms or phrases.
+* **Blocked words**: the list of words to ban (one per line).
+* **Allowed words**: exceptions, or words that contain an otherwise blocked substring.
+* **Timeout duration**: how long the offender is muted.
+
+### 9. Profanity filter
+Uses Kotbo's built-in smart dictionaries.
+* **Categories you can enable**: general profanity, sexual content, slurs.
+* **Allowed words**: a list of exceptions to ignore.
+
+### 10. Invite filter
+Blocks invites to other Discord servers from being shared.
+* **Allowed servers**: the list of partner Discord server IDs whose invites are permitted.
+
+### 11. Anti-Bot
+Prevents malicious or unauthorised bots from being added.
+:::caution[Owner-only restriction]
+This filter **can only be configured by the Discord server owner**. Other staff members cannot change this option, even if they have access to the dashboard settings.
+:::
+* **Members allowed to invite**: the list of staff user IDs allowed to add bots to the server. Any bot invited by anyone else is kicked immediately (*KICK*).
+
+---
+
+## Global exceptions
+
+You can define global exclusions so AutoMod does not get in the way of your staff's work or disrupt specific channels.
+
+* **Ignored roles**: pick the roles (for example <span class="dash-badge admin">@Administrator</span>, <span class="dash-badge mod">@Moderator</span>) that AutoMod filters will never affect.
+* **Ignored channels**: pick the channels (for example `#announcements`, `#staff`) where Kotbo will not apply any AutoMod rule.
+
+---
+
+## Saving and Discord synchronisation
+
+:::caution[Synchronisation required]
+Kotbo's AutoMod partly relies on Discord's native AutoMod for the best performance. Whenever you change something on the dashboard:
+1. Click **Save** in the bottom bar to store the settings.
+2. The bot then synchronises the rules with your Discord server's security settings automatically. A warning appears on the dashboard if a rule could not be synchronised because of missing Discord permissions.
+:::

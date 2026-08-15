@@ -1,0 +1,90 @@
+---
+title: Discord commands & relays (bridges)
+description: Use the Discord slash commands to link channels, and learn how messages are relayed.
+---
+
+import DiscordCommand from '../../../../../components/DiscordCommand.astro';
+
+<p class="doc-lead">On Discord, the <strong>Channel links</strong> module manages your communication bridges and relays messages between channels in real time.</p>
+
+:::tip[Dashboard configuration]
+To configure bridges and customise the relayed content (text/image/reaction filters), read the [Channel links configuration guide](/en/dashboard/communaute/liens-salons).
+:::
+
+:::note[Command names are in French]
+Kotbo registers its slash commands with French names and option names (`salon`, `salon-source`, `salon-cible`, and so on). Type them exactly as shown below, whatever language you read these docs in.
+:::
+
+---
+
+## Slash commands for managing links
+
+You can administer your bridges straight from Discord using Kotbo's slash commands.
+
+To list the active links on your server and get their unique IDs:
+<DiscordCommand
+  command="/link list"
+  botResponse="🔗 **Active channel links on this server:**\n• **Link #1**: bidirectional between #channel-A and #channel-B (mode: Webhook)\n• **Link #2**: unidirectional from #local-channel to #remote-channel on server ID: 987654321 (mode: Embed)"
+/>
+
+### 1. Link two local channels
+To connect two channels on your current server:
+<DiscordCommand
+  command="/link salon salon-source:#salon-A salon-cible:#salon-B direction:Bidirectionnel mode:Webhook"
+  botResponse="✅ **Link established!**\nChannel #salon-A is now connected to #salon-B in bidirectional mode (Webhook)."
+/>
+
+### 2. Link a remote server directly (staff)
+If you are an administrator on both servers, use the ID of the target server and channel:
+<DiscordCommand
+  command="/link direct salon-source:#salon-local serveur-cible:TARGET_SERVER_ID salon-cible:TARGET_CHANNEL_ID"
+  botResponse="✅ **Direct link created!**\nThe local channel #salon-local was successfully connected to the target channel ID `TARGET_CHANNEL_ID` on the remote server `TARGET_SERVER_ID`."
+/>
+
+### 3. Linking by invitation (Server A — initiating)
+To offer a link to a third-party administrator, generate a link code:
+<DiscordCommand
+  command="/link invite salon:#salon-local direction:Bidirectionnel mode:Webhook invitation-serveur:Vrai"
+  botResponse="✅ **Invitation code generated!**\nCode: `A1B2C3D4`\n\nPass this code to the administrator of the other server so they can accept it."
+/>
+*The bot returns a unique code (for example `A1B2C3D4`) to pass on to the recipient.*
+
+### 4. Accept a link invitation (Server B — target)
+To accept another server's request using the invitation code you received:
+<DiscordCommand
+  command="/link accept code:INVITATION_CODE salon:#salon-local-cible"
+  botResponse="✅ **Invitation accepted!**\nThe local channel #salon-local-cible is now linked to the originating channel."
+/>
+
+### 5. Remove an active link
+To break a channel bridge using its ID (which you can find with `/link list`):
+<DiscordCommand
+  command="/link remove id:LINK_ID"
+  botResponse="✅ **Channel link removed!**\nThe bridge with ID `LINK_ID` has been disabled."
+/>
+
+---
+
+## How the relay works on Discord
+
+### Webhook mode (mirror)
+*   **Clean rendering**: Kotbo creates a temporary webhook in the target channel. The relayed message appears under the original author's real username and avatar.
+*   **Natural experience**: for users in the receiving channel, it looks just like a normal conversation, with a small `BOT` badge next to the username indicating the relay.
+
+### Embed mode
+*   The message is wrapped in a coloured embed sent under Kotbo's name.
+*   It explicitly names the originating server and author in its header.
+
+---
+
+## Advanced synchronisation
+
+When the matching options are enabled on the dashboard, Kotbo mirrors these actions live on Discord:
+*   **Message edits**: editing a message on one side instantly updates the copy on the other.
+*   **Message deletions**: deleting a message also removes the relayed message in the remote channel.
+*   **Attachments**: images and documents are transferred and hosted so they display in the target channel.
+*   **Reactions**: adding an emoji reaction is synchronised if the bot has the necessary permissions on both servers.
+
+:::warning[Required Discord permissions]
+For **Webhook (mirror)** mode and attachment relaying to work correctly, make sure Kotbo's role has the **Manage Webhooks** (`MANAGE_WEBHOOKS`) and **Attach Files** (`ATTACH_FILES`) permissions in the channels involved, on both servers.
+:::

@@ -1,0 +1,56 @@
+---
+title: Fun channels gameplay on Discord
+description: Learn the rules and the player experience on Discord for the Fun channels.
+---
+
+<p class="doc-lead">On Discord, the <strong>Fun channels</strong> module polices the game channels on its own, so your members can have fun without adding work for the moderation team.</p>
+
+:::tip[Dashboard configuration]
+To assign the channels and reset scores, read the [Fun channels configuration guide](/en/dashboard/communaute/salons-fun).
+:::
+
+---
+
+## 1. The counting channel
+
+The goal is to count as high as possible together, without making a mistake.
+
+### Posting rules
+* **Numbers only**: every message sent in this channel must start with the next number in the sequence (for example if the last number was `14`, the next message must be `15`).
+* **No self-replies**: a user cannot post two numbers in a row. They have to wait for another member to post the next number.
+
+### How Kotbo reacts to a mistake
+If a player posts the wrong number, plain text, or tries to double-post:
+* Kotbo instantly deletes the offending message.
+* The bot may add a warning reaction.
+* The current score is either kept or reset depending on your settings (if reset, players have to start again from `1`).
+
+---
+
+## 2. One Word Story
+
+The community collaborates on an endless story by writing one word at a time.
+
+### Posting rules
+* **One word per message**: messages containing spaces, complex punctuation or several words are not allowed.
+* **No consecutive turns**: you cannot post two words in a row. Another player has to add a word before you can write again.
+
+### How Kotbo reacts
+* Any message with more than one word, or posted consecutively by the same author, is deleted automatically by the bot within a second.
+* The story reads smoothly from top to bottom in the channel.
+
+---
+
+## 3. Mystery Number (guess the number)
+
+Kotbo generates a secret number in the background, and players have to guess it by posting values in the channel.
+
+### How a round plays out
+1. Players post numbers in the channel (for example `42`).
+2. Kotbo checks the guess and replies publicly:
+   * **"Higher!"** (if the mystery number is greater).
+   * **"Lower!"** (if the mystery number is smaller).
+3. Players adjust their next guesses accordingly.
+4. As soon as a member hits the exact number:
+   * The bot announces the win and mentions the winner.
+   * The round ends, and a new mystery number is generated automatically (or manually by staff from the dashboard).

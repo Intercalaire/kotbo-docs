@@ -69,6 +69,21 @@ function parseMarkdown(text?: string) {
   
   return html;
 }
+
+const isEnglish = Astro.url.pathname === '/en' || Astro.url.pathname.startsWith('/en/');
+const t = isEnglish
+  ? {
+      copy: 'Copy the command',
+      run: 'Run and show the response',
+      thinking: 'Kotbo is thinking...',
+      timestamp: 'Today at 12:00',
+    }
+  : {
+      copy: 'Copier la commande',
+      run: 'Exécuter et voir la réponse',
+      thinking: 'Kotbo réfléchit...',
+      timestamp: "Aujourd'hui à 12:00",
+    };
 ---
 
 {hasResponse ? (
@@ -85,7 +100,7 @@ function parseMarkdown(text?: string) {
       ))}
 
       <div class="discord-actions">
-        <button class="copy-btn" data-command={command} title="Copier la commande">
+        <button class="copy-btn" data-command={command} title={t.copy}>
           <!-- Copy Icon (Lucide Copy) -->
           <svg class="copy-svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
@@ -97,7 +112,7 @@ function parseMarkdown(text?: string) {
           </svg>
         </button>
 
-        <button class="exec-btn" title="Exécuter et voir la réponse">
+        <button class="exec-btn" title={t.run}>
           <!-- Play Icon (Lucide Play) -->
           <svg class="play-svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polygon points="6 3 20 12 6 21 6 3"/>
@@ -118,7 +133,7 @@ function parseMarkdown(text?: string) {
           <span class="dot"></span>
           <span class="dot"></span>
         </div>
-        <span class="discord-timestamp" style="font-style: italic;">Kotbo réfléchit...</span>
+        <span class="discord-timestamp" style="font-style: italic;">{t.thinking}</span>
       </div>
 
       <!-- Real Response content (initially hidden) -->
@@ -126,7 +141,7 @@ function parseMarkdown(text?: string) {
         <div class="discord-header">
           <span class="discord-author">Kotbo</span>
           <span class="discord-bot-tag">BOT</span>
-          <span class="discord-timestamp">Aujourd'hui à 12:00</span>
+          <span class="discord-timestamp">{t.timestamp}</span>
         </div>
         {botResponse && <div class="discord-text" set:html={parseMarkdown(botResponse.replace(/\\n/g, '\n'))} />}
         {(embedTitle || embedDescription) && (
@@ -140,7 +155,7 @@ function parseMarkdown(text?: string) {
             {buttons.split(',').map((btnLabel, idx) => {
               const label = btnLabel.trim();
               const isPrimary = idx === 0 && !label.includes('👎');
-              const isSuccess = label.includes('👍') || label.includes('accept') || label.includes('oui') || label.includes('Approuver');
+              const isSuccess = label.includes('👍') || label.includes('accept') || label.includes('oui') || label.includes('Approuver') || label.includes('Approve');
               return (
                 <button class={`discord-btn ${isPrimary ? 'discord-btn-primary' : ''} ${isSuccess ? 'discord-btn-success' : ''}`}>
                   {label}
@@ -165,7 +180,7 @@ function parseMarkdown(text?: string) {
     ))}
 
     <div class="discord-actions">
-      <button class="copy-btn" data-command={command} title="Copier la commande">
+      <button class="copy-btn" data-command={command} title={t.copy}>
         <svg class="copy-svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
           <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>

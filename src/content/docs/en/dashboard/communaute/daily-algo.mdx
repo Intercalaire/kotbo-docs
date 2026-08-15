@@ -1,0 +1,57 @@
+---
+title: Daily Algo
+description: Set up daily algorithm challenges for your developer community, from the dashboard.
+---
+
+<p class="doc-lead">The <strong>Daily Algo</strong> module is a distinctive add-on for communities of developers, students and programming enthusiasts. It publishes a daily algorithm challenge that members can solve straight from Discord or from the dashboard.</p>
+
+:::tip[On the Discord side]
+To understand how members take part in the challenges on Discord and submit their code, read the [Daily Algo usage guide](/en/discord/communaute/daily-algo).
+:::
+
+:::note[Availability]
+The module is managed from the **Community → Daily Algo** tab of your dashboard: [Open Daily Algo ↗](https://dash.kotbo.fr/dailyalgo).
+The languages supported by Kotbo's sandboxed code runner are: `JavaScript`, `TypeScript`, `Python`, `C`, `Lua` and `SQLite`.
+:::
+
+---
+
+## Module overview
+
+The Daily Algo interface for administrators and hosts is organised around five tabs:
+
+### 1. Today's submissions (Today)
+Shows the exercise currently being solved and lists the solutions submitted by your members.
+* **Review status**: track submitted code as **Pending**, **Approved** or **Rejected**.
+* **Built-in grading IDE**: click a submission to open it in the dashboard's built-in code editor.
+  * Read the member's code with syntax highlighting.
+  * Check the automatic unit test execution report.
+  * Grade the quality: manually award a **correctness score** (out of 10) and a **comments/style score** (out of 10).
+  * Write **review feedback** that will be sent to the member.
+  * Award **speed bonus points** to reward whoever solved the puzzle first.
+
+### 2. The exercise library (Library)
+This is where you manage the server's catalogue of algorithm exercises.
+
+* **Quick search**: use the search bar to find an exercise by title.
+* **Create or edit an exercise**:
+  1. Click **Create an exercise** (or edit an existing one).
+  2. Fill in the **Title**, the **Description** (the problem statement), the **Difficulty** (easy, medium, hard) and the language.
+  3. Select the **allowed languages** for this specific exercise.
+  4. Define the **function signature**: give the exact name of the function the member must write (for example `findShortestPath`) and add its typed arguments (for example `graph: object`, `start: string`).
+  5. Define the **unit tests**: for each test case, enter the test name, the input argument values (in JSON, for example `[ [1, 2], 3 ]`) and the expected result (for example `true`). The bot uses these tests to automatically pre-validate whether submitted code is correct.
+  6. Save the exercise.
+
+### 3. Scheduling challenges (Planning)
+Kotbo manages the publication calendar on its own.
+* The bot makes sure it has a schedule of exercises ready for the **next 21 days**. It picks exercises from your library at random for each date.
+* **Emergency swap**: if you want to change today's exercise at the last minute, open the *Planning* tab and click **Swap today's problem**. The bot picks a new compatible exercise from your library.
+
+### 4. History & leaderboards (History)
+* **Challenge history**: review the results of the last 7 days to see who took part and which solutions were accepted.
+* **Leaderboard**: follow your members' cumulative scores. Each exercise solved earns base points according to its difficulty, on top of which come the staff's review scores and the speed bonuses.
+
+### 5. API keys
+Lets you open the module up to the developers on your server.
+* Your members can generate personal **Kotbo API keys** from this tab.
+* With those keys they can build external scripts or use IDE extensions (such as VS Code) to fetch the day's problem and submit their code straight from their local working environment, without going through a browser.

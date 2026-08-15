@@ -1,0 +1,57 @@
+---
+title: Using Tickets on Discord
+description: See how members open a ticket and how staff interact with it directly on Discord.
+---
+
+<p class="doc-lead">On Discord, the <strong>Tickets</strong> module gives members a smooth, secure way to reach the server's support team in private.</p>
+
+:::tip[Dashboard configuration]
+To configure the panels and ticket categories and to track satisfaction, read the [Tickets configuration guide](/en/dashboard/communaute/tickets).
+:::
+
+---
+
+## How a member opens a ticket
+
+### 1. The welcome panel
+In the designated support channel (for example `#support-tickets`), members see an introduction message (an embed) containing:
+* The title and instructions written by the administrator.
+* **The opening selector**: either coloured **buttons** (for example `Report a bug`, `Shop`), or a **dropdown** listing every available support category.
+
+### 2. The private space is created
+As soon as the member clicks a button or picks an option:
+* Kotbo creates the conversation space according to the active mode:
+  * **A temporary text channel** (for example `#ticket-john-001`) placed in the configured ticket category.
+  * **A private thread** created under the panel's channel.
+  * **Direct messages (DM)**: the member talks privately with the bot, which relays their messages to the staff.
+* Only the member who opened the ticket, administrators and holders of the configured **staff role** (for example `@Support Staff`) can access that new space.
+
+---
+
+## How support unfolds on Discord
+
+Once the ticket is open, the member and the moderators can talk. Kotbo posts an introduction message in the channel with the quick actions:
+
+### 1. Claiming the ticket
+* Staff members can click the **Claim** button.
+* Kotbo renames the channel or updates the permissions to signal that this moderator is personally handling the case.
+
+### 2. Exchanging messages
+* Staff members can reply directly on Discord.
+* Their replies are also mirrored in real time in the Kotbo dashboard interface, so other moderators can follow along.
+
+### 3. Closing the ticket
+Once the request is resolved:
+* The member or the staff clicks the **Close** button.
+* The bot asks for a justification (a closing reason).
+* The Discord channel is locked, archived or deleted after a short safety delay.
+
+---
+
+## End-of-ticket satisfaction survey
+
+As soon as the ticket is closed:
+* Kotbo sends the user a direct message (or a channel message before deletion).
+* The message invites them to give a rating from **1 to 5 stars** by clicking interactive smiley buttons.
+* A form opens so they can write a comment about how they were treated or how their request was resolved.
+* This feedback feeds directly into the charts in the dashboard's **Satisfaction** tab.

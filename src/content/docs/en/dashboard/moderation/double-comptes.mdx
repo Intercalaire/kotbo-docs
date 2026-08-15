@@ -1,0 +1,63 @@
+---
+title: Alt account detection
+description: Detect suspicious alternate accounts and configure the verification barriers from the dashboard.
+---
+
+<p class="doc-lead">The <strong>Alt accounts</strong> module is an essential security tool that protects your server against bot raids, ban evasion and malicious users running several accounts.</p>
+
+:::tip[On the Discord side]
+To understand the Captcha verification flow imposed on a suspicious user on Discord, read the [Discord verification guide](/en/discord/moderation/double-comptes).
+:::
+
+:::note[Required permissions]
+Security is managed from the **Moderation → Alt accounts** section of your dashboard: [Open the Alt accounts module ↗](https://dash.kotbo.fr/double-accounts).
+Only administrators and authorised moderators can see this sensitive information.
+:::
+
+---
+
+## How does the suspicion score work?
+
+Kotbo does not kick people at random. When a member joins your Discord server, the bot analyses their profile and assigns a **suspicion score from 0 to 100** based on several technical criteria:
+
+* **Account age**: an account created less than 24 hours ago gets a very high suspicion score.
+* **Join pattern**: analysis of members arriving in waves.
+* **Technical fingerprint**: detection of shared IP addresses, identical browser cookies when accessing the site, or the use of VPNs and proxies known for masking identity.
+* **Discord history**: whether the account is present on other shared servers, and any past sanctions.
+
+---
+
+## Navigating the security tabs
+
+The page groups four tabs for managing your server's security:
+
+### 1. Linked accounts
+Shows the list of accounts officially recorded as linked. This is where you keep track of the declared alts belonging to your members or your team.
+* Filter the list by status: **All**, **Pending**, **Validated** or **Rejected**.
+* If a member legitimately has a second identity (for example a demo account for a developer), you can validate the link here so it stops triggering alerts.
+* You can remove a link at any time to separate the accounts again.
+
+### 2. Detections
+This is the active monitoring control panel.
+
+* **Run a manual scan**: enter a limit in days (for example 3 days) and click **Run the scan** to retroactively scan the most recent arrivals on your server.
+* **Review active suspicions**: every suspect is shown with their Discord identity card, their overall score and a colour-coded threat level:
+  * <span class="dash-badge kick">High risk (score ≥ 60)</span>: extremely suspicious accounts (for example created minutes ago behind a VPN).
+  * <span class="dash-badge warn">Medium risk (score ≥ 30)</span>: unusual behaviour worth watching.
+  * <span class="dash-badge active">Low risk (score < 30)</span>: minor anomalies.
+* **Review the evidence**: expand the card to see exactly why the account was flagged (for example *"Same IP address detected as user Jean#1234"*).
+* **Make a decision**:
+  * Click **Link the accounts** if you confirm this really is an alt account.
+  * Click **Dismiss** to remove the member from the list of suspected threats.
+  * Click their name to open their **moderation file** directly and apply a sanction (timeout or ban).
+
+### 3. Verification
+This tab shows the user journey imposed on members blocked or flagged by the bot. From the dashboard you can review the state of that journey and the access statistics.
+
+### 4. Configuration
+Tune the bot's sensitivity and the automatic sanctions.
+
+* **Automatic detection**: turn this toggle on to let Kotbo continuously scan every new arrival.
+* **Validation role**: pick the temporary or holding role to grant and remove while the member completes their Captcha verification (for example `@Unverified`).
+* **Alt account role / sanction role**: pick the restrictive role to grant automatically to members identified as unauthorised alt accounts.
+* Click **Save** in the green bottom bar after every change.

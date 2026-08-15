@@ -1,0 +1,91 @@
+---
+title: Recommended setup order
+description: Follow a step-by-step path to configure your Kotbo server safely and in the right order.
+sidebar:
+  order: 4
+---
+
+<p class="doc-lead">Setting up a complete Discord server can quickly feel overwhelming. To avoid permission mistakes or skipping key steps, we recommend following this logical order.</p>
+
+---
+
+## Why does the order matter?
+
+If you start with fun channels or welcome messages, you risk leaving administration commands open to every member, or failing to log the first important actions taken by your staff.
+
+Following the steps below gives you a server that is **secure, auditable and ready for the public** with no nasty surprises.
+
+---
+
+## Step 1: Lock down access and permissions
+Before anything else, limit who can interact with the bot and who can administer its settings.
+
+* **Where to go:** **Configuration → Commands**
+* **Action:** Check the execution rights of your slash commands. Make sure moderation commands (`/clear`, `/ban`, `/mute`, and so on) and configuration commands are only available to the right roles (for example `@Administrator` or `@Moderator`).
+* **Why:** It stops malicious members from exploiting a command left loosely restricted by default while you set up the rest.
+
+---
+
+## Step 2: Turn on the activity log (Logs)
+It is essential to see what the bot does and to keep a trail in case of a malfunction or suspicious behaviour.
+
+* **Where to go:** **Moderation → Logs**
+* **Action:** Create or select a private channel reserved for your moderation team (for example `#mod-logs`), then enable the log filters you want (sanctions, deleted messages, role changes, and so on).
+* **Why:** Every configuration that follows (automatic sanctions, tickets created, alt-account detections) will generate logs. If your log channels are not set up first, you will miss crucial information.
+
+---
+
+## Step 3: Configure automatic security
+Put in place the protections that will watch over your server around the clock.
+
+1. **AutoMod (auto moderation):**
+   * **Where to go:** **Moderation → Auto moderation**
+   * **Action:** Enable the anti-spam, blocked links and profanity filters, plus **Anti-Bot**.
+2. **Alt accounts:**
+   * **Where to go:** **Moderation → Alt accounts**
+   * **Action:** Enable automatic detection and configure the Captcha verification flow for accounts that are too new.
+
+* **Why:** Your server is now actively monitored. If a spammer or a malicious bot tries to join while you finish your setup, it will be blocked immediately.
+
+---
+
+## Step 4: Prepare onboarding and the welcome flow
+Configure the arrival experience for future members.
+
+1. **Welcome messages:**
+   * **Where to go:** **Community → Announcements & Auto-Role**
+   * **Action:** Enable the **Welcome** tab, pick a channel such as `#welcome` and write your custom message.
+2. **Rules acceptance:**
+   * **Where to go:** **Community → Rules** (if installed)
+   * **Action:** Write your rules and set the validation role to grant when the user accepts them.
+3. **Reaction roles:**
+   * **Where to go:** **Community → Reaction Roles**
+   * **Action:** Create self-assigned role menus (for example to pick games or platforms) to take pressure off your channels.
+
+---
+
+## Step 5: Structure the team and support
+Organise your staff's workflow and the way you handle member requests.
+
+1. **Support tickets:**
+   * **Where to go:** **Community → Tickets**
+   * **Action:** Configure the support category, the staff role that handles tickets, and post the opening panel in `#support`.
+2. **Recruitment:**
+   * **Where to go:** **Staff → Recruitment** (or via the Form Builder)
+   * **Action:** If you recruit moderators or event hosts, prepare the application forms.
+
+---
+
+## Step 6: Enable community and engagement modules
+Now that the server is secure, structured and working, you can add the optional entertainment modules.
+
+* **Leveling / XP:** to reward text and voice activity.
+* **Suggestions:** to give your community a voice.
+* **Fun channels:** for entertainment (counting games, mystery number).
+* **Daily Algo:** to sharpen your members' technical skills.
+
+---
+
+## Important reminders
+* **The save bar:** every page you change needs a click on **Save** (green bar at the bottom of the page) before you navigate away.
+* **Discord hierarchy:** make sure **Kotbo**'s Discord role sits as high as possible in your server's role list. If it is placed below other roles, it will not be able to moderate those members or grant them roles.

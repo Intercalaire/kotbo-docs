@@ -1,0 +1,60 @@
+---
+title: How channels work on Discord
+description: Learn how Auto-Thread, voice statistics channels, temporary voice channels and the Honeypot trap work on Discord.
+---
+
+<p class="doc-lead">On Discord, the <strong>Channels</strong> module automates the creation of temporary spaces, keeps dynamic statistics up to date and provides active protection against spam.</p>
+
+:::tip[Dashboard configuration]
+To configure the counters, the voice channel generators and the Honeypot, read the [channel configuration guide](/en/dashboard/configuration/salons).
+:::
+
+---
+
+## 1. Auto-Thread (automatic threads)
+
+* **Trigger**: when a user posts a message in a channel configured for Auto-Thread (for example `#suggestions` or `#projects`), Kotbo reacts instantly.
+* **Thread creation**: the bot creates a thread under the original message, using that message as its header.
+* **Why it helps**: it keeps your main channels tidy by moving comments into a thread under each specific topic.
+
+---
+
+## 2. Stats channels (dynamic counters)
+
+* **What it looks like**: server statistics are shown directly in the names of dedicated voice channels (for example `👤 Members: 1,254` or `🎮 Online: 452`).
+* **Refresh rate**: because of the limits imposed by the Discord API (rate limits), Kotbo updates these channel names **every 10 minutes**. Statistics changes are therefore not immediate but smoothed out over time.
+
+---
+
+## 3. Create your channel (temporary voice channels)
+
+This system lets your members create and manage their own voice channel independently.
+
+### Step 1: creating the voice channel
+1. The member joins the configured generator voice channel (for example `🔊 Create a channel`).
+2. Kotbo instantly moves them into a new temporary voice channel it has just created (for example `🔊 John's channel`).
+
+### Step 2: the interactive control embed
+At the same time, Kotbo posts an interactive management message (an embed) in the text chat attached to that temporary voice channel. The channel's creator (its owner) can control access with the buttons:
+
+* **Lock (🔒) / Unlock (🔓)**: makes the channel private. When locked, other members can no longer force their way in.
+* **Limit (👥)**: opens a Discord form for setting the allowed user limit.
+* **Rename (✏️)**: opens a form for changing the channel's name.
+* **Kick (👢)**: removes an unwanted user connected to the voice channel.
+* **Ban (🚫)**: kicks a member and permanently bars them from rejoining this channel.
+* **Add (➕)**: explicitly grants access to a specific member, even when the channel is locked.
+* **Transfer (👑)**: hands ownership of the channel to another member present in the voice channel.
+* **Claim (🙋)**: lets someone claim ownership of the channel if the original creator has left and the channel is orphaned.
+* **Reserve (🛡️)**: limits access to a specific Discord role picked from a dropdown.
+
+### Step 3: automatic cleanup
+As soon as the last connected member leaves the temporary voice channel, Kotbo **automatically and permanently deletes** the channel and its attached chat.
+
+---
+
+## 4. Honeypot channel (anti-spam trap)
+
+* **The trap**: the bot creates or watches an inviting text channel (for example `#do-not-type-here` or `#anti-spam-verification`) that everyone can see, new members in particular.
+* **The trigger**: any message posted in that channel by a regular member or a spam bot sets off the Honeypot.
+* **The automatic sanction**: the bot instantly deletes the message and applies the sanction you selected (ban, 28-day timeout, kick or warning) with no prior warning.
+* **Staff immunity**: server administrators and moderators are immune and can post in the Honeypot channel by mistake without triggering a sanction.

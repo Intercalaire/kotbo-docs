@@ -1,0 +1,61 @@
+---
+title: Welcome & leave messages
+description: Learn how to configure the automatic messages sent when a member joins or leaves, from the dashboard.
+---
+
+import DashboardScreenshot from '../../../../../components/DashboardScreenshot.astro';
+
+<p class="doc-lead">Welcome new members and let your community know about departures with messages that personalise themselves automatically.</p>
+
+:::tip[On the Discord side]
+To see how these messages look on Discord and to test your configuration, read [How the messages render on Discord](/en/discord/communaute/accueil-depart).
+:::
+
+In the sidebar, open **Community → Announcements & Auto-Role** ([Open Announcements ↗](https://dash.kotbo.fr/announcement)), then pick the **Welcome** or **Leave** tab.
+
+<DashboardScreenshot
+  file="dashboard-welcome.webp"
+  alt="Real Kotbo Announcements and Auto-Role screen, Welcome tab"
+  caption="The real Announcements & Auto-Role screen, open on the Welcome tab."
+/>
+
+## Configure the welcome message
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Open the “Welcome” tab</h3><p>In <strong>Announcements & Auto-Role</strong>, the tab sits just below the page title.</p></div></div>
+  <div class="step-item"><div><h3>Turn on “Welcome Message”</h3><p>The toggle is in the top right of the block.</p></div></div>
+  <div class="step-item"><div><h3>Choose the channel to post in</h3><p>Pick a text channel that new members can see, for example <code>#welcome</code>.</p></div></div>
+  <div class="step-item"><div><h3>Write the message</h3><p>Add the variables below so the text adapts automatically to each arrival.</p></div></div>
+  <div class="step-item"><div><h3>Check the preview, then save</h3><p>The Discord preview refreshes on the page. Click <strong>Save</strong> in the bottom bar.</p></div></div>
+</div>
+
+## Available variables
+
+<table class="variable-table">
+  <thead><tr><th>Variable</th><th>Result</th></tr></thead>
+  <tbody>
+    <tr><td><code>{'{user}'}</code></td><td>Mentions the member, for example <strong>@JohnDoe</strong>.</td></tr>
+    <tr><td><code>{'{username}'}</code></td><td>Shows their name without a mention.</td></tr>
+    <tr><td><code>{'{server}'}</code></td><td>Shows your server's name.</td></tr>
+    <tr><td><code>{'{memberCount}'}</code></td><td>Shows the total number of members.</td></tr>
+  </tbody>
+</table>
+
+Example:
+
+```text
+Welcome {user} to {server}!
+You are our member number {memberCount} 🎉
+```
+
+## Add a welcome image
+
+Turn on **Welcome image** to attach a banner featuring the new member's avatar. You can supply a custom background image URL; without one, Kotbo uses its default artwork.
+
+:::tip
+Choose a wide, legible and uncluttered image. Test how it looks in both light and dark themes if it contains text.
+:::
+
+## Configure the leave message
+
+Open the **Leave** tab at the top of the same page. The form works the same way: enable the message, choose a channel and write the text. The <code>{'{user}'}</code> variable may no longer produce a clickable mention once the member has left; use <code>{'{username}'}</code> if you only want to show the name.

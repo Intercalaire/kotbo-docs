@@ -1,0 +1,46 @@
+---
+title: Enabling your modules
+description: Choose and enable the features that matter on your Kotbo server.
+sidebar:
+  order: 3
+---
+
+import DashboardScreenshot from '../../../../components/DashboardScreenshot.astro';
+
+<p class="doc-lead">Modules are how you tailor Kotbo to your community. Only enable the features your team actually intends to use: the navigation stays much clearer that way.</p>
+
+<DashboardScreenshot
+  file="dashboard-modules.webp"
+  alt="Real screen of the Kotbo module catalogue"
+  caption="The real module catalogue, with its presets and activation toggles."
+/>
+
+## Enable a module
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Open Configuration → Modules</h3><p>This page is restricted to server administrators. You can [open Modules ↗](https://dash.kotbo.fr/modules) directly.</p></div></div>
+  <div class="step-item"><div><h3>Find the feature</h3><p>Each card summarises what the module does. Flip the toggle next to it.</p></div></div>
+  <div class="step-item"><div><h3>Configure its new page</h3><p>An entry appears in the sidebar. Open it to choose the module's channels, roles and behaviour.</p></div></div>
+  <div class="step-item"><div><h3>Test it on Discord</h3><p>Run a simple action with a test account before announcing the feature to your community.</p></div></div>
+</div>
+
+## Where to start?
+
+| What you need | Suggested modules |
+| --- | --- |
+| Welcome a community | Announcements & Auto-Role, Reaction Roles, Rules |
+| Organise moderation | Members, Sanctions, Auto moderation, Discord logs |
+| Liven up the server | Leveling & XP, Giveaways, Suggestions |
+| Structure a team | Tickets, Recruitment, Planning, Directory |
+
+:::tip[Start small]
+Enable two or three modules, configure them fully, then add the next ones. It makes testing easier and helps your staff get up to speed.
+:::
+
+## Disable a module
+
+Go back to **Configuration → Modules** and flip its toggle off. The matching page disappears from the sidebar and the related automations stop running.
+
+Disabling a module should not be treated as deleting data. If you want to start over, check the module's own options first or contact the administrator of your Kotbo instance.
+
+You can now configure your first module with the [Welcome & leave messages](../../dashboard/communaute/accueil-depart/) guide.

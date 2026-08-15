@@ -1,0 +1,46 @@
+---
+title: Verification flow (alt accounts)
+description: Understand the Captcha verification flow imposed on Discord for suspicious accounts and alts.
+---
+
+<p class="doc-lead">On Discord, the <strong>alt account detection</strong> system steps in selectively to secure your server, imposing a strict verification protocol on accounts suspected of being alts or spam bots.</p>
+
+:::tip[Dashboard configuration]
+To configure the suspicion thresholds, manage detections and set the roles, read the [alt account detection configuration guide](/en/dashboard/moderation/double-comptes).
+:::
+
+---
+
+## What a suspicious user goes through on Discord
+
+When a new user joins the server and their suspicion score exceeds the threshold set on your dashboard:
+
+### Step 1: rights are restricted
+* Kotbo immediately gives the new member the configured **validation role** (for example `@Unverified`).
+* That role restricts read and write access to almost every channel on the server, confining the member to a welcome or holding channel.
+
+### Step 2: the direct message arrives
+The bot automatically sends the user a direct message containing:
+* A welcome message explaining that their account has been flagged as potentially suspicious.
+* A **verification button**, or a unique encrypted and secured web link.
+
+### Step 3: external web verification
+Clicking the link takes the user to a web page hosted by Kotbo:
+1. **Solving the Captcha**: the user has to solve an interactive Captcha test to prove they are human.
+2. **Connection fingerprint scan**: Kotbo checks for proxies and spam VPNs, along with the associated browser cookies, to detect multiple accounts connected from the same session.
+
+---
+
+## Verification outcomes and sanctions
+
+Once the analysis on the web page is complete:
+
+### If verification succeeds
+* The web server validates the session.
+* Kotbo instantly removes the **validation role** (`@Unverified`) from the user on Discord.
+* Kotbo grants them the standard member role, or restores full access to the server.
+
+### If it fails, or the alt is confirmed
+* If the user fails verification or is positively identified as an unauthorised alt account:
+* Kotbo grants them the **sanction role** (for example `@Blocked-Alt`), which restricts all access, or kicks or bans them from the server outright depending on the active settings.
+* The incident is reported to moderators in the staff alert channel on Discord.

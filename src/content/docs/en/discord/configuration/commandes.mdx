@@ -1,0 +1,39 @@
+---
+title: How restrictions affect commands
+description: Learn how the permissions configured on the dashboard affect slash command usage on Discord.
+---
+
+<p class="doc-lead">On Discord, the <strong>command access management</strong> module applies your filters in real time whenever a slash command is run or autocompleted.</p>
+
+:::tip[Dashboard configuration]
+To restrict commands, resolve role conflicts and save your configuration, read the [command permissions configuration guide](/en/dashboard/configuration/commandes).
+:::
+
+---
+
+## How restrictions apply on Discord
+
+When a member tries to use one of Kotbo's slash commands on Discord:
+
+### 1. Command visibility (autocomplete)
+* If global Discord permissions allow it, the slash commands appear in Discord's input menu when you type `/`.
+* If a user is explicitly blocked, or lacks the role a command requires on the Kotbo dashboard, the command may still show up in their Discord menu (because of Discord's caching), but running it will be rejected.
+
+### 2. Rejection at execution
+If a member tries to run a restricted command (or runs one in a blocked channel):
+* Kotbo intercepts the slash command's execution.
+* The bot returns an ephemeral error message (visible only to the user who ran the command):
+  > **❌ Permission error**
+  > You are not allowed to use this command in this channel, or with your current roles.
+* The command has no effect on the server and is never executed by the bot.
+
+---
+
+## Default access levels (inheritance)
+
+By default, with no specific configuration on the dashboard, Kotbo applies three standard access levels:
+* **Everyone**: the command can be used by every member (for example `/suggest`).
+* **Mod**: the command requires the member to hold a role defined as moderator in the dashboard, or the Discord *Manage Messages* permission (for example `/warn`).
+* **Admin**: the command requires the Discord *Administrator* permission (for example `/link`).
+
+The per-channel, per-role and per-user restrictions you set on the dashboard override and refine these native Discord behaviours.
