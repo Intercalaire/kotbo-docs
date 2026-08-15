@@ -1,0 +1,53 @@
+---
+title: How welcome & leave messages look
+description: See how welcome messages and illustrated cards appear on Discord, and how to test your configuration.
+---
+
+<p class="doc-lead">On Discord, welcome and leave messages guide new members and keep the community informed in a clear, visual way.</p>
+
+:::tip[Dashboard configuration]
+To write the messages, choose the channel to post in and set the welcome banner, read the [welcome message configuration guide](/en/dashboard/communaute/accueil-depart).
+:::
+
+---
+
+## How it looks on Discord
+
+### 1. The text message
+The message you configured appears in the channel you chose. The variables are resolved dynamically:
+* `{user}` is replaced by a clickable mention of the user (for example `@JohnDoe`). The member gets a mention notification when they arrive, if their role lets them read the channel.
+* `{username}` shows their raw name without mentioning them (for example `JohnDoe`), avoiding a needless ping.
+* `{server}` shows the exact name of your Discord server.
+* `{memberCount}` gives the member's numeric position on the server (for example member number `1500`).
+
+### 2. The welcome card (image)
+If the **Welcome image** option is enabled, Kotbo generates a personalised welcome card:
+* The image includes the new member's circular avatar.
+* It shows their username in a styled font.
+* It uses the custom background image you provided (or Kotbo's default background).
+* It is sent as an attachment right after the text message.
+
+---
+
+## Required Discord permissions
+
+So that Kotbo can post announcements and images without trouble, make sure its role has the following permissions in the channel you chose (for example `#welcome`):
+1. **View Channel** (`VIEW_CHANNEL`): essential for the bot to detect and reach the channel.
+2. **Send Messages** (`SEND_MESSAGES`): required to post the welcome or leave text.
+3. **Embed Links** (`EMBED_LINKS`): recommended for clean message formatting.
+4. **Attach Files** (`ATTACH_FILES`): **mandatory** if you use welcome image cards. Without it, sending the card will fail.
+
+---
+
+## How to test on Discord
+
+The dashboard preview simulates the visual result, but it does not test the bot's rights on your server. Before making the channel public:
+
+1. Save your changes on the dashboard.
+2. Invite a secondary account (a test account) to your Discord server.
+3. Check that the message is sent correctly and that the card displays.
+4. Have the test account leave to check the leave message as well.
+
+:::caution[Do not test with staff]
+Do not make a current member of your moderation or administration team leave in order to test. Use a test account only, to avoid disrupting staff roles and permissions.
+:::

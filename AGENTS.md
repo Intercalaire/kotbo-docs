@@ -11,7 +11,7 @@ The dashboard source used as the product reference is located at `../Kotbo/apps/
 ## Project structure
 
 - `src/content/docs/`: pages de documentation écrites en Markdown ou MDX.
-- `src/components/`: composants Astro réutilisables pour les pages de documentation (ex: `DashboardScreenshot.astro`, `DiscordCommand.astro`).
+- `src/components/`: composants Astro réutilisables pour les pages de documentation (ex: `DashboardScreenshot.astro`, `DiscordCommand.astro`). `LanguageSelect.astro` surcharge le sélecteur de langue de Starlight (bouton drapeau + menu déroulant).
 - `src/styles/`: feuilles de style modulaires :
   - `css.rooting.css` : Feuille de style principale important les autres fichiers.
   - `variables.css` : Variables de thèmes, couleurs, polices.
@@ -31,7 +31,12 @@ The dashboard source used as the product reference is located at `../Kotbo/apps/
 - Prefer short, task-oriented sections with visible outcomes.
 - Explain permissions when a page or action is restricted by role.
 - Mention save actions, required Discord permissions, and destructive effects where relevant.
-- Use French for all user-facing documentation.
+- The site is bilingual: French is the default locale (served from the root) and English lives under `src/content/docs/en/`.
+- Both locales must keep the exact same file tree and the same frontmatter keys, including `sidebar.order`. Starlight maps a page to its translation by identical path, so `en/` reuses the French path segments (`en/premiers-pas/connexion.mdx`).
+- Any page added, renamed, or removed must be applied to both locales in the same change, along with its `translations` entry in the `sidebar` of `astro.config.mjs`.
+- Absolute links inside English pages must be prefixed with `/en/`; relative links work unchanged in both locales.
+- Discord slash commands are registered with French names and option names and are not localized, so command syntax stays verbatim in the English pages.
+- When translating dashboard labels, use the wording from `../Kotbo/apps/dashboard/messages/en.json` rather than inventing a translation.
 - Never expose tokens, IDs, private server data, member data, or production configuration.
 
 ## Visual rules
@@ -41,13 +46,13 @@ The dashboard source used as the product reference is located at `../Kotbo/apps/
 - Keep the real sidebar, navbar, labels, forms, spacing, and active states visible whenever they help orientation.
 - Store optimized screenshots as WebP files in `src/assets/screenshots/`.
 - Use `src/components/DashboardScreenshot.astro` to embed dashboard captures.
-- Give every screenshot a useful French `alt` description and a short caption.
+- Give every screenshot a useful `alt` description and a short caption, written in the language of the page.
 - When the dashboard UI changes, update both the instructions and the affected screenshots in the same change.
 - Pour afficher les commandes slash Discord, utilisez obligatoirement le composant `<DiscordCommand command="/..." />` importé depuis `src/components/DiscordCommand.astro` afin de reproduire fidèlement l'UI de saisie Discord avec bouton de copie.
 
 ## Writing style
 
-- Address the reader directly and use plain French.
+- Address the reader directly and use plain language, in the language of the page.
 - Lead with the action or result, not implementation details.
 - Prefer real interface labels in bold, for example **Configuration → Modules**.
 - Use callouts only for important tips, permission requirements, warnings, or data-loss risks.

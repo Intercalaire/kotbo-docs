@@ -1,0 +1,109 @@
+---
+title: Channel management
+description: Configure Auto-Thread, live statistics channels, temporary voice channels and the Honeypot system from the dashboard.
+---
+
+<p class="doc-lead">The <strong>Channels</strong> module gathers every automation, voice statistics and security feature tied to the channels on your Discord server.</p>
+
+:::tip[On the Discord side]
+To see how Auto-Thread, statistics channels, temporary channel creation with its control embed and the Honeypot trap behave, read the [Discord guide to channel management](/en/discord/configuration/salons).
+:::
+
+:::note[Availability]
+This module lives under the **Configuration → Channels** section of your dashboard: [Open the Channels module ↗](https://dash.kotbo.fr/channels-management).
+:::
+
+The interface is built around four main tabs, covered below.
+
+---
+
+## 1. Auto-Thread (automatic threads)
+
+The **Auto-Thread** tab lets you designate text or announcement channels where Kotbo will systematically and automatically create a thread for every new message posted.
+
+### Configuration
+* **Channel selection**: click the channels in the list to enable or disable them. Selected channels appear with a coloured border and a tick.
+* **Quick actions**:
+  * **Select all (filtered)**: selects every channel currently visible (handy if you have filtered by search).
+  * **Deselect all**: unticks every configured channel.
+  * **Search bar**: filters the channel list by name so you can find a specific channel quickly.
+
+---
+
+## 2. Stats channels (live counters)
+
+The **Stats channels** sub-module displays key server metrics in real time (member count, active members, boosts, and so on) directly in the names of dedicated voice channels.
+
+### Global configuration
+* **Enable the module**: use the main toggle in the top right.
+* **Creation category**: pick the Discord category where your statistics channels will be placed.
+  * *Automatic option*: if you leave the selection empty or click **Create the category**, Kotbo automatically creates a dedicated category on your Discord server.
+
+### Historical statistics
+:::warning[Rebuilding statistics]
+Kotbo has a tool for analysing the full message history of your text channels in order to generate the activity charts on the dashboard.
+* **Run the scan**: goes through the history in the background without touching the data already recorded.
+* **Force a re-scan**: deletes and recalculates every existing statistic for the server. **This action destroys the dashboard's current history.**
+:::
+
+### Default counters
+You can enable and customise each of the following counters individually:
+1. **Member counter**: total number of users on the server.
+2. **Bot counter**: total number of applications and bots.
+3. **Role counter**: number of members holding a specific target role (for example `@Staff`).
+4. **Channel counter**: number of text and voice channels present.
+5. **Category counter**: total number of channel categories.
+6. **Activity counter (24h)**: number of members who sent a message or joined a voice channel in the last 24 hours.
+
+For each active counter you can point to an **existing voice channel** or let the bot **create one automatically**, and customise the name template (for example `👤 Members: {count}`).
+
+### Custom counters
+By clicking **Add a custom counter**, you can configure extra counters by choosing:
+* **Statistic type**: total members, bots, members online, members in voice, a specific role, total channels, categories, active members (24h), server boosts, or a member goal.
+* **Goal (target)**: specific to the *member goal* type, this shows progress towards a target (for example `🎯 Goal: {count}/{goal}`).
+* **Name template**: use the `{count}` tag (and `{goal}` for goals), which is replaced dynamically with the real value.
+
+:::note[Name updates]
+To respect the rate limits imposed by the Discord API, the bot refreshes statistics channel names **every 10 minutes**. The change is therefore not instant on Discord.
+:::
+
+---
+
+## 3. Create your channel (temporary channels)
+
+This module lets users create their own temporary voice channel and configure it themselves using interactive buttons.
+
+### Generator configuration
+* **Generator voice channel**: the "lobby" voice channel. As soon as a member joins it, Kotbo pulls them out, creates a new temporary channel and moves them into it.
+* **Creation category**: the Discord category where temporary channels will be created.
+* **Channel name template**: the format of the generated name. Use the `{user}` tag to insert the creator's username (for example `🔊 {user}'s channel`).
+* **Required role**: restricts temporary channel creation to holders of a specific role (leave empty to allow everyone).
+* **Additional generators**: you can configure several independent generators (each with its own trigger channel, target category, name template and required role).
+
+### Supervision from the dashboard
+At the bottom of the tab, the **Active temporary channels** section lists every channel currently open on the server. Administrators can:
+* See the channel name, its current owner and the number of members connected.
+* Change the reservation (required role) on the fly.
+* Rename the channel directly by clicking the edit icon.
+* Close and delete the channel instantly by clicking **Close**.
+
+---
+
+## 4. Honeypot channel (anti-spam trap)
+
+The **Honeypot channel** is a blunt security tool designed to instantly detect and neutralise spam bots or compromised user accounts (self-bots) that join your server.
+
+### Configuring the trap
+* **Trap channel (Honeypot)**: pick the channel to use, or click **Create automatically**. The bot creates a channel with suitable permissions and posts a warning embed in it.
+* **Sanction to apply**:
+  * **Timeout** *(recommended)*: applies a 28-day Discord write mute.
+  * **Permanent ban**: bans the account from the server for good and deletes its messages from the last 24 hours.
+  * **Softban**: bans the member then immediately unbans them, which has the effect of purging all their recent messages on the server.
+  * **Kick**: removes the member from the server.
+  * **Warn**: records a warning in the member's disciplinary file.
+* **Automatic re-invite (optional - kick only)**: if enabled, Kotbo sends the kicked user a DM containing a unique invite link valid for 24 hours.
+* Click **Save** in the green bottom bar after every change.
+
+:::caution[Security warning]
+The Honeypot is a strict security measure. Make sure the trap channel's name or description is explicit, so legitimate members are not sanctioned out of curiosity or carelessness.
+:::

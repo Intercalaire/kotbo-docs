@@ -1,0 +1,147 @@
+---
+title: Forms & custom styling
+description: Build custom forms for recruitment, events and surveys, and adapt their appearance with a visual editor and custom CSS.
+---
+
+<p class="doc-lead">The <strong>Forms</strong> module lets you build public online forms (reachable from a browser) to collect staff applications, event sign-ups or feedback, all tied directly to your Discord server.</p>
+
+:::note[Access]
+This module is available on your dashboard from the **Moderation/Community → Forms** tab: [Manage my forms ↗](https://dash.kotbo.fr/forms).
+:::
+
+---
+
+## Building a form (Form Builder)
+
+Kotbo's online form editor offers a drag-and-drop interface for designing your questions.
+
+### 1. Available field types
+You can compose your forms from a wide range of answer types:
+* **Short line** (`short_text`): ideal for concise answers (username, first name, age).
+* **Paragraph** (`paragraph`): allows longer, written answers (motivation, experience).
+* **Email** (`email`): automatically validates the format of the email address entered.
+* **Number** (`number`): restricts input to numeric values, with optional minimum and maximum limits.
+* **Multiple choice** (`multiple_choice`): radio buttons for picking **exactly one** option from a list.
+* **Checkboxes** (`checkboxes`): lets respondents pick **one or several** options.
+* **Dropdown** (`dropdown`): a compact select list for choosing one option.
+* **Linear scale** (`linear_scale`): lets people give a rating on a customisable scale (for example 1 to 5 or 1 to 10) with labels for the minimum and maximum values.
+* **Date & time** (`date` / `time`): standard calendar and time pickers.
+* **Choice/checkbox grids** (`multiple_choice_grid` / `checkbox_grid`): matrix tables for rating several rows against the same columns of options.
+
+### 2. Per-field configuration options
+For each question you add, you can set:
+* The **label**: the question's title.
+* The **description**: an optional explanation or example answer.
+* The **required** status: blocks form submission if the field is left empty.
+* A **placeholder**: greyed-out guidance shown in the field before anything is typed.
+* **Specific validations**: min/max for numbers, or minimum/maximum text length.
+
+---
+
+## Visual customisation (Appearance tab)
+
+To give your forms a distinctive, professional look (like a team recruitment portal or a guild page), Kotbo includes in-depth theming settings.
+
+### 1. Header media
+* **Banner URL**: the header image shown at the top of the form. Recommended format: PNG/JPEG at 1200x400px.
+* **Logo URL**: your server's avatar or logo, shown in a floating frame above the form.
+
+### 2. Colour palette
+You can set the public page's colours precisely:
+* **Accent colour**: used for primary buttons, focus outlines, ticked boxes and active states.
+* **Background colour**: the overall tint of the web page.
+* **Card colour**: the colour of the blocks holding the questions.
+* **Text colour**: the general colour of labels and descriptions.
+
+### 3. Typography (Google Fonts)
+A selection of modern typefaces is built in. Kotbo loads the following fonts dynamically on the respondent's page:
+* *Inter*, *Poppins*, *Roboto*, *Montserrat*, *Open Sans*, *Lato*, *Nunito*, *Raleway*, *Outfit*, *Space Grotesk*, *JetBrains Mono*, *Playfair Display*.
+
+### 4. Container styles
+* **Border radius**: adjust how rounded the question cards are (from 0px for square corners to 24px for a very rounded look).
+* **Glassmorphism**: turn this effect on to make the cards semi-transparent with an elegant background blur, which works well over a coloured or gradient background.
+
+---
+
+## Custom styling (CSS editor)
+
+To go further still, a **custom CSS** editor is available at the bottom of the appearance settings. It lets you override the page's styling completely.
+
+### 1. Available CSS variables
+The form page applies CSS variables at its root (`.pf-root`). You can redefine them easily:
+```css
+:root {
+  --form-color: #6366f1;   /* Accent colour */
+  --form-bg: #0f172a;      /* Background colour */
+  --form-card: #1e293b;    /* Card background colour */
+  --form-text: #f8fafc;    /* Text colour */
+  --form-font: 'Inter';    /* Font family */
+  --form-radius: 12px;     /* Overall border radius */
+}
+```
+
+### 2. Main CSS classes
+Here is the class structure of the public page, so you can target elements precisely:
+* `.pf-root`: the main container covering the whole page.
+* `.pf-card`: every card on the page (the header card and the question cards).
+* `.pf-banner`: the block containing the banner image.
+* `.pf-logo`: the round or square logo image.
+* `.pf-field`: the block for an individual question field (inherits from `.pf-card`).
+* `.pf-submit`: the form's submit button.
+* `.pf-error`: the red error message shown under an invalid question.
+
+### 3. Practical CSS customisation examples
+
+#### Add a glow on focus to input fields
+```css
+.pf-root input:focus, 
+.pf-root textarea:focus, 
+.pf-root select:focus {
+  border-color: var(--form-color) !important;
+  box-shadow: 0 0 10px var(--form-color) !important;
+}
+```
+
+#### Make the submit button shine with a gradient
+```css
+.pf-submit {
+  background: linear-gradient(135deg, var(--form-color), #ec4899) !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4) !important;
+}
+.pf-submit:hover {
+  filter: brightness(1.1);
+}
+```
+
+#### Give the page an animated gradient background
+```css
+.pf-root {
+  background: linear-gradient(-45deg, #0f172a, #1e1b4b, #311042, #0f172a) !important;
+  background-size: 400% 400% !important;
+  animation: gradientBG 15s ease infinite !important;
+}
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+```
+
+---
+
+## Sharing, security and responses
+
+Once your form is saved:
+
+### 1. Mandatory Discord authentication (`requiresDiscordAuth`)
+You can require respondents to sign in with their Discord account (OAuth2) before they can access the form.
+* **Benefit**: automatically records their Discord user ID and tag alongside their answers.
+* **Security**: prevents spam by limiting each Discord account to a single submission.
+* *Note*: this option is always enabled for recruitment forms.
+
+### 2. Tracking responses
+In your form's **Responses** tab:
+* You see a chronological list of every submission.
+* Click a row to see the full answers in a clear modal window.
+* A button lets you export all the responses as a spreadsheet.

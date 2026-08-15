@@ -1,0 +1,56 @@
+---
+title: Auto moderation (AutoMod) on Discord
+description: Understand how Kotbo's AutoMod protects your Discord server and applies sanctions in real time.
+---
+
+<p class="doc-lead">On Discord, the <strong>AutoMod</strong> module runs completely in the background, analysing the messages that are sent and instantly applying the sanctions you configured whenever a security rule is broken.</p>
+
+:::tip[Dashboard configuration]
+To configure AutoMod's filters, sanctions and allow/block lists, read the [AutoMod configuration guide](/en/dashboard/moderation/automod).
+:::
+
+---
+
+## How sanctions behave on Discord
+
+When a member breaks an active AutoMod rule, the bot applies one of the following sanctions directly on Discord:
+
+### 1. Block (<span class="dash-badge active">BLOCK</span>)
+* The user's message is deleted from the Discord channel immediately.
+* The user gets no direct message about it; the message simply disappears from the conversation.
+
+### 2. Automatic warning (<span class="dash-badge warn">WARN</span>)
+* The offending message is deleted.
+* Kotbo sends the user an automatic direct message (DM) explaining what they did wrong (for example spam, insults or unauthorised links) and telling them a warning has been recorded against them.
+
+### 3. Timeout (<span class="dash-badge timeout">TIMEOUT</span>)
+* The user is muted natively on Discord (timeout).
+* For the configured duration (for example 10 minutes, 1 hour, 28 days) they cannot speak in text channels, join voice channels or react to messages.
+* They receive a direct message explaining the reason and the length of the mute.
+
+### 4. Kick (<span class="dash-badge kick">KICK</span>)
+* The user is immediately removed from the Discord server.
+* They receive a direct message about the kick before being removed. They can rejoin the server if they have a valid invite link.
+
+### 5. Log alert (<span class="dash-badge resolved">ALERT</span>)
+* The user's message is not edited or deleted.
+* Kotbo sends a silent alert to the moderators' log channel to flag the suspicious behaviour (a ghost ping, for example).
+
+---
+
+## What moderators see (Discord logs)
+
+Every action taken by Kotbo's AutoMod is recorded in the log channel configured on your Discord server. Moderators see an embed containing:
+* The member involved (with their mention and Discord ID).
+* The Discord channel where the incident happened.
+* The type of filter that fired (spam, caps, profanity, blocked words, and so on).
+* The sanction the bot applied.
+* An excerpt or the whole message that triggered the filter (useful for checking false positives).
+
+---
+
+## Ignored roles and channels
+
+By default, if exclusions have been configured on the dashboard, certain members or areas of the server bypass the filters:
+* **Exempt members**: users holding a role configured as an "ignored role" (such as staff) can post without restriction.
+* **Exempt zones**: no message sent in an "ignored channel" is analysed by the bot.

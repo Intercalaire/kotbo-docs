@@ -1,0 +1,53 @@
+---
+title: Finding your way around the dashboard
+description: Understand the sidebar, the navigation and the Kotbo home page.
+sidebar:
+  order: 2
+---
+
+import DashboardScreenshot from '../../../../components/DashboardScreenshot.astro';
+
+<p class="doc-lead">The dashboard is organised around one active server. Every action, statistic and setting on screen applies to that server. Open it directly from [the Kotbo Dashboard ↗](https://dash.kotbo.fr).</p>
+
+<DashboardScreenshot
+  file="dashboard-overview.webp"
+  alt="Real overview of the Kotbo dashboard with its sidebar and statistics"
+  caption="The real dashboard overview — the data shown is fictitious."
+/>
+
+## The four areas to know
+
+1. **The active server**, in the top bar. Click it to switch servers.
+2. **The sidebar**, grouped by purpose: General, Moderation, Community, Staff and Configuration.
+3. **The main area**, which shows the page you picked and its actions.
+4. **Your profile**, in the top right, to replay the tutorial, open your settings or sign out.
+
+## The overview
+
+The home page brings together everything your team needs at a glance: members, online activity, voice channel usage, growth and recent events.
+
+The **Edit layout** button lets you move, hide or resize the blocks. Your layout is personal: it does not change what the rest of the staff sees.
+
+:::caution[Unsaved changes]
+On configuration pages, a bar appears at the bottom of the screen as soon as a setting changes. Click **Save** before moving to another page. Kotbo warns you if you try to leave with pending changes.
+:::
+
+## Quick navigation
+
+| Shortcut | Action |
+| --- | --- |
+| <span class="kbd">Ctrl</span> + <span class="kbd">G</span> | Switch server |
+| <span class="kbd">Ctrl</span> + <span class="kbd">Shift</span> + <span class="kbd">D</span> | Open the overview |
+| <span class="kbd">Ctrl</span> + <span class="kbd">Shift</span> + <span class="kbd">M</span> | Open members |
+| <span class="kbd">Ctrl</span> + <span class="kbd">Shift</span> + <span class="kbd">C</span> | Open settings |
+| <span class="kbd">Ctrl</span> + <span class="kbd">Shift</span> + <span class="kbd">N</span> | Show every shortcut |
+
+Shortcuts do not fire while you are typing in a field or a text area.
+
+## Badges and page states
+
+- **Beta**: the feature works but may still change. You can report a problem from the banner on the page.
+- **WIP**: the feature is not available yet, or needs specific activation.
+- **Module disabled**: the page can disappear from the navigation until the module is enabled.
+
+Carry on with [enabling your modules](../modules/).

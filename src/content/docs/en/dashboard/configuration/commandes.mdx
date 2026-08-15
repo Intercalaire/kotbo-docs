@@ -1,0 +1,75 @@
+---
+title: Command access
+description: Control who can run each of the bot's commands, and in which channels, from the dashboard.
+---
+
+<p class="doc-lead">The <strong>Commands</strong> module restricts how Kotbo's slash commands can be used on your server. It is the essential tool for making sure your sensitive commands are not used by just anyone, just anywhere.</p>
+
+:::tip[On the Discord side]
+To learn how slash commands behave on Discord and how restrictions are applied live, read the [Discord command usage guide](/en/discord/configuration/commandes).
+:::
+
+:::note[Availability]
+Execution rights are managed under **Configuration → Commands** in the dashboard: [Open the Commands module ↗](https://dash.kotbo.fr/command-access).
+Only members with administration rights, or roles allowed to configure the bot, can change these settings.
+:::
+
+---
+
+## How the page is organised
+
+The page is split into two main tabs, below the title:
+* **Documentation**: the full list of Kotbo commands available on your server, along with their description and their parameters (arguments).
+* **Permissions**: the configuration interface where you define the access rules.
+
+You can use the **search bar** or the **category filter** to quickly find the command you want to configure.
+
+---
+
+## Restricting a command
+
+Select a command in the list on the left to load its access rules on the right. By default, commands inherit their standard Discord access level (shown by a badge: **Admin** in red, **Mod** in orange, or **Everyone** in green).
+
+You can restrict a command against three criteria, which stack:
+
+### 1. Channels
+Determines the channels where the command is active:
+* **Neutral** *(default)*: the command can be used anywhere (subject to global Discord permissions).
+* **Allowed only**: the command can *only* be run in the selected channels.
+* **Blocked only**: the command cannot be used in the selected channels, but works everywhere else.
+
+### 2. Roles
+Determines which groups of users can run the command:
+* **Neutral**: keeps the default behaviour tied to the required level (Admin/Mod/Everyone).
+* **Allowed only**: only members holding one of the selected roles can use the command.
+* **Blocked only**: members holding one of the selected roles are blocked, even if they have the default Discord rights.
+
+### 3. Users
+Lets you target specific members precisely by their unique Discord user ID.
+* **Allowed only** / **Blocked only**: enter the member's Discord ID and confirm to add them to the rule.
+
+---
+
+## Detecting and resolving conflicts
+
+A configuration can sometimes end up with contradictory rules (for example if you add the `@Moderator` role to both the allowed roles and the blocked roles).
+
+* **Conflict alert**: the dashboard detects these anomalies automatically and shows a red warning alert.
+* **Resolve conflicts**: a button appears in the alert to clean up the configuration automatically, removing the conflicting duplicates in one click.
+
+---
+
+## Managing subcommands
+
+Some complex commands have subcommands (for example `/staffadd` and `/staffremove` under the root `/staff` command).
+
+* Commands that contain subcommands are shown with a chevron icon.
+* Click the title to expand the accordion and configure each subcommand's permissions completely independently.
+
+---
+
+## Saving
+
+:::caution[The save bar]
+As on every configuration page, restrictions are not applied until you click **Save** in the green bar at the bottom of your screen.
+:::

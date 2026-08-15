@@ -20,15 +20,20 @@ if (!images[imagePath]) {
 
 const imageModule = await images[imagePath]();
 const resolvedImage = imageModule.default;
+
+const isEnglish = Astro.url.pathname === '/en' || Astro.url.pathname.startsWith('/en/');
+const t = isEnglish
+  ? { openFullSize: 'open at full size', realUi: 'Real interface · demonstration data', zoom: 'Enlarge ↗' }
+  : { openFullSize: 'ouvrir en taille réelle', realUi: 'Interface réelle · données de démonstration', zoom: 'Agrandir ↗' };
 ---
 
 <figure class="dashboard-screenshot">
   <div class="window-frame">
     <div class="window-body">
-      <a href={resolvedImage.src} target="_blank" rel="noreferrer" aria-label={`${alt} — ouvrir en taille réelle`}>
-        <span class="screen-label"><i></i> Interface réelle · données de démonstration</span>
+      <a href={resolvedImage.src} target="_blank" rel="noreferrer" aria-label={`${alt} — ${t.openFullSize}`}>
+        <span class="screen-label"><i></i> {t.realUi}</span>
         <Image src={resolvedImage} alt={alt} loading={eager ? 'eager' : 'lazy'} decoding="async" />
-        <span class="screen-zoom" aria-hidden="true">Agrandir ↗</span>
+        <span class="screen-zoom" aria-hidden="true">{t.zoom}</span>
       </a>
     </div>
   </div>

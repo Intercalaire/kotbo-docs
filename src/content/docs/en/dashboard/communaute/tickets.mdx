@@ -1,0 +1,125 @@
+---
+title: Support tickets
+description: Configure and run the ticket support system to talk privately with your members, from the dashboard.
+---
+
+<p class="doc-lead">The <strong>Tickets</strong> module lets your members open a private space (a text channel, a thread or a relayed DM) to contact your staff team directly.</p>
+
+:::tip[On the Discord side]
+To see what the panel looks like, how members open a ticket and how staff reply on Discord, read the [Discord guide to Tickets](/en/discord/communaute/tickets).
+:::
+
+:::note[Availability]
+The system is managed and configured from the **Community → Tickets** section of your dashboard: [Open the Tickets module ↗](https://dash.kotbo.fr/tickets).
+Access to the administration and configuration tabs is limited to administrators or to members holding the configured access roles.
+:::
+
+---
+
+## How the dashboard page is organised
+
+The page is split into four main tabs:
+1. **Tickets**: the operational interface for reading, replying to and managing active tickets.
+2. **Transcripts**: the history of archived and closed tickets.
+3. **Satisfaction**: the ratings and comments left by your members after their ticket is closed.
+4. **Configuration**: the module's technical settings.
+
+---
+
+## Handling tickets in real time (Tickets tab)
+
+This tab is a full customer support centre built into the dashboard.
+
+### 1. Filter and select a ticket
+The list on the left holds every ticket. You can filter by status: **All**, **Open**, **Claimed** or **Closed**. Click a ticket to load its conversation in the centre.
+
+### 2. Chat from the dashboard
+The central area shows the messages exchanged. You can **type a message** at the bottom of the screen: it is sent immediately to the matching Discord channel, under the signed-in staff account.
+
+### 3. Quick staff actions
+Action buttons sit at the top right of the conversation:
+* **Claim**: assigns the ticket to you. The bot updates the Discord channel to signal that you are handling the member.
+* **Close**: closes the ticket. A pop-up requires you to enter a **closing reason**.
+* **Rename**: changes the name of the linked Discord channel (for example from `#ticket-001` to `#bug-fixed`).
+* **Reopen**: for a closed ticket that needs further discussion.
+* **Restore**: if the Discord channel was deleted by accident, instantly recreates it with the full message history intact.
+* **Delete**: permanently erases the ticket and its data from the database.
+
+### 4. Direct access to the member file
+Next to the name of the user who opened the ticket, a button opens their **member file** in a modal window. Without leaving the tickets page, you can review their history and apply an immediate sanction:
+* Warning (**WARN**)
+* Timeout (**TIMEOUT**)
+* Kick (**KICK**)
+* Ban (**BAN**)
+
+---
+
+## Ticket history (Transcripts tab)
+
+When a ticket is closed:
+* Kotbo compiles the whole conversation into a clean HTML page.
+* The file is stored securely.
+* In the **Transcripts** tab, click an archived ticket to generate a **signed temporary access link**. That link lets you read the full transcript in your browser or share it with your team.
+
+---
+
+## Quality tracking (Satisfaction tab)
+
+When a ticket is closed, the bot sends the member a DM or a channel message asking them to rate the support they received (from 1 to 5 stars) and to add an optional comment.
+
+In the **Satisfaction** tab you can see:
+* Your overall average rating.
+* The breakdown of ratings (Very dissatisfied 😡, Dissatisfied 😕, Neutral 😐, Satisfied 🙂, Very satisfied 🤩).
+* A chronological list of the detailed comments left by users.
+
+---
+
+## Configuring the module (Configuration tab)
+
+Before your members can open tickets, you need to set up the basics and post the opening panel on your server.
+
+### 1. Channels and roles (Mode accordion)
+* **Ticket category**: pick the Discord category under which ticket channels will be created.
+* **Staff role**: the Discord role allowed to see and reply to every ticket created (for example `@Support Staff`).
+* **Log channel**: the channel where Kotbo posts a summary each time a ticket is opened, claimed and closed.
+* **Conversation mode**:
+  * `CHANNEL`: creates one private text channel per ticket (recommended).
+  * `THREAD`: creates a private thread under the panel's channel.
+  * `DM`: opens a direct message conversation with the user and relays their messages into a dedicated staff channel.
+
+### 2. The opening panel (Embed accordion)
+Configure the message members will use to open a ticket:
+* Enter the panel's **Title**, **Description**, **Colour** and **Button text**.
+* **Selector type**: choose between individual **Buttons** (limited to 5) or a **Dropdown** if you offer many support categories.
+
+### 3. Ticket categories (ticket types)
+You can configure several support options (for example "Report a bug", "Shop question", "Complaints"):
+* For each type, click **Add a ticket type**.
+* Customise its label, description, emoji and button style (green, blue, grey, red).
+* **Per-category overrides**: you can override the default category and staff role for each type (for example send "Recruitment" tickets into an HR category restricted to administrators).
+* **Anonymity**: hides the member's identity from the staff (the ticket shows *Anonymous user*).
+* **Staff server relay**: relays messages to another Discord server if needed.
+* **Custom opening form (questions)**:
+  For each ticket type you can configure up to **5 custom questions** that the user must (or may optionally) fill in inside a pop-up (a Discord modal) before their ticket opens:
+  * Click **Add a question** to design a new field.
+  * Enter the **question label** (for example *"What is your in-game username?"*).
+  * Provide a **hint / placeholder** to guide the member (for example *"Enter your exact username"*).
+  * Choose the **answer type**: *short line* (for a username, an ID or a short value) or *long paragraph* (for a detailed explanation).
+  * Tick **Required field** to force the user to answer.
+  * If no custom question is configured, Kotbo shows the standard form with two default questions: *"Subject of the request"* and *"Detailed description"*.
+
+
+### 4. Inactivity handling (Follow-up accordion)
+Turn on **inactivity follow-ups** to automatically warn or close tickets for members who stop replying:
+* Set the delay in hours (for example 24 hours).
+* Write the automatic follow-up message (for example *"Hello <code>{'{user}'}</code>, your ticket has been inactive..."*).
+
+---
+
+## Putting the panel live
+
+Once all your settings are in place:
+1. Click **Save** in the green bottom bar to store the configuration.
+2. In the configuration block, select the **panel channel** (for example `#support-tickets`).
+3. Click the **Send the panel** button in the top right of the configuration screen.
+4. Kotbo instantly posts the embed with its button or select menu in the chosen channel. Members can now click it to open a ticket.
