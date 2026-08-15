@@ -28,15 +28,15 @@ Kotbo n'expulse pas au hasard. Lorsqu'un membre rejoint votre serveur Discord, l
 
 ## Naviguer dans les onglets de sécurité
 
-La page regroupe quatre onglets pour gérer la sécurité de votre serveur :
+La page regroupe cinq onglets pour gérer la sécurité de votre serveur :
 
-### 1. Comptes liés (Links)
+### 1. Liaisons
 Affiche la liste des comptes officiellement répertoriés comme liés. C'est ici que vous suivez les "alts" déclarés de vos membres ou de votre équipe.
 * Filtrez la liste par statut : **Tous**, **En attente** (Pending), **Validé** (Validated) ou **Rejeté** (Rejected).
 * Si un membre possède une double identité légitime (ex : compte de démonstration pour un développeur), vous pouvez valider sa liaison ici pour éviter qu'il ne déclenche les alertes.
 * Vous pouvez supprimer une liaison à tout moment pour séparer à nouveau les comptes.
 
-### 2. Détections de suspicion (Detections)
+### 2. Détections
 C’est le panneau de contrôle de surveillance active.
 
 * **Lancer un scan manuel** : Saisissez une limite en jours (ex: 3 jours) et cliquez sur **Lancer l'analyse** pour scanner rétroactivement les dernières arrivées sur votre serveur.
@@ -50,13 +50,24 @@ C’est le panneau de contrôle de surveillance active.
   * Cliquez sur **Ignorer la détection** (Dismiss) pour retirer le membre de la liste des menaces suspectées.
   * Cliquez sur son nom pour ouvrir directement son **Dossier de modération** et lui appliquer une sanction (timeout/ban).
 
-### 3. Vérification (Verification)
+### 3. Réseau visuel
+
+Un graphe des comptes liés. Faites glisser les nœuds pour réorganiser la vue, et survolez un lien pour afficher les motifs de suspicion qui rapprochent deux comptes.
+
+### 4. Vérification
 Cet onglet présente le parcours utilisateur imposé aux membres bloqués ou suspectés par le bot. Depuis le dashboard, vous pouvez visualiser l'état de ce parcours et les statistiques d'accès.
 
-### 4. Configuration (Config)
+La vérification ne se déclenche pas seulement sur le score d'arrivée : elle peut aussi être déclenchée par les avertissements accumulés.
+
+* **Seuil** : le nombre d'avertissements à partir duquel la vérification est imposée. Sans seuil configuré, ce déclenchement reste inactif.
+* **Warns légers et warns graves** : un avertissement grave pèse trois fois plus qu'un léger. Avec un seuil de 6, il faut donc 6 warns légers ou 2 warns graves.
+* **Dégressivité** : vous pouvez ne compter que les avertissements des N derniers jours, afin qu'une faute ancienne ne poursuive pas indéfiniment un membre.
+
+
+### 5. Configuration
 Ajustez la sensibilité du bot et les sanctions automatiques.
 
 * **Détection automatique** : Activez cet interrupteur pour laisser Kotbo scanner en continu chaque nouvelle arrivée.
-* **Rôle de validation** : Sélectionnez le rôle temporaire ou le rôle d'attente à attribuer/retirer au membre pendant qu'il effectue sa vérification Captcha (ex : `@Non-Vérifié`).
-* **Rôle double compte / Rôle de sanction** : Sélectionnez le rôle restrictif à attribuer automatiquement aux membres identifiés comme doubles comptes non autorisés.
+* **Rôle validation** : Sélectionnez le rôle temporaire ou le rôle d'attente à attribuer/retirer au membre pendant qu'il effectue sa vérification Captcha (ex : `@Non-Vérifié`).
+* **Rôle sanction** : Sélectionnez le rôle restrictif à attribuer automatiquement aux membres identifiés comme doubles comptes non autorisés.
 * Cliquez sur **Enregistrer** dans la barre inférieure verte après chaque modification.

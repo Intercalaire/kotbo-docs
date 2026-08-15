@@ -15,6 +15,17 @@ Manage the general configuration from the **Security → Sanctions** section of 
 
 ---
 
+## The four tabs on the page
+
+* **Queue**: the requests still being handled, with their count in brackets.
+* **History**: the files already decided.
+* **Blacklist**: the accounts barred from the form, with their count in brackets.
+* **Configuration**: the settings described below.
+
+Every request carries a status: **Pending**, **Accepted**, **Denied**, **Permanently denied** or **Awaiting info**.
+
+---
+
 ## How does it work?
 
 1. A banned user visits your public ban appeal URL (for example `https://appeals.kotbo.fr/your-server`).
@@ -31,7 +42,7 @@ In the dashboard's configuration tab, set up the following:
 
 ### 1. Form settings
 * **Enable the module**: turns the public portal on or off.
-* **Appeal form**: pick the question form. You must create that form beforehand in the **Forms** module (which is where you define your own questions, add your logo or banner and apply your custom CSS).
+* **Appeal form**: pick the question form. The questions and the visual theme are edited in **Forms → Builder**, so you must create that form beforehand (which is where you define your own questions, add your logo or banner and apply your custom CSS).
 
 ### 2. Discord integration
 * **Staff channel (inbox)**: your team's private Discord channel, where Kotbo posts the appeal request card with its action buttons.
@@ -71,17 +82,17 @@ Your team has four quick actions available as interactive buttons:
 * Automatically lifts the player's ban on your Discord server.
 * Generates a unique, temporary Discord invite link (one use, expires within 24 hours).
 * Sends the user a DM containing your custom acceptance message and the invite link.
-* Marks the request as <span class="dash-badge active">ACCEPTED</span>.
+* Marks the request as <span class="dash-badge active">Accepted</span>.
 
 ### 2. Deny
 * Sends the user a DM telling them their request was denied.
 * Blocks the user from submitting a new appeal for the number of days set in your cooldown configuration (for example 30 days).
-* Marks the request as <span class="dash-badge ban">DENIED</span>.
+* Marks the request as <span class="dash-badge ban">Denied</span>.
 
 ### 3. Deny permanently
 * Sends the user a DM telling them their request was denied.
 * **Blocks that Discord account for life** from the appeal portal. The user will never be able to submit another appeal for this server.
-* Marks the request as <span class="dash-badge ban">DENIED_PERMANENT</span>.
+* Marks the request as <span class="dash-badge ban">Permanently denied</span>.
 
 ### 4. Request more info
 If the player's reasoning is unclear, you can ask them to elaborate:
@@ -89,7 +100,7 @@ If the player's reasoning is unclear, you can ask them to elaborate:
 2. A dialog (modal) opens on Discord so you can type your question (for example *"Can you provide evidence, or the username of the person involved?"*).
 3. The user receives a notification and their public appeal page shows your question with an answer field.
 4. As soon as they answer online, Kotbo updates the Discord staff message to notify you and display their extra explanation.
-5. Temporarily marks the request as <span class="dash-badge timeout">NEEDS_INFO</span>.
+5. Temporarily marks the request as <span class="dash-badge timeout">Awaiting info</span>.
 
 ---
 

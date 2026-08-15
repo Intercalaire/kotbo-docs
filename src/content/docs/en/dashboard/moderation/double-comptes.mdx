@@ -29,9 +29,9 @@ Kotbo does not kick people at random. When a member joins your Discord server, t
 
 ## Navigating the security tabs
 
-The page groups four tabs for managing your server's security:
+The page groups five tabs for managing your server's security:
 
-### 1. Linked accounts
+### 1. Links
 Shows the list of accounts officially recorded as linked. This is where you keep track of the declared alts belonging to your members or your team.
 * Filter the list by status: **All**, **Pending**, **Validated** or **Rejected**.
 * If a member legitimately has a second identity (for example a demo account for a developer), you can validate the link here so it stops triggering alerts.
@@ -51,13 +51,24 @@ This is the active monitoring control panel.
   * Click **Dismiss** to remove the member from the list of suspected threats.
   * Click their name to open their **moderation file** directly and apply a sanction (timeout or ban).
 
-### 3. Verification
+### 3. Visual network
+
+A graph of linked accounts. Drag the nodes to rearrange the view, and hover a link to display the suspicion reasons that connect two accounts.
+
+### 4. Verification
 This tab shows the user journey imposed on members blocked or flagged by the bot. From the dashboard you can review the state of that journey and the access statistics.
 
-### 4. Configuration
+Verification is not triggered by the join score alone: accumulated warnings can trigger it too.
+
+* **Threshold**: the number of warnings above which verification is imposed. With no threshold set, this trigger stays inactive.
+* **Light and severe warnings**: a severe warning weighs three times as much as a light one. With a threshold of 6, it therefore takes 6 light warnings or 2 severe ones.
+* **Decay**: you can count only the warnings from the last N days, so an old mistake does not follow a member forever.
+
+
+### 5. Configuration
 Tune the bot's sensitivity and the automatic sanctions.
 
 * **Automatic detection**: turn this toggle on to let Kotbo continuously scan every new arrival.
 * **Validation role**: pick the temporary or holding role to grant and remove while the member completes their Captcha verification (for example `@Unverified`).
-* **Alt account role / sanction role**: pick the restrictive role to grant automatically to members identified as unauthorised alt accounts.
+* **Sanction role**: pick the restrictive role to grant automatically to members identified as unauthorised alt accounts.
 * Click **Save** in the green bottom bar after every change.
