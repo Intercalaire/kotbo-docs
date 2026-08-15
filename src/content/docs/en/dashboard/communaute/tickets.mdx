@@ -18,11 +18,12 @@ Access to the administration and configuration tabs is limited to administrators
 
 ## How the dashboard page is organised
 
-The page is split into four main tabs:
+The page is split into five main tabs:
 1. **Tickets**: the operational interface for reading, replying to and managing active tickets.
 2. **Transcripts**: the history of archived and closed tickets.
 3. **Satisfaction**: the ratings and comments left by your members after their ticket is closed.
-4. **Configuration**: the module's technical settings.
+4. **Blacklist**: the list of members barred from opening a ticket.
+5. **Configuration**: the module's technical settings.
 
 ---
 
@@ -71,6 +72,19 @@ In the **Satisfaction** tab you can see:
 * Your overall average rating.
 * The breakdown of ratings (Very dissatisfied 😡, Dissatisfied 😕, Neutral 😐, Satisfied 🙂, Very satisfied 🤩).
 * A chronological list of the detailed comments left by users.
+
+---
+
+### 5. Ticket blacklist (Blacklist tab)
+
+The **Blacklist** tab stops specific members from opening a ticket, without going through a Discord sanction.
+
+* **Discord ID**: the ID of the member to block. A malformed ID is refused with the message *Invalid Discord ID*.
+* **Reason**: it is **shown to the member** when they try to open a ticket. Left empty, it displays as *No reason given*.
+* **Duration (days)** or **Permanent**: choose a temporary or permanent block.
+* Click **Add** to confirm.
+
+Every entry in the list shows who created it (*Added by …*), so a decision can be traced back. While the list is empty, the tab shows *No blacklisted member*.
 
 ---
 

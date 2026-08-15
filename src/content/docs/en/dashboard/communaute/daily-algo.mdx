@@ -16,42 +16,69 @@ The languages supported by Kotbo's sandboxed code runner are: `JavaScript`, `Typ
 
 ---
 
-## Module overview
+## The four tabs on the page
 
-The Daily Algo interface for administrators and hosts is organised around five tabs:
+The Daily Algo interface is organised around four tabs. The last two are **administrators only**: a staff member without that right sees the message *You do not have permission to configure this module*.
 
-### 1. Today's submissions (Today)
-Shows the exercise currently being solved and lists the solutions submitted by your members.
-* **Review status**: track submitted code as **Pending**, **Approved** or **Rejected**.
-* **Built-in grading IDE**: click a submission to open it in the dashboard's built-in code editor.
-  * Read the member's code with syntax highlighting.
-  * Check the automatic unit test execution report.
-  * Grade the quality: manually award a **correctness score** (out of 10) and a **comments/style score** (out of 10).
-  * Write **review feedback** that will be sent to the member.
-  * Award **speed bonus points** to reward whoever solved the puzzle first.
+### 1. Challenges & Scoring
 
-### 2. The exercise library (Library)
-This is where you manage the server's catalogue of algorithm exercises.
+The module's landing tab. Three indicators summarise it at the top of the page:
+* **Today's submissions**: how many solutions came in today.
+* **Library**: how many exercises are available.
+* **Schedule**: how many days are already planned.
 
-* **Quick search**: use the search bar to find an exercise by title.
-* **Create or edit an exercise**:
-  1. Click **Create an exercise** (or edit an existing one).
-  2. Fill in the **Title**, the **Description** (the problem statement), the **Difficulty** (easy, medium, hard) and the language.
-  3. Select the **allowed languages** for this specific exercise.
-  4. Define the **function signature**: give the exact name of the function the member must write (for example `findShortestPath`) and add its typed arguments (for example `graph: object`, `start: string`).
-  5. Define the **unit tests**: for each test case, enter the test name, the input argument values (in JSON, for example `[ [1, 2], 3 ]`) and the expected result (for example `true`). The bot uses these tests to automatically pre-validate whether submitted code is correct.
-  6. Save the exercise.
+The **Active Challenge** block shows the exercise of the day. If there is none, Kotbo displays *No active challenge* and invites you to *Schedule a challenge to get started*. The **Change challenge** button swaps out the exercise of the day.
 
-### 3. Scheduling challenges (Planning)
-Kotbo manages the publication calendar on its own.
-* The bot makes sure it has a schedule of exercises ready for the **next 21 days**. It picks exercises from your library at random for each date.
-* **Emergency swap**: if you want to change today's exercise at the last minute, open the *Planning* tab and click **Swap today's problem**. The bot picks a new compatible exercise from your library.
+The **Recent Submissions** table lists the solutions received, with the **Status**, **Author**, **Date** and **Actions** columns. Quick filters show **All**, **Pending**, **Validated** or **Rejected**.
 
-### 4. History & leaderboards (History)
-* **Challenge history**: review the results of the last 7 days to see who took part and which solutions were accepted.
-* **Leaderboard**: follow your members' cumulative scores. Each exercise solved earns base points according to its difficulty, on top of which come the staff's review scores and the speed bonuses.
+Open a submission to review it in the built-in code editor, check the test results and grade it.
 
-### 5. API keys
-Lets you open the module up to the developers on your server.
-* Your members can generate personal **Kotbo API keys** from this tab.
-* With those keys they can build external scripts or use IDE extensions (such as VS Code) to fetch the day's problem and submit their code straight from their local working environment, without going through a browser.
+### 2. Week & Podium
+
+The weekly leaderboard, split into **Current Week** and **Closed Weeks**.
+
+For each **Member**, the table gives their **Points**, their **Validated Challenges** and their **Manual Bonuses**, along with the number of participants for the week.
+
+:::note[How the leaderboard fills up]
+The leaderboard evolves as staff grade the submissions. Every approved submission earns at least the participation floor defined by the scoring scale.
+:::
+
+With no week open, the tab shows *No open week at the moment*. A week with no activity shows *No participation this week*.
+
+### 3. Scale & Rewards
+
+:::caution[Administrators only]
+Only administrators can change the scoring scale. Other staff members see the message *You do not have permission to configure the scoring scale of this module*.
+:::
+
+* **Scoring Scale & Points**: how many points are awarded based on difficulty and grading.
+* **Enable weekly rewards**: pays out rewards automatically when the week closes.
+* **Announcement Channel**: the channel where Kotbo posts the end-of-week podium.
+* **Clan Points**: turn on **Convert points to clan points**, then set the **Conversion Rate** and the **Clan Bonus** for the top three places.
+
+:::tip[Calibrating the conversion rate]
+A rate of 1 means one Daily Algo point is worth one clan point. An active participant then carries about 70 clan points per week, slightly more than a level up.
+:::
+
+The clan points section is only usable if the Clans module is enabled on your server.
+
+### 4. Administration
+
+:::caution[Administrators only]
+This tab can only be used by server administrators.
+:::
+
+* **Close the week**: immediately triggers what the Monday cron does. The leaderboard is locked, rewards are paid, podium roles are assigned and the announcement is posted. A confirmation dialog recaps the number of participants and the state of the rewards.
+* **Catch up week points**: re-runs the calculation of any missing points for the current week.
+
+:::danger[Closing cannot be undone]
+Closing a week is irreversible. The action mainly exists to test the full cycle without waiting seven days.
+:::
+
+---
+
+## Allowed languages and API keys
+
+The **allowed languages** are not set on this page but in the module's settings. Left empty, the field allows every language; you can also add languages that the built-in IDE does not offer. Each exercise can then impose a specific language or leave the choice open.
+
+That is also where your members generate their personal **API key**, which is only shown once when created. It lets them fetch the day's problem and submit their code from their local editor.
