@@ -1,19 +1,19 @@
 ---
 title: Gestion des salons
-description: Configurez l'Auto-Thread, les salons de statistiques dynamiques, les salons vocaux temporaires et le système Honeypot depuis le dashboard.
+description: Configurez l'Auto-Thread, les messages sticky, les salons de statistiques dynamiques, les salons vocaux temporaires et le système Honeypot depuis le dashboard.
 ---
 
 <p class="doc-lead">Le module <strong>Salons</strong> regroupe toutes les fonctionnalités d'automatisation, de statistiques vocales et de sécurité liées aux salons de votre serveur Discord.</p>
 
 :::tip[Côté Discord]
-Pour voir le fonctionnement de l'Auto-Thread, des salons de statistiques, de la création de salon temporaire avec l'embed de contrôle et du piège Honeypot, consultez le [Guide Discord de gestion des salons](/discord/configuration/salons).
+Pour voir le fonctionnement de l'Auto-Thread, des messages sticky, des salons de statistiques, de la création de salon temporaire avec l'embed de contrôle et du piège Honeypot, consultez le [Guide Discord de gestion des salons](/discord/configuration/salons).
 :::
 
 :::note[Disponibilité]
 Ce module est accessible depuis la section **Configuration → Salons** de votre dashboard : [Accéder au module Salons ↗](https://dash.kotbo.fr/channels-management).
 :::
 
-L'interface est structurée autour de quatre onglets principaux, détaillés ci-dessous.
+L'interface est structurée autour de cinq onglets principaux, détaillés ci-dessous.
 
 ---
 
@@ -30,7 +30,55 @@ L'onglet **Auto-Thread** permet de définir des salons textuels ou d'annonces da
 
 ---
 
-## 2. Salons Stats (Compteurs en temps réel)
+## 2. Message Sticky (message collé en bas de salon)
+
+L'onglet **Message Sticky** garde un message toujours visible en bas d'un salon. Le bot le republie pour qu'il reste le dernier message affiché, ce qui est pratique pour un rappel de règles ou une consigne de format.
+
+### Fonctionnement
+Dès que le salon accumule le nombre de messages configuré, Kotbo supprime son envoi précédent et renvoie le message tout en bas du salon.
+
+### Configurer un message
+Cliquez sur **Ajouter un message sticky**, puis renseignez :
+* **Salon concerné** : le salon dans lequel le message reste collé.
+* **Message** : le texte republié (ex : `Pense à lire le règlement avant de poster !`). Il ne peut pas être vide.
+* **Afficher en embed** : envoie le message dans un encadré coloré plutôt qu'en texte brut. Deux champs apparaissent alors :
+  * **Titre de l'embed** (ex : *À lire avant de poster*).
+  * **Couleur** : au format hexadécimal `#RRGGBB`.
+* **Renvoyer après (messages)** : nombre de messages postés dans le salon avant que le sticky ne remonte en bas.
+* **Délai minimum entre deux renvois (secondes)** : protège des limites d'envoi de Discord quand le salon s'emballe. Mettez `0` pour désactiver ce délai.
+* **Actif** : suspend ou réactive le message sans supprimer sa configuration.
+
+:::note[Le salon ne se change pas après coup]
+Le salon d'un sticky déjà enregistré ne peut plus être modifié. Pour le déplacer, supprimez-le et recréez-en un.
+:::
+
+### Variables disponibles
+Le texte et le titre de l'embed acceptent les mêmes variables :
+
+| Variable | Résultat |
+| --- | --- |
+| `{server}` ou `{serveur}` | Nom de votre serveur |
+| `{membres}`, `{members}` ou `{memberCount}` | Nombre total de membres |
+| `{salons}` ou `{channelCount}` | Nombre de salons |
+| `{boosts}` ou `{boostCount}` | Nombre de boosts du serveur |
+
+Les variantes françaises et anglaises fonctionnent indifféremment, quelle que soit la langue de votre dashboard.
+
+### Actions disponibles
+* **Renvoyer maintenant** : force le renvoi immédiat sans attendre le seuil de messages.
+* **Supprimer** : retire le message encore affiché dans le salon et efface la configuration.
+
+:::caution[Permissions Discord requises]
+Kotbo doit pouvoir **voir le salon** et **y écrire**. Sans ces deux permissions, le message sticky n'est jamais renvoyé.
+:::
+
+:::note[Aucune mention n'est déclenchée]
+Les mentions écrites dans un message sticky ne notifient personne : le bot les neutralise à l'envoi. Un `@everyone` placé dans un sticky ne pingera donc pas votre serveur à chaque renvoi.
+:::
+
+---
+
+## 3. Salons Stats (Compteurs en temps réel)
 
 Le sous-module **Salons Stats** permet d'afficher en temps réel des indicateurs clés de votre serveur (nombre de membres, d'actifs, de boosts, etc.) directement dans le nom de salons vocaux dédiés.
 
@@ -55,12 +103,12 @@ Vous pouvez activer et personnaliser individuellement les compteurs suivants :
 5. **Compteur de Catégories** : Nombre total de catégories de salons.
 6. **Compteur d'Activité (24h)** : Nombre de membres ayant envoyé un message ou rejoint un salon vocal au cours des dernières 24 heures.
 
-Pour chaque compteur actif, vous pouvez spécifier un **salon vocal existant** ou laisser le bot le **créer automatiquement**, et personnaliser le modèle du nom (ex: `👤 Membres : {count}`).
+Pour chaque compteur actif, vous pouvez spécifier un **salon vocal existant** ou laisser le bot le **créer automatiquement**, et personnaliser le modèle du nom (ex: `Membres : {count}`).
 
 ### Compteurs personnalisés
 En cliquant sur **Ajouter un compteur personnalisé**, vous pouvez configurer des compteurs additionnels en choisissant :
 * **Type de statistique** : Membres totaux, Bots, Membres en ligne, Membres en vocal, Rôle spécifique, Salons totaux, Catégories, Actifs (24h), Boosts de serveur, ou Objectif de membres.
-* **Objectif (Cible)** : Spécifique au type *Objectif de membres*, permet d'afficher la progression vers un but (ex: `🎯 Objectif : {count}/{goal}`).
+* **Objectif (Cible)** : Spécifique au type *Objectif de membres*, permet d'afficher la progression vers un but (ex: `Objectif : {count}/{goal}`).
 * **Modèle du nom** : Utilisez la balise `{count}` (et `{goal}` pour les objectifs) qui sera remplacée dynamiquement par la valeur réelle.
 
 :::note[Mise à jour des noms]
@@ -69,14 +117,14 @@ Pour respecter les limites de requêtes imposées par l'API Discord (Rate Limits
 
 ---
 
-## 3. Créer son salon (Salons temporaires)
+## 4. Créer son salon (Salons temporaires)
 
 Ce module permet aux utilisateurs de créer leur propre salon vocal temporaire et de le configurer de façon autonome à l'aide de boutons interactifs.
 
 ### Configuration du générateur
 * **Salon Vocal Générateur** : Le salon vocal "d'appel". Dès qu'un membre rejoint ce salon, Kotbo l'en extrait, crée un nouveau salon temporaire et l'y déplace.
 * **Catégorie de création** : La catégorie Discord dans laquelle les salons temporaires seront créés.
-* **Modèle de nom du salon** : Le format du nom généré. Utilisez la balise `{user}` pour insérer le pseudonyme du créateur (ex: `🔊 Salon de {user}`).
+* **Modèle de nom du salon** : Le format du nom généré. Utilisez la balise `{user}` pour insérer le pseudonyme du créateur (ex: `Salon de {user}`).
 * **Rôle requis** : Restreint la possibilité de créer des salons temporaires aux seuls possesseurs d'un rôle spécifique (laisser vide pour ouvrir à tous).
 * **Générateurs additionnels** : Vous pouvez configurer plusieurs générateurs indépendants (chacun avec son salon déclencheur, sa catégorie cible, son modèle de nom et son rôle requis).
 
@@ -89,7 +137,7 @@ En bas de l'onglet, la section **Salons Temporaires Actifs** liste tous les salo
 
 ---
 
-## 4. Salon Honeypot (Piège Anti-Spam)
+## 5. Salon Honeypot (Piège Anti-Spam)
 
 Le **Salon Honeypot** est un outil de sécurité radical conçu pour détecter et neutraliser instantanément les bots de spam ou les comptes d'utilisateurs piratés (self-bots) qui rejoignent votre serveur.
 

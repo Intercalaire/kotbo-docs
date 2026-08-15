@@ -10,7 +10,7 @@ Pour voir comment se présente le panel, comment les membres ouvrent un ticket e
 :::
 
 :::note[Disponibilité]
-La gestion et la configuration du système se font depuis la section **Communauté → Tickets** de votre dashboard : [Accéder au module Tickets ↗](https://dash.kotbo.fr/tickets).
+La gestion et la configuration du système se font depuis la section **Staff → Tickets & Satisfaction** de votre dashboard : [Accéder au module Tickets ↗](https://dash.kotbo.fr/tickets).
 L'accès aux onglets d'administration et de configuration est restreint aux administrateurs ou aux membres possédant les rôles d'accès configurés.
 :::
 
@@ -18,11 +18,12 @@ L'accès aux onglets d'administration et de configuration est restreint aux admi
 
 ## Fonctionnement général du dashboard
 
-La page est divisée en quatre onglets principaux :
+La page est divisée en cinq onglets principaux :
 1. **Tickets** : L'interface opérationnelle pour lire, répondre et gérer les tickets actifs.
 2. **Transcriptions** : L'historique des tickets archivés et fermés.
 3. **Satisfaction** : Le suivi des notes et commentaires laissés par vos membres après la fermeture de leur ticket.
-4. **Configuration** : Les réglages techniques du module.
+4. **Blacklist** : La liste des membres privés d'ouverture de ticket.
+5. **Configuration** : Les réglages techniques du module.
 
 ---
 
@@ -71,6 +72,19 @@ Dans l'onglet **Satisfaction**, vous visualisez :
 * Votre note moyenne globale.
 * La répartition des évaluations (Très insatisfait 😡, Insatisfait 😕, Neutre 😐, Satisfait 🙂, Très satisfait 🤩).
 * La liste chronologique des commentaires détaillés laissés par les utilisateurs.
+
+---
+
+## Blacklist des tickets (Onglet Blacklist)
+
+L'onglet **Blacklist** empêche certains membres d'ouvrir un ticket, sans passer par une sanction Discord.
+
+* **Identifiant Discord** : l'ID du membre à bloquer. Un identifiant mal formé est refusé avec le message *Identifiant Discord invalide*.
+* **Raison** : elle est **communiquée au membre** lorsqu'il tente d'ouvrir un ticket. Laissée vide, elle s'affiche comme *Aucune raison précisée*.
+* **Durée (jours)** ou **Définitif** : choisissez un blocage temporaire ou permanent.
+* Cliquez sur **Ajouter** pour valider.
+
+Chaque entrée de la liste indique qui l'a créée (*Ajouté par …*), ce qui permet de retracer la décision. Tant que la liste est vide, l'onglet affiche *Aucun membre blacklisté*.
 
 ---
 

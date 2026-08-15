@@ -67,16 +67,16 @@ export default defineConfig({
           translations: { en: 'Configuration (Dashboard)' },
           items: [
             {
-              label: 'Modération',
-              translations: { en: 'Moderation' },
+              label: 'Sécurité',
+              translations: { en: 'Security' },
               items: [
                 {
-                  label: 'Modération automatique',
-                  translations: { en: 'Auto moderation' },
+                  label: 'Filtres (Modération auto)',
+                  translations: { en: 'Filters (Auto moderation)' },
                   slug: 'dashboard/moderation/automod',
                 },
                 {
-                  label: 'Doubles comptes',
+                  label: 'Multi-comptes',
                   translations: { en: 'Alt accounts' },
                   slug: 'dashboard/moderation/double-comptes',
                 },

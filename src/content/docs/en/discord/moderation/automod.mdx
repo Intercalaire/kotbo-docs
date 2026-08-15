@@ -28,9 +28,9 @@ When a member breaks an active AutoMod rule, the bot applies one of the followin
 * For the configured duration (for example 10 minutes, 1 hour, 28 days) they cannot speak in text channels, join voice channels or react to messages.
 * They receive a direct message explaining the reason and the length of the mute.
 
-### 4. Kick (<span class="dash-badge kick">KICK</span>)
-* The user is immediately removed from the Discord server.
-* They receive a direct message about the kick before being removed. They can rejoin the server if they have a valid invite link.
+### 4. Kicking an unauthorized bot (<span class="dash-badge kick">KICK</span>)
+* This sanction does not target members but **bots**: it belongs to the **Secure mode (anti-bot)** filter.
+* A bot added by anyone other than the server owner, and missing from the list of allowed users, is kicked or banned depending on the action chosen.
 
 ### 5. Log alert (<span class="dash-badge resolved">ALERT</span>)
 * The user's message is not edited or deleted.

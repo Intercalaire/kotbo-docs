@@ -1,6 +1,6 @@
 ---
 title: How channels work on Discord
-description: Learn how Auto-Thread, voice statistics channels, temporary voice channels and the Honeypot trap work on Discord.
+description: Learn how Auto-Thread, sticky messages, voice statistics channels, temporary voice channels and the Honeypot trap work on Discord.
 ---
 
 <p class="doc-lead">On Discord, the <strong>Channels</strong> module automates the creation of temporary spaces, keeps dynamic statistics up to date and provides active protection against spam.</p>
@@ -19,20 +19,33 @@ To configure the counters, the voice channel generators and the Honeypot, read t
 
 ---
 
-## 2. Stats channels (dynamic counters)
+## 2. Sticky message (a message pinned to the bottom of a channel)
 
-* **What it looks like**: server statistics are shown directly in the names of dedicated voice channels (for example `👤 Members: 1,254` or `🎮 Online: 452`).
+* **What members see**: a bot message that always comes back to the bottom of the channel. As soon as the conversation pushes it up, Kotbo deletes its previous post and reposts it at the very bottom.
+* **Repost pace**: the message does not move on every post, but after the number of messages set on the dashboard, with a minimum delay between two reposts so the channel does not get flooded.
+* **No notification**: mentions inside a sticky are neutralised when sent. Even an `@everyone` triggers no ping there.
+* **Rendering**: plain text by default, or a coloured box (embed) with a title if that option was enabled.
+
+:::caution[Required Discord permissions]
+Kotbo must be able to **view the channel** (`VIEW_CHANNEL`) and **write in it** (`SEND_MESSAGES`). Without both permissions, the message is never reposted.
+:::
+
+---
+
+## 3. Stats channels (dynamic counters)
+
+* **What it looks like**: server statistics are shown directly in the names of dedicated voice channels (for example `Members: 1,254` or `Online: 452`).
 * **Refresh rate**: because of the limits imposed by the Discord API (rate limits), Kotbo updates these channel names **every 10 minutes**. Statistics changes are therefore not immediate but smoothed out over time.
 
 ---
 
-## 3. Create your channel (temporary voice channels)
+## 4. Create your channel (temporary voice channels)
 
 This system lets your members create and manage their own voice channel independently.
 
 ### Step 1: creating the voice channel
-1. The member joins the configured generator voice channel (for example `🔊 Create a channel`).
-2. Kotbo instantly moves them into a new temporary voice channel it has just created (for example `🔊 John's channel`).
+1. The member joins the configured generator voice channel (for example `Create a channel`).
+2. Kotbo instantly moves them into a new temporary voice channel it has just created (for example `John's channel`).
 
 ### Step 2: the interactive control embed
 At the same time, Kotbo posts an interactive management message (an embed) in the text chat attached to that temporary voice channel. The channel's creator (its owner) can control access with the buttons:
@@ -52,7 +65,7 @@ As soon as the last connected member leaves the temporary voice channel, Kotbo *
 
 ---
 
-## 4. Honeypot channel (anti-spam trap)
+## 5. Honeypot channel (anti-spam trap)
 
 * **The trap**: the bot creates or watches an inviting text channel (for example `#do-not-type-here` or `#anti-spam-verification`) that everyone can see, new members in particular.
 * **The trigger**: any message posted in that channel by a regular member or a spam bot sets off the Honeypot.

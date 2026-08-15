@@ -10,84 +10,102 @@ To see how AutoMod behaves on Discord and how sanctions are applied live, read t
 :::
 
 :::note[Required permissions]
-This page lives under **Moderation → Auto moderation**: [Open AutoMod ↗](https://dash.kotbo.fr/automod).
+This page lives under **Security → Filters**: [Open the filters ↗](https://dash.kotbo.fr/security/filters).
 You must be a server administrator to change these settings. Make sure Kotbo's Discord role sits high enough in the role hierarchy to apply sanctions (such as a kick or a timeout).
 :::
 
 ---
 
-## How it works
+## Available sanctions
 
-Every AutoMod filter can be enabled on its own. When a violation is detected, Kotbo applies the sanction you configured. The sanctions available on the dashboard map to the following moderation outcomes:
+Every filter is enabled on its own and has its own **Action** menu, which decides what Kotbo does when a rule is broken:
 
-* <span class="dash-badge active">BLOCK</span>: the message is deleted or blocked.
-* <span class="dash-badge warn">WARN</span>: the message is deleted and the user receives an automatic warning.
-* <span class="dash-badge timeout">TIMEOUT</span>: the user is temporarily muted on the server.
-* <span class="dash-badge kick">KICK</span>: the user is kicked from the server.
-* <span class="dash-badge resolved">ALERT</span>: the bot sends a log alert without touching the message.
+* **Delete silently**: the message disappears, with no notification to the member.
+* **Delete & warn the member**: the message is deleted and the member receives a warning.
+* **Block the message**: the message is blocked before it is posted.
+* **Block + timeout**: the message is blocked and the member is muted.
+* **Temporary timeout (10 min mute)**: the member cannot write for 10 minutes.
+* **Warning (warn)**: a warning is recorded in their file.
+* **Alert only (logs)**: nothing is deleted, an alert is simply sent to the logs.
 
 ---
 
 ## Available filters
 
 ### 1. Anti-spam filter
-Limits how many messages a user can send in quick succession.
-* **Maximum number of messages**: the allowed limit (for example 5 messages).
-* **Time window**: the rolling window used for the count, in seconds (for example 5 seconds).
-* **Sanction**: the action applied when the limit is exceeded (for example *TIMEOUT*).
+Limits how fast a member can post.
+* **Max number of messages**: the allowed limit.
+* **Time window (sec)**: the window used for the count.
+* **Sanction on violation**: the action applied when the limit is passed.
 
-### 2. Link filter
-Prevents unapproved web addresses from being shared.
-* **Domain allowlist**: enter the permitted domains (one per line, for example `google.com`, `docs.kotbo.fr`). Any domain missing from this allowlist triggers the sanction.
+### 2. Anti-link / invite filter
+A single filter covers external links **and** invites to other Discord servers.
+* **Allowed domains (one per line)**: any domain missing from this list triggers the sanction.
 
-### 3. Caps filter
-Blocks messages that overuse capital letters.
-* **Threshold in %**: the share of uppercase letters at which the message is blocked (for example 80%).
-* **Minimum message length**: the minimum number of characters before the check applies (for example 10 characters, which avoids blocking short words like "OK").
+### 3. Excessive caps filter
+* **Caps threshold (%)**: the share of capital letters at which the message is sanctioned.
+* **Minimum length**: below this character count the message is not analysed, which avoids blocking a plain "OK".
 
-### 4. Emoji filter
-* **Emoji limit**: the maximum number of emoji allowed in a single message.
+### 4. Emoji spam
+Limits how many emoji a message may contain. Set to `0`, the filter is disabled and allows an unlimited number of emoji.
 
-### 5. Mention filter
-* **Mention limit**: the maximum number of user pings allowed per message (this blocks mass ping spam).
+### 5. Mention spam
+Limits how many mentions a message may contain. Set to `0`, it allows an unlimited number of mentions.
 
-### 6. Ghost ping filter
-Detects and reports ghost pings (when a user sends a message mentioning someone and then immediately deletes it).
-* **Sanction**: *ALERT* is recommended (it reports the ghost ping in the moderator logs).
+### 6. Anti-ghost ping
+Detects pings that are deleted or edited quickly. Two actions to choose from: **Alert only (message)** or **Warning (warn + alert)**.
 
-### 7. Anti-Everyone filter
-Blocks attempts to mention the whole server (`@everyone` or `@here`) by members who are not allowed to.
+### 7. Anti-everyone
+Deletes unauthorized `@everyone` and `@here` mentions. Possible actions: **Delete only**, **Delete & warn**, or **Timeout (10 min)**.
 
 ### 8. Custom words
-Build your own blocklist of terms or phrases.
-* **Blocked words**: the list of words to ban (one per line).
-* **Allowed words**: exceptions, or words that contain an otherwise blocked substring.
-* **Timeout duration**: how long the offender is muted.
+Your own blocklist.
+* **Forbidden words (one per line, max 1000)**.
+* **Exceptions (allowed words, one per line)**: useful for a word that contains a forbidden sequence of letters.
 
 ### 9. Profanity filter
-Uses Kotbo's built-in smart dictionaries.
-* **Categories you can enable**: general profanity, sexual content, slurs.
-* **Allowed words**: a list of exceptions to ignore.
+* **Active categories**: **Insults & profanity**, **Sexual content**, **Hateful & discriminatory terms**.
+* **Exceptions (words allowed anyway, one per line)**.
 
-### 10. Invite filter
-Blocks invites to other Discord servers from being shared.
-* **Allowed servers**: the list of partner Discord server IDs whose invites are permitted.
-
-### 11. Anti-Bot
-Prevents malicious or unauthorised bots from being added.
-:::caution[Owner-only restriction]
-This filter **can only be configured by the Discord server owner**. Other staff members cannot change this option, even if they have access to the dashboard settings.
+:::note[This filter relies on Discord]
+The word lists are not maintained by Kotbo: the filter uses **Discord's predefined lists** to catch insults, sexual content and hateful terms.
 :::
-* **Members allowed to invite**: the list of staff user IDs allowed to add bots to the server. Any bot invited by anyone else is kicked immediately (*KICK*).
+
+### 10. Secure mode (anti-bot)
+Prevents anyone other than the server owner from adding bots. A bot added by someone else is automatically kicked or banned.
+* **Users allowed to add bots**: the list of exceptions.
+* **Action on unauthorized bot**: **Kick the bot** or **Ban the bot**.
+
+:::caution[Owner only]
+Only the Discord server owner can enable, disable or configure this filter. Other staff members cannot touch it, even with full dashboard access.
+:::
+
+### 11. Automatic suspension (anti-burst)
+Automatically removes ADMINISTRATOR roles when destructive actions are repeated in a short time. It is a safeguard against a compromised administrator account.
+* **Fast threshold** and **Slow threshold**: the two rates that trigger the suspension.
+
+### 12. Admin permission lock
+Puts sensitive administration actions behind an approval step.
+* **"Security" roles (approvers)**: in addition to the owner, members of these roles can approve or reject requests.
+* **Notification channel**: where requests are announced.
+* **View pending requests**: opens the queue.
+
+:::caution[Owner only]
+Only the server owner can enable, disable or configure Admin Permission Lock.
+:::
+
+:::warning[Role position]
+Place the bot's role **above** the ADMINISTRATOR roles, otherwise the automatic reverts cannot be applied.
+:::
 
 ---
 
-## Global exceptions
+## Exceptions / ignored channels and roles
 
-You can define global exclusions so AutoMod does not get in the way of your staff's work or disrupt specific channels.
+You can globally exclude certain roles and channels from every filter, so AutoMod does not get in the way of your staff's work.
 
-* **Ignored roles**: pick the roles (for example <span class="dash-badge admin">@Administrator</span>, <span class="dash-badge mod">@Moderator</span>) that AutoMod filters will never affect.
-* **Ignored channels**: pick the channels (for example `#announcements`, `#staff`) where Kotbo will not apply any AutoMod rule.
+* **Ignored roles**: the roles filters never affect.
+* **Ignored channels**: the channels where no rule is applied.
 
 ---
 

@@ -10,8 +10,19 @@ Ce système agit comme un outil dédié de type *appeals.gg*, mais directement i
 :::
 
 :::note[Accès]
-Gérez la configuration générale depuis la section **Modération → Appels de ban** de votre dashboard : [Configurer les Appels de ban ↗](https://dash.kotbo.fr/appeals).
+Gérez la configuration générale depuis la section **Sécurité → Sanctions**, onglet **Appels**, de votre dashboard : [Configurer les Appels de ban ↗](https://dash.kotbo.fr/security/sanctions/appeals).
 :::
+
+---
+
+## Les quatre onglets de la page
+
+* **File d'attente** : les demandes en cours de traitement, avec leur nombre entre parenthèses.
+* **Historique** : les dossiers déjà tranchés.
+* **Blacklist** : les comptes privés d'accès au formulaire, avec leur nombre entre parenthèses.
+* **Configuration** : les réglages décrits ci-dessous.
+
+Chaque demande porte un statut : **En attente**, **Accepté**, **Refusé**, **Refus définitif** ou **Attente d'infos**.
 
 ---
 
@@ -31,7 +42,7 @@ Dans l'onglet de configuration du dashboard, paramétrez les éléments suivants
 
 ### 1. Paramètres de formulaire
 * **Activer le module** : Active ou désactive le portail public.
-* **Formulaire d'appel** : Sélectionnez le formulaire de questions. Vous devez préalablement créer ce formulaire dans le module **Formulaires** (cela vous permet de définir vos propres questions, d'ajouter votre logo/bannière et d'y appliquer vos styles CSS personnalisés).
+* **Formulaire d'appel** : Sélectionnez le formulaire de questions. Les questions et le thème visuel se modifient dans **Formulaires → Builder**. Vous devez donc créer ce formulaire au préalable (cela vous permet de définir vos propres questions, d'ajouter votre logo/bannière et d'y appliquer vos styles CSS personnalisés).
 
 ### 2. Intégration Discord
 * **Salon Staff (Réception)** : Le salon Discord privé de votre équipe dans lequel Kotbo enverra la fiche de demande d'appel avec les boutons d'action.
@@ -53,7 +64,7 @@ Adaptez la communication avec les utilisateurs :
 Lorsqu'une demande d'appel est soumise, Kotbo publie une fiche complète dans votre **Salon Staff** :
 
 ```
-🎫 Nouvel Appel de Bannissement - @Pseudo (ID: 123456)
+Nouvel Appel de Bannissement - @Pseudo (ID: 123456)
 -----------------------------------------------------------
 Raison du ban (Discord) : "Utilisation de cheats"
 
@@ -71,17 +82,17 @@ Votre équipe dispose de quatre actions rapides sous forme de boutons interactif
 * Retire automatiquement le bannissement du joueur sur votre serveur Discord.
 * Génère un lien d'invitation Discord unique et temporaire (1 utilisation, expire sous 24h).
 * Envoie un DM à l'utilisateur contenant votre message d'acceptation personnalisé et le lien d'invitation.
-* Marque la demande comme <span class="dash-badge active">ACCEPTED</span>.
+* Marque la demande comme <span class="dash-badge active">Accepté</span>.
 
 ### 2. Refuser (Deny)
 * Envoie un DM à l'utilisateur l'informant du refus de sa demande.
 * Bloque la possibilité pour l'utilisateur de soumettre un nouvel appel pendant le nombre de jours défini dans votre configuration de cooldown (ex: 30 jours).
-* Marque la demande comme <span class="dash-badge ban">DENIED</span>.
+* Marque la demande comme <span class="dash-badge ban">Refusé</span>.
 
 ### 3. Refuser Définitivement (Permanently Deny)
 * Envoie un DM à l'utilisateur l'informant du refus.
 * **Bloque à vie** l'accès au portail d'appel pour ce compte Discord. L'utilisateur ne pourra plus jamais soumettre de demande de recours pour ce serveur.
-* Marque la demande comme <span class="dash-badge ban">DENIED_PERMANENT</span>.
+* Marque la demande comme <span class="dash-badge ban">Refus définitif</span>.
 
 ### 4. Demander plus d'infos (Needs Info)
 Si les motivations du joueur sont floues, vous pouvez lui demander des éclaircissements :
@@ -89,7 +100,7 @@ Si les motivations du joueur sont floues, vous pouvez lui demander des éclairci
 2. Une boîte de dialogue (Modal) s'ouvre sur Discord pour vous permettre de saisir votre question (ex: *« Pouvez-vous fournir des preuves ou le pseudonyme de votre complice ? »*).
 3. L'utilisateur reçoit une notification et sa page d'appel publique affiche votre question avec un champ de réponse.
 4. Dès qu'il répond en ligne, Kotbo met à jour le message staff Discord pour vous notifier et afficher ses explications complémentaires.
-5. Marque temporairement la demande comme <span class="dash-badge timeout">NEEDS_INFO</span>.
+5. Marque temporairement la demande comme <span class="dash-badge timeout">Attente d'infos</span>.
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Fonctionnement des Salons sur Discord
-description: Découvrez comment fonctionnent l'Auto-Thread, les salons de statistiques vocales, les vocaux temporaires et le piège Honeypot sur Discord.
+description: Découvrez comment fonctionnent l'Auto-Thread, les messages sticky, les salons de statistiques vocales, les vocaux temporaires et le piège Honeypot sur Discord.
 ---
 
 <p class="doc-lead">Sur Discord, le module <strong>Salons</strong> automatise la création d'espaces temporaires, la mise à jour des statistiques dynamiques et assure la sécurité active contre le spam.</p>
@@ -19,20 +19,33 @@ Pour configurer les compteurs, les générateurs de vocaux et le Honeypot, consu
 
 ---
 
-## 2. Salons Stats (Compteurs dynamiques)
+## 2. Message Sticky (message collé en bas de salon)
 
-* **Rendu visuel** : Les statistiques du serveur sont affichées directement dans le nom de salons vocaux dédiés (ex: `👤 Membres : 1 254` ou `🎮 En Ligne : 452`).
+* **Ce que voient les membres** : un message du bot qui revient systématiquement en dernière position du salon. Dès que la conversation le fait remonter, Kotbo supprime son ancien envoi et le republie tout en bas.
+* **Rythme de renvoi** : le message ne remonte pas à chaque message posté, mais après le nombre de messages défini sur le dashboard, avec un délai minimum entre deux renvois pour ne pas saturer le salon.
+* **Aucune notification** : les mentions contenues dans un sticky sont neutralisées à l'envoi. Même un `@everyone` n'y déclenche aucun ping.
+* **Rendu** : texte brut par défaut, ou encadré coloré (embed) avec un titre si l'option a été activée.
+
+:::caution[Permissions Discord requises]
+Kotbo doit pouvoir **voir le salon** (`VIEW_CHANNEL`) et **y écrire** (`SEND_MESSAGES`). Sans ces deux permissions, le message n'est jamais republié.
+:::
+
+---
+
+## 3. Salons Stats (Compteurs dynamiques)
+
+* **Rendu visuel** : Les statistiques du serveur sont affichées directement dans le nom de salons vocaux dédiés (ex: `Membres : 1 254` ou `En Ligne : 452`).
 * **Fréquence de rafraîchissement** : En raison des limitations imposées par l'API Discord (Rate Limits), Kotbo met à jour les noms de ces salons **toutes les 10 minutes**. Les changements de statistiques ne sont donc pas immédiats mais lissés dans le temps.
 
 ---
 
-## 3. Créer son salon (Salons vocaux temporaires)
+## 4. Créer son salon (Salons vocaux temporaires)
 
 Ce système permet à vos membres de créer et de gérer de manière autonome leur salon vocal.
 
 ### Étape 1 : Création du salon vocal
-1. Le membre rejoint le salon vocal générateur configuré (ex: `🔊 Créer un salon`).
-2. Kotbo le déplace instantanément dans un nouveau salon vocal temporaire qu'il vient de créer (ex: `🔊 Salon de Jean`).
+1. Le membre rejoint le salon vocal générateur configuré (ex: `Créer un salon`).
+2. Kotbo le déplace instantanément dans un nouveau salon vocal temporaire qu'il vient de créer (ex: `Salon de Jean`).
 
 ### Étape 2 : L'embed de contrôle interactif
 En parallèle, Kotbo envoie un message d'administration interactif (Embed) dans le chat textuel associé à ce salon vocal temporaire. Le créateur du salon (propriétaire) peut piloter les accès à l'aide des boutons :
@@ -52,7 +65,7 @@ Dès que le dernier membre connecté quitte le salon vocal temporaire, Kotbo **s
 
 ---
 
-## 4. Salon Honeypot (Piège Anti-Spam)
+## 5. Salon Honeypot (Piège Anti-Spam)
 
 * **Le piège** : Le bot crée ou surveille un salon textuel attractif (ex: `#do-not-type-here` ou `#anti-spam-verification`) visible par tout le monde, en particulier les nouveaux membres.
 * **Le déclencheur** : Tout message envoyé dans ce salon par un membre normal ou un bot de spam déclenche le Honeypot.

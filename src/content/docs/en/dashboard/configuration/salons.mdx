@@ -1,19 +1,19 @@
 ---
 title: Channel management
-description: Configure Auto-Thread, live statistics channels, temporary voice channels and the Honeypot system from the dashboard.
+description: Configure Auto-Thread, sticky messages, live statistics channels, temporary voice channels and the Honeypot system from the dashboard.
 ---
 
 <p class="doc-lead">The <strong>Channels</strong> module gathers every automation, voice statistics and security feature tied to the channels on your Discord server.</p>
 
 :::tip[On the Discord side]
-To see how Auto-Thread, statistics channels, temporary channel creation with its control embed and the Honeypot trap behave, read the [Discord guide to channel management](/en/discord/configuration/salons).
+To see how Auto-Thread, sticky messages, statistics channels, temporary channel creation with its control embed and the Honeypot trap behave, read the [Discord guide to channel management](/en/discord/configuration/salons).
 :::
 
 :::note[Availability]
 This module lives under the **Configuration → Channels** section of your dashboard: [Open the Channels module ↗](https://dash.kotbo.fr/channels-management).
 :::
 
-The interface is built around four main tabs, covered below.
+The interface is built around five main tabs, covered below.
 
 ---
 
@@ -30,7 +30,55 @@ The **Auto-Thread** tab lets you designate text or announcement channels where K
 
 ---
 
-## 2. Stats channels (live counters)
+## 2. Sticky message (a message pinned to the bottom of a channel)
+
+The **Sticky message** tab keeps a message permanently visible at the bottom of a channel. The bot reposts it so it always stays the last message shown, which is handy for a rules reminder or a posting guideline.
+
+### How it works
+Every time the channel reaches the configured message count, Kotbo deletes its previous post and sends the message again at the very bottom of the channel.
+
+### Configuring a message
+Click **Add a sticky message**, then fill in:
+* **Target channel**: the channel the message stays pinned to.
+* **Message**: the text that gets reposted (for example `Remember to read the rules before posting!`). It cannot be empty.
+* **Display as an embed**: sends the message in a coloured box instead of plain text. Two fields then appear:
+  * **Embed title** (for example *Read before posting*).
+  * **Colour**: in `#RRGGBB` hexadecimal format.
+* **Repost after (messages)**: how many messages are posted in the channel before the sticky moves back to the bottom.
+* **Minimum delay between two reposts (seconds)**: protects against Discord rate limits when the channel gets busy. Set `0` to disable the delay.
+* **Active**: pauses or resumes the message without deleting its configuration.
+
+:::note[The channel cannot be changed afterwards]
+The channel of a saved sticky can no longer be edited. To move it, delete it and create a new one.
+:::
+
+### Available variables
+The message text and the embed title accept the same variables:
+
+| Variable | Result |
+| --- | --- |
+| `{server}` or `{serveur}` | Your server's name |
+| `{members}`, `{membres}` or `{memberCount}` | Total number of members |
+| `{channelCount}` or `{salons}` | Number of channels |
+| `{boosts}` or `{boostCount}` | Number of server boosts |
+
+The English and French variants work interchangeably, whatever language your dashboard is set to.
+
+### Available actions
+* **Repost now**: forces an immediate repost without waiting for the message threshold.
+* **Delete**: removes the message still displayed in the channel and erases the configuration.
+
+:::caution[Required Discord permissions]
+Kotbo must be able to **view the channel** and **write in it**. Without both permissions, the sticky message is never reposted.
+:::
+
+:::note[No mention is ever triggered]
+Mentions written inside a sticky message notify nobody: the bot neutralises them when sending. An `@everyone` placed in a sticky will therefore not ping your server on every repost.
+:::
+
+---
+
+## 3. Stats channels (live counters)
 
 The **Stats channels** sub-module displays key server metrics in real time (member count, active members, boosts, and so on) directly in the names of dedicated voice channels.
 
@@ -55,12 +103,12 @@ You can enable and customise each of the following counters individually:
 5. **Category counter**: total number of channel categories.
 6. **Activity counter (24h)**: number of members who sent a message or joined a voice channel in the last 24 hours.
 
-For each active counter you can point to an **existing voice channel** or let the bot **create one automatically**, and customise the name template (for example `👤 Members: {count}`).
+For each active counter you can point to an **existing voice channel** or let the bot **create one automatically**, and customise the name template (for example `Members: {count}`).
 
 ### Custom counters
 By clicking **Add a custom counter**, you can configure extra counters by choosing:
 * **Statistic type**: total members, bots, members online, members in voice, a specific role, total channels, categories, active members (24h), server boosts, or a member goal.
-* **Goal (target)**: specific to the *member goal* type, this shows progress towards a target (for example `🎯 Goal: {count}/{goal}`).
+* **Goal (target)**: specific to the *member goal* type, this shows progress towards a target (for example `Goal: {count}/{goal}`).
 * **Name template**: use the `{count}` tag (and `{goal}` for goals), which is replaced dynamically with the real value.
 
 :::note[Name updates]
@@ -69,14 +117,14 @@ To respect the rate limits imposed by the Discord API, the bot refreshes statist
 
 ---
 
-## 3. Create your channel (temporary channels)
+## 4. Create your channel (temporary channels)
 
 This module lets users create their own temporary voice channel and configure it themselves using interactive buttons.
 
 ### Generator configuration
 * **Generator voice channel**: the "lobby" voice channel. As soon as a member joins it, Kotbo pulls them out, creates a new temporary channel and moves them into it.
 * **Creation category**: the Discord category where temporary channels will be created.
-* **Channel name template**: the format of the generated name. Use the `{user}` tag to insert the creator's username (for example `🔊 {user}'s channel`).
+* **Channel name template**: the format of the generated name. Use the `{user}` tag to insert the creator's username (for example `{user}'s channel`).
 * **Required role**: restricts temporary channel creation to holders of a specific role (leave empty to allow everyone).
 * **Additional generators**: you can configure several independent generators (each with its own trigger channel, target category, name template and required role).
 
@@ -89,7 +137,7 @@ At the bottom of the tab, the **Active temporary channels** section lists every 
 
 ---
 
-## 4. Honeypot channel (anti-spam trap)
+## 5. Honeypot channel (anti-spam trap)
 
 The **Honeypot channel** is a blunt security tool designed to instantly detect and neutralise spam bots or compromised user accounts (self-bots) that join your server.
 
