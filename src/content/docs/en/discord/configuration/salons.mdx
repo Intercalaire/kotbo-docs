@@ -34,7 +34,7 @@ Kotbo must be able to **view the channel** (`VIEW_CHANNEL`) and **write in it** 
 
 ## 3. Stats channels (dynamic counters)
 
-* **What it looks like**: server statistics are shown directly in the names of dedicated voice channels (for example `👤 Members: 1,254` or `🎮 Online: 452`).
+* **What it looks like**: server statistics are shown directly in the names of dedicated voice channels (for example `Members: 1,254` or `Online: 452`).
 * **Refresh rate**: because of the limits imposed by the Discord API (rate limits), Kotbo updates these channel names **every 10 minutes**. Statistics changes are therefore not immediate but smoothed out over time.
 
 ---
@@ -44,8 +44,8 @@ Kotbo must be able to **view the channel** (`VIEW_CHANNEL`) and **write in it** 
 This system lets your members create and manage their own voice channel independently.
 
 ### Step 1: creating the voice channel
-1. The member joins the configured generator voice channel (for example `🔊 Create a channel`).
-2. Kotbo instantly moves them into a new temporary voice channel it has just created (for example `🔊 John's channel`).
+1. The member joins the configured generator voice channel (for example `Create a channel`).
+2. Kotbo instantly moves them into a new temporary voice channel it has just created (for example `John's channel`).
 
 ### Step 2: the interactive control embed
 At the same time, Kotbo posts an interactive management message (an embed) in the text chat attached to that temporary voice channel. The channel's creator (its owner) can control access with the buttons:

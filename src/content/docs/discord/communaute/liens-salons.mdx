@@ -20,28 +20,28 @@ Vous pouvez administrer vos liaisons directement depuis Discord à l'aide de l'o
 Pour afficher la liste des liaisons actives sur votre serveur et obtenir leur identifiant unique :
 <DiscordCommand
   command="/link list"
-  botResponse="🔗 **Liens de salons actifs sur ce serveur :**\n• **Lien #1** : Bidirectionnel entre #salon-A et #salon-B (Mode: Webhook)\n• **Lien #2** : Unidirectionnel de #salon-local vers #salon-distant sur le serveur ID: 987654321 (Mode: Embed)"
+  botResponse="**Liens de salons actifs sur ce serveur :**\n• **Lien #1** : Bidirectionnel entre #salon-A et #salon-B (Mode: Webhook)\n• **Lien #2** : Unidirectionnel de #salon-local vers #salon-distant sur le serveur ID: 987654321 (Mode: Embed)"
 />
 
 ### 1. Lier deux salons locaux
 Pour connecter deux salons situés sur votre serveur actuel :
 <DiscordCommand
   command="/link salon salon-source:#salon-A salon-cible:#salon-B direction:Bidirectionnel mode:Webhook"
-  botResponse="✅ **Liaison établie avec succès !**\nLe salon #salon-A est désormais connecté à #salon-B en mode bidirectionnel (Webhook)."
+  botResponse="**Liaison établie avec succès !**\nLe salon #salon-A est désormais connecté à #salon-B en mode bidirectionnel (Webhook)."
 />
 
 ### 2. Lier directement un serveur distant (Staff)
 Si vous êtes administrateur sur les deux serveurs, utilisez l'identifiant (ID) du serveur et du salon cibles :
 <DiscordCommand
   command="/link direct salon-source:#salon-local serveur-cible:ID_SERVEUR_CIBLE salon-cible:ID_SALON_CIBLE"
-  botResponse="✅ **Liaison directe effectuée !**\nLe salon local #salon-local a été connecté avec succès au salon cible ID `ID_SALON_CIBLE` sur le serveur distant `ID_SERVEUR_CIBLE`."
+  botResponse="**Liaison directe effectuée !**\nLe salon local #salon-local a été connecté avec succès au salon cible ID `ID_SALON_CIBLE` sur le serveur distant `ID_SERVEUR_CIBLE`."
 />
 
 ### 3. Liaison par invitation (Serveur A — Initiation)
 Pour proposer une liaison à un administrateur tiers, générez un code de liaison :
 <DiscordCommand
   command="/link invite salon:#salon-local direction:Bidirectionnel mode:Webhook invitation-serveur:Vrai"
-  botResponse="✅ **Code d'invitation généré !**\nCode : `A1B2C3D4`\n\nTransmettez ce code à l'administrateur de l'autre serveur pour qu'il l'accepte."
+  botResponse="**Code d'invitation généré !**\nCode : `A1B2C3D4`\n\nTransmettez ce code à l'administrateur de l'autre serveur pour qu'il l'accepte."
 />
 *Le bot renvoie un code unique (ex: `A1B2C3D4`) à transmettre au destinataire.*
 
@@ -49,14 +49,14 @@ Pour proposer une liaison à un administrateur tiers, générez un code de liais
 Pour accepter la demande d'un autre serveur en utilisant le code d'invitation reçu :
 <DiscordCommand
   command="/link accept code:CODE_D_INVITATION salon:#salon-local-cible"
-  botResponse="✅ **Invitation acceptée !**\nLe salon local #salon-local-cible est désormais lié au salon d'origine."
+  botResponse="**Invitation acceptée !**\nLe salon local #salon-local-cible est désormais lié au salon d'origine."
 />
 
 ### 5. Supprimer une liaison active
 Pour rompre un pont de salons en utilisant son identifiant (que vous pouvez trouver via `/link list`) :
 <DiscordCommand
   command="/link remove id:ID_DU_LIEN"
-  botResponse="✅ **Lien de salon supprimé !**\nLe pont avec l'identifiant `ID_DU_LIEN` a été désactivé."
+  botResponse="**Lien de salon supprimé !**\nLe pont avec l'identifiant `ID_DU_LIEN` a été désactivé."
 />
 
 ---

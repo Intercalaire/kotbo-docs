@@ -40,7 +40,7 @@ Dès que le salon accumule le nombre de messages configuré, Kotbo supprime son 
 ### Configurer un message
 Cliquez sur **Ajouter un message sticky**, puis renseignez :
 * **Salon concerné** : le salon dans lequel le message reste collé.
-* **Message** : le texte republié (ex : `📌 Pense à lire le règlement avant de poster !`). Il ne peut pas être vide.
+* **Message** : le texte republié (ex : `Pense à lire le règlement avant de poster !`). Il ne peut pas être vide.
 * **Afficher en embed** : envoie le message dans un encadré coloré plutôt qu'en texte brut. Deux champs apparaissent alors :
   * **Titre de l'embed** (ex : *À lire avant de poster*).
   * **Couleur** : au format hexadécimal `#RRGGBB`.
@@ -103,12 +103,12 @@ Vous pouvez activer et personnaliser individuellement les compteurs suivants :
 5. **Compteur de Catégories** : Nombre total de catégories de salons.
 6. **Compteur d'Activité (24h)** : Nombre de membres ayant envoyé un message ou rejoint un salon vocal au cours des dernières 24 heures.
 
-Pour chaque compteur actif, vous pouvez spécifier un **salon vocal existant** ou laisser le bot le **créer automatiquement**, et personnaliser le modèle du nom (ex: `👤 Membres : {count}`).
+Pour chaque compteur actif, vous pouvez spécifier un **salon vocal existant** ou laisser le bot le **créer automatiquement**, et personnaliser le modèle du nom (ex: `Membres : {count}`).
 
 ### Compteurs personnalisés
 En cliquant sur **Ajouter un compteur personnalisé**, vous pouvez configurer des compteurs additionnels en choisissant :
 * **Type de statistique** : Membres totaux, Bots, Membres en ligne, Membres en vocal, Rôle spécifique, Salons totaux, Catégories, Actifs (24h), Boosts de serveur, ou Objectif de membres.
-* **Objectif (Cible)** : Spécifique au type *Objectif de membres*, permet d'afficher la progression vers un but (ex: `🎯 Objectif : {count}/{goal}`).
+* **Objectif (Cible)** : Spécifique au type *Objectif de membres*, permet d'afficher la progression vers un but (ex: `Objectif : {count}/{goal}`).
 * **Modèle du nom** : Utilisez la balise `{count}` (et `{goal}` pour les objectifs) qui sera remplacée dynamiquement par la valeur réelle.
 
 :::note[Mise à jour des noms]
@@ -124,7 +124,7 @@ Ce module permet aux utilisateurs de créer leur propre salon vocal temporaire e
 ### Configuration du générateur
 * **Salon Vocal Générateur** : Le salon vocal "d'appel". Dès qu'un membre rejoint ce salon, Kotbo l'en extrait, crée un nouveau salon temporaire et l'y déplace.
 * **Catégorie de création** : La catégorie Discord dans laquelle les salons temporaires seront créés.
-* **Modèle de nom du salon** : Le format du nom généré. Utilisez la balise `{user}` pour insérer le pseudonyme du créateur (ex: `🔊 Salon de {user}`).
+* **Modèle de nom du salon** : Le format du nom généré. Utilisez la balise `{user}` pour insérer le pseudonyme du créateur (ex: `Salon de {user}`).
 * **Rôle requis** : Restreint la possibilité de créer des salons temporaires aux seuls possesseurs d'un rôle spécifique (laisser vide pour ouvrir à tous).
 * **Générateurs additionnels** : Vous pouvez configurer plusieurs générateurs indépendants (chacun avec son salon déclencheur, sa catégorie cible, son modèle de nom et son rôle requis).
 

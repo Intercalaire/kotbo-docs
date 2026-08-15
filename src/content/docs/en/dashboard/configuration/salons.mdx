@@ -40,7 +40,7 @@ Every time the channel reaches the configured message count, Kotbo deletes its p
 ### Configuring a message
 Click **Add a sticky message**, then fill in:
 * **Target channel**: the channel the message stays pinned to.
-* **Message**: the text that gets reposted (for example `📌 Remember to read the rules before posting!`). It cannot be empty.
+* **Message**: the text that gets reposted (for example `Remember to read the rules before posting!`). It cannot be empty.
 * **Display as an embed**: sends the message in a coloured box instead of plain text. Two fields then appear:
   * **Embed title** (for example *Read before posting*).
   * **Colour**: in `#RRGGBB` hexadecimal format.
@@ -103,12 +103,12 @@ You can enable and customise each of the following counters individually:
 5. **Category counter**: total number of channel categories.
 6. **Activity counter (24h)**: number of members who sent a message or joined a voice channel in the last 24 hours.
 
-For each active counter you can point to an **existing voice channel** or let the bot **create one automatically**, and customise the name template (for example `👤 Members: {count}`).
+For each active counter you can point to an **existing voice channel** or let the bot **create one automatically**, and customise the name template (for example `Members: {count}`).
 
 ### Custom counters
 By clicking **Add a custom counter**, you can configure extra counters by choosing:
 * **Statistic type**: total members, bots, members online, members in voice, a specific role, total channels, categories, active members (24h), server boosts, or a member goal.
-* **Goal (target)**: specific to the *member goal* type, this shows progress towards a target (for example `🎯 Goal: {count}/{goal}`).
+* **Goal (target)**: specific to the *member goal* type, this shows progress towards a target (for example `Goal: {count}/{goal}`).
 * **Name template**: use the `{count}` tag (and `{goal}` for goals), which is replaced dynamically with the real value.
 
 :::note[Name updates]
@@ -124,7 +124,7 @@ This module lets users create their own temporary voice channel and configure it
 ### Generator configuration
 * **Generator voice channel**: the "lobby" voice channel. As soon as a member joins it, Kotbo pulls them out, creates a new temporary channel and moves them into it.
 * **Creation category**: the Discord category where temporary channels will be created.
-* **Channel name template**: the format of the generated name. Use the `{user}` tag to insert the creator's username (for example `🔊 {user}'s channel`).
+* **Channel name template**: the format of the generated name. Use the `{user}` tag to insert the creator's username (for example `{user}'s channel`).
 * **Required role**: restricts temporary channel creation to holders of a specific role (leave empty to allow everyone).
 * **Additional generators**: you can configure several independent generators (each with its own trigger channel, target category, name template and required role).
 

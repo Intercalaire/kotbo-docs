@@ -34,7 +34,7 @@ Kotbo doit pouvoir **voir le salon** (`VIEW_CHANNEL`) et **y écrire** (`SEND_ME
 
 ## 3. Salons Stats (Compteurs dynamiques)
 
-* **Rendu visuel** : Les statistiques du serveur sont affichées directement dans le nom de salons vocaux dédiés (ex: `👤 Membres : 1 254` ou `🎮 En Ligne : 452`).
+* **Rendu visuel** : Les statistiques du serveur sont affichées directement dans le nom de salons vocaux dédiés (ex: `Membres : 1 254` ou `En Ligne : 452`).
 * **Fréquence de rafraîchissement** : En raison des limitations imposées par l'API Discord (Rate Limits), Kotbo met à jour les noms de ces salons **toutes les 10 minutes**. Les changements de statistiques ne sont donc pas immédiats mais lissés dans le temps.
 
 ---
@@ -44,8 +44,8 @@ Kotbo doit pouvoir **voir le salon** (`VIEW_CHANNEL`) et **y écrire** (`SEND_ME
 Ce système permet à vos membres de créer et de gérer de manière autonome leur salon vocal.
 
 ### Étape 1 : Création du salon vocal
-1. Le membre rejoint le salon vocal générateur configuré (ex: `🔊 Créer un salon`).
-2. Kotbo le déplace instantanément dans un nouveau salon vocal temporaire qu'il vient de créer (ex: `🔊 Salon de Jean`).
+1. Le membre rejoint le salon vocal générateur configuré (ex: `Créer un salon`).
+2. Kotbo le déplace instantanément dans un nouveau salon vocal temporaire qu'il vient de créer (ex: `Salon de Jean`).
 
 ### Étape 2 : L'embed de contrôle interactif
 En parallèle, Kotbo envoie un message d'administration interactif (Embed) dans le chat textuel associé à ce salon vocal temporaire. Le créateur du salon (propriétaire) peut piloter les accès à l'aide des boutons :
