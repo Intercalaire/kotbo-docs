@@ -11,7 +11,7 @@ import DashboardScreenshot from '../../../../../components/DashboardScreenshot.a
 To see how these messages look on Discord and to test your configuration, read [How the messages render on Discord](/en/discord/communaute/accueil-depart).
 :::
 
-In the sidebar, open **Community → Announcements & Auto-Role** ([Open Announcements ↗](https://dash.kotbo.fr/announcement)), then pick the **Welcome** or **Leave** tab.
+In the sidebar, open **Community → Announcements & Auto-Role** ([Open Announcements ↗](https://dash.kotbo.fr/announcement)), then pick the **Welcome** or **Leave** tab. The page has three more tabs, described further down.
 
 <DashboardScreenshot
   file="dashboard-welcome.webp"
@@ -59,3 +59,34 @@ Choose a wide, legible and uncluttered image. Test how it looks in both light an
 ## Configure the leave message
 
 Open the **Leave** tab at the top of the same page. The form works the same way: enable the message, choose a channel and write the text. The <code>{'{user}'}</code> variable may no longer produce a clickable mention once the member has left; use <code>{'{username}'}</code> if you only want to show the name.
+
+
+---
+
+## The other tabs on the page
+
+The **Announcements & Auto-Role** page is not limited to welcome and leave: it has five tabs.
+
+### Auto-Roles
+
+Three automatic role assignments, independent from each other. Each one can be left on **None (Disabled)**.
+
+* **Join Auto-Role**: assigns a role to any new member joining the server.
+* **Server Tag Auto-Role**: assigns a role to members displaying the server's official tag on their Discord profile. The role is removed as soon as the member drops the tag.
+* **Presence Keyword Auto-Role**: assigns a role based on what the member shows in their Discord presence.
+  * **Keyword to detect**: the text being searched for, for example `.gg/kotbo`.
+  * **Where to look**: **Custom status**, **Current activity**, or **Both**.
+
+### Boosts
+
+The **Custom Boost Announcements** tab lets you publicly thank members who boost the server, with its own message and its own channel. The **Enable boost image** option attaches a generated visual.
+
+### Welcome Thread
+
+Kotbo can open a private thread for each new member and run a welcome script inside it.
+
+* **Message sequence**: the messages sent in order, before the final menu. Every message in the sequence must have content, otherwise saving is refused. With no sequence, the bot goes straight to the final menu.
+* **Menu introduction pages**: each page becomes a button or an option in the final menu. With no page configured, the final menu shows no buttons.
+  * **Click action**: **Display embed**, **Manage role**, or **Link**.
+* **Typing indicator**: displays "is typing" before each message, for a more natural feel.
+* **Auto-archive**: closes the thread after the chosen period.
