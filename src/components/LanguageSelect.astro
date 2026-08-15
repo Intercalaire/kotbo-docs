@@ -32,7 +32,7 @@ const switchLabel = isEnglish ? 'Change language' : 'Changer de langue';
           role="option"
           href={language.href}
           hreflang={language.code}
-          aria-selected={String(language.code === activeCode)}
+          aria-selected={language.code === activeCode ? 'true' : 'false'}
           class:list={['lang-menu__option', { 'lang-menu__option--active': language.code === activeCode }]}
         >
           <span class="lang-menu__flag" aria-hidden="true">{language.flag}</span>
