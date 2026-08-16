@@ -1,0 +1,63 @@
+---
+title: Giveaways
+description: Run prize draws with button entry, pick winners, and control who is allowed to take part.
+---
+
+<p class="doc-lead">The <strong>Giveaways</strong> module posts a giveaway message on Discord with a "Join" button. Kotbo counts entries, picks winners, and lets you reroll if needed.</p>
+
+:::note[Where to find it]
+The **Community → Giveaways** section: [Open giveaways ↗](https://dash.kotbo.fr/giveaways).
+Administrators and members with **Manage messages** have access by default.
+:::
+
+---
+
+## Giveaways tab
+
+### Starting a giveaway
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Click Start a Giveaway</h3><p>The <strong>Start a Giveaway</strong> form opens.</p></div></div>
+  <div class="step-item"><div><h3>Describe the prize</h3><p><strong>Prize / Reward</strong> is required; the <strong>Description</strong> carries conditions or extra details.</p></div></div>
+  <div class="step-item"><div><h3>Set up the draw</h3><p><strong>Number of Winners</strong> and <strong>Giveaway Duration</strong>, in minutes, hours or days. Preset durations are offered.</p></div></div>
+  <div class="step-item"><div><h3>Pick the channel</h3><p>Then click <strong>Send to Discord</strong>.</p></div></div>
+</div>
+
+### Following and steering
+
+Every giveaway in the list shows its status (<span class="dash-badge active">Active</span> or <span class="dash-badge">Ended</span>), its participant count, its number of winners and its end date.
+
+| Button | Effect |
+| --- | --- |
+| **Pick Winner** | Forces the giveaway to end and draws immediately. |
+| **Reroll** | Runs a new draw. |
+| **Delete from dashboard** | Removes the giveaway from the dashboard. |
+
+Drawn winners appear under the giveaway. When staff validation is required, they are listed under **Winner(s) awaiting validation**. Clicking a name opens the member's file.
+
+---
+
+## Configuration tab
+
+### Manager roles
+
+Defines who can start, end, reroll and delete a giveaway. These roles add to administrators and to members with **Manage messages**, and they gain the `/giveaway` command on Discord.
+
+### Participation
+
+* **Required roles**: leave empty to open giveaways to the whole server.
+* **Excluded roles**: these take priority over required roles. An excluded member can never take part.
+
+Remember to click **Save configuration**.
+
+---
+
+## Public page
+
+A public link shares the list of running giveaways with no sign-in and no dashboard access. Visitors see **Active** and **Ended** giveaways, the time remaining, the number of entries and the winners drawn.
+
+Entering, however, always happens from the Discord message using the "Join" button.
+
+:::tip[Bonus rewards]
+A giveaway can also hand out coins, RPG XP or an item from the [Economy & RPG](/en/dashboard/economie/economie/) module. Those show on the public page under **Bonus rewards**.
+:::

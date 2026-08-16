@@ -1,0 +1,76 @@
+---
+title: Déclencheurs (Triggers)
+description: Déclenchez des actions instantanées à partir d'un mot-clé, d'un formulaire ou de l'ouverture d'un ticket.
+---
+
+<p class="doc-lead">Un <strong>déclencheur</strong> associe une condition à une ou plusieurs actions : répondre, attribuer un rôle, supprimer un message, fermer un ticket, exclure temporairement un membre, et bien d'autres.</p>
+
+:::note[Où la trouver]
+Section **Communauté → Déclencheurs** : [Ouvrir les déclencheurs ↗](https://dash.kotbo.fr/triggers).
+Cette page est marquée **WIP** dans le dashboard : son comportement peut encore évoluer.
+:::
+
+---
+
+## Créer un déclencheur
+
+Le bouton **Nouveau déclencheur** ouvre une fenêtre à quatre onglets.
+
+### Onglet Déclencheur
+
+Choisissez d'abord le **type de déclencheur** :
+
+| Type | Ce qui le déclenche |
+| --- | --- |
+| **Message Discord (Mot-clé)** | Un message contenant le mot-clé. Le **type de correspondance** peut être *Contient le texte*, *Correspondance exacte* ou *Expression régulière*. |
+| **Soumission de Formulaire** | Une réponse à un formulaire donné. Vous précisez la **question** (libellé ou identifiant) et la **valeur à faire correspondre**. |
+| **Ouverture de Ticket** | L'ouverture d'un ticket. Vous précisez le **type de ticket** (ou tous), le **champ à vérifier** (*Raison* ou *Description*) et la valeur attendue. |
+
+### Onglet Actions de Base
+
+* **Réponse(s) du Bot** : un ou plusieurs textes. Le bouton **Ajouter une réponse alternative** crée des variantes tirées au hasard, chacune avec son taux d'apparition (le total devrait idéalement faire 100 %).
+* **Destination du message** : *Message Privé*, *Salon actuel* ou *Salon précis*.
+* **Relayer sur le serveur staff** : envoie une copie au salon de logs du serveur staff lié.
+* **Rôle à ajouter** et **Rôle à retirer**.
+* **Supprimer le message**, **Fermer le ticket**, **Rejeter la candidature**.
+* **Activer le déclencheur** : actif dès l'enregistrement.
+
+Les variables utilisables dans les réponses sont `{user}` (mention), `{username}` (pseudo), `{server}` (nom du serveur) et `{channel}` (salon).
+
+:::caution[Un formulaire n'a pas de salon d'origine]
+Pour un déclencheur de type formulaire, le message part forcément en message privé.
+:::
+
+### Onglet Réactions & Avancé
+
+* **Réactions** : le bot réagit automatiquement au message avec les émojis indiqués, séparés par des virgules ou des espaces. Les émojis personnalisés du serveur sont proposés.
+* **Créer un Fil de discussion** : crée un fil public rattaché au message, avec un modèle de nom acceptant `{user}` et `{content}`.
+* **Envoyer un message privé** : un texte distinct de la réponse publique.
+* **Exclusion Temporaire (Timeout)** : durée en secondes.
+* **Attribuer des points d'XP**.
+* **Créer un salon / catégorie** : nom, type (*Texte*, *Vocal*, *Catégorie*) et catégorie parente.
+* **Supprimer un salon / catégorie**.
+* **Créer un rôle** : nom et couleur.
+* **Supprimer un rôle**.
+
+### Onglet Filtres
+
+Limite le déclenchement à certains contextes : **Rôles autorisés**, **Rôles interdits**, **Salons autorisés** et **Salons interdits**. Un champ vide signifie « tous ».
+
+:::caution[Au moins une action est requise]
+Kotbo refuse d'enregistrer un déclencheur qui ne fait rien : il faut au minimum une réponse, un rôle, une suppression, une fermeture de ticket, un rejet, une réaction ou une action avancée.
+:::
+
+---
+
+## Gérer la liste
+
+Chaque déclencheur affiche son type, sa condition et des badges résumant ses actions : **Message**, **Relayé au staff**, **Ajouter *rôle***, **Retirer *rôle***, **Supprimer le message**, **Fermer le ticket**, **Rejeter la candidature**, ainsi que le nombre de rôles et salons filtrés.
+
+### Actions groupées
+
+Cochez plusieurs déclencheurs (ou utilisez **Tout sélectionner**) pour les **Activer**, les **Désactiver** ou les **Supprimer** en une fois.
+
+:::danger[Suppression groupée]
+Les déclencheurs sélectionnés sont supprimés définitivement, après confirmation.
+:::

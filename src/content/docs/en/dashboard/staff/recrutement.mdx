@@ -1,0 +1,95 @@
+---
+title: Recruitment
+description: Collect applications from Google Forms, run the interviews, and onboard new staff members.
+---
+
+<p class="doc-lead">The <strong>Recruitment</strong> module follows an application from arrival to onboarding: external form, oral interview, staff profile creation and tutor assignment.</p>
+
+:::note[Where to find it]
+The **Staff → Recruitment** section: [Open recruitment ↗](https://dash.kotbo.fr/recruitment).
+:::
+
+Four counters summarise the queue: **Pending**, **Orals**, **Auto-rejected** and the total.
+
+---
+
+## Applications tab
+
+### An application's path
+
+| Status | Meaning |
+| --- | --- |
+| <span class="dash-badge warn">Pending</span> | Received, not yet handled. |
+| <span class="dash-badge active">Oral Interview</span> | Shortlisted for an interview. |
+| <span class="dash-badge active">Approved</span> | Accepted, staff profile created. |
+| <span class="dash-badge kick">Rejected</span> | Turned down by the staff. |
+| <span class="dash-badge kick">Auto-rejected</span> | Filtered out automatically. |
+
+The **Management notes** field lets you add an internal observation on each application.
+
+### Moving to an oral
+
+The **Move to Oral** button creates a dedicated ticket channel and sends the applicant a direct message. Kotbo pre-fills the **applicant's Discord ID** if they provided a valid one: that ID is what assigns them to the ticket.
+
+### Concluding the interview
+
+**Passed** opens the onboarding form:
+
+* **Assign a tutor**: only tutors of level ≥ 2 are offered.
+* **Onboarding hierarchy** and **Starting hierarchy grade** (both optional).
+* **Interview notes**.
+
+The **Validate & Onboard** button creates the *Staff Helper Test* profile and starts the [tutoring](/en/dashboard/staff/tutorat/) track.
+
+**Failed** rejects the profile and applies a **one-month** wait before any new application.
+
+### Rejecting
+
+The **Reject** button closes the application. The **reason** you enter is sent to the applicant by direct message; it stays optional.
+
+---
+
+## Google Forms tab
+
+Applications arrive from an external form connected to Kotbo by a webhook.
+
+### Creating an integration
+
+1. Click **New Google Form**.
+2. Give it a **name** (for example *Moderation form*) and an optional description.
+3. Click **Create the integration**.
+
+Kotbo generates an **API key**.
+
+:::danger[The key is shown only once]
+For security reasons, the API key will never be displayed again. Copy it immediately and paste it into your Google Apps Script. The **Regenerate the API key** button creates a new one, and the old key stops working at once.
+:::
+
+### Installing the script
+
+The **Script** button shows the Google Apps Script code to install, with its instructions:
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Open your Google Form</h3></div></div>
+  <div class="step-item"><div><h3>Extensions → Apps Script</h3></div></div>
+  <div class="step-item"><div><h3>Delete the existing code and paste the script</h3></div></div>
+  <div class="step-item"><div><h3>Save</h3><p><code>Ctrl + S</code>.</p></div></div>
+  <div class="step-item"><div><h3>Add a trigger</h3><p><code>onSubmit</code> → <em>From form</em> → <em>On form submit</em>.</p></div></div>
+</div>
+
+Kotbo recognises the **Discord ID**, **Discord username**, **Email** and **Age** fields by default.
+
+Each integration shows its <span class="dash-badge active">Active</span> or <span class="dash-badge">Inactive</span> state, its API key and the number of applications received. The form's public link copies in one click.
+
+---
+
+## Module configuration
+
+The **Module settings** button defines:
+
+* the **recruitment log channel**;
+* the **category ID** where interview ticket channels will be created.
+
+:::tip[Interviews on the staff server]
+If you have linked a [staff server](/en/dashboard/cross-serveur/serveurs-staff/), you can create the interview channels there rather than on the main server.
+:::

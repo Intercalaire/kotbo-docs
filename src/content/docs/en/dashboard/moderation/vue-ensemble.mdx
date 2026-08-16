@@ -1,0 +1,58 @@
+---
+title: Security overview
+description: Read your server's audit score, understand the findings and fix gaps in one click from the dashboard.
+---
+
+<p class="doc-lead">The <strong>Security → Overview</strong> page analyses your server's whole configuration and gives it a grade. It is the recommended starting point before tuning anything in detail.</p>
+
+:::note[Where to find it]
+The page lives in the **Security → Overview** section: [Open the overview ↗](https://dash.kotbo.fr/security).
+Access is limited to administrators and authorised moderators.
+:::
+
+---
+
+## Reading the score
+
+At the top of the page, a ring shows a **score out of 100** and a **grade** (letter). Below the ring, four counters break down the checks that were run:
+
+* <span class="dash-badge kick">Critical</span>: gaps to fix first (missing log channel, dangerous permissions left on `@everyone`…).
+* <span class="dash-badge warn">Warnings</span>: settings that could be better but do not put the server at immediate risk.
+* <span class="dash-badge active">Information</span>: convenience or usage notes.
+* <span class="dash-badge active">Compliant</span>: checks that already pass.
+
+Kotbo also tells you how many findings are **fixable in one click**, and how many score points that would earn.
+
+The date and duration of the last analysis are shown under the score. Use the **Refresh** button at the top of the page to run a new audit.
+
+---
+
+## Score by category
+
+The **Score by category** block sorts categories from lowest to highest: the first row is the one to work on first.
+
+Click a category to filter the findings list on it. Click again to return to the full list.
+
+---
+
+## Handling findings
+
+The **Findings** block lists every check with its severity, its category and an explanation.
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Filter</h3><p>Use the severity chips (<strong>Critical</strong>, <strong>Warning</strong>, <strong>Information</strong>, <strong>Compliant</strong>) to keep only what matters. A checkbox also lets you show or hide the checks that already pass.</p></div></div>
+  <div class="step-item"><div><h3>Read the finding</h3><p>Each entry explains what was checked and, where relevant, the channels or roles involved.</p></div></div>
+  <div class="step-item"><div><h3>Fix it</h3><p>When a finding offers a fix button, one click applies the setting without leaving the page.</p></div></div>
+</div>
+
+:::warning[Sensitive fixes]
+Some fixes change existing server permissions. Kotbo asks for confirmation before acting. Read the action label carefully: these changes apply to Discord immediately.
+:::
+
+---
+
+## What next?
+
+* To get protected without tuning every filter one by one, go through [Quick setup](/en/dashboard/moderation/configuration-rapide/).
+* For join waves and emergency locks, see [Anti-raid](/en/dashboard/moderation/anti-raid/).
+* For message filtering, see [Filters (Auto moderation)](/en/dashboard/moderation/automod/).

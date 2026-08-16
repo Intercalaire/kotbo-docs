@@ -1,0 +1,143 @@
+---
+title: Leveling & XP
+description: Configurez le gain d'expérience de vos membres, la courbe de progression, les rôles de récompense et le classement public.
+---
+
+<p class="doc-lead">Le module <strong>Leveling & XP</strong> récompense la participation : chaque message et chaque minute passée en vocal rapportent de l'expérience, qui fait monter les membres en niveau et leur attribue des rôles.</p>
+
+:::note[Où la trouver]
+Section **Système d'XP → Leveling & XP** : [Ouvrir le leveling ↗](https://dash.kotbo.fr/leveling).
+Le module est désactivé par défaut : activez-le avec l'interrupteur **Statut du module** en haut de la page, sinon aucune XP n'est distribuée.
+:::
+
+---
+
+## Commencer par un préréglage
+
+La page s'ouvre sur **Choisissez un préréglage**. Un préréglage règle d'un coup les gains d'XP et la courbe de progression.
+
+| Préréglage | Ce qu'il donne |
+| --- | --- |
+| **Basique** *(recommandé)* | Une progression régulière qui convient à la plupart des serveurs. |
+| **Gains rapides** | Beaucoup d'XP et des niveaux qui s'enchaînent, pour un serveur qui démarre. |
+| **Progression proportionnelle** | Des gains standards, mais chaque niveau coûte nettement plus cher que le précédent. |
+| **Marathon** | Progression très lente et très étalée, pensée pour un serveur qui vit depuis des années. |
+| **Prestige** | Des gains élevés mais un plafond au niveau 100 : tout le monde vise le même sommet. |
+| **Personnalisé** | Vos propres valeurs, réglées une par une. |
+
+:::caution[Rien n'est appliqué tant que vous n'avez pas enregistré]
+Le salon d'annonce et les rôles de récompense restent à régler séparément dans la **Configuration détaillée**.
+:::
+
+---
+
+## Onglet Gains d'XP
+
+### Générosité des gains
+
+Un curseur à cinq crans, de **Très faible** à **Très élevé**, aligne d'un coup les quatre réglages sous-jacents. Les tuiles affichent le résultat : **XP par message**, **Délai**, **XP vocale** et **Par heure de discussion**.
+
+En mode détaillé, vous réglez :
+
+* **XP Minimum / Maximum par message**
+* **Cooldown XP Textuelle (secondes)**
+* **XP Vocale par minute**
+
+### Bonus selon la longueur du message
+
+Plus un message est long, plus il rapporte, jusqu'au multiplicateur maximum.
+
+* **Longueur pour le bonus max (caractères)**
+* **Multiplicateur maximum (×)** : un message très court garde ×1, un message long va jusqu'au maximum choisi.
+
+### Conditions d'XP vocale
+
+Restreint l'XP vocale aux membres réellement actifs :
+
+* **Exiger un micro actif** : aucune XP pour un membre muet.
+* **Exiger le son activé** : aucune XP pour un membre en sourdine.
+* **Ignorer le salon AFK**.
+* **Membres minimum en vocal** : l'XP n'est accordée qu'à partir de N humains connectés. Les bots ne comptent pas.
+
+### Plafond d'XP quotidien
+
+**XP maximum par jour**, texte et vocal confondus. `0` pour ne pas plafonner ; le compteur repart chaque jour à minuit UTC. Les ajustements manuels du staff ne sont pas plafonnés.
+
+### Exclusions et multiplicateurs
+
+* **Salons Exclus** et **Rôles Exclus** : aucune XP n'y est gagnée.
+* **Multiplicateurs d'XP par Rôle** : associez un rôle à un multiplicateur. Le rôle du clan gagnant est géré automatiquement quand le boost de clan est actif.
+
+---
+
+## Onglet Progression
+
+La courbe détermine l'XP nécessaire à chaque niveau, selon la formule `XP = base × niveau^exposant + linéaire × niveau`.
+
+Deux curseurs suffisent en mode simple :
+
+* **Rythme de progression** : de *Très rapide* à *Très lent*.
+* **Écart entre les niveaux** : de *Presque aucun* à *Très fort*.
+
+En mode détaillé : **Coefficient de base**, **Coefficient linéaire**, **Exposant** et **Niveau maximum** (`0` pour ne pas plafonner ; au plafond, l'XP continue de s'accumuler mais le niveau ne bouge plus).
+
+### Lire l'aperçu
+
+* **Aperçu : XP à gagner par niveau** compare la courbe en cours et la courbe enregistrée.
+* Le **temps estimé** est calculé pour trois profils : 10, 30 ou 100 messages par jour.
+* **Répartition des membres sur cette courbe** montre où vos membres actuels se retrouveraient.
+* Kotbo indique combien de membres **changeront de niveau à l'enregistrement**, dont combien à la baisse.
+
+:::warning[Changer la courbe redistribue les niveaux]
+Le niveau est toujours recalculé depuis l'XP totale. Modifier la courbe redistribue immédiatement les niveaux de tous les membres, sans leur faire perdre d'XP.
+:::
+
+### Ranger les rôles
+
+Après un changement de courbe, les rôles de récompense sont corrigés au prochain gain d'XP de chaque membre. Le bouton **Ranger les rôles maintenant** les applique tout de suite, y compris pour les membres inactifs : sur un gros serveur cela prend du temps et remplit le journal d'audit.
+
+---
+
+## Onglet Annonces
+
+* **Salon de Level-Up** : un salon précis, le **salon d'origine du message**, ou un **message privé**. Le bouton **Créer et enregistrer** crée un salon en lecture seule et le sélectionne en une action.
+* **Message de Level-Up** : laissez vide pour le message par défaut, écrit dans la langue du serveur. Les variables utilisables sont rappelées sous le champ (`{user}`, `{level}`…).
+
+### Rôles récompenses
+
+Associez un **Niveau requis** à un **Rôle à attribuer**, puis cliquez sur **Ajouter le rôle récompense**.
+
+* **Cumuler les Rôles de Récompense** : les membres conservent tous les rôles obtenus au lieu de ne garder que le plus élevé.
+* Une récompense placée au-dessus du niveau maximum est marquée **Hors d'atteinte**.
+
+### Boost de saison de clan
+
+Si les [Clans](/dashboard/xp/clans/) sont activés, vous pouvez attribuer automatiquement un **multiplicateur d'XP** aux membres du clan gagnant de la dernière saison.
+
+---
+
+## Onglet Classement
+
+* Statistiques : **Membres classés**, **Niveau max**, **Niveau moyen**, **XP Total**.
+* Le **Classement XP** est consultable et filtrable par pseudo.
+* La **page publique du classement** dispose d'un lien à partager avec vos membres, avec les boutons **Voir la page** et **Copier le lien**.
+
+---
+
+## Onglet Importer
+
+Cet onglet charge une liste de membres avec leurs niveaux et leur XP, par exemple depuis un autre bot.
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Fournissez le JSON</h3><p>Glissez-déposez un fichier <code>.json</code> ou collez le contenu directement. Le format attendu est un tableau d'objets.</p></div></div>
+  <div class="step-item"><div><h3>Analysez sans écrire</h3><p>L'option <strong>Analyser sans écrire</strong> simule l'import : reconnus, membres sans XP à ce jour, changements de niveau, XP revue à la baisse. Rien n'est modifié.</p></div></div>
+  <div class="step-item"><div><h3>Lancez l'importation</h3><p>Les membres non trouvés sont ignorés et listés avec leur raison.</p></div></div>
+</div>
+
+Kotbo fait correspondre chaque entrée à un membre Discord en comparant, sans tenir compte de la casse, son **nom d'utilisateur**, son **nom d'affichage** ou son **tag classique**.
+
+Règles de conversion :
+
+* si seule l'**XP** est fournie, le niveau est déduit automatiquement ;
+* si seul le **niveau** est fourni, l'XP minimum de ce niveau est attribuée ;
+* l'importation **écrase** les niveaux existants des membres correspondants.

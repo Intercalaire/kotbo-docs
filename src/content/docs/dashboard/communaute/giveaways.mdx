@@ -1,0 +1,63 @@
+---
+title: Giveaways
+description: Créez des tirages au sort avec participation par bouton, tirez les gagnants et contrôlez qui peut participer.
+---
+
+<p class="doc-lead">Le module <strong>Giveaways</strong> publie sur Discord un message de concours avec un bouton « Rejoindre ». Kotbo compte les participations, tire les gagnants et vous laisse relancer le tirage si besoin.</p>
+
+:::note[Où la trouver]
+Section **Communauté → Giveaways** : [Ouvrir les giveaways ↗](https://dash.kotbo.fr/giveaways).
+Les administrateurs et les membres ayant **Gérer les messages** y ont accès par défaut.
+:::
+
+---
+
+## Onglet Concours
+
+### Lancer un concours
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Cliquez sur Lancer un Concours</h3><p>Le formulaire <strong>Lancer un Concours</strong> s'ouvre.</p></div></div>
+  <div class="step-item"><div><h3>Décrivez le lot</h3><p><strong>Lot / Prix</strong> est obligatoire ; la <strong>Description</strong> sert aux conditions ou détails supplémentaires.</p></div></div>
+  <div class="step-item"><div><h3>Réglez le tirage</h3><p><strong>Nb. Gagnants</strong> et <strong>Durée du concours</strong>, exprimée en minutes, heures ou jours. Des durées prédéfinies sont proposées.</p></div></div>
+  <div class="step-item"><div><h3>Choisissez le salon</h3><p>Puis cliquez sur <strong>Envoyer sur Discord</strong>.</p></div></div>
+</div>
+
+### Suivre et piloter
+
+Chaque concours de la liste affiche son statut (<span class="dash-badge active">En cours</span> ou <span class="dash-badge">Terminé</span>), son nombre de participants, son nombre de gagnants et sa date de fin.
+
+| Bouton | Effet |
+| --- | --- |
+| **Tirer Gagnant** | Force la fin du concours et lance le tirage immédiatement. |
+| **Reroll** | Effectue un nouveau tirage. |
+| **Supprimer** | Retire le concours du dashboard. |
+
+Les gagnants tirés apparaissent sous le concours. Quand une validation du staff est requise, ils sont listés sous **Gagnant(s) en attente de validation**. Un clic sur un nom ouvre la fiche du membre.
+
+---
+
+## Onglet Configuration
+
+### Rôles gestionnaires
+
+Définit qui peut lancer, clôturer, relancer et supprimer un concours. Ces rôles s'ajoutent aux administrateurs et aux membres ayant **Gérer les messages**, et obtiennent la commande `/giveaway` sur Discord.
+
+### Participation
+
+* **Rôles requis** : laissez vide pour ouvrir les concours à tout le serveur.
+* **Rôles exclus** : prioritaires sur les rôles requis. Un membre exclu ne peut jamais participer.
+
+N'oubliez pas **Enregistrer la configuration**.
+
+---
+
+## Page publique
+
+Un lien public partage la liste des concours en cours sans connexion ni accès au dashboard. Les visiteurs y voient les concours **En cours** et **Terminés**, le temps restant, le nombre de participations et les gagnants tirés.
+
+La participation, elle, se fait toujours depuis le message Discord avec le bouton « Rejoindre ».
+
+:::tip[Récompenses bonus]
+Un concours peut aussi distribuer des pièces, de l'XP RPG ou un objet du module [Économie & RPG](/dashboard/economie/economie/). Ces récompenses apparaissent sur la page publique sous **Récompenses bonus**.
+:::

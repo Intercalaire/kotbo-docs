@@ -1,0 +1,75 @@
+---
+title: Santé des salons
+description: Repérez les salons surchargés, sous-utilisés ou inactifs, et analysez chacun en détail.
+---
+
+<p class="doc-lead">Le module <strong>Santé des salons</strong> analyse l'activité de chaque salon et signale ceux qui sont surchargés, sous-utilisés ou complètement inactifs.</p>
+
+:::note[Où la trouver]
+Section **Configuration → Santé Salons** : [Ouvrir la santé des salons ↗](https://dash.kotbo.fr/channel-health). La page est en **bêta**.
+Le module dépend d'**Analytics** : sans collecte d'activité, aucun diagnostic n'est possible.
+:::
+
+---
+
+## Les quatre états
+
+| État | Ce qu'il signale |
+| --- | --- |
+| <span class="dash-badge active">En bonne santé</span> | Le rythme de messages et le nombre d'auteurs sont cohérents. |
+| <span class="dash-badge warn">Surchargé</span> | Trop de messages par heure : les conversations se marchent dessus. |
+| <span class="dash-badge warn">Sous-utilisé</span> | Le salon existe mais ne sert presque pas. |
+| <span class="dash-badge kick">Inactif</span> | Plus aucune activité. |
+
+Un salon peut être **exclu de l'analyse de santé** quand son faible volume est normal (annonces, archives).
+
+---
+
+## La fiche détaillée d'un salon
+
+Un clic ouvre la vue détaillée, sur **7**, **30** ou **90 jours**.
+
+### Onglet Résumé
+
+* **Messages**, **Part du serveur** et rang parmi les salons.
+* **Auteurs uniques** et moyenne par jour actif.
+* **Jours actifs** et moyenne de messages par jour.
+* **Minutes vocales** pour un salon vocal.
+* La **tendance d'activité** sur la période, avec le pic et sa date.
+* Les **top contributeurs**, cliquables pour ouvrir la fiche du membre.
+
+### Onglet Activité
+
+* **Heures d'activité** : une heatmap des messages par jour et par heure (UTC), avec le créneau de pointe.
+* **Détail journalier** sous forme de tableau.
+
+### Onglet Membres
+
+Les contributeurs du salon, classés par volume.
+
+### Onglet Contenu
+
+* Compteurs de **pièces jointes**, **réponses** et **messages de bots**.
+* **Messages épinglés** et **fils actifs**, avec leur nombre de messages et de membres, et leur état verrouillé ou archivé.
+* **Derniers messages** du salon.
+
+### Onglet Modération
+
+* **Messages supprimés** et **messages modifiés**.
+* **Auteurs les plus supprimés** et **suppressions récentes**.
+
+### Onglet Configuration
+
+* **Paramètres du salon** : catégorie, date de création, mode lent, visibilité, fils actifs, messages épinglés, identifiant, type, position, NSFW, débit, limite d'utilisateurs et sujet.
+* **Permissions par rôle**.
+* **Historique des changements** : les modifications du salon et de ses permissions, avec leur auteur.
+
+---
+
+## Ce qui manque sans journalisation
+
+Certaines vues indiquent *Active la journalisation des messages pour voir ces données*. Elles dépendent de l'index de la page [Recherche de messages](/dashboard/moderation/recherche-messages/).
+
+:::note[Salon supprimé]
+Si un salon n'existe plus sur Discord, Kotbo le signale et n'affiche que son historique statistique.
+:::

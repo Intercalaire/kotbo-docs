@@ -1,0 +1,73 @@
+---
+title: Invitations
+description: Nommez vos liens d'invitation par provenance, mesurez les canaux qui recrutent le mieux et suspendez les créateurs abusifs.
+---
+
+<p class="doc-lead">La page <strong>Invitations</strong> répond à une question simple : quel canal fait vraiment grandir le serveur ? Elle permet de nommer chaque lien par provenance, de mesurer les arrivées attribuées et de suspendre un créateur d'invitations abusif.</p>
+
+:::note[Où la trouver]
+Section **Modération → Invitations** : [Ouvrir les invitations ↗](https://dash.kotbo.fr/invitations).
+Kotbo a besoin de la permission **Gérer le serveur** pour lire et supprimer les invitations.
+:::
+
+Quatre compteurs ouvrent la page : **Provenances**, **Joins attribués**, **Total joins** et **Rétention**. Les boutons **Actualiser** et **Exporter** sont disponibles en haut à droite.
+
+---
+
+## Onglet Invitations
+
+Le tableau liste chaque lien avec ses colonnes **Création**, **Code**, **Provenance**, **Créateur**, **Uses**, **Joins**, **Statut** et **Dernier join**.
+
+* Le champ de recherche accepte un **code** ou un **créateur**.
+* Le filtre de statut propose **Tous les statuts**, **Actives**, **Suspendues**, **Expirées** et **Supprimées**.
+* Un lien inactif depuis longtemps est marqué <span class="dash-badge warn">Dormant</span>, et un lien dont l'auteur est suspendu porte le badge **Créateur suspendu**.
+
+Sur chaque ligne :
+
+| Action | Effet |
+| --- | --- |
+| **Nommer** / **Renommer la source** | Attribue une provenance au lien (60 caractères maximum). |
+| **Copier le lien** | Copie l'URL `discord.gg/…` dans le presse-papiers. |
+| **Détails** | Ouvre la fiche du lien. |
+| **Purger** | Expulse tous les membres arrivés via ce code. |
+| **Supprimer** | Supprime définitivement l'invitation. |
+
+:::danger[La purge expulse réellement]
+Purger une invitation expulse tous les membres venus par ce lien. Kotbo demande confirmation et affiche ensuite le nombre de membres exclus.
+:::
+
+---
+
+## Onglet Provenances
+
+C'est ici que l'attribution des arrivées devient lisible.
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Nommez un premier lien</h3><p>Donnez-lui un nom parlant : <code>TikTok</code>, <code>Instagram</code>, une campagne, un partenaire.</p></div></div>
+  <div class="step-item"><div><h3>Regroupez</h3><p>Réutilisez <strong>exactement le même nom</strong> sur plusieurs liens pour les compter ensemble.</p></div></div>
+  <div class="step-item"><div><h3>Lisez la performance</h3><p>Le bloc <strong>Performance par provenance</strong> classe les sources et affiche, pour chacune, le nombre de liens nommés et les arrivées attribuées.</p></div></div>
+</div>
+
+Kotbo indique le pourcentage de joins couverts et rappelle combien d'invitations restent à attribuer pour compléter vos statistiques. La **meilleure provenance** est mise en avant.
+
+---
+
+## Onglet Top créateurs
+
+Classement des membres par nombre de joins apportés, avec la date de leur dernier join.
+
+---
+
+## Onglet Suspensions
+
+### Suspendre un créateur
+
+Bloque les nouvelles invitations d'un membre, et peut purger en cascade.
+
+1. Saisissez l'**ID utilisateur Discord** (obligatoire) et, si vous le souhaitez, son **tag** et une **raison**.
+2. Cochez **Purge en cascade les membres invités** pour expulser en même temps tous les membres venus par ses liens.
+3. Cliquez sur **Suspendre le créateur**.
+
+### Créateurs suspendus
+
+La liste des suspensions actives, avec leur raison (ou *Aucune raison*). Le bouton **Restaurer** réhabilite le créateur.

@@ -1,0 +1,73 @@
+---
+title: Module catalogue
+description: Turn Kotbo's modules on and off, manage their dependencies, and apply a preset configuration.
+---
+
+<p class="doc-lead">The <strong>Modules</strong> page is Kotbo's master switch: every feature is turned on or off here, and the sidebar follows.</p>
+
+:::note[Where to find it]
+The **Configuration → Modules** section: [Open the catalogue ↗](https://dash.kotbo.fr/modules).
+Reserved for server administrators. For the basic gesture, see also [Enable your modules](/en/premiers-pas/modules/).
+:::
+
+---
+
+## The categories
+
+Modules are sorted into seven families:
+
+| Category | Content |
+| --- | --- |
+| **Core** | Foundations of the bot and the dashboard. Always on. |
+| **Moderation & Security** | Sanctions, logs, automatic filtering, server protection. |
+| **Staff management** | Recruitment, hierarchy, meetings, absences, team follow-up. |
+| **Community & Engagement** | Progression, economy, games, events, interactions. |
+| **Content & Communication** | Rules, welcome, news, auto-responses, publishing. |
+| **Integrations** | External services plugged into the server. |
+| **Cross-server** | Bridges between several Discord servers. |
+
+A search field filters the catalogue. If nothing is left, Kotbo shows *No module matches this search*.
+
+---
+
+## Turning modules on and off
+
+Each card carries a switch, the module's purpose and, where relevant, the **Requires** list.
+
+:::caution[Dependencies follow]
+Turning a module off turns off the ones that depend on it; turning a dependent back on turns its parents back on. For example, switching off **Leveling & XP** also switches off Seasons, Prestige and Clans.
+:::
+
+**Core** modules cannot be disabled: turning off the Modules page or the activity log would make the server unmanageable, or erase the trace of the manoeuvre.
+
+Some modules start **off by default**: those are the ones needing prior configuration (an API key, a channel) that would otherwise fail silently.
+
+---
+
+## Access by role
+
+A module's **Access by role** block defines who can **view**, **moderate** and **configure** it from the dashboard. This is the setting that makes a moderator see a page read-only where an administrator can edit it.
+
+The **Open the detailed configuration** link goes straight to the module's page.
+
+---
+
+## Preset configurations
+
+At the bottom of the page, three presets apply a set of modules and permissions suited to a type of server in one go:
+
+| Preset | What it sets |
+| --- | --- |
+| **General community** | Translation on, dev modules idle, admin commands kept in check. |
+| **Gaming / Esports** | Translation on, a simple moderation stack, focus on player channels. |
+| **Dev / Tech** | Daily Algo and Code Police on, technical commands open. |
+
+:::warning[A preset replaces]
+Applying a preset **replaces** the settings concerned, both modules and command restrictions. Kotbo asks for confirmation first.
+:::
+
+---
+
+## What disabling does not do
+
+Disabling a module is **not** a data deletion. The page leaves the sidebar and the automations stop, but the data stays. To start over, look for the module's own reset option.

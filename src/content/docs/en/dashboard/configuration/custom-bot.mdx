@@ -1,0 +1,48 @@
+---
+title: Custom Bot
+description: Run Kotbo under your own name, your own avatar and your own Discord application.
+---
+
+<p class="doc-lead">The <strong>Custom Bot</strong> runs Kotbo under your own Discord application: your name, your avatar, your identity in your members' eyes.</p>
+
+:::caution[Available on request]
+This page is flagged **WIP** in the dashboard. The feature is available **on request**: contact the Kotbo administrator by direct message on Discord to have it enabled. It is a **paid service**.
+:::
+
+:::note[Where to find it]
+The **Configuration → Custom Bot** section: [Open the page ↗](https://dash.kotbo.fr/custom-bot).
+:::
+
+---
+
+## What it changes
+
+* The bot appears on your server with **your name** and **your avatar**.
+* Slash commands are registered under **your Discord application**.
+* Messages, embeds and panels carry your identity rather than Kotbo's.
+
+Every feature described in this documentation stays the same: only the front changes.
+
+---
+
+## What it does not change
+
+* The **command names** and their options: they stay Kotbo's.
+* The **Discord permissions** each module requires.
+* How the dashboard works, which stays hosted in the same place.
+
+---
+
+## Requesting activation
+
+Until self-service configuration opens, setup goes through your Kotbo instance's administrator:
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Create your Discord application</h3><p>From the Discord developer portal, with the name and avatar you want.</p></div></div>
+  <div class="step-item"><div><h3>Contact the Kotbo administrator</h3><p>By direct message on Discord, stating which server is concerned.</p></div></div>
+  <div class="step-item"><div><h3>Invite the custom bot</h3><p>Once the application is configured, invite it to your server with the same permissions as Kotbo.</p></div></div>
+</div>
+
+:::danger[Never share your token]
+Your Discord application's token gives full control over the bot. Send it only through the channel the administrator indicates, and regenerate it at the slightest doubt.
+:::

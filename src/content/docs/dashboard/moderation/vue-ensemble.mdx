@@ -1,0 +1,58 @@
+---
+title: Vue d'ensemble de la sécurité
+description: Lisez le score d'audit de votre serveur, comprenez les constats et corrigez les failles en un clic depuis le dashboard.
+---
+
+<p class="doc-lead">La page <strong>Sécurité → Vue d'ensemble</strong> analyse la configuration complète de votre serveur et lui attribue une note. C'est le point de départ conseillé avant de régler quoi que ce soit dans le détail.</p>
+
+:::note[Où la trouver]
+La page se trouve dans la section **Sécurité → Vue d'ensemble** : [Ouvrir la vue d'ensemble ↗](https://dash.kotbo.fr/security).
+L'accès est réservé aux administrateurs et aux modérateurs habilités.
+:::
+
+---
+
+## Lire le score
+
+En haut de la page, un anneau affiche un **score sur 100** et une **note** (lettre). Sous l'anneau, quatre compteurs répartissent les contrôles effectués :
+
+* <span class="dash-badge kick">Critiques</span> : failles à corriger en priorité (salon de logs absent, permissions dangereuses laissées à `@everyone`…).
+* <span class="dash-badge warn">Avertissements</span> : réglages perfectibles qui ne mettent pas le serveur en danger immédiat.
+* <span class="dash-badge active">Informations</span> : remarques de confort ou d'usage.
+* <span class="dash-badge active">Conformes</span> : contrôles déjà satisfaits.
+
+Kotbo indique également combien de constats sont **corrigeables en un clic** et combien de points de score cela rapporterait.
+
+La date de la dernière analyse et sa durée sont affichées sous le score. Utilisez le bouton **Actualiser** en haut de page pour relancer un audit.
+
+---
+
+## Score par catégorie
+
+Le bloc **Score par catégorie** classe les catégories de la plus faible à la plus élevée : la première ligne est celle sur laquelle travailler en priorité.
+
+Cliquez sur une catégorie pour filtrer la liste des constats sur celle-ci. Cliquez à nouveau pour revenir à l'affichage complet.
+
+---
+
+## Traiter les constats
+
+Le bloc **Constats** liste chaque contrôle avec sa gravité, sa catégorie et une explication.
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Filtrez</h3><p>Utilisez les puces de gravité (<strong>Critique</strong>, <strong>Avertissement</strong>, <strong>Information</strong>, <strong>Conforme</strong>) pour ne garder que ce qui vous intéresse. Une case permet aussi d'afficher ou non les contrôles déjà conformes.</p></div></div>
+  <div class="step-item"><div><h3>Lisez le constat</h3><p>Chaque entrée explique ce qui a été vérifié et, le cas échéant, les salons ou rôles concernés.</p></div></div>
+  <div class="step-item"><div><h3>Corrigez</h3><p>Quand un constat propose un bouton de correction, un clic applique le réglage sans quitter la page.</p></div></div>
+</div>
+
+:::warning[Corrections sensibles]
+Certaines corrections modifient des permissions existantes du serveur. Kotbo affiche alors une confirmation avant d'agir. Relisez le libellé de l'action : ces changements s'appliquent immédiatement sur Discord.
+:::
+
+---
+
+## Et ensuite ?
+
+* Pour vous protéger sans régler chaque filtre un par un, passez par [Configuration rapide](/dashboard/moderation/configuration-rapide/).
+* Pour les vagues d'arrivées et les verrous d'urgence, voir [Anti-raid](/dashboard/moderation/anti-raid/).
+* Pour le filtrage des messages, voir [Filtres (Modération auto)](/dashboard/moderation/automod/).

@@ -1,0 +1,76 @@
+---
+title: Planning & agenda
+description: Visualisez l'emploi du temps de votre équipe, déclarez vos absences, planifiez des appels et suivez vos tâches.
+---
+
+<p class="doc-lead">Le <strong>Planning</strong> réunit sur un même agenda les réunions, les appels Discord, les absences et les tâches de votre équipe.</p>
+
+:::note[Où la trouver]
+Section **Staff → Planning** : [Ouvrir le planning ↗](https://dash.kotbo.fr/planning).
+Il faut être enregistré comme membre du staff pour y créer quoi que ce soit.
+:::
+
+---
+
+## Lire l'agenda
+
+Quatre calendriers se superposent, activables séparément dans **Mes calendriers** :
+
+| Calendrier | Contenu |
+| --- | --- |
+| **Réunions** | Les points d'équipe du module [Réunions](/dashboard/staff/reunions/). |
+| **Appels Discord** | Les appels vocaux planifiés. |
+| **Absences** | Les indisponibilités déclarées. |
+| **Tâches** | Les tâches assignées. |
+
+Le panneau **Personnes** filtre l'agenda sur un ou plusieurs membres, avec les raccourcis **Aucun** et **Tous**.
+
+La vue **Ma journée** affiche vos échéances du jour et, quand il n'y a rien, la mention *Votre journée est libre !*.
+
+---
+
+## Déclarer une absence
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Créez un élément de type Absence</h3><p>Depuis <strong>Nouvel événement</strong>.</p></div></div>
+  <div class="step-item"><div><h3>Renseignez le motif</h3><p>Le <strong>motif de l'absence</strong> est obligatoire. Le type se choisit parmi <em>Vacances / Congés</em>, <em>Maladie / Médical</em>, <em>Examens / Études</em> ou <em>Autre motif</em>.</p></div></div>
+  <div class="step-item"><div><h3>Choisissez le supérieur à notifier</h3><p>Ce champ est obligatoire : c'est lui qui recevra la demande.</p></div></div>
+</div>
+
+Une absence est <span class="dash-badge warn">En attente</span> jusqu'à sa validation, puis <span class="dash-badge active">Approuvé</span>.
+
+### Notifications d'absence
+
+La configuration des alertes permet d'activer un **relai Discord** : un message est envoyé dans un **salon des alertes** choisi, avec un **rôle à mentionner**, et éventuellement via une **URL de webhook Discord**.
+
+---
+
+## Planifier un appel
+
+Un appel crée un salon vocal ou une conférence à une date donnée.
+
+* **Salon temporaire** ou **Salon existant**.
+* Type **Vocal** ou **Conférence**.
+* **Supprimer auto. quand vide** : nettoie le salon temporaire après l'appel.
+* **Invités - Staff** et **Invités - Membres du serveur** : la recherche porte sur les membres du serveur.
+
+### Qui peut créer des appels
+
+Le bouton **Permissions appels** ouvre le réglage :
+
+* **Tout le monde** : tous les membres ayant accès au dashboard staff.
+* **Rôles / membres précis** : une liste de **rôles autorisés** et de **membres autorisés**.
+
+---
+
+## Tâches et rappels
+
+Une **tâche** porte un titre, une description, une **priorité** (*basse*, *moyenne*, *haute*) et un assignataire. Les tâches marquées **Important** remontent en tête.
+
+Sur n'importe quel élément de l'agenda, le bloc **Rappels** programme une notification :
+
+* une **date et heure** ;
+* un **canal de réception** : *Message Privé* ou *Ce salon Discord* ;
+* une **note** libre, par exemple *Réunion dans 5 min*.
+
+Chaque rappel affiche ensuite s'il est *(Planifié)* ou *(Envoyé)*, et peut être supprimé.

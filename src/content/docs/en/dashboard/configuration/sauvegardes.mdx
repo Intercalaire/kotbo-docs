@@ -1,0 +1,55 @@
+---
+title: Server backups
+description: Back up roles, channels, permissions and emoji, export them as JSON, and restore them when needed.
+---
+
+<p class="doc-lead"><strong>Backups</strong> freeze your Discord server's structure: roles, channels, permissions, emoji and stickers. This is your safety net before a reorganisation or after an incident.</p>
+
+:::note[Where to find it]
+The **Configuration → Backups** section: [Open backups ↗](https://dash.kotbo.fr/backups).
+Kotbo needs elevated permissions to read and recreate roles, channels and permissions.
+:::
+
+---
+
+## Creating a backup
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Click New backup</h3><p>The form opens.</p></div></div>
+  <div class="step-item"><div><h3>Name it</h3><p>Leave the field empty for the default dated name. An optional <strong>description</strong> helps later.</p></div></div>
+  <div class="step-item"><div><h3>Choose what to include</h3><p><strong>Roles</strong>, <strong>Channels</strong>, <strong>Members</strong>, <strong>Emojis</strong>, <strong>Stickers</strong> and <strong>Messages</strong>.</p></div></div>
+  <div class="step-item"><div><h3>Run the creation</h3><p>Kotbo shows its progress: initialisation, connecting to Discord, extracting roles and channels, processing permissions and emoji, writing to the database.</p></div></div>
+</div>
+
+:::caution[Messages are excluded by default]
+The **Messages** option is off by default: it makes the backup considerably heavier. Only turn it on if you know why.
+:::
+
+Each backup in the list shows its author, its date, and a count of what it holds: roles, channels, members, emoji and stickers with their size.
+
+---
+
+## Exporting and importing
+
+* **Export** downloads the backup as JSON. That is the only way to keep it outside Kotbo.
+* **Import a file** loads an existing JSON back in, optionally under a new name.
+
+:::tip[Get the backup off the server]
+A backup that only lives in the dashboard does not protect you from losing the server itself. Export the JSON regularly and store it elsewhere.
+:::
+
+---
+
+## Restoring
+
+The **Restore** button applies a backup to the current server.
+
+:::danger[Restoring overwrites]
+This action **overwrites the current configuration** with the backup's data: the bot applies the saved roles, channels and permissions. Kotbo asks for confirmation before starting.
+:::
+
+---
+
+## Deleting
+
+Deleting a backup is irreversible. Kotbo asks for confirmation and recalls its name.

@@ -1,0 +1,98 @@
+---
+title: Événements & quiz
+description: Organisez des quiz, des CTF et des événements sur inscription, puis pilotez-les en direct depuis le dashboard.
+---
+
+<p class="doc-lead">Le module <strong>Événements</strong> crée trois types d'animations : des <strong>quiz</strong>, des <strong>CTF</strong> (défis de sécurité) et des <strong>événements personnalisés</strong> avec inscription.</p>
+
+:::note[Où la trouver]
+Section **Modération → Événements** : [Ouvrir les événements ↗](https://dash.kotbo.fr/events).
+Kotbo a besoin de la permission **Gérer les événements** pour créer un événement planifié Discord.
+:::
+
+Trois indicateurs ouvrent la page : **Total Événements**, **En cours** et **Participations / Inscriptions**.
+
+---
+
+## Choisir un type
+
+| Type | Étiquette | Ce que c'est |
+| --- | --- | --- |
+| **Quiz** | Questions & Réponses | Questions à choix multiples ou réponses libres, pour tester les connaissances de votre communauté. |
+| **CTF** | Hacking & Sécurité | Défis de sécurité informatique avec flags cachés, classement en temps réel et rôles en récompense. |
+| **Personnalisé** | Inscription & Annonce | Un événement Discord, une annonce soignée et une inscription par formulaire ou par bouton. |
+
+Un événement passe par les statuts **Brouillon**, **Publié**, **En cours**, **Terminé** et **Annulé**.
+
+---
+
+## Configurer un événement
+
+La **Configuration Générale** est commune aux trois types :
+
+* **Titre de l'événement** et **Description**.
+* **Salon d'Annonce** (ou *Aucun* pour ne rien annoncer).
+* **Formulaire d'Inscription** : un formulaire du module [Formulaires](/dashboard/communaute/formulaires/), ou *Aucun* pour une inscription directe par bouton.
+* **Date de début** et **Date de fin** (optionnelle), en heure locale.
+* **Lieu** : Discord, présentiel, etc.
+* **Créer l'événement sur Discord** : l'ajoute aux événements planifiés du serveur.
+* **Envoyer un embed d'annonce** : publie un message avec bouton d'inscription.
+
+### Déclencheur automatique
+
+Un événement peut se lancer tout seul :
+
+* **Manuel** : aucun déclencheur.
+* **Nombre de membres atteint** : indiquez le **nombre de membres cible**.
+* **Planifié** : indiquez la **date et l'heure de lancement**.
+
+Le **Statut du Déclencheur** indique ensuite s'il est *En attente*, *Déclenché* ou *Échoué*.
+
+---
+
+## Éditeur de Quiz
+
+Le bouton **Ajouter une question** crée une entrée avec son **énoncé** et ses **options de réponse**. Cochez le cercle à gauche de la bonne réponse.
+
+Le bouton **Importer CSV** charge un lot de questions. Le fichier doit contenir les colonnes `Question`, `Option X` et `Bonne Réponse`.
+
+---
+
+## Éditeur de CTF
+
+Le bouton **Ajouter un défi** crée une entrée avec :
+
+* **Titre du défi** et **Description / Énoncé** ;
+* **Flag attendu** et **Points** ;
+* **Points d'XP Récompense** et **Rôle en récompense** (optionnels) ;
+* **URL de l'image** (optionnelle).
+
+---
+
+## Piloter un événement en direct
+
+Le bouton **Piloter** ouvre la salle de contrôle.
+
+### Pour un quiz
+
+* **Question Suivante** et **Précédente** font avancer ou reculer le quiz.
+* La progression est affichée sous la forme *Question X / Y*.
+* L'onglet **Graphique** montre les réponses arriver en direct.
+* L'onglet **Participants** classe les joueurs par **Score** et affiche leur **dernière réponse**.
+* **Terminer Quiz** clôt l'événement.
+
+### Pour un CTF
+
+L'onglet **Défis** compte les résolutions par défi et liste les **dernières résolutions**. L'onglet **Participants** classe les joueurs par score et par dernière résolution.
+
+### Pour un événement personnalisé
+
+L'onglet **Inscriptions** liste les inscrits avec leur **date d'inscription** et les réponses au formulaire lié. Le bouton **Retirer** annule une inscription.
+
+---
+
+## Supprimer
+
+:::danger[Suppression irréversible]
+Supprimer un événement efface toutes les questions, réponses et participants associés.
+:::

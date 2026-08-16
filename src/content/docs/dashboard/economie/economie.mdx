@@ -1,0 +1,89 @@
+---
+title: Économie & RPG
+description: Gérez la monnaie locale, les aventures textuelles, la boutique d'objets, le marché noir et les profils des joueurs.
+---
+
+<p class="doc-lead">Le module <strong>Économie & RPG</strong> ajoute une monnaie locale, une boutique d'objets, des aventures textuelles aléatoires et des guildes de joueurs.</p>
+
+:::note[Où la trouver]
+Section **Économie & RPG → Économie & RPG** : [Ouvrir l'économie ↗](https://dash.kotbo.fr/economy).
+Le module est désactivé par défaut : activez-le avec l'interrupteur **Statut du module** en haut de la page.
+:::
+
+---
+
+## Choisir un rythme
+
+Un rythme règle d'un coup les gains du daily, leur délai et l'énergie.
+
+| Rythme | Description |
+| --- | --- |
+| **Posée** | Des gains modestes et un daily par jour : la monnaie garde de la valeur sur la durée. |
+| **Standard** *(recommandé)* | Un daily un peu plus fréquent que la journée, des aventures régulières. |
+| **Généreuse** | Beaucoup de pièces et des aventures qui s'enchaînent, pour un serveur qui démarre. |
+| **Personnalisé** | Vos propres valeurs, réglées une par une. |
+
+Les tuiles affichent le **gain du daily**, son **délai**, le total **par jour** et l'**énergie**. Un rythme ne modifie jamais le nom de la monnaie, son emoji, ni les modules RPG, boutique et guildes.
+
+---
+
+## Onglet Configuration
+
+### Activation des modules
+
+* **Activer les Aventures RPG (RNG)** : déverrouille la commande `/rpg-travel` et les événements aléatoires.
+* **Activer la Boutique d'Objets** : permet d'acheter du matériel, d'équiper des armes et d'utiliser des potions.
+* **Activer le Système de Guildes RPG** : permet de fonder des alliances, de coopérer et d'avoir un coffre de guilde.
+
+### Paramètres
+
+* **Nom de la monnaie**, **Emoji de la monnaie** et **Image de la monnaie** (PNG, JPG ou SVG ; l'image s'affiche en priorité sur le dashboard).
+* **Gain Daily Minimum** et **Maximum**, **Cooldown du Daily (heures)**.
+* **Cooldown Aventure (minutes)**.
+* **Énergie Maximale** et **Récupération Énergie / heure**.
+
+### Limites anti-abus
+
+Plafonds appliqués aux jeux d'argent et aux transferts entre membres :
+
+* **Mise maximale par partie** : s'applique à `/dice`, `/roulette` et `/rps`.
+* **Parties par jour et par membre**.
+* **Montant maximal par transfert** : s'applique à `/rpg-pay`.
+* **Délai entre deux transferts (minutes)**.
+
+### Réinitialisation
+
+Cinq boutons, tous irréversibles et confirmés par une fenêtre dédiée : **Joueurs** (comptes, inventaires, soldes), **Boutique** (objets créés), **Guildes**, **Configuration** (multiplicateurs et cooldowns) et **Reset Global**.
+
+---
+
+## Onglet Objets Boutique
+
+Le bouton **Créer un objet** ouvre un formulaire :
+
+* **Nom de l'objet**, **Emoji**, **Description**, **Type d'objet** et **Prix d'achat**.
+* **Statistiques & Effets** : **Bonus d'Attaque (ATK)**, **Bonus de Défense (DEF)**, **Soin Points de Vie (HP)** et **Soin Énergie**. Tous les types n'ont pas besoin d'attributs.
+
+Les objets fournis globalement par Kotbo apparaissent en **lecture seule** et ne peuvent pas être modifiés depuis votre serveur.
+
+---
+
+## Onglet Joueurs & Classement
+
+Le tableau classe les joueurs avec les colonnes **Rang**, **Joueur**, **Solde**, **Stats & Équipement**, **PV & Énergie** et **Localisation & Guilde**. Un champ de recherche accepte un pseudo ou un identifiant.
+
+Le bouton **Modifier** ouvre le profil du joueur, où vous pouvez ajuster son **solde**, son **niveau RPG**, son **expérience**, ses **points de vie**, son **énergie**, sa **force (ATK)**, sa **défense (DEF)** et sa **vitesse (SPD)**.
+
+---
+
+## Onglet Marché noir
+
+Une échoppe clandestine qui ouvre à date et heure imprévisibles. Chaque membre y voit sa **propre sélection** d'objets de la boutique, à prix cassé et en quantité limitée.
+
+:::caution[La boutique RPG est nécessaire]
+Les offres sont tirées parmi les objets achetables. Sans boutique active, le marché noir n'a rien à proposer.
+:::
+
+* **Rythme d'ouverture** : **Périodicité (jours)**, qui fixe l'écart moyen entre deux ouvertures, l'instant exact restant tiré au hasard, et **Durée d'ouverture (minutes)**.
+* **Offres tirées** : **Offres par membre**, **Achats max par offre**, **Remise minimale (%)** et **Remise maximale (%)**.
+* **Annonce** : *Aucune, découverte via `/rpg`*, *Message dans un salon*, ou *Message + mention d'un rôle*.

@@ -1,0 +1,51 @@
+---
+title: Social networks
+description: Follow YouTube channels and Twitch streamers and post a Discord alert automatically on every new upload or stream.
+---
+
+<p class="doc-lead">The <strong>Social networks</strong> module watches YouTube channels and Twitch streamers, and posts an alert in a Discord channel on every new video, new Short or live stream.</p>
+
+:::note[Where to find it]
+The **Community → Social networks** section: [Open social networks ↗](https://dash.kotbo.fr/social-networks). The module is in **beta**.
+YouTube and Twitch alerts are produced by background tasks: the **YouTube** and **Twitch** modules must be enabled in the module catalogue, otherwise nothing is posted.
+:::
+
+A **Modules status** banner at the top of the page recalls which modules are active and whether the service is online.
+
+---
+
+## Following a YouTube channel
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Enter the channel</h3><p>The <strong>URL, Handle or Channel Name</strong> field accepts all three forms, for example <code>https://youtube.com/@cyprien</code> or just the name.</p></div></div>
+  <div class="step-item"><div><h3>Pick the alerts channel</h3><p>Leave the default value to use the public channel configured elsewhere.</p></div></div>
+  <div class="step-item"><div><h3>Add a mention (optional)</h3><p>The <strong>Mention</strong> field accepts <code>@everyone</code> or a role.</p></div></div>
+  <div class="step-item"><div><h3>Customise the messages</h3><p>Three separate messages can be configured: <strong>Live</strong>, <strong>Video</strong> and <strong>Short</strong>. The <code>[title]</code> and <code>[channel]</code> variables are replaced when posting.</p></div></div>
+</div>
+
+Click **Add Channel**. It appears under **Followed Channels**, where you can change its configuration or stop following it.
+
+---
+
+## Following a Twitch streamer
+
+The **Follow a Twitch Streamer** form works the same way:
+
+* **Twitch Username or Link**: for example `xqc` or `https://twitch.tv/xqc`.
+* **Alerts Channel** and **Mention**.
+* **Live Message** with the same variables.
+
+Click **Follow Streamer**. The **Followed Streamers** list shows each one's state: <span class="dash-badge kick">Live</span> or <span class="dash-badge">Offline</span>.
+
+---
+
+## Editing or removing a follow
+
+On each list entry:
+
+* the save icon applies the configuration changes;
+* the **Stop following** action removes the channel or streamer, after confirmation.
+
+:::tip[Default message]
+Leaving a message field empty uses Kotbo's default message. That is enough in most cases: only customise the alerts you genuinely want to stand out.
+:::

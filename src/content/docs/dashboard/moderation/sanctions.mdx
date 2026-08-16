@@ -1,0 +1,86 @@
+---
+title: Sanctions & rapports
+description: Consultez l'historique des sanctions, rédigez les rapports obligatoires, importez un historique existant et configurez les échelles progressives.
+---
+
+<p class="doc-lead">La page <strong>Sécurité → Sanctions</strong> centralise chaque avertissement, exclusion, expulsion et bannissement prononcé sur votre serveur, avec son auteur, sa cible et son rapport détaillé.</p>
+
+:::note[Où la trouver]
+Section **Sécurité → Sanctions** : [Ouvrir les sanctions ↗](https://dash.kotbo.fr/security/sanctions).
+La consultation demande un rôle de modération ; la suppression d'une infraction est réservée aux administrateurs.
+:::
+
+---
+
+## Onglet Historique
+
+### Parcourir la liste
+
+Le tableau **Liste des sanctions** affiche les colonnes **Date**, **Cible**, **Durée** et **Statut**, avec le nombre d'entrées affichées sur le total.
+
+* Le champ de recherche accepte un type, une cible, un membre du staff ou un motif.
+* Le bouton **Réinitialiser filtres et tri** remet le tableau à son état par défaut.
+* Un clic sur une cible ouvre son dossier de modération, d'où vous pouvez appliquer une nouvelle action.
+
+### Rapports de sanction
+
+Selon la sanction et vos droits, le bouton de la colonne d'action change :
+
+* **Créer le rapport** : ouvre le formulaire à compléter pour la sanction sélectionnée.
+* **Ajouter la preuve** : le rapport est pré-rempli mais attend un lien de preuve (capture d'écran, message…).
+* **Voir le rapport** : le rapport existe déjà et peut être consulté.
+* **Rapport réservé** : seule la personne qui a appliqué la sanction peut créer ce rapport.
+
+Le formulaire **Dossier de sanction** demande :
+
+1. la **date et heure de l'incident** ;
+2. la **durée appliquée** ;
+3. les **règles enfreintes**, choisies parmi les articles du module Règlement ;
+4. la **raison détaillée** des faits reprochés ;
+5. des **notes complémentaires** (contexte, antécédents) ;
+6. au moins un **lien de preuve** valide en `http` ou `https`.
+
+:::caution[Le règlement doit exister]
+Si aucun article n'est configuré, Kotbo refuse la création du rapport et vous renvoie vers le module **Règlement** pour y ajouter des règles.
+:::
+
+### Importer un historique existant
+
+Le bouton **Importer des sanctions** récupère un historique venu d'un autre bot (Sapphire, MEE6, Dyno, RaidProtect…) en trois étapes :
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Choisir un fichier</h3><p>Formats acceptés : <code>.json</code>, <code>.csv</code>, <code>.xlsx</code>, <code>.xls</code>. Le bot d'origine peut être précisé, mais reste optionnel.</p></div></div>
+  <div class="step-item"><div><h3>Faire correspondre les colonnes</h3><p>Kotbo devine la correspondance (type, cible, modérateur, raison, date, durée). Vérifiez et corrigez avant de continuer.</p></div></div>
+  <div class="step-item"><div><h3>Aperçu et import</h3><p>Le tableau indique les lignes valides et celles en erreur, qui seront ignorées. Lancez l'import : le résumé final compte les sanctions importées, les doublons ignorés et les erreurs.</p></div></div>
+</div>
+
+### Supprimer une infraction
+
+Réservée aux administrateurs, la suppression est irréversible et demande de taper le mot **SUPPRIMER** pour être validée.
+
+---
+
+## Onglet Configuration
+
+* **Rôle Modérateur** : rôle requis pour utiliser les commandes de modération.
+* **Propagation des sanctions** : applique automatiquement les sanctions sur les serveurs liés.
+* **Rapports de sanction** : exige la création d'un rapport détaillé pour chaque sanction.
+* **DM du lien d'appel lors d'un ban définitif** : envoie au membre banni le lien du formulaire de contestation. Ce réglage est le même que celui de la page [Appels de bannissement](/dashboard/moderation/appels-ban/).
+
+### Échelles de sanctions progressives
+
+Une échelle alourdit automatiquement la sanction à chaque récidive d'une même infraction.
+
+1. Dans **Mes Échelles**, créez une échelle en la nommant d'après l'infraction (`Spam`, `Pub`, `Insultes`…). Cliquez sur son nom pour la renommer.
+2. Ajoutez des **paliers** (tiers). Pour chaque palier, choisissez l'action : **Warn**, **Ban temporaire**, **Kick** ou **Ban permanent**, ainsi qu'une durée et une **raison personnalisée** si la raison par défaut ne convient pas.
+3. Utilisez **Insérer un nouveau palier** pour intercaler une étape, et l'icône de suppression pour en retirer une.
+4. L'échelle peut être **exportée** pour être partagée ou archivée.
+
+Lors d'une récidive, Kotbo applique le palier suivant et inscrit dans le motif le nom de l'échelle et le niveau atteint.
+
+---
+
+## Les autres onglets de la section Sanctions
+
+* **Appels de ban** : traitement des contestations, documenté sur la page [Appels de bannissement](/dashboard/moderation/appels-ban/).
+* **Approbation des permissions** : file d'attente de l'Admin Lock, visible uniquement quand ce verrou est activé dans [Filtres (Modération auto)](/dashboard/moderation/automod/).

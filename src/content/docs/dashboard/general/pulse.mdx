@@ -1,0 +1,72 @@
+---
+title: Pulse & IA
+description: Suivez le score de santé quotidien de votre serveur, ses prévisions de croissance et ses anomalies d'activité.
+---
+
+<p class="doc-lead"><strong>Pulse</strong> attribue chaque jour un score de santé à votre serveur, projette sa croissance et signale les anomalies d'activité.</p>
+
+:::note[Où la trouver]
+Section **Général → Pulse & IA** : [Ouvrir Pulse ↗](https://dash.kotbo.fr/pulse). La page est en **bêta**.
+Elle dépend du module **Analytics** : sans collecte d'activité, il n'y a rien à analyser.
+:::
+
+Le Pulse est calculé **chaque nuit** sur la journée écoulée. Le bouton **Recalculer** reconstruit l'historique disponible.
+
+---
+
+## Onglet Aperçu
+
+Le score du jour est décomposé en cinq sous-scores :
+
+* **Activité**
+* **Modération**
+* **Croissance**
+* **Engagement**
+* **Santé**
+
+Chaque score est qualifié de **Excellent**, **Bon**, **Moyen**, **Faible** ou **Critique**.
+
+Les **métriques de la journée** détaillent messages, vocal, membres actifs, arrivées / départs, sanctions et tickets résolus.
+
+:::caution[Le score du jour est provisoire]
+Tant que la journée n'est pas terminée, Kotbo affiche un score partiel et le signale explicitement.
+:::
+
+L'**Évolution sur 30 jours** replace la journée dans sa tendance.
+
+---
+
+## Alertes & recommandations
+
+Pulse commente le score plutôt que de le laisser brut. Quelques exemples de ce qu'il signale :
+
+* *Activité très faible, le serveur est en sommeil.*
+* *Taux de sanctions élevé, vérifiez les conflits en cours.*
+* *Le serveur perd des membres, analysez les causes.*
+* *N départs pour M arrivées, la rétention est faible.*
+* *Faible engagement, peu de membres participent activement.*
+* *N tickets ouverts en attente.*
+* *N salons en mauvaise santé détectés.*
+* *Excellente dynamique, le serveur est en pleine forme !*
+
+Quand l'historique est trop court, Pulse le dit : *Pas encore assez de données pour un diagnostic fiable.*
+
+---
+
+## Onglet Prédictions
+
+### Prévision de croissance
+
+Projection du nombre de membres à **7 jours** et à **30 jours**, avec une moyenne de membres gagnés par jour et un indice de **confiance**. Une confiance faible signale un historique court ou irrégulier.
+
+Le graphique distingue l'**observé**, le **prédit** et un **intervalle à 80 %**.
+
+Il faut au moins **cinq jours complets** d'historique pour projeter une tendance.
+
+### Saisonnalité
+
+Kotbo identifie le **jour le plus actif**, le **jour le plus calme**, l'**heure de pointe** et l'**heure creuse** (en UTC). En dessous de 14 jours observés, le profil est signalé comme peu fiable.
+
+### Anomalies détectées
+
+Un **pic** ou une **chute** anormale est signalé avec sa date, sa valeur observée et la valeur attendue. C'est le bon endroit pour retrouver le jour où quelque chose s'est passé sans que personne ne l'ait remarqué.

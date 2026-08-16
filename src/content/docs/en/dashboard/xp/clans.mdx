@@ -1,0 +1,101 @@
+---
+title: Clans
+description: Split your community into clans based on Discord roles, follow the competition and manage the seasons.
+---
+
+<p class="doc-lead">The <strong>Clans</strong> module splits your community into teams based on Discord roles. Every member contributes points to their clan, and a season crowns a winner.</p>
+
+:::note[Where to find it]
+The **XP system → Clans** section: [Open clans ↗](https://dash.kotbo.fr/clans). The module is in **beta**.
+It depends on the [Leveling & XP](/en/dashboard/xp/leveling/) module: clan points come from level-ups.
+:::
+
+---
+
+## Clans & Roles tab
+
+### Configuration
+
+* **Enable clans**: turns on the `/clan` commands and the related safeguards.
+* **Single Clan**: forces one clan role per member.
+* **Assign a clan on server arrival**: automatically gives the least populated clan to every new member. Validated alt accounts are aligned with their main account's clan.
+
+### End-of-season rewards
+
+* **Season Announcement Channel**: where the winner announcement is published.
+* **Giveaway Boost**: improves the winning clan's odds in giveaways.
+* **Clan Leader Role**: grants the leader role to the top contributor.
+
+### Creating a clan
+
+The **New clan** button opens a form: **Clan Name**, **Description**, **Associated Discord Role**, **Clan General (HQ)** and **Clan Leader Role**.
+
+The **Configured clans** table then shows the **Clan**, **Discord Role**, **Clan HQ Channel**, **Leader Role**, **Members** and **Total XP** columns.
+
+### Bulk operations
+
+Three actions run progressively in the background and require typing a confirmation word:
+
+| Action | Word to type | Effect |
+| --- | --- | --- |
+| **Distribute** | `DISTRIBUTE` | Randomly assigns a clan to members who have none. |
+| **Clean up duplicates** | `CLEAN` | Keeps a single clan for members holding several. The clan kept is the one they contributed most to this season, and their points follow. |
+| **Remove from all** | `REMOVE` | Removes their clan from every member. |
+
+:::warning[Removal recreates the roles]
+Each clan role is recreated identically (channel permissions included), then the old one is deleted. **The role ID changes**: any external setting pointing at it has to be redone.
+:::
+
+---
+
+## Season Management tab
+
+The **Current Season** block shows the season number, the **time remaining**, and the start and end dates.
+
+* **Manually close the Season** computes the winning clan, grants the rewards, renames the HQ and resets every member's active clan XP to 0. Contribution history is kept.
+* **Reset the Season** moves on to the next one.
+
+### Planning
+
+The **Plan the clan season** block offers quick fills (**1 month**, **Quarter**, **6 months**, **1 year**) and a **Chain after the current one** button that reuses the same duration.
+
+**Automatic renewal** closes the season as soon as the end date passes, then immediately schedules the next one for the same duration. With no planned date, the running season will not close by itself.
+
+---
+
+## Points Management tab
+
+### Gain per level-up
+
+* **Points awarded per level**: the flat amount paid on each level-up.
+* **Points proportional to effort**: pays according to the XP actually crossed rather than a flat amount at every level. The **Reference level** sets the balance point.
+
+### Gain per server boost
+
+**Points granted per boost**: the bonus paid to the clan of a member who boosts the server.
+
+### Daily Algo points
+
+If the [Daily Algo](/en/dashboard/communaute/daily-algo/) module is on, you can **convert Daily Algo points** into clan points at the end of the week, with a **conversion rate** and a **bonus**. Without this setting, the two modules run unconnected.
+
+### Manual adjustments
+
+* **Adjust Clan points**: adds an amount to a clan's total.
+* **Adjust Member points**: adjusts a specific member's contribution, searched by nickname.
+
+---
+
+## Administration tab
+
+:::danger[Irreversible actions]
+Both actions on this tab require typing a confirmation word.
+:::
+
+* **Reset all Clan data** (`RESET ALL`): permanently deletes every configured clan, the associated roles in the database, and the XP history of all seasons. To simply close the running season, use the *Season Management* tab instead.
+* **Cancel the last season** (`CANCEL`): returns to the previous season. The active season's contributions are deleted, and the winner of the season before that, along with its clan leaders, is restored.
+
+---
+
+## Public page
+
+A public link lets your members follow the clan war live: ranking by clan, season XP, latest recorded scores and time remaining. The **View the page** and **Copy the link** buttons are available from the dashboard.

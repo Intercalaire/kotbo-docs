@@ -1,0 +1,136 @@
+---
+title: Protection anti-raid
+description: Détectez les vagues d'arrivées, activez les verrous d'urgence, imposez un captcha à l'entrée et contrôlez les invitations depuis le dashboard.
+---
+
+<p class="doc-lead">La page <strong>Sécurité → Anti-raid</strong> réunit tout ce qui protège l'entrée du serveur : détection des vagues d'arrivées, verrous d'urgence immédiats, captcha des nouveaux membres, filtre anti-arnaque et contrôle des invitations.</p>
+
+:::note[Où la trouver]
+Section **Sécurité → Anti-raid** : [Ouvrir l'anti-raid ↗](https://dash.kotbo.fr/security/anti-raid).
+Kotbo doit disposer des permissions de gestion du serveur, des rôles et des salons pour appliquer les verrous.
+:::
+
+---
+
+## L'état du serveur et les verrous d'urgence
+
+Le bloc **État du serveur** est affiché en haut de tous les onglets. Ses quatre bascules s'appliquent **immédiatement**, sans passer par l'enregistrement.
+
+| Bascule | Effet |
+| --- | --- |
+| **Mode raid** | Applique à toutes les arrivées l'action configurée dans l'onglet *Détection & verrous*. Le libellé indique s'il a été déclenché manuellement ou automatiquement, et dans combien de minutes il sera levé. |
+| **Verrou des arrivées** | Suspend les invitations : plus personne ne peut rejoindre le serveur. |
+| **Verrou des MP** | Suspend les messages privés entre membres du serveur. |
+| **Urgence invitations** | Supprime toutes les invitations existantes, et supprime au fil de l'eau toute nouvelle invitation créée. |
+
+:::danger[Actions immédiates]
+Kotbo demande une confirmation avant d'activer le mode raid, le verrou des arrivées ou l'urgence invitations. Ces actions coupent réellement l'accès au serveur : prévenez votre équipe avant de les utiliser.
+:::
+
+Sous les bascules, trois compteurs rappellent le nombre de **signalements en attente**, d'**invitations à valider** et d'**empreintes d'arnaque** enregistrées.
+
+---
+
+## Onglet Détection & verrous
+
+### Détection de raid
+
+Kotbo surveille le rythme des arrivées sur une fenêtre glissante et bascule le serveur en mode raid au-delà du seuil.
+
+* **Anti-raid** : interrupteur principal de la détection.
+* **Seuil d'arrivées** : nombre d'arrivées qui déclenche le mode raid (de 2 à 200).
+* **Fenêtre (secondes)** : durée sur laquelle les arrivées sont comptées (de 5 à 600).
+* **Action au déclenchement** :
+  * *Verrouiller les arrivées* : personne ne peut plus rejoindre.
+  * *Forcer le captcha pour tous les arrivants* : l'accès reste ouvert, mais filtré.
+  * *Expulser automatiquement les arrivants* : la plus brutale, elle rejette aussi les arrivées légitimes pendant toute la durée du mode raid.
+* **Salon d'alerte** : sans salon d'alerte, le mode raid s'active sans que personne ne soit prévenu.
+* **Levée automatique (minutes)** : durée du mode raid déclenché automatiquement (de 1 à 1440).
+
+### Verrou des arrivées
+
+* **Expulser les arrivées malgré le verrou** : la suspension des invitations par Discord n'est pas absolue ; ce filet expulse les membres qui passent quand même.
+* **Message envoyé en MP** : texte reçu par un membre refusé pendant le verrou.
+
+---
+
+## Onglet Captcha d'entrée
+
+Ce captcha filtre les comptes automatisés à l'arrivée. Il est distinct de la vérification d'identité du module [Multi-comptes](/dashboard/moderation/double-comptes/).
+
+* **Captcha** : les arrivants doivent résoudre un code avant d'accéder au serveur.
+* **Mode** :
+  * *Image* : le code est affiché.
+  * *Vocal* : le code est énoncé dans un salon vocal. Bien plus difficile à automatiser, mais la diffusion est sérielle : au-delà de la file configurée, les arrivants suivants basculent sur l'image.
+* **Salon de vérification**, **Rôle « non vérifié »** (appliqué à l'arrivée, retiré après réussite), **Rôle « vérifié »** (accordé après réussite), **Salon de logs du captcha**.
+* En mode vocal : **Salon vocal**, **Langue d'énonciation** (Français ou Anglais), **Limite de file** (au-delà, bascule sur l'image).
+* **Délai (minutes)**, **Tentatives**, et **Échec** : *Expulser* ou *Bannir*.
+
+---
+
+## Onglet Arnaques & tag
+
+### Filtre anti-arnaque
+
+Bloque les liens de phishing (faux Nitro, faux Steam) et les images d'arnaque connues.
+
+* **Filtre anti-arnaque** : analyse les domaines et les combinaisons de texte typiques des campagnes de phishing.
+* **Filtre d'images** : compare les images postées aux empreintes déjà identifiées sur le serveur, alimentées automatiquement par le honeypot. La comparaison est perceptuelle, donc une capture recompressée ou légèrement recadrée reste reconnue.
+* **Filtre de codes QR** : le phishing par QR de connexion Discord ne contient aucun lien, aucun filtre de domaine ne peut l'attraper. Les images porteuses d'un code QR envoyées par un compte sans historique sont bloquées. Le champ **Messages avant d'être considéré comme installé** définit à partir de combien de messages un membre peut à nouveau partager un QR (wifi, 2FA…).
+* **Action** : *Supprimer*, *Supprimer et avertir*, *Supprimer et exclure*, *Supprimer et bannir*.
+* **Exclusion (minutes)** et **Salon d'alerte**.
+* **Domaines bloqués supplémentaires** et **Domaines exemptés** : un domaine par ligne.
+
+### Rôle de tag
+
+Récompense les membres qui arborent le tag du serveur sur leur profil. Le rôle est attribué automatiquement dès qu'un membre affiche le tag, et retiré dès qu'il l'enlève.
+
+### Signalements communautaires
+
+* **Signalements** : les membres peuvent signaler un message ou un membre vers un salon staff.
+* **Signalements anonymes** : masque l'auteur du signalement dans l'encart staff. Réduit la peur des représailles, au prix de la traçabilité des abus de signalement.
+* **Salon des signalements** et **Délai entre deux signalements (s)**, pour limiter les abus.
+
+---
+
+## Onglet Invitations (Invite Guard)
+
+Contrôle qui ouvre le serveur, et comment.
+
+* **Invite Guard** : surveille et journalise les créations d'invitations.
+* **Exiger des invitations unitaires** : toute invitation à usages multiples ou illimités est supprimée. C'est ce qui rend la source d'un raid identifiable après coup.
+* **Validation par le staff** : chaque invitation est supprimée puis recréée seulement après approbation.
+* **Seuil de création** et **Fenêtre (secondes)** : au-delà de N créations sur la fenêtre, une alerte est envoyée dans le **Salon d'alerte**.
+* **Rôles exemptés** : cliquez sur les rôles qui échappent à ces règles.
+
+---
+
+## Onglet Files d'attente
+
+L'onglet affiche un compteur avec le nombre d'éléments en attente de décision.
+
+### Signalements en attente
+
+Chaque signalement affiche l'auteur (sauf en mode anonyme), la cible, le motif, le salon et le message concerné. Vous tranchez directement depuis la carte.
+
+### Invitations à valider
+
+Visible quand la validation par le staff est active : approuvez ou refusez chaque demande d'invitation avant que le lien ne soit recréé.
+
+### Lignage des invitations
+
+D'où vient un membre, et qui est entré par la même porte. Quand un raideur est démasqué, ses invités le sont rarement seuls.
+
+1. Saisissez l'**identifiant du membre**.
+2. Kotbo affiche la **chaîne de parrainage** et les comptes entrés par la même invitation.
+3. Vous pouvez mettre l'ensemble du lignage en quarantaine en une action.
+
+### Empreintes d'arnaque
+
+Liste des images d'arnaque captées par le honeypot. Les empreintes **globales** sont partagées entre serveurs et ne peuvent pas être supprimées ici ; les empreintes locales peuvent être retirées.
+
+---
+
+## Enregistrer
+
+Les réglages des onglets (hors bascules d'urgence) sont appliqués via la barre **Modifications non enregistrées** en bas de l'écran. Les verrous du bloc *État du serveur*, eux, prennent effet dès le clic.

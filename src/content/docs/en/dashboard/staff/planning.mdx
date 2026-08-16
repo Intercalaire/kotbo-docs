@@ -1,0 +1,76 @@
+---
+title: Planning & agenda
+description: See your team's schedule, declare your absences, schedule calls and follow your tasks.
+---
+
+<p class="doc-lead">The <strong>Planning</strong> gathers meetings, Discord calls, absences and tasks for your team on a single agenda.</p>
+
+:::note[Where to find it]
+The **Staff → Planning** section: [Open the planning ↗](https://dash.kotbo.fr/planning).
+You must be registered as a staff member to create anything here.
+:::
+
+---
+
+## Reading the agenda
+
+Four calendars overlay each other, each toggled separately under **My calendars**:
+
+| Calendar | Content |
+| --- | --- |
+| **Meetings** | Team check-ins from the [Meetings](/en/dashboard/staff/reunions/) module. |
+| **Discord calls** | Scheduled voice calls. |
+| **Absences** | Declared unavailability. |
+| **Tasks** | Assigned tasks. |
+
+The **People** panel filters the agenda on one or more members, with **None** and **All** shortcuts.
+
+The **My day** view shows your deadlines for today and, when there is nothing, the message *Your day is free!*.
+
+---
+
+## Declaring an absence
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Create an Absence item</h3><p>From <strong>New event</strong>.</p></div></div>
+  <div class="step-item"><div><h3>Fill in the reason</h3><p>The <strong>absence reason</strong> is required. The type is picked among <em>Holidays / Leave</em>, <em>Illness / Medical</em>, <em>Exams / Studies</em> or <em>Other reason</em>.</p></div></div>
+  <div class="step-item"><div><h3>Pick the superior to notify</h3><p>This field is required: they are the one who will receive the request.</p></div></div>
+</div>
+
+An absence is <span class="dash-badge warn">Pending</span> until approval, then <span class="dash-badge active">Approved</span>.
+
+### Absence notifications
+
+The alert configuration can enable a **Discord relay**: a message is sent to a chosen **alerts channel**, with a **role to mention**, and optionally through a **Discord webhook URL**.
+
+---
+
+## Scheduling a call
+
+A call creates a voice channel or a stage at a given time.
+
+* **Temporary channel** or **Existing channel**.
+* **Voice** or **Stage** type.
+* **Auto-delete when empty**: cleans up the temporary channel after the call.
+* **Guests - Staff** and **Guests - Server members**: the search covers the server's members.
+
+### Who can create calls
+
+The **Call permissions** button opens the setting:
+
+* **Everyone**: all members with access to the staff dashboard.
+* **Specific roles / members**: a list of **allowed roles** and **allowed members**.
+
+---
+
+## Tasks and reminders
+
+A **task** carries a title, a description, a **priority** (*low*, *medium*, *high*) and an assignee. Tasks marked **Important** move to the top.
+
+On any agenda item, the **Reminders** block schedules a notification:
+
+* a **date and time**;
+* a **delivery channel**: *Direct Message* or *This Discord channel*;
+* a free-text **note**, for example *Meeting in 5 min*.
+
+Each reminder then shows whether it is *(Scheduled)* or *(Sent)*, and can be deleted.

@@ -1,0 +1,57 @@
+---
+title: Message search
+description: Search across every message logged by the bot, filter by channel, author or attachment, and find deleted messages.
+---
+
+<p class="doc-lead">The <strong>Message Search</strong> page runs a global search across all messages logged by Kotbo, including those that have since been deleted.</p>
+
+:::note[Where to find it]
+The **Moderation → Message search** section: [Open the search ↗](https://dash.kotbo.fr/message-search).
+This page exposes the content of your members' messages: keep it restricted to your moderation team.
+:::
+
+---
+
+## Turning logging on
+
+Without logging, the page stays empty: Kotbo has nothing to search.
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Turn on the Logging switch</h3><p>Kotbo starts recording messages, and launches a background <strong>retroactive index</strong> of the server history.</p></div></div>
+  <div class="step-item"><div><h3>Set the retention</h3><p>The <strong>Retention (days)</strong> field limits how long messages are kept. The retroactive index never goes back further than that limit.</p></div></div>
+  <div class="step-item"><div><h3>Let it work</h3><p>While indexing, a banner shows the <strong>current channel</strong>, the number of <strong>channels scanned</strong> and <strong>messages imported</strong>. Results fill in as it progresses.</p></div></div>
+</div>
+
+The **messages recorded** counter shows the size of the database.
+
+:::caution[Recently enabled logging]
+If you have just turned it on, only messages sent from now on are available until indexing catches up. Kotbo says so clearly in a banner.
+:::
+
+---
+
+## Searching
+
+Type your text into the **Search messages** field, then narrow it down with the **Filters** button:
+
+* **Channel**: a specific channel or *All channels*.
+* **Author ID**: the author's Discord ID.
+* **Author type**: *All*, *Humans only* or *Bots only*.
+* **Sort**: *Newest first* or *Oldest first*.
+* **With attachments**: keeps only messages carrying a file.
+* **Include deleted messages**: deleted messages appear with the <span class="dash-badge kick">DELETED</span> badge.
+* **Reset filters** clears the search.
+
+A message edited after it was sent is flagged with *(edited)*.
+
+The **Load more** button at the bottom fetches the next results.
+
+---
+
+## Removing a message from the history
+
+The **Remove from history** button takes a message out of Kotbo's database. It does not touch the message on Discord: this only affects the search index.
+
+:::tip[Privacy]
+Retention is the main privacy lever on this page. Pick a duration your community would consider reasonable, and state it in your rules.
+:::

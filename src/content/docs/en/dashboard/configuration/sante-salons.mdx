@@ -1,0 +1,75 @@
+---
+title: Channel health
+description: Spot overloaded, under-used or dead channels, and analyse each one in detail.
+---
+
+<p class="doc-lead">The <strong>Channel health</strong> module analyses each channel's activity and flags the ones that are overloaded, under-used or completely dead.</p>
+
+:::note[Where to find it]
+The **Configuration → Channel health** section: [Open channel health ↗](https://dash.kotbo.fr/channel-health). The page is in **beta**.
+The module depends on **Analytics**: with no activity collection, no diagnosis is possible.
+:::
+
+---
+
+## The four states
+
+| State | What it signals |
+| --- | --- |
+| <span class="dash-badge active">Healthy</span> | The message rate and author count are consistent. |
+| <span class="dash-badge warn">Overloaded</span> | Too many messages per hour: conversations trip over each other. |
+| <span class="dash-badge warn">Under-used</span> | The channel exists but barely serves. |
+| <span class="dash-badge kick">Dead</span> | No activity at all. |
+
+A channel can be **excluded from the health analysis** when its low volume is normal (announcements, archives).
+
+---
+
+## A channel's detailed record
+
+Clicking a channel opens the detailed view, over **7**, **30** or **90 days**.
+
+### Summary tab
+
+* **Messages**, **Share of the server** and rank among channels.
+* **Unique authors** and average per active day.
+* **Active days** and average messages per day.
+* **Voice minutes** for a voice channel.
+* The **activity trend** over the period, with the peak and its date.
+* The **top contributors**, clickable to open the member's file.
+
+### Activity tab
+
+* **Activity hours**: a heatmap of messages by day and by hour (UTC), with the peak slot.
+* **Daily detail** as a table.
+
+### Members tab
+
+The channel's contributors, ranked by volume.
+
+### Content tab
+
+* Counters for **attachments**, **replies** and **bot messages**.
+* **Pinned messages** and **active threads**, with their message and member counts, and their locked or archived state.
+* The channel's **latest messages**.
+
+### Moderation tab
+
+* **Deleted messages** and **edited messages**.
+* **Most deleted authors** and **recent deletions**.
+
+### Configuration tab
+
+* **Channel settings**: category, creation date, slowmode, visibility, active threads, pinned messages, ID, type, position, NSFW, bitrate, user limit and topic.
+* **Permissions per role**.
+* **Change history**: the channel's and its permissions' changes, with their author.
+
+---
+
+## What is missing without logging
+
+Some views say *Enable message logging to see this data*. They depend on the index of the [Message search](/en/dashboard/moderation/recherche-messages/) page.
+
+:::note[Deleted channel]
+If a channel no longer exists on Discord, Kotbo says so and shows only its statistical history.
+:::

@@ -1,0 +1,50 @@
+---
+title: Configuration rapide de la sécurité
+description: Appliquez un niveau de protection préréglé qui configure d'un coup les filtres AutoMod et les seuils anti-raid.
+---
+
+<p class="doc-lead">La page <strong>Sécurité → Configuration rapide</strong> propose trois niveaux de protection. Choisir un niveau règle en une fois les filtres de modération automatique <em>et</em> les seuils anti-raid, sans parcourir les dizaines d'options des pages détaillées.</p>
+
+:::note[Où la trouver]
+Section **Sécurité → Configuration rapide** : [Ouvrir la configuration rapide ↗](https://dash.kotbo.fr/security/quick-setup).
+Il faut le droit de configurer la modération automatique ou de gérer les paramètres du serveur.
+:::
+
+---
+
+## Les trois niveaux
+
+| Niveau | Pour qui | Ce qu'il fait |
+| --- | --- | --- |
+| **Léger** | Petits serveurs entre proches, salons très bavards | Anti-spam permissif, anti-mentions et anti-`@everyone` actifs. Liens, majuscules, émojis, ghost ping et grossièretés laissés libres. L'anti-raid reste éteint. |
+| **Standard** *(recommandé)* | La majorité des communautés | Tous les filtres de contenu actifs avec des seuils modérés, anti-raid activé à 10 arrivées par minute, filtre anti-arnaque et filtre d'images actifs. |
+| **Strict** | Serveurs ciblés par des raids ou du spam régulier | Seuils resserrés (3 messages, 3 mentions, 5 émojis, 60 % de majuscules), exclusions plus longues, anti-raid déclenché dès 5 arrivées par minute. |
+
+Le niveau actuellement appliqué est mis en évidence dans la grille, et le nombre de filtres actifs est indiqué pour chaque carte.
+
+---
+
+## Appliquer un niveau
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Choisissez une carte</h3><p>Cliquez sur le niveau souhaité. Rien n'est encore appliqué à ce stade.</p></div></div>
+  <div class="step-item"><div><h3>Enregistrez</h3><p>La barre de modifications non enregistrées apparaît en bas de l'écran. Cliquez sur <strong>Enregistrer</strong> pour appliquer le niveau.</p></div></div>
+  <div class="step-item"><div><h3>Affinez si besoin</h3><p>Rendez-vous ensuite dans <strong>Sécurité → Filtres</strong> et <strong>Sécurité → Anti-raid</strong> pour ajuster ce qui doit l'être.</p></div></div>
+</div>
+
+:::caution[Le choix n'est pas appliqué tant qu'il n'est pas enregistré]
+Quitter la page sans enregistrer abandonne le niveau sélectionné.
+:::
+
+---
+
+## Ce qu'un niveau ne touche pas
+
+Un préréglage ne configure que ce qui a un sens sans connaître votre serveur : les interrupteurs, les seuils et les sanctions. Restent à régler manuellement :
+
+* les **salons et rôles** (salon d'alerte, rôles exemptés, salon de logs) ;
+* les **listes de mots** personnalisées ;
+* le **mode sécurisé anti-bot** et la **suspension automatique par rafale**, réservés au propriétaire du serveur ;
+* l'**AutoMod natif de Discord**, toujours activé par Kotbo.
+
+Après avoir appliqué un niveau, repassez par la [vue d'ensemble](/dashboard/moderation/vue-ensemble/) : le score d'audit reflète immédiatement le nouvel état.

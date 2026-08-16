@@ -1,0 +1,62 @@
+---
+title: Règlement
+description: Rédigez, ordonnez et publiez les articles du règlement, et conditionnez l'accès au serveur à leur acceptation.
+---
+
+<p class="doc-lead">Le module <strong>Règlement</strong> tient la liste des articles de votre serveur, les publie sur Discord dans un message tenu à jour automatiquement, et peut conditionner l'accès au serveur à leur acceptation.</p>
+
+:::note[Où la trouver]
+Section **Communauté → Règlement** : [Ouvrir le règlement ↗](https://dash.kotbo.fr/regulation).
+Les articles définis ici alimentent directement le champ **Règles enfreintes** des [rapports de sanction](/dashboard/moderation/sanctions/).
+:::
+
+---
+
+## Rédiger les articles
+
+Le bouton **Nouvel Article** ouvre le formulaire :
+
+* **Titre de la règle** (obligatoire), par exemple *Respect et courtoisie*.
+* **Emoji** (optionnel), classique ou personnalisé.
+* **Description détaillée**, qui accepte le Markdown.
+* **Article actif et visible** : contrôle sa visibilité publique et sa synchronisation.
+
+Un aperçu en temps réel montre le rendu à droite du formulaire.
+
+### Ordonner
+
+Les articles se réorganisent par glisser-déposer, ou avec les boutons **Monter** et **Descendre**. L'ordre du dashboard est celui du message publié.
+
+Chaque article porte un badge <span class="dash-badge active">Visible</span> ou <span class="dash-badge">Masqué</span>, et l'en-tête indique combien d'articles sont actifs sur le total.
+
+### Supprimer
+
+La suppression demande de taper un mot de confirmation.
+
+:::danger[Effet sur les rapports]
+Supprimer un article le retire de **tous les futurs rapports de sanction**. Les rapports déjà rédigés conservent leur référence.
+:::
+
+---
+
+## Publier sur Discord
+
+1. Choisissez le **Salon de publication**. Sans salon, Kotbo refuse de publier.
+2. Cliquez sur **Publier le règlement**.
+3. Après une modification, **Actualiser le message** met à jour le message existant plutôt que d'en créer un nouveau.
+
+La **synchronisation automatique** garde le message Discord aligné sur la liste du dashboard. Chaque publication est annoncée dans le salon d'annonces staff ; aucun membre n'est notifié en message privé.
+
+---
+
+## Vérification par le règlement
+
+Cette option ajoute un bouton d'acceptation sous le message du règlement.
+
+* **Vérification** : active le bouton.
+* **Rôle attribué** : le rôle donné après acceptation. Laissez vide pour que Kotbo crée automatiquement un rôle `Vérifié`.
+* **Verrouiller** : masque les autres salons tant que le membre n'a pas accepté.
+
+:::warning[Attention aux permissions]
+Activer la vérification peut créer des conflits de permissions Discord et donner par mégarde un accès en lecture à `@everyone` sur certains salons privés. Vérifiez que vos salons privés **refusent explicitement** la permission de lire les messages au rôle `@everyone` avant d'activer cette option. Kotbo affiche cet avertissement et demande une confirmation.
+:::

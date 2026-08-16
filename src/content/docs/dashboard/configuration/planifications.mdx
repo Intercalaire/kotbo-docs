@@ -1,0 +1,65 @@
+---
+title: Planifications de tâches
+description: Automatisez la réinitialisation d'un salon, la sauvegarde du serveur ou l'export de données à intervalle régulier.
+---
+
+<p class="doc-lead">Les <strong>Planifications</strong> exécutent automatiquement une action à intervalle régulier, sans que personne n'ait à y penser.</p>
+
+:::note[Où la trouver]
+Section **Configuration → Planifications** : [Ouvrir les planifications ↗](https://dash.kotbo.fr/schedules).
+:::
+
+---
+
+## Créer une planification
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Cliquez sur Nouvelle planification</h3><p>Le formulaire s'ouvre.</p></div></div>
+  <div class="step-item"><div><h3>Nommez la tâche</h3><p>Par exemple <em>Réinitialisation Générale Salon Général</em>. Le nom est obligatoire.</p></div></div>
+  <div class="step-item"><div><h3>Choisissez le type d'action</h3><p>Voir le tableau ci-dessous.</p></div></div>
+  <div class="step-item"><div><h3>Réglez la fréquence</h3><p>Puis enregistrez.</p></div></div>
+</div>
+
+### Les types d'action
+
+| Type | Effet |
+| --- | --- |
+| **Réinitialisation de salon (nuke)** | Clone le salon cible, supprime l'original, puis publie un message signalant la réinitialisation dans le nouveau salon. |
+| **Sauvegarde complète du serveur** | Crée une [sauvegarde](/dashboard/configuration/sauvegardes/) automatiquement. Elle inclut membres, rôles, salons, emojis et stickers, mais **jamais les messages**. |
+| **Exportation des données (Logs & Profils)** | Produit un export des journaux et des profils. |
+
+:::caution[Le salon cible est obligatoire]
+Une réinitialisation de salon exige un **salon de destination**. Kotbo refuse d'enregistrer la tâche sans lui, et les salons de type fil ne sont pas pris en charge.
+:::
+
+:::danger[L'identifiant du salon change]
+La réinitialisation ne vide pas le salon : elle en crée une copie et supprime l'original. Tout réglage extérieur qui désigne le salon par son identifiant (webhook, autre bot, configuration d'un module Kotbo) sera à refaire après chaque passage.
+:::
+
+### Les fréquences
+
+* **Toutes les heures**
+* **Chaque jour à minuit**
+* **Chaque semaine** (dimanche à minuit)
+* **Chaque mois** (le 1ᵉʳ à minuit)
+* **Personnalisée (Expression Cron)**
+
+L'expression cron suit le format Unix standard `minute heure jour mois jour-de-la-semaine`. Par exemple, `0 12 * * *` déclenche la tâche chaque midi.
+
+---
+
+## Gérer les planifications
+
+Chaque carte rappelle la **fréquence**, le **salon cible** et le **dernier lancement** (ou *Jamais*).
+
+| Bouton | Effet |
+| --- | --- |
+| **Lancer** | Exécute la tâche immédiatement, en arrière-plan, sans attendre la prochaine échéance. |
+| **Modifier** | Rouvre le formulaire. |
+| **Supprimer** | Retire définitivement la planification. |
+
+Une planification peut aussi être **activée** ou **désactivée** sans être supprimée : pratique pour suspendre une tâche pendant un événement.
+
+:::danger[Tester avant d'automatiser]
+Utilisez **Lancer** une première fois à la main pour vérifier ce que fait réellement la tâche, en particulier pour une réinitialisation de salon, qui détruit l'historique.
+:::

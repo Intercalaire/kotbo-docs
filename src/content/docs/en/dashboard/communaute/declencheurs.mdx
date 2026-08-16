@@ -1,0 +1,76 @@
+---
+title: Triggers
+description: Fire instant actions from a keyword, a form submission or a ticket being opened.
+---
+
+<p class="doc-lead">A <strong>trigger</strong> pairs a condition with one or more actions: reply, grant a role, delete a message, close a ticket, time a member out, and much more.</p>
+
+:::note[Where to find it]
+The **Community → Triggers** section: [Open triggers ↗](https://dash.kotbo.fr/triggers).
+This page is flagged **WIP** in the dashboard: its behaviour may still change.
+:::
+
+---
+
+## Creating a trigger
+
+The **New trigger** button opens a four-tab dialog.
+
+### Trigger tab
+
+First pick the **trigger type**:
+
+| Type | What fires it |
+| --- | --- |
+| **Discord Message (Keyword)** | A message containing the keyword. The **match type** can be *Contains the text*, *Exact match* or *Regular expression*. |
+| **Form Submission** | An answer to a given form. You specify the **question** (label or ID) and the **value to match**. |
+| **Ticket Opening** | A ticket being opened. You specify the **ticket type** (or all), the **field to check** (*Reason* or *Description*) and the expected value. |
+
+### Basic Actions tab
+
+* **Bot response(s)**: one or more texts. The **Add an alternative response** button creates variants picked at random, each with its own appearance rate (the total should ideally be 100%).
+* **Message destination**: *Direct Message*, *Current channel* or *Specific channel*.
+* **Relay to the staff server**: also sends a copy to the log channel of the linked staff server.
+* **Role to add** and **Role to remove**.
+* **Delete the message**, **Close the ticket**, **Reject the application**.
+* **Enable the trigger**: active as soon as you save.
+
+The variables usable in responses are `{user}` (mention), `{username}` (nickname), `{server}` (server name) and `{channel}` (channel).
+
+:::caution[A form has no source channel]
+For a form trigger, the message necessarily goes out as a direct message.
+:::
+
+### Reactions & Advanced tab
+
+* **Reactions**: the bot automatically reacts to the message with the listed emoji, separated by commas or spaces. The server's custom emoji are offered.
+* **Create a Thread**: creates a public thread attached to the message, with a name template accepting `{user}` and `{content}`.
+* **Send a direct message**: a text separate from the public reply.
+* **Timeout**: duration in seconds.
+* **Grant XP points**.
+* **Create a channel / category**: name, type (*Text*, *Voice*, *Category*) and parent category.
+* **Delete a channel / category**.
+* **Create a role**: name and colour.
+* **Delete a role**.
+
+### Filters tab
+
+Restricts firing to certain contexts: **Allowed roles**, **Banned roles**, **Allowed channels** and **Banned channels**. An empty field means "all".
+
+:::caution[At least one action is required]
+Kotbo refuses to save a trigger that does nothing: it needs at least a response, a role, a deletion, a ticket close, a rejection, a reaction or an advanced action.
+:::
+
+---
+
+## Managing the list
+
+Each trigger shows its type, its condition and badges summarising its actions: **Message**, **Relayed to staff**, **Add *role***, **Remove *role***, **Delete the message**, **Close the ticket**, **Reject the application**, plus the number of filtered roles and channels.
+
+### Bulk actions
+
+Tick several triggers (or use **Select all**) to **Enable**, **Disable** or **Delete** them at once.
+
+:::danger[Bulk deletion]
+The selected triggers are deleted permanently, after confirmation.
+:::

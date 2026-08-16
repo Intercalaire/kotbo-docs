@@ -1,0 +1,85 @@
+---
+title: Analytics
+description: Analysez la croissance, l'engagement et l'activité de votre communauté, et exportez les graphiques.
+---
+
+<p class="doc-lead">La page <strong>Analytics</strong> mesure ce qui se passe réellement sur votre serveur : messages, vocal, arrivées, rétention, modération et invitations, sur la période de votre choix.</p>
+
+:::note[Où la trouver]
+Section **Général → Analytics** : [Ouvrir Analytics ↗](https://dash.kotbo.fr/analytics).
+La collecte se coupe depuis **Paramètres → Statistiques d'activité**. Sans elle, plus rien n'est enregistré.
+:::
+
+---
+
+## Choisir la période
+
+Les périodes proposées sont **24 heures**, **7 jours**, **30 jours**, **90 jours**, **365 jours**, ou une plage **personnalisée**. Le **Live Feed** indique l'heure de la dernière mise à jour.
+
+---
+
+## Les six catégories
+
+| Catégorie | Ce qu'on y trouve |
+| --- | --- |
+| **Aperçu** | Vue générale de la période. |
+| **Engagement** | Messages, vocal, membres, réseau, commandes. |
+| **Communauté** | Pouls, salons, social, fréquence des mots. |
+| **Croissance** | Rétention, cohortes, churn, heatmap horaire, comparaison de semaines. |
+| **Modération** | Activité de modération et performance du staff. |
+| **Invitations** | Analyse des codes d'invitation. |
+
+---
+
+## Engagement
+
+* **Top messagers** et **Top vocalistes**, avec le classement complet, une recherche par nom et une pagination.
+* **Salons textuels populaires** et **salons vocaux populaires**, par volume de messages et par temps passé.
+* **Commandes exécutées** : usage global des commandes du bot et répartition par commande.
+* **Réseau** : le graphe des interactions entre membres.
+
+### Membres
+
+* **Flux de population** : arrivées et départs, en vue journalière ou cumulée, avec les moyennes par jour et le solde **net**.
+* **Membres actifs** : pic d'activité simultanée, pic record, moyenne et minimum.
+* **Membres arborant le tag du serveur** : évolution du nombre de membres affichant le tag officiel.
+* Un bouton permet de **synchroniser les membres existants** pour remplir l'historique.
+
+---
+
+## Croissance
+
+* **Membres de retour** : les membres actifs cette semaine après 30 jours ou plus d'absence.
+* **Rétention par source** : le taux de membres encore présents 90 jours après, par invitation.
+* **Cohortes d'arrivée** : pour chaque semaine d'arrivée, le pourcentage encore présent à J+1, J+7 et J+30.
+* **DAU / WAU / MAU** et l'**assiduité** (DAU/MAU).
+* **Semaine vs semaine** : comparaison de deux périodes sur les messages, le temps vocal, les arrivées, les départs et les sanctions, avec la variation absolue et une rétention estimée.
+* **Heatmap horaire** : les messages par jour et par heure.
+
+---
+
+## Invitations
+
+**Total codes**, **codes actifs**, **utilisations totales** et **moyenne par code**, avec la liste des **codes populaires** et des **codes inactifs**. Un raccourci ouvre la page [Invitations](/dashboard/moderation/invitations/) pour agir dessus.
+
+---
+
+## Exporter
+
+Le bouton **Exporter** propose trois formats :
+
+* **Export CSV**
+* **Export XLSX**
+* **Export image** : génère une image de chaque graphique visible à l'écran
+
+:::caution[Il faut des données]
+Un export sur une période vide est refusé avec le message *Aucune donnée de graphique à exporter*.
+:::
+
+---
+
+## Couper la collecte
+
+L'interrupteur **Statistiques d'activité** de la page [Paramètres](/dashboard/configuration/parametres/) arrête tout enregistrement : messages, minutes vocales, réactions, threads, arrivées et départs, statistiques par membre, fréquence des mots et classements d'usage.
+
+Les autres modules (modération, tickets, niveaux…) continuent de fonctionner normalement. Seules les mesures techniques du bot (durées d'exécution et erreurs, sans aucune identité) restent conservées.

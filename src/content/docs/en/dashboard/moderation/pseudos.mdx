@@ -1,0 +1,77 @@
+---
+title: Nickname moderation
+description: Automatically rename non-compliant nicknames when a member joins or changes their nickname.
+---
+
+<p class="doc-lead">The <strong>Nickname moderation</strong> module automatically renames non-compliant nicknames as soon as a member joins the server or changes their nickname. It is configured from the <strong>Nicknames</strong> tab of the Filters page.</p>
+
+:::note[Where to find it]
+The **Security → Filters → Nicknames** section: [Open nickname moderation ↗](https://dash.kotbo.fr/security/filters/nicknames).
+Kotbo needs the **Manage nicknames** permission to rename a member.
+:::
+
+---
+
+## Activation
+
+Once the module is on, the bot checks nicknames and replaces a non-compliant one with `non-compliant nickname | automod`.
+
+A Discord command also lets you run a manual check on a member.
+
+:::caution[Discord limitation]
+The bot cannot rename the server owner. Administrators and bots are ignored by default.
+:::
+
+---
+
+## When the bot checks
+
+Two triggers, independent of each other:
+
+* **New members joining the server**
+* **Members changing their nickname**
+
+If both are off, Kotbo shows a warning: *no trigger, the bot will never check nicknames*.
+
+---
+
+## What it refuses
+
+Three criteria, each turned on separately:
+
+* **Nicknames made only of invisible characters**: blocks the empty nicknames that float to the top of the member list.
+* **Words from the global list**: racism, threats, insults, sexual content, LGBTphobia, hate. This list is maintained by Kotbo and shared across all servers.
+* **Your custom words**: the list specific to your server.
+
+If no criterion is active, Kotbo warns that the bot checks nicknames but has nothing to look for.
+
+### Discord's native AutoMod rule
+
+An extra option creates Discord's own AutoMod rule on nicknames. It shows Discord's native pop-up and blocks text and voice access for members who break the rule.
+
+---
+
+## Managing banned words
+
+The **Banned words** block has two tabs:
+
+### Custom
+
+* Enter a word or a fragment of a word, then click **Add**.
+* Each entry shows its **word**, its **category** (Custom, Racism, Threat, Sexual, LGBTphobia, Hate, Insult) and its **Active** state.
+* A deleted word can be restored right away with the **Undo** button on the confirmation message.
+
+### Global
+
+These words are managed globally by Kotbo and are **read-only**: they cannot be changed from your server.
+
+---
+
+## Exceptions (whitelist)
+
+The **Moderation exceptions** block prevents false positives.
+
+* **Allowed nicknames (exact)**: these complete nicknames will never be moderated, even if they contain a banned word. Useful for a legitimate pseudonym that a word fragment wrongly flags.
+* **Exempt members (bypass)**: enter a member's Discord ID (17 to 20 digits). They will never be renamed, whatever nickname they choose.
+
+Removing an exception can also be undone right after the action.

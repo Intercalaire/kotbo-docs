@@ -1,0 +1,95 @@
+---
+title: Recrutement
+description: Recevez les candidatures depuis Google Forms, menez les entretiens et intégrez les nouveaux membres du staff.
+---
+
+<p class="doc-lead">Le module <strong>Recrutement</strong> suit une candidature de sa réception à l'intégration : formulaire externe, entretien oral, création du profil staff et assignation d'un tuteur.</p>
+
+:::note[Où la trouver]
+Section **Staff → Recrutement** : [Ouvrir le recrutement ↗](https://dash.kotbo.fr/recruitment).
+:::
+
+Quatre compteurs résument la file : **En attente**, **Oraux**, **Auto-Refus** et le total.
+
+---
+
+## Onglet Candidatures
+
+### Le parcours d'une candidature
+
+| Statut | Signification |
+| --- | --- |
+| <span class="dash-badge warn">En attente</span> | Reçue, pas encore traitée. |
+| <span class="dash-badge active">Entretien Oral</span> | Retenue pour un entretien. |
+| <span class="dash-badge active">Validé</span> | Acceptée, profil staff créé. |
+| <span class="dash-badge kick">Refusé</span> | Refusée par le staff. |
+| <span class="dash-badge kick">Auto-Refusé</span> | Écartée automatiquement. |
+
+Le champ **Notes de gestion** permet d'ajouter une observation interne sur chaque candidature.
+
+### Passer à l'oral
+
+Le bouton **Passer Oral** crée un salon de ticket dédié et envoie un message privé au candidat. Kotbo pré-remplit l'**ID Discord du candidat** s'il en a fourni un valide : c'est cet identifiant qui l'assigne au ticket.
+
+### Conclure l'entretien
+
+**Concluant** ouvre le formulaire d'intégration :
+
+* **Assigner un tuteur** : seuls les tuteurs de niveau ≥ 2 sont proposés.
+* **Hiérarchie d'intégration** et **Grade hiérarchique de départ** (optionnels).
+* **Notes d'entretien**.
+
+Le bouton **Valider & Intégrer** crée le profil *Staff Helper Test* et lance le suivi de [tutorat](/dashboard/staff/tutorat/).
+
+**Échoué** rejette le profil et applique une attente d'**un mois** avant toute nouvelle candidature.
+
+### Refuser
+
+Le bouton **Refuser** clôt la candidature. La **raison** saisie est envoyée au candidat en message privé ; elle reste optionnelle.
+
+---
+
+## Onglet Google Forms
+
+Les candidatures arrivent depuis un formulaire externe relié à Kotbo par un webhook.
+
+### Créer une intégration
+
+1. Cliquez sur **Nouveau Google Form**.
+2. Donnez-lui un **nom** (par exemple *Formulaire Modération*) et une description optionnelle.
+3. Cliquez sur **Créer l'intégration**.
+
+Kotbo génère une **clé API**.
+
+:::danger[La clé n'est affichée qu'une fois]
+Pour des raisons de sécurité, la clé API ne sera plus jamais affichée. Copiez-la immédiatement et collez-la dans votre Google Apps Script. Le bouton **Régénérer la clé API** en crée une nouvelle, et l'ancienne cesse aussitôt de fonctionner.
+:::
+
+### Installer le script
+
+Le bouton **Script** affiche le code Google Apps Script à installer, avec ses instructions :
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Ouvrez votre Google Form</h3></div></div>
+  <div class="step-item"><div><h3>Extensions → Apps Script</h3></div></div>
+  <div class="step-item"><div><h3>Supprimez le code existant et collez le script</h3></div></div>
+  <div class="step-item"><div><h3>Sauvegardez</h3><p><code>Ctrl + S</code>.</p></div></div>
+  <div class="step-item"><div><h3>Ajoutez un déclencheur</h3><p><code>onSubmit</code> → <em>From form</em> → <em>On form submit</em>.</p></div></div>
+</div>
+
+Kotbo reconnaît par défaut les champs **Discord ID**, **Pseudo Discord**, **Email** et **Âge**.
+
+Chaque intégration affiche son état <span class="dash-badge active">Actif</span> ou <span class="dash-badge">Inactif</span>, sa clé API et le nombre de candidatures reçues. Le lien public du formulaire se copie en un clic.
+
+---
+
+## Configuration du module
+
+Le bouton **Paramètres du module** définit :
+
+* le **Salon de logs recrutement** ;
+* l'**ID de la catégorie** où seront créés les salons de ticket d'entretien.
+
+:::tip[Entretiens sur le serveur staff]
+Si vous avez lié un [serveur staff](/dashboard/cross-serveur/serveurs-staff/), vous pouvez y créer les salons d'entretien plutôt que sur le serveur principal.
+:::

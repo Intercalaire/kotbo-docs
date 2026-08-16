@@ -1,0 +1,114 @@
+---
+title: Prestige
+description: Mettez en place un classement compétitif à base de points de prestige, avec paliers, séries d'activité et décroissance.
+---
+
+<p class="doc-lead">Le module <strong>Prestige</strong> ajoute un second classement, compétitif celui-là. Les <strong>RP</strong> (points de prestige) mesurent l'activité <em>récente</em> d'un membre : contrairement à l'XP, qui ne fait que monter, les RP peuvent redescendre.</p>
+
+:::note[Où la trouver]
+Section **Système d'XP → Prestige** : [Ouvrir le prestige ↗](https://dash.kotbo.fr/prestige). Le module est en **bêta**.
+Il dépend du module [Leveling & XP](/dashboard/xp/leveling/) : sans lui, plus rien n'alimente le classement.
+:::
+
+---
+
+## Comprendre les RP
+
+| Question | Réponse |
+| --- | --- |
+| **Comment on en gagne ?** | Chaque XP accordée par le module Niveaux est convertie en RP, plus un bonus par réaction. Une série de jours actifs augmente les gains. |
+| **Comment on en perd ?** | L'inactivité fait fondre les RP quand la décroissance est active, et la fin d'une saison les remet à zéro. Un membre peut donc rétrograder. |
+| **À quoi ça donne droit ?** | Les paliers de l'échelle attribuent un rôle Discord, s'affichent sur la carte de rang et décident du classement du serveur. |
+
+Cinq indicateurs ouvrent la page : **Membres classés**, **Séries actives**, **Points en circulation**, **Record de série** et **Premier du serveur**.
+
+---
+
+## Choisir un rythme
+
+Un préréglage pose d'un coup les gains de RP et l'échelle des paliers.
+
+| Préréglage | Description |
+| --- | --- |
+| **Classique** *(recommandé)* | Dix-neuf paliers de Bronze à Master, gains modérés, aucune perte à l'inactivité. |
+| **Sprint** | Douze paliers resserrés et des gains généreux : le classement bouge tous les jours. |
+| **Compétitif** | Échelle exigeante en haut, décroissance activée : garder son palier demande de rester actif. |
+| **Compact** | Six paliers sans division, six rôles à tenir. |
+| **Marathon** | Vingt-quatre paliers très espacés : le sommet reste un objectif de plusieurs saisons. |
+| **Personnalisé** | Votre configuration actuelle, réglée curseur par curseur. |
+
+Les tuiles résument le résultat : **RP par XP**, **Paliers**, **Sommet**, **RP / jour estimés** et l'état du **Decay**.
+
+---
+
+## Onglet Gains & séries
+
+### Gains de points
+
+Le RP est dérivé de l'XP réellement accordée : le cooldown, les salons et les rôles exclus du module de niveaux s'appliquent tels quels.
+
+* **RP par point d'XP**
+* **RP par réaction** et **Réactions créditées par jour**
+* **Plafond de RP par jour** (`0` = illimité)
+* **Salon des annonces**, **Annoncer les promotions**, **Annoncer les rétrogradations**
+* **Participer au classement inter-serveurs**
+
+### Séries
+
+Le bonus démarre au 2ᵉ jour consécutif. Les gels permettent de survivre à une absence.
+
+* **Activer les séries**
+* **Bonus par jour (%)** et **Bonus maximum (%)**
+* **Jours d'absence rattrapables**
+* **Gels accordés par semaine** et **Gels maximum en réserve**
+
+### Décroissance
+
+Seul le RP redescend : l'XP et les niveaux ne sont jamais entamés.
+
+* **Activer la décroissance**
+* **Jours d'inactivité tolérés**
+* **RP perdus par jour** et/ou **Part du RP perdue par jour (%)**
+* **Palier plancher** : le palier sous lequel un membre ne peut pas descendre (*Aucun* pour aller jusqu'à 0 RP).
+
+Les boutons **Simuler** et **Appliquer maintenant** permettent de voir combien de membres seraient touchés avant de lancer la décroissance.
+
+---
+
+## Onglet Échelle & rôles
+
+Trois curseurs pilotent l'échelle en mode simple :
+
+* **Quantité de rôles** : chaque palier est un rôle Discord à créer et à tenir. Discord en plafonne 250 par serveur.
+* **Largeur des paliers** : de *Très resserrés* à *Très larges*.
+* **Élargissement vers le haut** : de *Écarts constants* à *Extrême*.
+
+En mode détaillé : **RP du premier palier gagné**, **Exposant de la courbe** et **Divisions par famille** (Bronze I, II, III, le sommet n'ayant jamais de division).
+
+L'**Aperçu de l'échelle** montre l'écart de RP à franchir palier par palier, et la **Répartition des membres** indique où ils se placeraient à RP inchangé. Kotbo annonce combien de membres changeraient de palier.
+
+Vous pouvez associer un **rôle Discord** à chaque palier, avec deux options :
+
+* **Attribuer les rôles de palier**
+* **Un seul rôle de palier à la fois**
+
+:::caution[Échelle retouchée à la main]
+Si vous avez modifié l'échelle palier par palier, les curseurs ne la décrivent plus. Enregistrer depuis le mode simple la remplacerait par celle que les curseurs décrivent.
+:::
+
+---
+
+## Onglet Événements
+
+Un **événement de prestige** multiplie les gains sur une fenêtre de temps, pour une seule source à la fois.
+
+Créez-en un avec **Nouvel événement** en renseignant son **type**, son **nom**, son **multiplicateur**, sa **durée (minutes)** et son **salon d'annonce**.
+
+Chaque événement porte un statut : **Programmé**, **En cours**, **Terminé** ou **Annulé**, et affiche à la fin son nombre de participants et le RP bonus distribué.
+
+---
+
+## Onglet Classements
+
+* **Classement du serveur** : les membres classés par RP.
+* **Séries en cours** : qui tient une série, et depuis combien de jours.

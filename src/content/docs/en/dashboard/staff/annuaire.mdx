@@ -1,0 +1,82 @@
+---
+title: Staff directory
+description: Manage your team members, their grades and suspensions, and follow their activity.
+---
+
+<p class="doc-lead">The <strong>Directory</strong> is your server's team sheet: who is on staff, at what grade, since when, and how active they are.</p>
+
+:::note[Where to find it]
+The **Staff → Directory** section: [Open the directory ↗](https://dash.kotbo.fr/staff-management/members).
+Access is controlled by the **Permissions** tab on the same page.
+:::
+
+Four indicators open the page: **Members** on the team, configured **Staff Roles**, active **Warnings** and **Active Polls**.
+
+---
+
+## Members tab
+
+### Adding a member
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Click Add a member</h3><p>The form opens.</p></div></div>
+  <div class="step-item"><div><h3>Point at the Discord user</h3><p>The field accepts a mention, a nickname or a Discord ID; the ID fills in automatically.</p></div></div>
+  <div class="step-item"><div><h3>Pick the global grade</h3><p>And, if needed, tick <strong>Create a tutoring track</strong> to start a supervised trial period right away.</p></div></div>
+</div>
+
+### Importing from Discord
+
+The **Import** button adds every holder of a Discord role into a hierarchy at once, at a chosen destination grade. Kotbo then reports how many members were analysed, imported and skipped (already present).
+
+### Acting on a record
+
+Each card shows the member, their grade, their start date on the team, their warning count and their activity (messages, minutes, sanctions).
+
+| Action | Effect |
+| --- | --- |
+| **Promote** / **Demote** | Moves the grade by one step. Kotbo warns when the minimum or maximum grade is reached. |
+| **Designate as Tutor** | Adds the **Tutor** badge and makes the member eligible to supervise an apprentice. |
+| **Manage hierarchies** | Links the member to secondary hierarchies, each with its own grade. |
+| **Suspend** | Removes their Discord staff roles, but keeps their record, grade and history. Reversible at any time. |
+| **Dismiss** | Removes the member from the staff. |
+
+:::tip[Suspend rather than dismiss]
+Suspension is made for long absences or situations still under review: the member keeps their whole history and gets their roles back on reinstatement.
+:::
+
+---
+
+## Org Chart tab
+
+The org chart draws the hierarchies and their leads. Each block shows the **Global Staff Head**, the hierarchy **Heads** and the role **Leads**.
+
+Until a hierarchy exists, Kotbo invites you to create one and assign roles to it.
+
+---
+
+## Leadership tab
+
+This view analyses the team's performance.
+
+* **Score distribution** and **Activity comparison** as charts.
+* The table shows the **Progression Score**, the **Activity (30d / 7d)** in messages per day, and the **Status / Alerts**.
+* A member whose activity collapses is flagged <span class="dash-badge kick">INACTIVITY DETECTED</span>; the others carry the <span class="dash-badge active">ACTIVE</span> badge.
+
+---
+
+## Permissions tab
+
+Two settings control who sees what:
+
+* **Staff Directory**: access to the list of staff members.
+* **Hierarchy & Roles**: access to managing staff roles and hierarchy.
+
+---
+
+## Global configuration
+
+The **Global Configuration** block on the *Staff Roles* tab carries the team-wide settings:
+
+* **Base Staff Role** and **Trial Staff Role**.
+* **Meeting announcement channel** and **Meeting voice / conference channel**.
+* **Staff announcements channel**.
