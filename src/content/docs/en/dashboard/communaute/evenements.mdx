@@ -1,0 +1,98 @@
+---
+title: Events & quizzes
+description: Run quizzes, CTFs and sign-up events, then steer them live from the dashboard.
+---
+
+<p class="doc-lead">The <strong>Events</strong> module creates three kinds of activity: <strong>quizzes</strong>, <strong>CTFs</strong> (security challenges) and <strong>custom events</strong> with sign-ups.</p>
+
+:::note[Where to find it]
+The **Moderation → Events** section: [Open events ↗](https://dash.kotbo.fr/events).
+Kotbo needs the **Manage events** permission to create a scheduled Discord event.
+:::
+
+Three indicators open the page: **Total Events**, **Ongoing** and **Participations / Registrations**.
+
+---
+
+## Choosing a type
+
+| Type | Tag | What it is |
+| --- | --- | --- |
+| **Quiz** | Questions & Answers | Multiple-choice or free-text questions, to test your community's knowledge. |
+| **CTF** | Hacking & Security | Computer-security challenges with hidden flags, a real-time leaderboard and roles as rewards. |
+| **Custom** | Registration & Announcement | A Discord event, a polished announcement and sign-ups by form or by button. |
+
+An event moves through the **Draft**, **Published**, **Ongoing**, **Completed** and **Cancelled** statuses.
+
+---
+
+## Configuring an event
+
+The **General Configuration** is shared by all three types:
+
+* **Event title** and **Description**.
+* **Announcement Channel** (or *None* to announce nothing).
+* **Registration Form**: a form from the [Forms](/en/dashboard/communaute/formulaires/) module, or *None* for direct button sign-up.
+* **Start date** and **End date** (optional), in local time.
+* **Location**: Discord, in person, and so on.
+* **Create the event on Discord**: adds it to the server's scheduled events.
+* **Send an announcement embed**: posts a message with a sign-up button.
+
+### Automatic trigger
+
+An event can launch by itself:
+
+* **Manual**: no trigger.
+* **Member count reached**: set the **target member count**.
+* **Scheduled**: set the **launch date and time**.
+
+The **Trigger Status** then reports *Pending*, *Triggered* or *Failed*.
+
+---
+
+## Quiz editor
+
+The **Add a question** button creates an entry with its **question text** and its **answer options**. Tick the circle to the left of the correct answer.
+
+The **Import CSV** button loads a batch of questions. The file must contain the `Question`, `Option X` and `Bonne Réponse` columns.
+
+---
+
+## CTF editor
+
+The **Add a challenge** button creates an entry with:
+
+* **Challenge title** and **Description / Brief**;
+* **Expected flag** and **Points**;
+* **XP Reward** and **Reward role** (both optional);
+* **Image URL** (optional).
+
+---
+
+## Steering an event live
+
+The **Control** button opens the control room.
+
+### For a quiz
+
+* **Next Question** and **Previous** move the quiz forward or back.
+* Progress is shown as *Question X / Y*.
+* The **Chart** tab shows answers arriving live.
+* The **Participants** tab ranks players by **Score** and shows their **last answer**.
+* **Finish Quiz** closes the event.
+
+### For a CTF
+
+The **Challenges** tab counts solves per challenge and lists the **latest solves**. The **Participants** tab ranks players by score and by last solve.
+
+### For a custom event
+
+The **Registrations** tab lists sign-ups with their **registration date** and the answers to the linked form. The **Remove** button cancels a registration.
+
+---
+
+## Deleting
+
+:::danger[Irreversible deletion]
+Deleting an event erases every question, answer and participant attached to it.
+:::

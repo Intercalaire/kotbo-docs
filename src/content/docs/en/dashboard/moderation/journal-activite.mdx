@@ -1,0 +1,48 @@
+---
+title: Activity log
+description: Find out who changed which dashboard setting, when, and from which module.
+---
+
+<p class="doc-lead">The <strong>Activity log</strong> keeps the history of configuration actions performed on your server. It answers the question "who changed this setting?".</p>
+
+:::note[Where to find it]
+The **Moderation → Activity log** section: [Open the log ↗](https://dash.kotbo.fr/activity).
+This is a **core** module: it cannot be disabled from the Modules page, precisely so that no manoeuvre can erase its own trace.
+:::
+
+---
+
+## The indicators
+
+Three cards summarise the period on screen:
+
+* **Actions (Total)**, subtitle *Configuration*: the number of recorded actions.
+* **Modules**, subtitle *Sources*: the number of distinct modules involved.
+* **Users**, subtitle *Unique*: the number of different people who acted.
+
+---
+
+## Browsing the log
+
+The table shows the **Timestamp**, **User**, **Module / Source**, **Action**, **Details** and **Type** columns.
+
+* The **Search** field accepts an action, details, a module or a user.
+* Column headers are sortable.
+* The **Reset filters and sort** button returns the table to its initial state.
+* A counter shows how many events are displayed out of the total.
+
+An action triggered by the bot itself carries the **Automatic** type; the others carry the name of the source that produced them.
+
+If no row matches, Kotbo shows *No event matches your search*.
+
+---
+
+## What it is actually for
+
+* Finding out **when** a log channel was changed, and by whom.
+* Checking that a change announced by a staff member was really applied.
+* Rebuilding the timeline after a configuration incident.
+
+:::tip[Complementary to Discord logs]
+The activity log covers actions **on the dashboard and the bot**. For events that happened **on Discord** (messages, sanctions, voice moves), see the [Discord logs & activity](/en/dashboard/moderation/logs/) page.
+:::

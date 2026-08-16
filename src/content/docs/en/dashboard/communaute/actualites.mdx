@@ -1,0 +1,63 @@
+---
+title: News & RSS
+description: Write announcements and patch notes, organise them into sections, and publish them to Discord and an RSS feed.
+---
+
+<p class="doc-lead">The <strong>News & RSS</strong> module turns your announcements into articles: written in Markdown, published to Discord, with a public page and an RSS feed your members can subscribe to.</p>
+
+:::note[Where to find it]
+The **Community → News & RSS** section: [Open the news ↗](https://dash.kotbo.fr/news).
+Writing is staff-only; reading is public once an article is published.
+:::
+
+---
+
+## Articles tab
+
+### Writing an article
+
+The **Create an article** button opens the editor, with a live preview.
+
+* **Title** (required): for example *Update v1.4.0*.
+* **Category** and **Subcategory** (optional): these organise the article like a newspaper section. Kotbo suggests *Update*, *Patch Note*, *Announcement*, *Blog* and *Staff*.
+* **Image URL** (optional) and **Short summary** (optional).
+* **Article content** (required), in Markdown.
+
+### Publishing
+
+* **Publish immediately** makes the article public and triggers the notification. Otherwise it stays a <span class="dash-badge">Draft</span>.
+* **Discord sending mode**:
+  * *Summary + link button to page*: a short message pointing to the public page.
+  * *Full embed + public page*: the whole article inside Discord.
+
+This choice applies both to immediate publication and to publishing a draft later.
+
+### Browsing
+
+The table shows the **Article**, **Category**, **Author**, **Pub. Date**, **Status** and **Actions** columns. A search by title, summary or author and a category filter complete the view.
+
+The **Forum view** groups articles by category then by subcategory, mirroring how a forum is organised.
+
+---
+
+## Feeds & Channels by Category tab
+
+### The public RSS feed
+
+The feed is generated dynamically from **published** articles. Your members can subscribe from Feedly, Inoreader or any RSS reader. The copy button puts the link on your clipboard.
+
+### Creating a section
+
+A section pairs a category (and optionally a subcategory) with a Discord broadcast channel.
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Name the section</h3><p>For example <em>World</em>, <em>Tech</em>, or a sub-section like <em>API</em>.</p></div></div>
+  <div class="step-item"><div><h3>Pick the broadcast channel</h3><p>Articles in this section will be published there.</p></div></div>
+  <div class="step-item"><div><h3>Save the section</h3><p>It appears in the <strong>Feed Index</strong> with its channel and its <strong>dedicated RSS</strong>.</p></div></div>
+</div>
+
+:::caution[Category and channel are required]
+Kotbo refuses to save a section without a category and a Discord channel.
+:::
+
+Each section gets its own public feed, readable independently of the general feed.

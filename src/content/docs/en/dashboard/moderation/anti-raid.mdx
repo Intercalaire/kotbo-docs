@@ -1,0 +1,136 @@
+---
+title: Anti-raid protection
+description: Detect join waves, trigger emergency locks, require a captcha at the door and control invites from the dashboard.
+---
+
+<p class="doc-lead">The <strong>Security → Anti-raid</strong> page gathers everything that protects the door of your server: join-wave detection, instant emergency locks, new-member captcha, scam filter and invite control.</p>
+
+:::note[Where to find it]
+The **Security → Anti-raid** section: [Open anti-raid ↗](https://dash.kotbo.fr/security/anti-raid).
+Kotbo needs the manage server, manage roles and manage channels permissions to apply the locks.
+:::
+
+---
+
+## Server state and emergency locks
+
+The **Server state** block sits at the top of every tab. Its four toggles apply **immediately**, without going through save.
+
+| Toggle | Effect |
+| --- | --- |
+| **Raid mode** | Applies the action configured in the *Detection & locks* tab to every arrival. The label says whether it was triggered manually or automatically, and in how many minutes it will be lifted. |
+| **Join lock** | Suspends invites: nobody can join the server any more. |
+| **DM lock** | Suspends direct messages between server members. |
+| **Invite emergency** | Deletes every existing invite, and deletes any new invite as it is created. |
+
+:::danger[Immediate actions]
+Kotbo asks for confirmation before enabling raid mode, the join lock or the invite emergency. These actions genuinely cut off access to the server: warn your team before using them.
+:::
+
+Below the toggles, three counters recall the number of **pending reports**, **invites awaiting validation** and **scam fingerprints** on record.
+
+---
+
+## Detection & locks tab
+
+### Raid detection
+
+Kotbo watches the pace of arrivals over a sliding window and switches the server into raid mode past the threshold.
+
+* **Anti-raid**: the main detection switch.
+* **Join threshold**: how many arrivals trigger raid mode (2 to 200).
+* **Window (seconds)**: the period over which arrivals are counted (5 to 600).
+* **Action on trigger**:
+  * *Lock joins*: nobody can join any more.
+  * *Force the captcha for every arrival*: access stays open, but filtered.
+  * *Automatically kick arrivals*: the harshest option, it also rejects legitimate arrivals for the whole duration of raid mode.
+* **Alert channel**: without one, raid mode turns on without anyone being told.
+* **Automatic lift (minutes)**: how long automatically triggered raid mode lasts (1 to 1440).
+
+### Join lock
+
+* **Kick arrivals despite the lock**: Discord's invite suspension is not absolute; this safety net kicks members who get through anyway.
+* **DM message**: the text a member receives when they are refused during the lock.
+
+---
+
+## Entry captcha tab
+
+This captcha filters automated accounts at the door. It is separate from the identity verification of the [Alt accounts](/en/dashboard/moderation/double-comptes/) module.
+
+* **Captcha**: arrivals must solve a code before they can access the server.
+* **Mode**:
+  * *Image*: the code is displayed.
+  * *Voice*: the code is read out in a voice channel. Far harder to automate, but delivery is serial: past the configured queue size, the next arrivals fall back to the image.
+* **Verification channel**, **"Unverified" role** (applied on arrival, removed after success), **"Verified" role** (granted after success), **Captcha log channel**.
+* In voice mode: **Voice channel**, **Spoken language** (French or English), **Queue limit** (past which it falls back to the image).
+* **Timeout (minutes)**, **Attempts**, and **On failure**: *Kick* or *Ban*.
+
+---
+
+## Scams & tag tab
+
+### Scam filter
+
+Blocks phishing links (fake Nitro, fake Steam) and known scam images.
+
+* **Scam filter**: analyses domains and the text patterns typical of phishing campaigns.
+* **Image filter**: compares posted images with fingerprints already identified on the server, fed automatically by the honeypot. The comparison is perceptual, so a re-compressed or slightly cropped screenshot is still recognised.
+* **QR code filter**: Discord login QR phishing contains no link at all, so no domain filter can catch it. Images carrying a QR code sent by an account with no history are blocked. The **Messages before being considered established** field sets how many messages a member needs before they can share a QR again (wifi, 2FA…).
+* **Action**: *Delete*, *Delete and warn*, *Delete and timeout*, *Delete and ban*.
+* **Timeout (minutes)** and **Alert channel**.
+* **Extra blocked domains** and **Exempt domains**: one domain per line.
+
+### Tag role
+
+Rewards members who display the server tag on their profile. The role is granted automatically as soon as a member shows the tag, and removed as soon as they drop it.
+
+### Community reports
+
+* **Reports**: members can report a message or a member to a staff channel.
+* **Anonymous reports**: hides the reporter in the staff embed. It reduces fear of retaliation, at the cost of being able to trace report abuse.
+* **Reports channel** and **Delay between two reports (s)**, to limit abuse.
+
+---
+
+## Invites tab (Invite Guard)
+
+Controls who opens the server, and how.
+
+* **Invite Guard**: watches and logs invite creation.
+* **Require single-use invites**: any multi-use or unlimited invite is deleted. This is what makes the source of a raid identifiable after the fact.
+* **Staff validation**: every invite is deleted and only recreated after approval.
+* **Creation threshold** and **Window (seconds)**: past N creations in the window, an alert is sent to the **Alert channel**.
+* **Exempt roles**: click the roles that escape these rules.
+
+---
+
+## Queues tab
+
+The tab shows a counter with the number of items awaiting a decision.
+
+### Pending reports
+
+Each report shows the reporter (unless anonymous mode is on), the target, the reason, the channel and the message concerned. You decide straight from the card.
+
+### Invites to validate
+
+Visible when staff validation is on: approve or refuse each invite request before the link is recreated.
+
+### Invite lineage
+
+Where a member came from, and who came through the same door. When a raider is exposed, their invitees rarely are alone.
+
+1. Enter the **member ID**.
+2. Kotbo shows the **referral chain** and the accounts that joined through the same invite.
+3. You can quarantine the whole lineage in a single action.
+
+### Scam fingerprints
+
+The list of scam images captured by the honeypot. **Global** fingerprints are shared across servers and cannot be deleted here; local fingerprints can be removed.
+
+---
+
+## Saving
+
+The tab settings (apart from the emergency toggles) are applied through the **Unsaved changes** bar at the bottom of the screen. The locks in the *Server state* block take effect the moment you click.

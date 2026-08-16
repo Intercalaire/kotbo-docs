@@ -1,0 +1,67 @@
+---
+title: Embed Builder
+description: Compose rich Discord messages, preview them live, publish them and edit them afterwards.
+---
+
+<p class="doc-lead">The <strong>Embed Builder</strong> composes rich Discord messages without leaving the dashboard: title, description, colour, images, fields and footer, with a live preview.</p>
+
+:::note[Where to find it]
+The **Community → Embeds** section: [Open the embed builder ↗](https://dash.kotbo.fr/embed-builder).
+Kotbo must be able to write in the destination channel.
+:::
+
+---
+
+## Composing an embed
+
+The editor is organised in sections, and the preview on the right updates as you type.
+
+### Channel and message
+
+* **Dispatch Channel**: where the embed will be posted.
+* **Message ID (Edit existing)**: leave empty to send a new message; enter the ID of a message Kotbo already posted to edit it.
+* **Text content (outside embed)**: plain text shown above the card.
+
+### Author
+
+**Author name**, **Author icon URL** and **Author link URL** (which makes the name clickable).
+
+### Main content
+
+* **Embed title** and **Title URL** to turn it into a link.
+* **Description**: the body of the message.
+* **Side color**: in hex or through the picker.
+* **Thumbnail URL** (top-right) and **Large image URL** (bottom).
+
+### Fields
+
+The **Add a field** button creates a **Field title** / **Field content** pair. The **Display inline** option places several fields side by side.
+
+### Footer
+
+**Footer text**, **Footer icon URL** and **Show timestamp**.
+
+---
+
+## Publishing
+
+* **Publish embed** sends a new message.
+* **Edit embed** updates the message whose ID you entered.
+
+:::caution[Validation rules]
+Kotbo refuses to send if any embed field is missing either a title or content, or if you have entered neither message text nor at least one field.
+:::
+
+---
+
+## Reusing an embed: templates
+
+The **My Templates** block saves a composition for later.
+
+1. Give it a template name (optional: Kotbo otherwise proposes a dated name).
+2. Click **Save**.
+3. Clicking a saved template reloads it into the editor.
+
+:::note[Templates are local]
+Templates are saved **on this device**. They are not shared with the rest of your team and do not follow you from one browser to another.
+:::

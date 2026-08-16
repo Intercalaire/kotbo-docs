@@ -1,0 +1,55 @@
+---
+title: Sauvegardes du serveur
+description: Sauvegardez rôles, salons, permissions et emojis, exportez-les en JSON et restaurez-les en cas de besoin.
+---
+
+<p class="doc-lead">Les <strong>Sauvegardes</strong> figent la structure de votre serveur Discord : rôles, salons, permissions, emojis et stickers. C'est votre filet de sécurité avant une réorganisation ou après un incident.</p>
+
+:::note[Où la trouver]
+Section **Configuration → Sauvegardes** : [Ouvrir les sauvegardes ↗](https://dash.kotbo.fr/backups).
+Kotbo a besoin de permissions élevées pour lire et recréer rôles, salons et permissions.
+:::
+
+---
+
+## Créer une sauvegarde
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Cliquez sur Nouvelle sauvegarde</h3><p>Le formulaire s'ouvre.</p></div></div>
+  <div class="step-item"><div><h3>Nommez-la</h3><p>Laissez le champ vide pour le nom par défaut, daté. Une <strong>description</strong> optionnelle aide à s'y retrouver plus tard.</p></div></div>
+  <div class="step-item"><div><h3>Choisissez les éléments à inclure</h3><p><strong>Rôles</strong>, <strong>Salons</strong>, <strong>Membres</strong>, <strong>Emojis</strong>, <strong>Stickers</strong> et <strong>Messages</strong>.</p></div></div>
+  <div class="step-item"><div><h3>Lancez la création</h3><p>Kotbo affiche sa progression : initialisation, connexion à Discord, extraction des rôles et salons, traitement des permissions et emojis, écriture en base.</p></div></div>
+</div>
+
+:::caution[Les messages sont exclus par défaut]
+L'option **Messages** est désactivée par défaut : elle alourdit considérablement la sauvegarde. Ne l'activez que si vous savez pourquoi.
+:::
+
+Chaque sauvegarde de la liste affiche son auteur, sa date, et le décompte de ce qu'elle contient : rôles, salons, membres, emojis et stickers avec leur taille.
+
+---
+
+## Exporter et importer
+
+* **Exporter** télécharge la sauvegarde au format JSON. C'est la seule façon de la conserver hors de Kotbo.
+* **Importer un fichier** recharge un JSON existant, éventuellement sous un nouveau nom.
+
+:::tip[Sortir la sauvegarde du serveur]
+Une sauvegarde qui vit uniquement dans le dashboard ne protège pas de la perte du serveur lui-même. Exportez régulièrement le JSON et conservez-le ailleurs.
+:::
+
+---
+
+## Restaurer
+
+Le bouton **Restaurer** applique une sauvegarde au serveur courant.
+
+:::danger[La restauration écrase]
+Cette action **écrase la configuration actuelle** avec les données de la sauvegarde : le bot applique les rôles, salons et permissions enregistrés. Kotbo demande confirmation avant de lancer l'opération.
+:::
+
+---
+
+## Supprimer
+
+La suppression d'une sauvegarde est irréversible. Kotbo demande confirmation en rappelant son nom.

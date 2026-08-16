@@ -67,13 +67,64 @@ export default defineConfig({
           translations: { en: 'Configuration (Dashboard)' },
           items: [
             {
+              label: 'Général',
+              translations: { en: 'General' },
+              items: [
+                {
+                  label: 'Accueil du dashboard',
+                  translations: { en: 'Dashboard home' },
+                  slug: 'dashboard/general/accueil',
+                },
+                {
+                  label: 'Créer mon serveur',
+                  translations: { en: 'Build my server' },
+                  slug: 'dashboard/general/creer-serveur',
+                },
+                {
+                  label: 'Pulse & IA',
+                  translations: { en: 'Pulse & AI' },
+                  slug: 'dashboard/general/pulse',
+                },
+                {
+                  label: 'Boîte de réception',
+                  translations: { en: 'Inbox' },
+                  slug: 'dashboard/general/inbox',
+                },
+                {
+                  label: 'Analytics',
+                  translations: { en: 'Analytics' },
+                  slug: 'dashboard/general/analytics',
+                },
+              ],
+            },
+            {
               label: 'Sécurité',
               translations: { en: 'Security' },
               items: [
                 {
+                  label: 'Vue d’ensemble',
+                  translations: { en: 'Security overview' },
+                  slug: 'dashboard/moderation/vue-ensemble',
+                },
+                {
+                  label: 'Configuration rapide',
+                  translations: { en: 'Quick setup' },
+                  slug: 'dashboard/moderation/configuration-rapide',
+                },
+                {
                   label: 'Filtres (Modération auto)',
                   translations: { en: 'Filters (Auto moderation)' },
                   slug: 'dashboard/moderation/automod',
+                },
+                {
+                  label: 'Modération des pseudos',
+                  translations: { en: 'Nickname moderation' },
+                  slug: 'dashboard/moderation/pseudos',
+                },
+                {
+                  label: 'Protection anti-raid',
+                  translations: { en: 'Anti-raid protection' },
+                  slug: 'dashboard/moderation/anti-raid',
                 },
                 {
                   label: 'Multi-comptes',
@@ -81,9 +132,102 @@ export default defineConfig({
                   slug: 'dashboard/moderation/double-comptes',
                 },
                 {
+                  label: 'Sanctions & rapports',
+                  translations: { en: 'Sanctions & reports' },
+                  slug: 'dashboard/moderation/sanctions',
+                },
+                {
                   label: 'Appels de bannissement',
                   translations: { en: 'Ban appeals' },
                   slug: 'dashboard/moderation/appels-ban',
+                },
+              ],
+            },
+            {
+              label: 'Modération',
+              translations: { en: 'Moderation' },
+              items: [
+                {
+                  label: 'Gestion des membres',
+                  translations: { en: 'Member management' },
+                  slug: 'dashboard/moderation/membres',
+                },
+                {
+                  label: 'Invitations',
+                  translations: { en: 'Invites' },
+                  slug: 'dashboard/moderation/invitations',
+                },
+                {
+                  label: 'Logs Discord',
+                  translations: { en: 'Discord logs' },
+                  slug: 'dashboard/moderation/logs',
+                },
+                {
+                  label: 'Recherche de messages',
+                  translations: { en: 'Message search' },
+                  slug: 'dashboard/moderation/recherche-messages',
+                },
+                {
+                  label: 'Transcriptions',
+                  translations: { en: 'Transcripts' },
+                  slug: 'dashboard/moderation/transcriptions',
+                },
+                {
+                  label: 'Journal d’activité',
+                  translations: { en: 'Activity log' },
+                  slug: 'dashboard/moderation/journal-activite',
+                },
+              ],
+            },
+            {
+              label: 'Système d’XP',
+              translations: { en: 'XP system' },
+              items: [
+                {
+                  label: 'Leveling & XP',
+                  translations: { en: 'Leveling & XP' },
+                  slug: 'dashboard/xp/leveling',
+                },
+                {
+                  label: 'Prestige',
+                  translations: { en: 'Prestige' },
+                  slug: 'dashboard/xp/prestige',
+                },
+                {
+                  label: 'Saisons',
+                  translations: { en: 'Seasons' },
+                  slug: 'dashboard/xp/saisons',
+                },
+                {
+                  label: 'Réputation',
+                  translations: { en: 'Reputation' },
+                  slug: 'dashboard/xp/reputation',
+                },
+                {
+                  label: 'Clans',
+                  translations: { en: 'Clans' },
+                  slug: 'dashboard/xp/clans',
+                },
+              ],
+            },
+            {
+              label: 'Économie & RPG',
+              translations: { en: 'Economy & RPG' },
+              items: [
+                {
+                  label: 'Économie & RPG',
+                  translations: { en: 'Economy & RPG' },
+                  slug: 'dashboard/economie/economie',
+                },
+                {
+                  label: 'Marché entre membres',
+                  translations: { en: 'Member marketplace' },
+                  slug: 'dashboard/economie/marche',
+                },
+                {
+                  label: 'Quêtes',
+                  translations: { en: 'Quests' },
+                  slug: 'dashboard/economie/quetes',
                 },
               ],
             },
@@ -126,12 +270,114 @@ export default defineConfig({
                   translations: { en: 'Forms & custom styling' },
                   slug: 'dashboard/communaute/formulaires',
                 },
+                {
+                  label: 'Giveaways',
+                  translations: { en: 'Giveaways' },
+                  slug: 'dashboard/communaute/giveaways',
+                },
+                {
+                  label: 'Reaction Roles',
+                  translations: { en: 'Reaction Roles' },
+                  slug: 'dashboard/communaute/reaction-roles',
+                },
+                {
+                  label: 'Créateur d’embeds',
+                  translations: { en: 'Embed Builder' },
+                  slug: 'dashboard/communaute/embeds',
+                },
+                {
+                  label: 'Règlement',
+                  translations: { en: 'Server rules' },
+                  slug: 'dashboard/communaute/reglement',
+                },
+                {
+                  label: 'Actualités & RSS',
+                  translations: { en: 'News & RSS' },
+                  slug: 'dashboard/communaute/actualites',
+                },
+                {
+                  label: 'Réseaux sociaux',
+                  translations: { en: 'Social networks' },
+                  slug: 'dashboard/communaute/reseaux-sociaux',
+                },
+                {
+                  label: 'Événements & quiz',
+                  translations: { en: 'Events & quizzes' },
+                  slug: 'dashboard/communaute/evenements',
+                },
+                {
+                  label: 'Déclencheurs',
+                  translations: { en: 'Triggers' },
+                  slug: 'dashboard/communaute/declencheurs',
+                },
+              ],
+            },
+            {
+              label: 'Staff',
+              translations: { en: 'Staff' },
+              items: [
+                {
+                  label: 'Annuaire du staff',
+                  translations: { en: 'Staff directory' },
+                  slug: 'dashboard/staff/annuaire',
+                },
+                {
+                  label: 'Hiérarchie & rôles',
+                  translations: { en: 'Hierarchy & roles' },
+                  slug: 'dashboard/staff/hierarchie',
+                },
+                {
+                  label: 'Recrutement',
+                  translations: { en: 'Recruitment' },
+                  slug: 'dashboard/staff/recrutement',
+                },
+                {
+                  label: 'Tutorat & formation',
+                  translations: { en: 'Tutoring & training' },
+                  slug: 'dashboard/staff/tutorat',
+                },
+                {
+                  label: 'Réunions',
+                  translations: { en: 'Meetings' },
+                  slug: 'dashboard/staff/reunions',
+                },
+                {
+                  label: 'Planning & agenda',
+                  translations: { en: 'Planning & agenda' },
+                  slug: 'dashboard/staff/planning',
+                },
+                {
+                  label: 'Sondages staff',
+                  translations: { en: 'Staff polls' },
+                  slug: 'dashboard/staff/sondages',
+                },
+                {
+                  label: 'Discipline du staff',
+                  translations: { en: 'Staff discipline' },
+                  slug: 'dashboard/staff/discipline',
+                },
+              ],
+            },
+            {
+              label: 'Cross-serveur',
+              translations: { en: 'Cross-server' },
+              items: [
+                {
+                  label: 'Serveurs staff',
+                  translations: { en: 'Staff servers' },
+                  slug: 'dashboard/cross-serveur/serveurs-staff',
+                },
               ],
             },
             {
               label: 'Configuration',
               translations: { en: 'Configuration' },
               items: [
+                {
+                  label: 'Catalogue des modules',
+                  translations: { en: 'Module catalogue' },
+                  slug: 'dashboard/configuration/modules',
+                },
                 {
                   label: 'Salons',
                   translations: { en: 'Channels' },
@@ -141,6 +387,31 @@ export default defineConfig({
                   label: 'Accès aux commandes',
                   translations: { en: 'Command access' },
                   slug: 'dashboard/configuration/commandes',
+                },
+                {
+                  label: 'Paramètres généraux',
+                  translations: { en: 'General settings' },
+                  slug: 'dashboard/configuration/parametres',
+                },
+                {
+                  label: 'Sauvegardes',
+                  translations: { en: 'Backups' },
+                  slug: 'dashboard/configuration/sauvegardes',
+                },
+                {
+                  label: 'Planifications',
+                  translations: { en: 'Schedules' },
+                  slug: 'dashboard/configuration/planifications',
+                },
+                {
+                  label: 'Santé des salons',
+                  translations: { en: 'Channel health' },
+                  slug: 'dashboard/configuration/sante-salons',
+                },
+                {
+                  label: 'Custom Bot',
+                  translations: { en: 'Custom Bot' },
+                  slug: 'dashboard/configuration/custom-bot',
                 },
               ],
             },

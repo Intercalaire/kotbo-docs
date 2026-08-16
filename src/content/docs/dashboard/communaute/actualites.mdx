@@ -1,0 +1,63 @@
+---
+title: Actualités & RSS
+description: Rédigez des annonces et des patch notes, organisez-les par rubrique et publiez-les sur Discord et en flux RSS.
+---
+
+<p class="doc-lead">Le module <strong>Actualités & RSS</strong> transforme vos annonces en articles : rédaction en Markdown, publication sur Discord, page publique et flux RSS auquel vos membres peuvent s'abonner.</p>
+
+:::note[Où la trouver]
+Section **Communauté → Actualités & RSS** : [Ouvrir les actualités ↗](https://dash.kotbo.fr/news).
+La rédaction est réservée au staff ; la lecture est publique une fois l'article publié.
+:::
+
+---
+
+## Onglet Articles
+
+### Rédiger un article
+
+Le bouton **Créer un article** ouvre l'éditeur, avec une prévisualisation en direct.
+
+* **Titre** (obligatoire) : par exemple *Mise à jour v1.4.0*.
+* **Catégorie** et **Sous-catégorie** (optionnelle) : elles organisent l'article comme une rubrique de journal. Kotbo propose *Mise à jour*, *Patch Note*, *Annonce*, *Blog* et *Staff*.
+* **URL de l'image** (optionnelle) et **Résumé court** (optionnel).
+* **Contenu de l'article** (obligatoire), en Markdown.
+
+### Publier
+
+* **Publier immédiatement** rend l'article public et déclenche la notification. Sinon, il reste en <span class="dash-badge">Brouillon</span>.
+* **Mode d'envoi Discord** :
+  * *Résumé + bouton vers la page* : un message court qui renvoie vers la page publique.
+  * *Embed complet + page publique* : l'article entier dans Discord.
+
+Ce choix s'applique à la publication immédiate comme à la publication ultérieure d'un brouillon.
+
+### Parcourir
+
+Le tableau affiche les colonnes **Article**, **Catégorie**, **Auteur**, **Date de pub.**, **État** et **Actions**. Une recherche par titre, résumé ou auteur et un filtre par catégorie complètent la vue.
+
+La **vue forum** regroupe les articles par catégorie puis par sous-catégorie, pour retrouver l'organisation d'un forum.
+
+---
+
+## Onglet Flux & Salons par Catégorie
+
+### Le flux RSS public
+
+Le flux est généré dynamiquement à partir des articles **publiés**. Vos membres peuvent s'y abonner depuis Feedly, Inoreader ou n'importe quel lecteur RSS. Le bouton de copie place le lien dans le presse-papiers.
+
+### Créer une rubrique
+
+Une rubrique associe une catégorie (et éventuellement une sous-catégorie) à un salon Discord de diffusion.
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Nommez la rubrique</h3><p>Par exemple <em>Monde</em>, <em>Tech</em>, ou une sous-rubrique comme <em>API</em>.</p></div></div>
+  <div class="step-item"><div><h3>Choisissez le salon de diffusion</h3><p>Les articles de cette rubrique y seront publiés.</p></div></div>
+  <div class="step-item"><div><h3>Enregistrez la rubrique</h3><p>Elle apparaît dans l'<strong>Index des flux</strong> avec son salon et son <strong>RSS dédié</strong>.</p></div></div>
+</div>
+
+:::caution[Catégorie et salon obligatoires]
+Kotbo refuse d'enregistrer une rubrique sans catégorie ni salon Discord.
+:::
+
+Chaque rubrique dispose de son propre flux public, consultable indépendamment du flux général.

@@ -1,0 +1,45 @@
+---
+title: Member marketplace
+description: Supervise the auction house where your members trade items and currency.
+---
+
+<p class="doc-lead">The <strong>Marketplace</strong> is your server's auction house: members list their items for sale, at a fixed price or by auction. The dashboard is where you supervise listings and transaction history.</p>
+
+:::note[Where to find it]
+The **Economy & RPG → Marketplace** section: [Open the marketplace ↗](https://dash.kotbo.fr/marketplace).
+The module depends on [Economy & RPG](/en/dashboard/economie/economie/): with no currency and no items, it has nothing to trade.
+:::
+
+---
+
+## The indicators
+
+* **Active listings**: how many sales are running.
+* **Total transactions**: how many sales have completed.
+* **Total volume (coins)**: the currency that changed hands.
+
+:::tip[Reading the volume]
+Volume collapsing while listings stay numerous usually means prices are too high for the amount of currency in circulation. Adjust the gains in [Economy & RPG](/en/dashboard/economie/economie/) rather than the marketplace itself.
+:::
+
+---
+
+## Listings tab
+
+The list shows the running sales, each with:
+
+* its **type**: <span class="dash-badge">Fixed price</span> or <span class="dash-badge active">Auction</span>;
+* its **price in coins**, or the **current bid** for an auction;
+* its **time remaining**, in days or hours, or the **Expired** label.
+
+A listing's status moves between **For sale**, **Sold**, **Cancelled** and **Expired**.
+
+When no sale is running, Kotbo reminds you that players create their listings with the `/market` command.
+
+---
+
+## History tab
+
+The history keeps completed transactions. This is the view to check to verify a disputed trade or to spot an item circulating suspiciously fast between two accounts.
+
+Until a sale happens, the section shows *No recent transactions*.

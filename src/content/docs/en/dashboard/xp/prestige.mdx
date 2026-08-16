@@ -1,0 +1,114 @@
+---
+title: Prestige
+description: Set up a competitive ladder built on prestige points, with tiers, activity streaks and decay.
+---
+
+<p class="doc-lead">The <strong>Prestige</strong> module adds a second, competitive leaderboard. <strong>RP</strong> (prestige points) measure a member's <em>recent</em> activity: unlike XP, which only goes up, RP can go back down.</p>
+
+:::note[Where to find it]
+The **XP system → Prestige** section: [Open prestige ↗](https://dash.kotbo.fr/prestige). The module is in **beta**.
+It depends on the [Leveling & XP](/en/dashboard/xp/leveling/) module: without it, nothing feeds the ladder.
+:::
+
+---
+
+## Understanding RP
+
+| Question | Answer |
+| --- | --- |
+| **How do you earn them?** | Every XP point granted by the Levels module is converted into RP, plus a bonus per reaction. A streak of active days increases the gains. |
+| **How do you lose them?** | Inactivity melts RP away when decay is on, and the end of a season resets them. A member can therefore be demoted. |
+| **What do they get you?** | Ladder tiers grant a Discord role, show on the rank card and decide the server leaderboard. |
+
+Five indicators open the page: **Ranked members**, **Active streaks**, **Points in circulation**, **Streak record** and **Server leader**.
+
+---
+
+## Picking a pace
+
+A preset lays down the RP gains and the tier ladder in one go.
+
+| Preset | Description |
+| --- | --- |
+| **Classic** *(recommended)* | Nineteen tiers from Bronze to Master, moderate gains, no loss on inactivity. |
+| **Sprint** | Twelve tight tiers and generous gains: the ladder moves every day. |
+| **Competitive** | A demanding ladder at the top, decay enabled: keeping your tier means staying active. |
+| **Compact** | Six tiers with no divisions, six roles to maintain. |
+| **Marathon** | Twenty-four widely spaced tiers: the summit stays a multi-season goal. |
+| **Custom** | Your current configuration, tuned slider by slider. |
+
+The tiles summarise the outcome: **RP per XP**, **Tiers**, **Apex**, **Estimated RP / day** and the state of **Decay**.
+
+---
+
+## Gains & streaks tab
+
+### Point gains
+
+RP is derived from XP actually granted: the cooldown, excluded channels and excluded roles of the levels module apply as they are.
+
+* **RP per XP point**
+* **RP per reaction** and **Reactions credited per day**
+* **Daily RP cap** (`0` = unlimited)
+* **Announcement channel**, **Announce promotions**, **Announce demotions**
+* **Join the cross-server leaderboard**
+
+### Streaks
+
+The bonus starts on the 2nd consecutive day. Freezes let a member survive an absence.
+
+* **Enable streaks**
+* **Bonus per day (%)** and **Maximum bonus (%)**
+* **Recoverable missed days**
+* **Freezes granted per week** and **Maximum freezes held**
+
+### Decay
+
+Only RP goes down: XP and levels are never touched.
+
+* **Enable decay**
+* **Tolerated inactive days**
+* **RP lost per day** and/or **Share of RP lost per day (%)**
+* **Floor tier**: the tier a member cannot drop below (*None* to go all the way to 0 RP).
+
+The **Simulate** and **Run now** buttons let you see how many members would be affected before running decay.
+
+---
+
+## Ladder & roles tab
+
+Three sliders drive the ladder in simple mode:
+
+* **Number of roles**: each tier is a Discord role to create and maintain. Discord caps roles at 250 per server.
+* **Tier width**: from *Very tight* to *Very wide*.
+* **Widening towards the top**: from *Constant gaps* to *Extreme*.
+
+In advanced mode: **RP for the first promotion**, **Curve exponent** and **Divisions per family** (Bronze I, II, III, the apex never having divisions).
+
+The **Ladder preview** shows the RP gap to clear tier by tier, and **Member distribution** shows where they would land at unchanged RP. Kotbo states how many members would change tier.
+
+You can pair a **Discord role** with each tier, with two options:
+
+* **Grant tier roles**
+* **One tier role at a time**
+
+:::caution[Hand-edited ladder]
+If you have edited the ladder tier by tier, the sliders no longer describe it. Saving from simple mode would replace it with the one the sliders describe.
+:::
+
+---
+
+## Events tab
+
+A **prestige event** multiplies gains over a time window, for one source at a time.
+
+Create one with **New event**, filling in its **type**, **name**, **multiplier**, **duration (minutes)** and **announcement channel**.
+
+Each event carries a status: **Scheduled**, **Running**, **Ended** or **Cancelled**, and reports its number of participants and bonus RP handed out when it finishes.
+
+---
+
+## Leaderboards tab
+
+* **Server leaderboard**: members ranked by RP.
+* **Active streaks**: who is on a streak, and for how many days.

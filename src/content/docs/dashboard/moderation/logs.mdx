@@ -1,0 +1,75 @@
+---
+title: Logs & activités Discord
+description: Consultez le journal d'événements Discord en temps réel et choisissez un salon de logs pour chaque type d'événement.
+---
+
+<p class="doc-lead">La page <strong>Logs Discord</strong> enregistre ce qui se passe sur votre serveur : messages supprimés, arrivées, sanctions, mouvements vocaux, changements de salons et de rôles. Elle sert autant à consulter l'historique qu'à décider où chaque événement est publié.</p>
+
+:::note[Où la trouver]
+Section **Modération → Logs Discord** : [Ouvrir les logs ↗](https://dash.kotbo.fr/logs).
+Kotbo a besoin de la permission **Voir le journal d'audit** et d'un accès en écriture aux salons de logs.
+:::
+
+---
+
+## Onglet Journal
+
+Quatre compteurs résument la période : **Total**, **Utilisateurs**, **Unique** et **Sources**.
+
+Le tableau **Événements Discord** affiche les colonnes **Heure**, **Acteur**, **Action**, **Salon**, **Catégorie**, **Description des détails** et **Type**.
+
+* Le champ **Recherche rapide** accepte une action, des détails, un module ou un utilisateur.
+* Un compteur indique le nombre d'événements affichés sur le total.
+* Le bouton **Ouvrir le casier** mène directement au dossier de modération du membre concerné.
+
+Si rien ne s'affiche, Kotbo suggère de modifier vos filtres de recherche.
+
+---
+
+## Onglet Audit & diff
+
+Cet onglet conserve chaque modification de message, de membre, de rôle ou de salon avec son état **avant** et **après**.
+
+* Filtrez par **type** (Message édité, Membre modifié, Rôle modifié, Salon modifié, Permissions de salon), par **auteur** ou par plage de dates.
+* Le bouton **Voir les différences** affiche la comparaison avant/après, avec le nombre d'ajouts et de suppressions. Pour les permissions, Kotbo distingue **Autorisées**, **Refusées** et **Remises en héritage**.
+
+Dans la **Configuration de l'audit**, vous pouvez activer la capture des états avant/après, choisir ce qui est capturé (messages, membres, rôles, salons), exclure des salons et fixer une **conservation en jours** (`0` conserve indéfiniment).
+
+---
+
+## Onglet Configuration
+
+:::note[Onglet réservé]
+Cet onglet n'apparaît que pour les membres autorisés à gérer les paramètres du serveur. Les modérateurs ne voient que **Journal** et **Audit & diff**.
+:::
+
+### Journalisation
+
+* **Activer l'audit global** : interrupteur principal de la journalisation.
+* **Suivi d'activité** : enregistre les actions effectuées.
+* **Notifs Salon** : publie les alertes dans le salon de logs.
+* **Notifs MP** : envoie les alertes au staff en message privé.
+
+### Salon par défaut
+
+Définissez le **salon de logs général**, utilisé pour tous les événements qui n'ont pas de salon spécifique.
+
+### Configuration par événement
+
+Vous pouvez activer chaque événement séparément et lui attribuer son propre **salon de destination**. Les événements sont regroupés par catégorie :
+
+| Catégorie | Événements |
+| --- | --- |
+| **Messages** | Message supprimé, Message modifié, Suppression en masse |
+| **Membres** | Arrivée de membre, Départ de membre, Rôles modifiés, Timeout de membre |
+| **Modération** | Expulsion (Kick), Bannissement, Débannissement, Timeout (Audit) |
+| **Vocaux** | Connexion vocale, Déconnexion vocale, Changement de salon |
+| **Salons & Rôles** | Salons (création, modification, suppression), Rôles (création, modification, suppression) |
+
+Chaque catégorie dispose d'un raccourci **Gérer les alertes de cette catégorie** pour activer ou couper l'ensemble d'un coup.
+
+:::tip[Séparer les journaux]
+Envoyez les événements de modération dans un salon réservé au staff, et gardez le salon par défaut pour le reste. Vos modérateurs retrouveront plus vite les sanctions au milieu du bruit des connexions vocales.
+:::
+
+N'oubliez pas d'enregistrer : Kotbo confirme par un message *Configurations des événements enregistrées avec succès*.

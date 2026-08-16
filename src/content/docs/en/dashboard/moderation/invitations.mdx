@@ -1,0 +1,73 @@
+---
+title: Invites
+description: Name your invite links by source, measure which channels recruit best, and suspend abusive inviters.
+---
+
+<p class="doc-lead">The <strong>Invites</strong> page answers one simple question: which channel really grows the server? It lets you name each link by source, measure attributed joins, and suspend an abusive inviter.</p>
+
+:::note[Where to find it]
+The **Moderation → Invites** section: [Open invites ↗](https://dash.kotbo.fr/invitations).
+Kotbo needs the **Manage server** permission to read and delete invites.
+:::
+
+Four counters open the page: **Sources**, **Attributed joins**, **Total joins** and **Retention**. The **Refresh** and **Export** buttons sit in the top right.
+
+---
+
+## Invites tab
+
+The table lists each link with its **Created**, **Code**, **Source**, **Inviter**, **Uses**, **Joins**, **Status** and **Last join** columns.
+
+* The search field accepts a **code** or an **inviter**.
+* The status filter offers **All statuses**, **Active**, **Suspended**, **Expired** and **Deleted**.
+* A long-inactive link is marked <span class="dash-badge warn">Dormant</span>, and a link whose author is suspended carries the **Inviter suspended** badge.
+
+On each row:
+
+| Action | Effect |
+| --- | --- |
+| **Name** / **Rename the source** | Assigns a source to the link (60 characters maximum). |
+| **Copy the link** | Copies the `discord.gg/…` URL to the clipboard. |
+| **Details** | Opens the link's record. |
+| **Purge** | Kicks every member who joined through this code. |
+| **Delete** | Permanently deletes the invite. |
+
+:::danger[Purging really kicks people]
+Purging an invite kicks every member who came through that link. Kotbo asks for confirmation and then reports how many members were removed.
+:::
+
+---
+
+## Sources tab
+
+This is where join attribution becomes readable.
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Name a first link</h3><p>Give it a meaningful name: <code>TikTok</code>, <code>Instagram</code>, a campaign, a partner.</p></div></div>
+  <div class="step-item"><div><h3>Group them</h3><p>Reuse <strong>exactly the same name</strong> across several links to count them together.</p></div></div>
+  <div class="step-item"><div><h3>Read the performance</h3><p>The <strong>Performance per source</strong> block ranks sources and shows, for each, the number of named links and the attributed joins.</p></div></div>
+</div>
+
+Kotbo shows the percentage of joins covered and reminds you how many invites are still unassigned. The **Best source** is highlighted.
+
+---
+
+## Top inviters tab
+
+A ranking of members by the number of joins they brought in, with the date of their last join.
+
+---
+
+## Suspensions tab
+
+### Suspend an inviter
+
+Blocks a member's new invites, and can cascade-purge.
+
+1. Enter the **Discord user ID** (required) and, optionally, their **tag** and a **reason**.
+2. Tick **Cascade-purge the invited members** to also kick every member who came through their links.
+3. Click **Suspend the inviter**.
+
+### Suspended inviters
+
+The list of active suspensions with their reason (or *No reason*). The **Restore** button reinstates the inviter.

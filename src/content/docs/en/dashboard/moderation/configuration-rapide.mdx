@@ -1,0 +1,50 @@
+---
+title: Security quick setup
+description: Apply a preset protection level that configures the AutoMod filters and the anti-raid thresholds in one go.
+---
+
+<p class="doc-lead">The <strong>Security → Quick setup</strong> page offers three protection levels. Picking a level configures the automatic moderation filters <em>and</em> the anti-raid thresholds at once, without going through the dozens of options on the detailed pages.</p>
+
+:::note[Where to find it]
+The **Security → Quick setup** section: [Open quick setup ↗](https://dash.kotbo.fr/security/quick-setup).
+You need the right to configure automatic moderation or to manage server settings.
+:::
+
+---
+
+## The three levels
+
+| Level | Who it is for | What it does |
+| --- | --- | --- |
+| **Light** | Small servers among friends, very chatty channels | Permissive anti-spam, anti-mention and anti-`@everyone` on. Links, caps, emoji, ghost pings and profanity left alone. Anti-raid stays off. |
+| **Standard** *(recommended)* | Most communities | All content filters on with moderate thresholds, anti-raid triggered at 10 joins per minute, scam filter and image filter on. |
+| **Strict** | Servers targeted by raids or regular spam | Tighter thresholds (3 messages, 3 mentions, 5 emoji, 60% caps), longer timeouts, anti-raid triggered from 5 joins per minute. |
+
+The level currently applied is highlighted in the grid, and each card shows how many filters it turns on.
+
+---
+
+## Applying a level
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Pick a card</h3><p>Click the level you want. Nothing is applied yet at this point.</p></div></div>
+  <div class="step-item"><div><h3>Save</h3><p>The unsaved-changes bar appears at the bottom of the screen. Click <strong>Save</strong> to apply the level.</p></div></div>
+  <div class="step-item"><div><h3>Fine-tune if needed</h3><p>Then head to <strong>Security → Filters</strong> and <strong>Security → Anti-raid</strong> to adjust whatever needs it.</p></div></div>
+</div>
+
+:::caution[The choice is not applied until you save]
+Leaving the page without saving discards the selected level.
+:::
+
+---
+
+## What a level does not touch
+
+A preset only configures what makes sense without knowing your server: the switches, the thresholds and the sanctions. You still have to set manually:
+
+* the **channels and roles** (alert channel, exempt roles, log channel);
+* your custom **word lists**;
+* the **anti-bot safe mode** and the **automatic burst suspension**, which are reserved for the server owner;
+* Discord's **native AutoMod**, which Kotbo always keeps enabled.
+
+After applying a level, go back to the [overview](/en/dashboard/moderation/vue-ensemble/): the audit score reflects the new state immediately.

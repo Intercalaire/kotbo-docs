@@ -1,0 +1,85 @@
+---
+title: Analytics
+description: Analyse your community's growth, engagement and activity, and export the charts.
+---
+
+<p class="doc-lead">The <strong>Analytics</strong> page measures what actually happens on your server: messages, voice, joins, retention, moderation and invites, over the period you choose.</p>
+
+:::note[Where to find it]
+The **General → Analytics** section: [Open Analytics ↗](https://dash.kotbo.fr/analytics).
+Collection is switched off from **Settings → Activity statistics**. Without it, nothing is recorded any more.
+:::
+
+---
+
+## Choosing the period
+
+The offered periods are **24 hours**, **7 days**, **30 days**, **90 days**, **365 days**, or a **custom** range. The **Live Feed** shows the time of the last update.
+
+---
+
+## The six categories
+
+| Category | What you find there |
+| --- | --- |
+| **Overview** | A general view of the period. |
+| **Engagement** | Messages, voice, members, network, commands. |
+| **Community** | Pulse, channels, social, word frequency. |
+| **Growth** | Retention, cohorts, churn, hourly heatmap, week comparison. |
+| **Moderation** | Moderation activity and staff performance. |
+| **Invites** | Analysis of the invite codes. |
+
+---
+
+## Engagement
+
+* **Top chatters** and **Top voice users**, with the full ranking, a search by name and pagination.
+* **Popular text channels** and **popular voice channels**, by message volume and by time spent.
+* **Commands executed**: overall use of the bot's commands and a breakdown per command.
+* **Network**: the graph of interactions between members.
+
+### Members
+
+* **Population flow**: joins and leaves, daily or cumulative, with per-day averages and the **net** balance.
+* **Active members**: peak concurrent activity, all-time peak, average and minimum.
+* **Members displaying the server tag**: how the number of members showing the official tag evolves.
+* A button lets you **sync existing members** to fill in the history.
+
+---
+
+## Growth
+
+* **Returning members**: members active this week after 30 days or more away.
+* **Retention by source**: the share of members still present 90 days later, per invite.
+* **Join cohorts**: for each join week, the percentage still present at D+1, D+7 and D+30.
+* **DAU / WAU / MAU** and **stickiness** (DAU/MAU).
+* **Week vs week**: comparison of two periods on messages, voice time, joins, leaves and sanctions, with the absolute change and an estimated retention.
+* **Hourly heatmap**: messages by day and by hour.
+
+---
+
+## Invites
+
+**Total codes**, **active codes**, **total uses** and **average per code**, with the list of **popular codes** and **inactive codes**. A shortcut opens the [Invites](/en/dashboard/moderation/invitations/) page to act on them.
+
+---
+
+## Exporting
+
+The **Export** button offers three formats:
+
+* **CSV export**
+* **XLSX export**
+* **Image export**, which generates an image of every chart visible on screen
+
+:::caution[You need data]
+An export over an empty period is refused with the message *No chart data to export*.
+:::
+
+---
+
+## Switching collection off
+
+The **Activity statistics** switch on the [Settings](/en/dashboard/configuration/parametres/) page stops all recording: messages, voice minutes, reactions, threads, joins and leaves, per-member statistics, word frequency and usage rankings.
+
+The other modules (moderation, tickets, levels and so on) keep working normally. Only the bot's technical measurements (execution times and errors, with no identity at all) are kept.

@@ -1,0 +1,72 @@
+---
+title: Accueil du dashboard
+description: Composez votre tableau de bord avec les widgets qui vous servent vraiment, et partagez votre mise en page.
+---
+
+<p class="doc-lead">La page d'<strong>Accueil</strong> est un tableau de bord entièrement modulable : vous choisissez les widgets affichés, leur taille et leur ordre.</p>
+
+:::note[Où la trouver]
+C'est la page d'ouverture du dashboard : [Ouvrir l'accueil ↗](https://dash.kotbo.fr/).
+C'est un module **cœur**, il ne peut pas être désactivé.
+:::
+
+---
+
+## Les widgets disponibles
+
+| Widget | Ce qu'il affiche |
+| --- | --- |
+| **Stats en Direct** | Membres, vocaux, connectés et croissance en temps réel. |
+| **Graphique d'Activité** | Évolution des messages, vocaux et sanctions sur 7 jours. |
+| **État du Système** | Santé de l'instance et nombre de modules actifs. |
+| **Salons Actifs** | Classement des salons par volume de messages. |
+| **Modération** | Nombre de sanctions émises. |
+| **Membres Actifs** | Classement des membres les plus bavards. |
+| **Boîte de Réception** | Notifications internes et alertes système. |
+| **Gestion Staff** | Prochaines absences et prochaines réunions. |
+| **Activité Récente** | Historique en direct des actions de modération et d'administration. |
+| **Raccourcis Actions** | Création rapide d'une absence, d'une réunion, d'un membre staff… |
+| **Notes de l'Équipe** | Un bloc-notes partagé, enregistré localement. |
+| **Infos Serveur** | Membres, boosts, propriétaire. |
+| **Hébergement Bot** | CPU, RAM, latence API et durée d'activité. |
+| **Dernières Nouvelles** | Journal des mises à jour Kotbo. |
+| **Guide de Démarrage** | Checklist des actions recommandées. |
+| **Horloge** | Date et heure locale. |
+| **Économie**, **Niveaux**, **Tickets**, **Invitations**, **Événements**, **Sondages**, **Serveur Staff** | Un aperçu du module correspondant. |
+
+Un widget dont le module est désactivé le signale explicitement plutôt que d'afficher des chiffres vides.
+
+---
+
+## Composer sa mise en page
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Ajoutez un module</h3><p>Le bouton <strong>Ajouter un module</strong> propose les widgets encore masqués.</p></div></div>
+  <div class="step-item"><div><h3>Déplacez-le</h3><p>Les commandes de déplacement montent ou descendent le widget dans la grille.</p></div></div>
+  <div class="step-item"><div><h3>Redimensionnez-le</h3><p>Chaque widget a une <strong>largeur</strong> en colonnes et une <strong>hauteur</strong> en lignes, ajustables par glissement.</p></div></div>
+  <div class="step-item"><div><h3>Masquez ce qui ne sert pas</h3><p>L'action <strong>Masquer le module</strong> le retire de la grille sans perdre sa configuration.</p></div></div>
+</div>
+
+Kotbo confirme l'enregistrement par un message *Mise en page enregistrée !*. Le bouton de réinitialisation remet la disposition par défaut.
+
+---
+
+## Partager une mise en page : les presets
+
+Une mise en page peut être enregistrée comme **preset**, puis :
+
+* **appliquée** en un clic sur un autre serveur ;
+* **partagée** par lien, le bouton copie l'adresse dans le presse-papiers ;
+* **exportée** et **importée** au format JSON.
+
+:::tip[Un preset par rôle]
+Les besoins d'un modérateur et d'un administrateur ne sont pas les mêmes. Préparez un preset par profil et partagez le lien à votre équipe : chacun retrouve la vue qui le concerne.
+:::
+
+---
+
+## Les états particuliers
+
+* **L'API est en cours de redémarrage** : la reconnexion est automatique, il suffit d'attendre.
+* **Maintenance requise** : un bouton **Réparer** est proposé pour corriger la configuration signalée.
+* L'état de santé du système est résumé par **Optimal**, **Bon**, **Dégradé** ou **Critique**.

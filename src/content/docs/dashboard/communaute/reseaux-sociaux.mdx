@@ -1,0 +1,51 @@
+---
+title: Réseaux sociaux
+description: Suivez des chaînes YouTube et des streamers Twitch et publiez automatiquement une alerte Discord à chaque nouveauté.
+---
+
+<p class="doc-lead">Le module <strong>Réseaux sociaux</strong> surveille des chaînes YouTube et des streamers Twitch, et publie une alerte dans un salon Discord à chaque nouvelle vidéo, nouveau Short ou passage en live.</p>
+
+:::note[Où la trouver]
+Section **Communauté → Réseaux sociaux** : [Ouvrir les réseaux sociaux ↗](https://dash.kotbo.fr/social-networks). Le module est en **bêta**.
+Les alertes YouTube et Twitch sont produites par des tâches de fond : les modules **YouTube** et **Twitch** doivent être activés dans le catalogue des modules, sinon rien n'est publié.
+:::
+
+Une bannière **Statut des modules** rappelle en haut de page quels modules sont actifs et si le service est en ligne.
+
+---
+
+## Suivre une chaîne YouTube
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Saisissez la chaîne</h3><p>Le champ <strong>URL, Handle ou Nom de chaîne</strong> accepte les trois formes, par exemple <code>https://youtube.com/@cyprien</code> ou simplement le nom.</p></div></div>
+  <div class="step-item"><div><h3>Choisissez le salon des alertes</h3><p>Laissez la valeur par défaut pour utiliser le salon public configuré ailleurs.</p></div></div>
+  <div class="step-item"><div><h3>Ajoutez une mention (optionnel)</h3><p>Le champ <strong>Mention</strong> accepte <code>@everyone</code> ou un rôle.</p></div></div>
+  <div class="step-item"><div><h3>Personnalisez les messages</h3><p>Trois messages distincts sont configurables : <strong>Live</strong>, <strong>Vidéo</strong> et <strong>Short</strong>. Les variables <code>[title]</code> et <code>[channel]</code> sont remplacées à la publication.</p></div></div>
+</div>
+
+Cliquez sur **Ajouter la chaîne**. Elle apparaît dans **Chaînes suivies**, où vous pouvez modifier sa configuration ou cesser de la suivre.
+
+---
+
+## Suivre un streamer Twitch
+
+Le formulaire **Suivre un streamer Twitch** fonctionne de la même façon :
+
+* **Pseudo ou Lien Twitch** : par exemple `xqc` ou `https://twitch.tv/xqc`.
+* **Salon des alertes** et **Mention**.
+* **Message Live** avec les mêmes variables.
+
+Cliquez sur **Suivre le streamer**. La liste **Streamers suivis** indique pour chacun son état : <span class="dash-badge kick">En Live</span> ou <span class="dash-badge">Hors ligne</span>.
+
+---
+
+## Modifier ou retirer un suivi
+
+Sur chaque entrée des listes :
+
+* l'icône de sauvegarde applique les modifications de configuration ;
+* l'action **Ne plus suivre** retire la chaîne ou le streamer, après confirmation.
+
+:::tip[Message par défaut]
+Laisser un champ de message vide utilise le message par défaut de Kotbo. C'est suffisant dans la plupart des cas : ne personnalisez que les alertes que vous voulez vraiment distinguer.
+:::

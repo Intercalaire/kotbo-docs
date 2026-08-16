@@ -1,0 +1,65 @@
+---
+title: Discipline du staff
+description: Avertissez les membres de l'équipe, gérez la blacklist et automatisez les sanctions par seuil.
+---
+
+<p class="doc-lead">La <strong>Discipline</strong> traite les manquements au sein de l'équipe : avertissements internes, blacklist et sanctions automatiques déclenchées par accumulation.</p>
+
+:::note[Où la trouver]
+Section **Staff → Discipline** : [Ouvrir la discipline ↗](https://dash.kotbo.fr/staff-management/warnings).
+À ne pas confondre avec les [Sanctions](/dashboard/moderation/sanctions/), qui concernent les membres du serveur.
+:::
+
+---
+
+## Avertissements internes
+
+### Émettre un avertissement
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Cliquez sur Nouvel avertissement</h3><p>Le formulaire s'ouvre.</p></div></div>
+  <div class="step-item"><div><h3>Désignez le membre visé</h3><p>La recherche porte sur les membres du staff ; l'identifiant Discord se remplit automatiquement.</p></div></div>
+  <div class="step-item"><div><h3>Décrivez le manquement</h3><p>Le champ <strong>Raison de l'avertissement</strong> attend une description précise des faits.</p></div></div>
+  <div class="step-item"><div><h3>Fixez une date d'expiration</h3><p>Puis cliquez sur <strong>Sanctionner</strong>.</p></div></div>
+</div>
+
+### Suivre les avertissements
+
+Le tableau affiche les colonnes **Membre**, **Raison**, **Émis par**, **Date**, **Statut** et **Actions**. Un avertissement est <span class="dash-badge warn">Actif</span> jusqu'à sa date d'expiration, puis passe <span class="dash-badge">Expiré</span>.
+
+---
+
+## Automatisation & sanctions
+
+Le bouton de configuration en tête de page ouvre **Automatisation & Sanctions**, qui définit ce qui se passe quand un membre accumule des avertissements.
+
+Pour un seuil donné (en nombre de warns), vous pouvez déclencher :
+
+* **Retirer les rôles (Démotion)** : supprime l'intégralité des rôles staff.
+* **Blacklist Permanente** : le membre est banni du staff par défaut.
+
+:::tip[Poser un seuil avant d'en avoir besoin]
+Définir la règle à froid évite d'avoir à trancher au cas par cas dans l'urgence, et rend la décision défendable auprès du reste de l'équipe.
+:::
+
+---
+
+## Blacklist du staff
+
+La blacklist coupe net tout accès d'un utilisateur à l'équipe : il ne peut plus être ajouté au staff ni candidater.
+
+1. Cliquez sur **Blacklister**.
+2. Désignez le **Membre à blacklister**.
+3. Renseignez la **Raison de l'exclusion**.
+4. Indiquez une **Fin de blacklist**, ou laissez le champ vide pour une exclusion **permanente**.
+5. Cliquez sur **Appliquer Blacklist**.
+
+Chaque entrée affiche le badge <span class="dash-badge kick">Blacklisté</span>, sa raison et sa date de fin (ou la mention **Permanent**). Le bouton **Retirer la blacklist** annule l'exclusion.
+
+Quand personne n'est blacklisté, Kotbo affiche *Aucun utilisateur n'est actuellement inscrit dans la blacklist staff*.
+
+---
+
+## Lien avec le recrutement
+
+Un utilisateur blacklisté ne peut pas être intégré via le module [Recrutement](/dashboard/staff/recrutement/). L'échec d'un entretien oral applique de son côté un délai d'un mois avant toute nouvelle candidature.

@@ -1,0 +1,62 @@
+---
+title: Server rules
+description: Write, order and publish your rule articles, and gate access to the server on accepting them.
+---
+
+<p class="doc-lead">The <strong>Server rules</strong> module holds your server's rule articles, publishes them on Discord in a message kept up to date automatically, and can gate access to the server on accepting them.</p>
+
+:::note[Where to find it]
+The **Community → Server rules** section: [Open the rules ↗](https://dash.kotbo.fr/regulation).
+The articles defined here directly feed the **Rules broken** field of [sanction reports](/en/dashboard/moderation/sanctions/).
+:::
+
+---
+
+## Writing the articles
+
+The **New Rule** button opens the form:
+
+* **Rule title** (required), for example *Respect and courtesy*.
+* **Emoji** (optional), standard or custom.
+* **Detailed description**, which supports Markdown.
+* **Active and visible rule**: controls its public visibility and its synchronisation.
+
+A live preview shows the result to the right of the form.
+
+### Ordering
+
+Articles can be reordered by drag and drop, or with the **Move Up** and **Move Down** buttons. The dashboard order is the published message order.
+
+Each article carries a <span class="dash-badge active">Visible</span> or <span class="dash-badge">Hidden</span> badge, and the header shows how many articles are active out of the total.
+
+### Deleting
+
+Deletion requires typing a confirmation word.
+
+:::danger[Effect on reports]
+Deleting an article removes it from **all future sanction reports**. Reports already written keep their reference.
+:::
+
+---
+
+## Publishing on Discord
+
+1. Pick the **Publish Channel**. With no channel, Kotbo refuses to publish.
+2. Click **Publish rules**.
+3. After a change, **Update message** refreshes the existing message rather than creating a new one.
+
+**Automatic synchronisation** keeps the Discord message aligned with the dashboard list. Every publication is announced in the staff announcement channel; no member is notified by direct message.
+
+---
+
+## Verification through the rules
+
+This option adds an acceptance button under the rules message.
+
+* **Verification**: turns the button on.
+* **Assigned role**: the role granted on acceptance. Leave it empty for Kotbo to create a `Vérifié` role automatically.
+* **Lock**: hides the other channels until the member accepts.
+
+:::warning[Mind the permissions]
+Enabling verification can create Discord permission conflicts and inadvertently give `@everyone` read access to some private channels. Check that your private channels **explicitly deny** the read messages permission to `@everyone` before turning this on. Kotbo shows this warning and asks for confirmation.
+:::

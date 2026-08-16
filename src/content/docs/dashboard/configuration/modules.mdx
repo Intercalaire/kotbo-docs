@@ -1,0 +1,73 @@
+---
+title: Catalogue des modules
+description: Activez et désactivez les modules de Kotbo, gérez leurs dépendances et appliquez une configuration type.
+---
+
+<p class="doc-lead">La page <strong>Modules</strong> est l'interrupteur général de Kotbo : chaque fonctionnalité s'active ou se coupe ici, et la barre latérale suit.</p>
+
+:::note[Où la trouver]
+Section **Configuration → Modules** : [Ouvrir le catalogue ↗](https://dash.kotbo.fr/modules).
+Réservé aux administrateurs du serveur. Pour le geste de base, voir aussi [Activer ses modules](/premiers-pas/modules/).
+:::
+
+---
+
+## Les catégories
+
+Les modules sont rangés en sept familles :
+
+| Catégorie | Contenu |
+| --- | --- |
+| **Cœur** | Fondations du bot et du dashboard. Toujours actives. |
+| **Modération & Sécurité** | Sanctions, journaux, filtrage automatique, protection du serveur. |
+| **Gestion du staff** | Recrutement, hiérarchie, réunions, absences, suivi de l'équipe. |
+| **Communauté & Engagement** | Progression, économie, jeux, événements, interactions. |
+| **Contenu & Communication** | Règlement, accueil, actualités, réponses automatiques, publication. |
+| **Intégrations** | Services externes branchés sur le serveur. |
+| **Cross-serveur** | Ponts entre plusieurs serveurs Discord. |
+
+Un champ de recherche filtre le catalogue. S'il ne reste rien, Kotbo affiche *Aucun module ne correspond à cette recherche*.
+
+---
+
+## Activer ou désactiver
+
+Chaque carte porte un interrupteur, le rôle du module et, quand il y en a, la liste **Nécessite**.
+
+:::caution[Les dépendances suivent]
+Éteindre un module éteint ceux qui en dépendent ; rallumer un module dépendant rallume ses parents. Par exemple, couper **Leveling & XP** coupe aussi Saisons, Prestige et Clans.
+:::
+
+Les modules **cœur** ne peuvent pas être désactivés : couper la page Modules ou le journal d'activité rendrait le serveur inadministrable, ou effacerait la trace de la manœuvre.
+
+Certains modules démarrent **éteints par défaut** : ce sont ceux qui demandent une configuration préalable (une clé d'API, un salon) et qui produiraient des erreurs silencieuses sans elle.
+
+---
+
+## Accès par rôle
+
+Le bloc **Accès par rôle** d'un module définit qui peut le **consulter**, le **modérer** et le **configurer** depuis le dashboard. C'est ce réglage qui fait qu'un modérateur voit une page en lecture seule là où un administrateur peut l'éditer.
+
+Le lien **Ouvrir la configuration détaillée** mène directement à la page du module.
+
+---
+
+## Configurations types
+
+En bas de page, trois presets appliquent en une fois un jeu de modules et de permissions adapté à un type de serveur :
+
+| Preset | Ce qu'il pose |
+| --- | --- |
+| **Communauté générale** | Traduction active, modules dev en veille, commandes admin sous contrôle. |
+| **Gaming / Esport** | Traduction active, stack de modération simple, focus salons joueurs. |
+| **Dev / Tech** | Daily Algo et Code Police actifs, commandes techniques ouvertes. |
+
+:::warning[Un preset remplace]
+Appliquer une configuration type **remplace** les réglages concernés, modules comme restrictions de commandes. Kotbo demande confirmation avant d'agir.
+:::
+
+---
+
+## Ce que la désactivation ne fait pas
+
+Désactiver un module n'est **pas** une suppression de données. La page disparaît de la barre latérale et les automatismes cessent, mais les données restent. Pour repartir de zéro, cherchez l'option de réinitialisation propre au module.

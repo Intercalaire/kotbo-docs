@@ -1,0 +1,143 @@
+---
+title: Leveling & XP
+description: Configure how your members earn experience, the progression curve, the reward roles and the public leaderboard.
+---
+
+<p class="doc-lead">The <strong>Leveling & XP</strong> module rewards participation: every message and every minute spent in voice earns experience, which levels members up and grants them roles.</p>
+
+:::note[Where to find it]
+The **XP system → Leveling & XP** section: [Open leveling ↗](https://dash.kotbo.fr/leveling).
+The module is off by default: turn it on with the **Module status** switch at the top of the page, or no XP is handed out.
+:::
+
+---
+
+## Start with a preset
+
+The page opens on **Pick a preset**. A preset configures XP gains and the progression curve in one go.
+
+| Preset | What it gives you |
+| --- | --- |
+| **Basic** *(recommended)* | Steady progression that suits most servers. |
+| **Fast gains** | Lots of XP and levels coming quickly, for a server that is starting out. |
+| **Proportional progression** | Standard gains, but each level costs noticeably more than the previous one. |
+| **Marathon** | Very slow, very spread-out progression, made for a server that has been alive for years. |
+| **Prestige** | High gains but a ceiling at level 100: everyone aims for the same summit. |
+| **Custom** | Your own values, tuned one by one. |
+
+:::caution[Nothing is applied until you save]
+The announcement channel and the reward roles are still set separately in the **Advanced settings**.
+:::
+
+---
+
+## XP gains tab
+
+### XP generosity
+
+A five-step slider, from **Very low** to **Very high**, aligns the four underlying settings at once. The tiles show the result: **XP per message**, **Cooldown**, **Voice XP** and **Per hour of chatting**.
+
+In advanced mode you set:
+
+* **Minimum / Maximum XP per message**
+* **Text XP cooldown (seconds)**
+* **Voice XP per minute**
+
+### Bonus based on message length
+
+The longer a message, the more it earns, up to the maximum multiplier.
+
+* **Length for the max bonus (characters)**
+* **Maximum multiplier (×)**: a very short message stays at ×1, a long one reaches the chosen maximum.
+
+### Voice XP conditions
+
+Restricts voice XP to members who are genuinely active:
+
+* **Require an active mic**: no XP for a muted member.
+* **Require sound on**: no XP for a deafened member.
+* **Ignore the AFK channel**.
+* **Minimum members in voice**: XP is only granted from N connected humans. Bots do not count.
+
+### Daily XP cap
+
+**Maximum XP per day**, text and voice combined. `0` means no cap; the counter resets every day at midnight UTC. Manual staff adjustments are not capped.
+
+### Exclusions and multipliers
+
+* **Excluded channels** and **Excluded roles**: no XP is earned there.
+* **XP multipliers per role**: pair a role with a multiplier. The winning clan's role is handled automatically when the clan boost is on.
+
+---
+
+## Progression tab
+
+The curve determines the XP needed for each level, following `XP = base × level^exponent + linear × level`.
+
+Two sliders are enough in simple mode:
+
+* **Progression pace**: from *Very fast* to *Very slow*.
+* **Gap between levels**: from *Almost none* to *Very large*.
+
+In advanced mode: **Base coefficient**, **Linear coefficient**, **Exponent** and **Maximum level** (`0` for no ceiling; at the ceiling XP keeps accumulating but the level stops moving).
+
+### Reading the preview
+
+* **Preview: XP to earn per level** compares the curve being edited with the saved one.
+* The **estimated time** is computed for three profiles: 10, 30 or 100 messages a day.
+* **Member distribution on this curve** shows where your current members would land.
+* Kotbo states how many members **will change level on save**, and how many of those go down.
+
+:::warning[Changing the curve redistributes levels]
+Levels are always recalculated from total XP. Changing the curve immediately redistributes every member's level, without costing them any XP.
+:::
+
+### Re-applying roles
+
+After a curve change, reward roles are corrected on each member's next XP gain. The **Re-apply roles now** button applies them straight away, including for inactive members: on a large server this takes time and fills the audit log.
+
+---
+
+## Announcements tab
+
+* **Level-up channel**: a specific channel, the **channel where the message was posted**, or a **direct message**. The **Create and save** button creates a read-only channel and selects it in one action.
+* **Level-up message**: leave it empty for the default message, written in the server's language. The usable variables are listed under the field (`{user}`, `{level}`…).
+
+### Reward roles
+
+Pair a **Required level** with a **Role to grant**, then click **Add reward role**.
+
+* **Stack reward roles**: members keep every role they earned instead of only the highest one.
+* A reward set above the maximum level is marked **Out of reach**.
+
+### Clan season boost
+
+If [Clans](/en/dashboard/xp/clans/) are enabled, you can automatically grant an **XP multiplier** to the members of last season's winning clan.
+
+---
+
+## Leaderboard tab
+
+* Statistics: **Ranked members**, **Max level**, **Average level**, **Total XP**.
+* The **XP leaderboard** can be browsed and filtered by nickname.
+* The **public leaderboard page** has a link to share with your members, with **View the page** and **Copy the link** buttons.
+
+---
+
+## Import tab
+
+This tab loads a list of members with their levels and XP, for example from another bot.
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Provide the JSON</h3><p>Drop a <code>.json</code> file or paste the contents directly. The expected format is an array of objects.</p></div></div>
+  <div class="step-item"><div><h3>Analyse without writing</h3><p>The <strong>Analyse without writing</strong> option simulates the import: matched members, members with no XP yet, level changes, XP revised downwards. Nothing is modified.</p></div></div>
+  <div class="step-item"><div><h3>Run the import</h3><p>Members that could not be found are skipped and listed with the reason.</p></div></div>
+</div>
+
+Kotbo matches each entry to a Discord member by comparing, case-insensitively, their **username**, their **display name** or their **legacy tag**.
+
+Conversion rules:
+
+* if only **XP** is provided, the level is derived automatically;
+* if only the **level** is provided, the minimum XP for that level is granted;
+* the import **overwrites** the existing levels of matched members.

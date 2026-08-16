@@ -1,0 +1,82 @@
+---
+title: Annuaire du staff
+description: Gérez les membres de votre équipe, leurs grades, leurs suspensions et suivez leur activité.
+---
+
+<p class="doc-lead">L'<strong>Annuaire</strong> est la fiche d'équipe de votre serveur : qui fait partie du staff, à quel grade, depuis quand, et avec quelle activité.</p>
+
+:::note[Où la trouver]
+Section **Staff → Annuaire** : [Ouvrir l'annuaire ↗](https://dash.kotbo.fr/staff-management/members).
+L'accès est contrôlé par l'onglet **Permissions** de la même page.
+:::
+
+Quatre indicateurs ouvrent la page : **Membres** dans l'équipe, **Rôles Staff** configurés, **Avertissements** actifs et **Sondages Actifs**.
+
+---
+
+## Onglet Membres
+
+### Ajouter un membre
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Cliquez sur Ajouter un membre</h3><p>Le formulaire s'ouvre.</p></div></div>
+  <div class="step-item"><div><h3>Désignez l'utilisateur Discord</h3><p>Le champ accepte une mention, un pseudo ou un identifiant Discord ; l'ID se remplit automatiquement.</p></div></div>
+  <div class="step-item"><div><h3>Choisissez le grade global</h3><p>Et, si besoin, cochez <strong>Créer un tutorat</strong> pour lancer immédiatement une période de test encadrée.</p></div></div>
+</div>
+
+### Importer depuis Discord
+
+Le bouton **Importer** ajoute d'un coup tous les porteurs d'un rôle Discord dans une hiérarchie, à un grade de destination choisi. Kotbo affiche ensuite le nombre de membres analysés, importés et ignorés (déjà présents).
+
+### Agir sur une fiche
+
+Chaque carte affiche le membre, son grade, sa date d'entrée dans l'équipe, son nombre d'avertissements et son activité (messages, minutes, sanctions).
+
+| Action | Effet |
+| --- | --- |
+| **Promouvoir** / **Rétrograder** | Change le grade d'un cran. Kotbo prévient quand le grade minimum ou maximum est atteint. |
+| **Désigner comme Tuteur** | Ajoute le badge **Tuteur** et rend le membre éligible à l'encadrement d'un apprenti. |
+| **Gérer les hiérarchies** | Associe le membre à des hiérarchies secondaires, chacune avec son propre grade. |
+| **Suspendre** | Retire ses rôles Discord staff, mais conserve sa fiche, son grade et son historique. Réversible à tout moment. |
+| **Démettre** | Retire le membre du staff. |
+
+:::tip[Suspendre plutôt que démettre]
+La suspension est faite pour les absences longues ou les situations en cours d'examen : le membre garde tout son historique et retrouve ses rôles à la réintégration.
+:::
+
+---
+
+## Onglet Organigramme
+
+L'organigramme dessine les hiérarchies et leurs responsables. Chaque bloc affiche le **Responsable staff global**, les **Resp** de hiérarchie et les **Chefs** de rôle.
+
+Tant qu'aucune hiérarchie n'existe, Kotbo invite à en créer et à y assigner des rôles.
+
+---
+
+## Onglet Leadership
+
+Cette vue analyse les performances de l'équipe.
+
+* **Distribution des Scores** et **Comparaison d'Activité** sous forme de graphiques.
+* Le tableau affiche le **Score Progression**, l'**Activité (30 j / 7 j)** en messages par jour, et le **Statut / Alertes**.
+* Un membre dont l'activité s'effondre est marqué <span class="dash-badge kick">INACTIVITÉ DÉTECTÉE</span> ; les autres portent le badge <span class="dash-badge active">ACTIF</span>.
+
+---
+
+## Onglet Permissions
+
+Deux réglages contrôlent qui voit quoi :
+
+* **Annuaire Staff** : l'accès à la liste des membres du personnel.
+* **Hiérarchie & Rôles** : l'accès à la gestion des rôles et de la hiérarchie.
+
+---
+
+## Configuration globale
+
+Le bloc **Configuration Globale** de l'onglet *Rôles Staff* porte les réglages transverses à l'équipe :
+
+* **Rôle Staff de base** et **Rôle Staff en Test**.
+* **Salon d'annonce des réunions** et **Salon vocal / conférence des réunions**.
+* **Salon d'annonces Staff**.

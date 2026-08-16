@@ -1,0 +1,65 @@
+---
+title: Scheduled tasks
+description: Automate resetting a channel, backing up the server, or exporting data on a regular schedule.
+---
+
+<p class="doc-lead"><strong>Schedules</strong> run an action automatically at a regular interval, so nobody has to remember it.</p>
+
+:::note[Where to find it]
+The **Configuration → Schedules** section: [Open the schedules ↗](https://dash.kotbo.fr/schedules).
+:::
+
+---
+
+## Creating a schedule
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Click New schedule</h3><p>The form opens.</p></div></div>
+  <div class="step-item"><div><h3>Name the task</h3><p>For example <em>General channel reset</em>. The name is required.</p></div></div>
+  <div class="step-item"><div><h3>Choose the action type</h3><p>See the table below.</p></div></div>
+  <div class="step-item"><div><h3>Set the frequency</h3><p>Then save.</p></div></div>
+</div>
+
+### The action types
+
+| Type | Effect |
+| --- | --- |
+| **Channel reset (nuke)** | Clones the target channel, deletes the original, then posts a message in the new channel announcing the reset. |
+| **Full server backup** | Creates a [backup](/en/dashboard/configuration/sauvegardes/) automatically. It includes members, roles, channels, emoji and stickers, but **never messages**. |
+| **Data export (Logs & Profiles)** | Produces an export of the logs and profiles. |
+
+:::caution[The target channel is required]
+A channel reset needs a **destination channel**. Kotbo refuses to save the task without one, and thread channels are not supported.
+:::
+
+:::danger[The channel ID changes]
+A reset does not empty the channel: it creates a copy and deletes the original. Any external setting pointing at the channel by its ID (a webhook, another bot, a Kotbo module's configuration) has to be redone after every run.
+:::
+
+### The frequencies
+
+* **Hourly**
+* **Daily at midnight**
+* **Weekly** (Sunday at midnight)
+* **Monthly** (the 1st at midnight)
+* **Custom (Cron expression)**
+
+The cron expression follows the standard Unix format `minute hour day month day-of-week`. For example, `0 12 * * *` fires the task every noon.
+
+---
+
+## Managing the schedules
+
+Each card recalls the **frequency**, the **target channel** and the **last run** (or *Never*).
+
+| Button | Effect |
+| --- | --- |
+| **Run** | Executes the task immediately, in the background, without waiting for the next slot. |
+| **Edit** | Reopens the form. |
+| **Delete** | Removes the schedule permanently. |
+
+A schedule can also be **enabled** or **disabled** without being deleted, which is handy to pause a task during an event.
+
+:::danger[Test before automating]
+Use **Run** once by hand to check what the task actually does, especially for a channel reset, which destroys the history.
+:::

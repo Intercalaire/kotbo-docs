@@ -1,0 +1,75 @@
+---
+title: Staff servers
+description: Link a Discord server dedicated to the team to synchronise roles, hierarchy and notifications.
+---
+
+<p class="doc-lead">The <strong>Staff servers</strong> module links your main server to a Discord server dedicated to the team, and keeps the roles on both sides consistent.</p>
+
+:::note[Where to find it]
+The **Cross-server → Staff servers** section: [Open staff servers ↗](https://dash.kotbo.fr/staff-server).
+Kotbo must be **present on both servers**.
+:::
+
+---
+
+## Linking a staff server
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Click Link a staff server</h3><p>The form opens.</p></div></div>
+  <div class="step-item"><div><h3>Enter the staff server ID</h3><p>The bot must already be present on that server.</p></div></div>
+  <div class="step-item"><div><h3>Choose the sync mode</h3><p>See the table below.</p></div></div>
+  <div class="step-item"><div><h3>Fill in the rest if needed</h3><p>A <strong>simple staff role</strong> and a <strong>log channel</strong>, both optional, then click <strong>Link the server</strong>.</p></div></div>
+</div>
+
+### The sync modes
+
+| Mode | What it does |
+| --- | --- |
+| **Main → Staff** | The hierarchy is managed here, a simple role is granted on the staff server. |
+| **Staff → Main** | The hierarchy is managed on the staff server, a simple role is granted here. |
+| **Bidirectional** | The hierarchy is synchronised on both servers. |
+
+Each server in the list carries a **Staff server** or **Main server** badge, and offers the **Sync** and **Details** actions.
+
+---
+
+## Role mappings
+
+A mapping pairs a role on the main server with a role on the staff server.
+
+1. Open **Add a role mapping**.
+2. Choose the **role on this server**.
+3. Enter the **role ID on the staff server**.
+4. Click **Add the mapping**.
+
+Without a mapping, the link exists but no correspondence is applied. The **Sync** button then reports how many actions were performed and how many errors occurred.
+
+---
+
+## Cross-server notifications
+
+These settings pick the **staff server** channels that will receive the main server's notifications:
+
+| Setting | Content |
+| --- | --- |
+| **Modlog mirror** | A copy of the automod, ghost ping and honeypot alerts. |
+| **Sanction reports** | An embed posted on every new report. |
+| **Application alerts** | A notification on every new application. |
+| **Staff departure alert** | An alert with a kick button when a member loses all their staff roles. |
+| **Onboarding invite channel** | The source channel for invites sent to new staff. |
+| **Recruitment interview category** | The staff server category where interview channels are created. |
+
+---
+
+## Onboarding and recruitment
+
+* **Automatic onboarding invite**: sends an invite to the staff server by direct message as soon as the first staff role is granted.
+* **Recruitment interviews on the staff server**: creates the [Recruitment](/en/dashboard/staff/recrutement/) module's interview channels on the staff server rather than on the main one.
+
+---
+
+## Removing a link
+
+:::danger[Roles stop syncing]
+Removing a link stops the synchronisation between the two servers. Roles already granted stay in place, but they will no longer follow any change.
+:::

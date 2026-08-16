@@ -1,0 +1,86 @@
+---
+title: Sanctions & reports
+description: Browse the sanction history, write the required reports, import an existing history and configure progressive sanction scales.
+---
+
+<p class="doc-lead">The <strong>Security → Sanctions</strong> page centralises every warning, timeout, kick and ban issued on your server, together with its author, its target and its detailed report.</p>
+
+:::note[Where to find it]
+The **Security → Sanctions** section: [Open sanctions ↗](https://dash.kotbo.fr/security/sanctions).
+Viewing requires a moderation role; deleting an infraction is reserved for administrators.
+:::
+
+---
+
+## History tab
+
+### Browsing the list
+
+The **Sanctions list** table shows the **Date**, **Target**, **Duration** and **Status** columns, along with the number of entries displayed out of the total.
+
+* The search field accepts a type, a target, a staff member or a reason.
+* The **Reset filters and sorting** button returns the table to its default state.
+* Clicking a target opens their moderation file, from where you can apply a new action.
+
+### Sanction reports
+
+Depending on the sanction and your rights, the action button changes:
+
+* **Create the report**: opens the form to complete for the selected sanction.
+* **Add the evidence**: the report is pre-filled but is waiting for an evidence link (screenshot, message…).
+* **View the report**: the report already exists and can be consulted.
+* **Report reserved**: only the person who applied the sanction can create this report.
+
+The **Sanction file** form asks for:
+
+1. the **date and time of the incident**;
+2. the **duration applied**;
+3. the **rules broken**, picked from the articles of the Regulation module;
+4. the **detailed reason** for the facts;
+5. **additional notes** (context, history);
+6. at least one valid **evidence link** in `http` or `https`.
+
+:::caution[The regulation must exist]
+If no article is configured, Kotbo refuses to create the report and points you to the **Regulation** module to add rules first.
+:::
+
+### Importing an existing history
+
+The **Import sanctions** button pulls in a history from another bot (Sapphire, MEE6, Dyno, RaidProtect…) in three steps:
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Choose a file</h3><p>Accepted formats: <code>.json</code>, <code>.csv</code>, <code>.xlsx</code>, <code>.xls</code>. The source bot can be specified, but stays optional.</p></div></div>
+  <div class="step-item"><div><h3>Map the columns</h3><p>Kotbo guesses the mapping (type, target, moderator, reason, date, duration). Check it and correct it before continuing.</p></div></div>
+  <div class="step-item"><div><h3>Preview and import</h3><p>The table shows valid rows and rows in error, which will be skipped. Run the import: the final summary counts imported sanctions, skipped duplicates and errors.</p></div></div>
+</div>
+
+### Deleting an infraction
+
+Reserved for administrators, deletion is irreversible and requires typing the word **DELETE** to be confirmed.
+
+---
+
+## Configuration tab
+
+* **Moderator role**: the role required to use the moderation commands.
+* **Sanction propagation**: automatically applies sanctions on linked servers.
+* **Sanction reports**: requires a detailed report for every sanction.
+* **DM the appeal link on a permanent ban**: sends the banned member the link to the appeal form. This setting is the same one as on the [Ban appeals](/en/dashboard/moderation/appels-ban/) page.
+
+### Progressive sanction scales
+
+A scale automatically escalates the sanction on each repeat of the same infraction.
+
+1. Under **My scales**, create a scale named after the infraction (`Spam`, `Ads`, `Insults`…). Click its name to rename it.
+2. Add **tiers**. For each tier, choose the action: **Warn**, **Temporary ban**, **Kick** or **Permanent ban**, together with a duration and a **custom reason** if the default reason does not fit.
+3. Use **Insert a new tier** to slot in a step, and the delete icon to remove one.
+4. A scale can be **exported** to be shared or archived.
+
+On a repeat offence, Kotbo applies the next tier and records the scale name and the tier reached in the reason.
+
+---
+
+## The other tabs of the Sanctions section
+
+* **Ban appeals**: handling appeals, documented on the [Ban appeals](/en/dashboard/moderation/appels-ban/) page.
+* **Permission approval**: the Admin Lock queue, visible only when that lock is enabled in [Filters (Auto moderation)](/en/dashboard/moderation/automod/).

@@ -1,0 +1,61 @@
+---
+title: Staff hierarchy & roles
+description: Create several hierarchies, pair Discord roles with staff grades, and order them.
+---
+
+<p class="doc-lead">The <strong>Hierarchy</strong> describes how your team is organised: several possible branches (moderation, events, technical…), each with its ordered grades and its associated Discord roles.</p>
+
+:::note[Where to find it]
+The **Staff → Hierarchy & Roles** section: [Open the hierarchy ↗](https://dash.kotbo.fr/staff-management/roles).
+The module depends on the [Staff directory](/en/dashboard/staff/annuaire/).
+:::
+
+---
+
+## Creating a hierarchy
+
+The **New Hierarchy** button opens a form:
+
+* **Hierarchy name**: for example *Moderation*, *Events*.
+* **Description**: what this branch is for.
+* **Color (Hex)** and **Emoji / Icon**, to tell it apart visually.
+* **Responsible Discord Role** and **Responsible Member**.
+* **Parent hierarchy**: lets you nest branches and build the org chart.
+
+:::caution[Deleting a hierarchy]
+The roles attached to it are not deleted: they are **detached** and move to the *Roles Outside Hierarchy* list.
+:::
+
+---
+
+## Creating a staff role
+
+The **New Role** button pairs a staff grade with a Discord role.
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Pick the Discord role</h3><p>The search field filters the server's roles. You can also create a <strong>custom role</strong> with no Discord counterpart.</p></div></div>
+  <div class="step-item"><div><h3>Attach it to a hierarchy</h3><p>Or leave it outside if it is global.</p></div></div>
+  <div class="step-item"><div><h3>Give it a weight</h3><p>The <strong>Role weight / level</strong> decides its place in the order. That is how Kotbo knows what a promotion is.</p></div></div>
+  <div class="step-item"><div><h3>Mark the chief if needed</h3><p>The <strong>Hierarchy chief</strong> option adds the <strong>Chief</strong> badge and pushes the role to the top of the org chart.</p></div></div>
+</div>
+
+---
+
+## Ordering the roles
+
+Roles can be rearranged by drag and drop within their hierarchy. Kotbo saves the order as you go and says so with a *Saving order…* message.
+
+Each role card recalls its **weight**, the **linked Discord role** (or the *Custom role* label) and offers the **Edit** and **Delete** actions.
+
+:::note[Roles outside hierarchy]
+The **Roles Outside Hierarchy** block collects global or uncategorised roles. When it reads *All roles are attached to a hierarchy*, your structure is complete.
+:::
+
+---
+
+## What the hierarchy changes elsewhere
+
+* **Promotions and demotions** in the [Directory](/en/dashboard/staff/annuaire/) follow the weight order.
+* **Staff polls** weight votes by grade.
+* **Tutoring checklists** can target a specific hierarchy and grade.
+* **Staff server synchronisation** relies on these roles.

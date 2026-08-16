@@ -1,0 +1,72 @@
+---
+title: Dashboard home
+description: Build your dashboard from the widgets you actually use, and share your layout.
+---
+
+<p class="doc-lead">The <strong>Home</strong> page is a fully modular dashboard: you choose which widgets are shown, how big they are and in what order.</p>
+
+:::note[Where to find it]
+It is the dashboard's opening page: [Open the home page ↗](https://dash.kotbo.fr/).
+This is a **core** module, it cannot be disabled.
+:::
+
+---
+
+## The available widgets
+
+| Widget | What it shows |
+| --- | --- |
+| **Live stats** | Members, voice, online and growth in real time. |
+| **Activity chart** | Messages, voice and sanctions over 7 days. |
+| **System status** | Instance health and number of active modules. |
+| **Active channels** | Channels ranked by message volume. |
+| **Moderation** | Number of sanctions issued. |
+| **Active members** | Ranking of the most talkative members. |
+| **Inbox** | Internal notifications and system alerts. |
+| **Staff management** | Upcoming absences and next meetings. |
+| **Recent activity** | Live history of moderation and administration actions. |
+| **Action shortcuts** | Quick creation of an absence, a meeting, a staff member and more. |
+| **Team notes** | A shared notepad, saved locally. |
+| **Server info** | Members, boosts, owner. |
+| **Bot hosting** | CPU, RAM, API latency and uptime. |
+| **Latest news** | The Kotbo changelog. |
+| **Quick guide** | Checklist of recommended setup actions. |
+| **Clock** | Local date and time. |
+| **Economy**, **Levels**, **Tickets**, **Invites**, **Events**, **Polls**, **Staff server** | An overview of the matching module. |
+
+A widget whose module is disabled says so explicitly rather than showing empty figures.
+
+---
+
+## Building your layout
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Add a module</h3><p>The <strong>Add a module</strong> button offers the widgets still hidden.</p></div></div>
+  <div class="step-item"><div><h3>Move it</h3><p>The move controls send the widget up or down the grid.</p></div></div>
+  <div class="step-item"><div><h3>Resize it</h3><p>Every widget has a <strong>width</strong> in columns and a <strong>height</strong> in rows, both adjustable by dragging.</p></div></div>
+  <div class="step-item"><div><h3>Hide what you do not use</h3><p>The <strong>Hide module</strong> action removes it from the grid without losing its configuration.</p></div></div>
+</div>
+
+Kotbo confirms with a *Layout saved!* message. The reset button restores the default arrangement.
+
+---
+
+## Sharing a layout: presets
+
+A layout can be saved as a **preset**, then:
+
+* **applied** in one click on another server;
+* **shared** by link, the button copying the address to your clipboard;
+* **exported** and **imported** as JSON.
+
+:::tip[One preset per role]
+A moderator and an administrator do not need the same things. Prepare a preset per profile and share the link with your team, so everyone gets the view that concerns them.
+:::
+
+---
+
+## The special states
+
+* **The API is restarting**: reconnection is automatic, just wait.
+* **Maintenance required**: a **Repair** button is offered to fix the reported configuration.
+* System health is summarised as **Optimal**, **Good**, **Degraded** or **Critical**.

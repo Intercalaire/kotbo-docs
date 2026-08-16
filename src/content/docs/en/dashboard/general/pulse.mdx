@@ -1,0 +1,72 @@
+---
+title: Pulse & AI
+description: Follow your server's daily health score, its growth forecasts and its activity anomalies.
+---
+
+<p class="doc-lead"><strong>Pulse</strong> gives your server a health score every day, projects its growth and flags activity anomalies.</p>
+
+:::note[Where to find it]
+The **General → Pulse & AI** section: [Open Pulse ↗](https://dash.kotbo.fr/pulse). The page is in **beta**.
+It depends on the **Analytics** module: with no activity collection, there is nothing to analyse.
+:::
+
+Pulse is computed **every night** on the day that just ended. The **Recompute** button rebuilds the available history.
+
+---
+
+## Overview tab
+
+The day's score is broken into five sub-scores:
+
+* **Activity**
+* **Moderation**
+* **Growth**
+* **Engagement**
+* **Health**
+
+Each score is rated **Excellent**, **Good**, **Average**, **Weak** or **Critical**.
+
+The **metrics of the day** detail messages, voice, active members, joins and leaves, sanctions and resolved tickets.
+
+:::caution[Today's score is provisional]
+Until the day is over, Kotbo shows a partial score and says so explicitly.
+:::
+
+The **30-day trend** puts the day back in context.
+
+---
+
+## Alerts & recommendations
+
+Pulse comments on the score rather than leaving it raw. Some of what it flags:
+
+* *Very low activity, the server is dormant.*
+* *High sanction rate, check the conflicts under way.*
+* *The server is losing members, look into why.*
+* *N leaves for M joins, retention is weak.*
+* *Low engagement, few members take an active part.*
+* *N open tickets waiting.*
+* *N unhealthy channels detected.*
+* *Excellent momentum, the server is in great shape!*
+
+When the history is too short, Pulse says so: *Not enough data yet for a reliable diagnosis.*
+
+---
+
+## Predictions tab
+
+### Growth forecast
+
+Projection of the member count at **7 days** and **30 days**, with an average of members gained per day and a **confidence** rating. Low confidence signals a short or irregular history.
+
+The chart distinguishes the **observed**, the **predicted** and an **80% interval**.
+
+At least **five full days** of history are needed to project a trend.
+
+### Seasonality
+
+Kotbo identifies the **busiest day**, the **quietest day**, the **peak hour** and the **quiet hour** (in UTC). Below 14 days observed, the profile is flagged as not yet reliable.
+
+### Anomalies detected
+
+An abnormal **spike** or **drop** is reported with its date, its observed value and the expected value. This is the right place to find the day something happened without anyone noticing.

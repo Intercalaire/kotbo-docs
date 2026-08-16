@@ -1,0 +1,47 @@
+---
+title: Reaction Roles
+description: Deploy messages with interactive buttons so your members can assign their own roles.
+---
+
+<p class="doc-lead">The <strong>Reaction Roles</strong> module posts a message with buttons on Discord. One click grants the associated role, a second click removes it.</p>
+
+:::note[Where to find it]
+The **Community → Reaction Roles** section: [Open reaction roles ↗](https://dash.kotbo.fr/reaction-roles).
+Kotbo needs the **Manage roles** permission, and its own role must sit **above** the roles it grants in the server hierarchy.
+:::
+
+---
+
+## Deploying a panel
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Click Deploy a Panel</h3><p>The form opens with a live Discord preview on the right.</p></div></div>
+  <div class="step-item"><div><h3>Fill in the title and channel</h3><p><strong>Panel Title / Message</strong> (for example <em>Pick your notification roles</em>) and <strong>Destination Channel</strong>.</p></div></div>
+  <div class="step-item"><div><h3>Add your buttons</h3><p>For each button: an <strong>Emoji</strong> (optional), a <strong>Button Label</strong> and an <strong>Associated Role</strong>. The <strong>Add a button</strong> button creates more.</p></div></div>
+  <div class="step-item"><div><h3>Deploy</h3><p>Click <strong>Deploy Panel</strong>. Kotbo posts the message on Discord.</p></div></div>
+</div>
+
+:::caution[Label and role are required]
+All buttons must have a label **and** a role, otherwise Kotbo refuses to deploy.
+:::
+
+---
+
+## The live preview
+
+The **Live Preview (Discord)** panel reproduces exactly how the message will look before publishing. You can click the buttons there to check their layout.
+
+---
+
+## Managing deployed panels
+
+The **Deployed Panels** list shows each menu with its channel and roles. Two actions are available:
+
+* **Edit**: reopens the form to change the title or the buttons.
+* **Delete from dashboard**: removes the panel from the list.
+
+:::warning[Deleting does not remove the Discord message]
+The message posted on Discord is not deleted automatically. Its buttons stay visible but grant nothing: a member who clicks gets a private reply telling them the role panel has been deleted or is no longer active. Delete the message by hand to avoid the confusion.
+:::
+
+If a channel or a role has been deleted from the server, Kotbo shows it as **Unknown channel** or **Unknown role** with its ID, which makes it easy to spot the panels that need fixing.

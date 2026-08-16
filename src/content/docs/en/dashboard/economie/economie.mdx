@@ -1,0 +1,89 @@
+---
+title: Economy & RPG
+description: Manage the local currency, the text adventures, the item shop, the black market and the player profiles.
+---
+
+<p class="doc-lead">The <strong>Economy & RPG</strong> module adds a local currency, an item shop, random text adventures and player guilds.</p>
+
+:::note[Where to find it]
+The **Economy & RPG → Economy & RPG** section: [Open the economy ↗](https://dash.kotbo.fr/economy).
+The module is off by default: turn it on with the **Module status** switch at the top of the page.
+:::
+
+---
+
+## Picking a pace
+
+A pace configures the daily reward, its cooldown and energy in one go.
+
+| Pace | Description |
+| --- | --- |
+| **Steady** | Modest gains and one daily a day: the currency keeps its value over time. |
+| **Standard** *(recommended)* | A daily slightly more frequent than once a day, regular adventures. |
+| **Generous** | Lots of coins and back-to-back adventures, for a server that is starting out. |
+| **Custom** | Your own values, tuned one by one. |
+
+The tiles show the **daily reward**, its **cooldown**, the total **per day** and the **energy**. A pace never changes the currency name, its emoji, or the RPG, shop and guild modules.
+
+---
+
+## Configuration tab
+
+### Module activation
+
+* **Enable RPG Adventures (RNG)**: unlocks the `/rpg-travel` command and random events.
+* **Enable Item Shop**: allows buying gear, equipping weapons and using potions.
+* **Enable RPG Guild System**: allows founding alliances, cooperating and holding a guild vault.
+
+### Settings
+
+* **Currency name**, **Currency emoji** and **Currency image** (PNG, JPG or SVG; the image takes priority on the dashboard).
+* **Minimum** and **Maximum Daily Reward**, **Daily Cooldown (Hours)**.
+* **Adventure Cooldown (Min)**.
+* **Maximum Energy** and **Energy Recovery / Hour**.
+
+### Anti-abuse limits
+
+Caps applied to gambling games and member-to-member transfers:
+
+* **Maximum bet per game**: applies to `/dice`, `/roulette` and `/rps`.
+* **Games per day and per member**.
+* **Maximum amount per transfer**: applies to `/rpg-pay`.
+* **Delay between two transfers (minutes)**.
+
+### Reset
+
+Five buttons, all irreversible and confirmed by a dedicated dialog: **Players** (accounts, inventories, balances), **Shop** (created items), **Guilds**, **Configuration** (multipliers and cooldowns) and **Global Reset**.
+
+---
+
+## Shop Items tab
+
+The **Create item** button opens a form:
+
+* **Item name**, **Emoji**, **Description**, **Item type** and **Purchase price**.
+* **Statistics & Effects**: **Attack Bonus (ATK)**, **Defense Bonus (DEF)**, **Health Restore (HP)** and **Energy Restore**. Not every type needs attributes.
+
+Items provided globally by Kotbo appear as **read-only** and cannot be edited from your server.
+
+---
+
+## Players & Leaderboard tab
+
+The table ranks players with the **Rank**, **Player**, **Balance**, **Stats & Gear**, **HP & Energy** and **Location & Guild** columns. A search field accepts a nickname or an ID.
+
+The **Edit** button opens the player's profile, where you can adjust their **balance**, **RPG level**, **experience**, **health points**, **energy**, **attack (ATK)**, **defense (DEF)** and **speed (SPD)**.
+
+---
+
+## Black market tab
+
+A clandestine shop that opens at unpredictable dates and times. Each member sees their **own selection** of shop items, heavily discounted and in limited quantity.
+
+:::caution[The RPG shop is required]
+Offers are drawn from the purchasable items. With no active shop, the black market has nothing to offer.
+:::
+
+* **Opening rhythm**: **Period (days)**, the average gap between two openings, the exact moment staying random, and **Opening duration (minutes)**.
+* **Drawn offers**: **Offers per member**, **Max purchases per offer**, **Minimum discount (%)** and **Maximum discount (%)**.
+* **Announcement**: *None, discovered through `/rpg`*, *Message in a channel*, or *Message + role mention*.

@@ -1,0 +1,48 @@
+---
+title: Custom Bot
+description: Faire tourner Kotbo sous votre propre nom, votre avatar et votre application Discord.
+---
+
+<p class="doc-lead">Le <strong>Custom Bot</strong> fait tourner Kotbo sous votre propre application Discord : votre nom, votre avatar, votre identité aux yeux de vos membres.</p>
+
+:::caution[Fonctionnalité sur demande]
+Cette page est marquée **WIP** dans le dashboard. La fonctionnalité est disponible **sur demande** : contactez l'administrateur de Kotbo en message privé sur Discord pour l'activer. Il s'agit d'un **service payant**.
+:::
+
+:::note[Où la trouver]
+Section **Configuration → Custom Bot** : [Ouvrir la page ↗](https://dash.kotbo.fr/custom-bot).
+:::
+
+---
+
+## Ce que cela change
+
+* Le bot apparaît sur votre serveur avec **votre nom** et **votre avatar**.
+* Les commandes slash sont enregistrées sous **votre application Discord**.
+* Les messages, embeds et panneaux publiés portent votre identité plutôt que celle de Kotbo.
+
+Toutes les fonctionnalités décrites dans cette documentation restent identiques : seule la façade change.
+
+---
+
+## Ce que cela ne change pas
+
+* Les **noms des commandes** et leurs options : ils restent ceux de Kotbo.
+* Les **permissions Discord** requises par chaque module.
+* Le fonctionnement du dashboard, qui reste hébergé au même endroit.
+
+---
+
+## Demander l'activation
+
+En attendant l'ouverture de la configuration en libre-service, la mise en place passe par l'administrateur de votre instance Kotbo :
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Créez votre application Discord</h3><p>Depuis le portail développeur Discord, avec le nom et l'avatar souhaités.</p></div></div>
+  <div class="step-item"><div><h3>Contactez l'administrateur de Kotbo</h3><p>Par message privé sur Discord, en précisant le serveur concerné.</p></div></div>
+  <div class="step-item"><div><h3>Invitez le bot personnalisé</h3><p>Une fois l'application configurée, invitez-la sur votre serveur avec les mêmes permissions que Kotbo.</p></div></div>
+</div>
+
+:::danger[Ne partagez jamais votre token]
+Le token de votre application Discord donne un contrôle total sur le bot. Transmettez-le uniquement par le canal indiqué par l'administrateur, et régénérez-le si vous avez le moindre doute.
+:::

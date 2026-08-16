@@ -1,0 +1,75 @@
+---
+title: Serveurs staff
+description: Liez un serveur Discord dédié à l'équipe pour synchroniser les rôles, la hiérarchie et les notifications.
+---
+
+<p class="doc-lead">Le module <strong>Serveurs Staff</strong> relie votre serveur principal à un serveur Discord dédié à l'équipe, et tient les rôles des deux côtés en cohérence.</p>
+
+:::note[Où la trouver]
+Section **Cross-Serveur → Serveurs Staff** : [Ouvrir les serveurs staff ↗](https://dash.kotbo.fr/staff-server).
+Kotbo doit être **présent sur les deux serveurs**.
+:::
+
+---
+
+## Lier un serveur staff
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Cliquez sur Lier un serveur staff</h3><p>Le formulaire s'ouvre.</p></div></div>
+  <div class="step-item"><div><h3>Saisissez l'ID du serveur staff</h3><p>Le bot doit déjà être présent sur ce serveur.</p></div></div>
+  <div class="step-item"><div><h3>Choisissez le mode de synchronisation</h3><p>Voir le tableau ci-dessous.</p></div></div>
+  <div class="step-item"><div><h3>Complétez si besoin</h3><p>Un <strong>rôle staff simple</strong> et un <strong>salon de logs</strong>, tous deux optionnels, puis cliquez sur <strong>Lier le serveur</strong>.</p></div></div>
+</div>
+
+### Les modes de synchronisation
+
+| Mode | Ce qu'il fait |
+| --- | --- |
+| **Principal → Staff** | La hiérarchie est gérée ici, un rôle simple est donné sur le serveur staff. |
+| **Staff → Principal** | La hiérarchie est gérée sur le serveur staff, un rôle simple est donné ici. |
+| **Bidirectionnel** | La hiérarchie est synchronisée sur les deux serveurs. |
+
+Chaque serveur de la liste porte un badge **Serveur staff** ou **Serveur principal**, et dispose des actions **Synchroniser** et **Détails**.
+
+---
+
+## Mappings de rôles
+
+Un mapping fait correspondre un rôle du serveur principal à un rôle du serveur staff.
+
+1. Ouvrez **Ajouter un mapping de rôle**.
+2. Choisissez le **rôle sur ce serveur**.
+3. Saisissez l'**ID du rôle sur le serveur staff**.
+4. Cliquez sur **Ajouter le mapping**.
+
+Sans mapping, la liaison existe mais aucune correspondance n'est appliquée. Le bouton **Synchroniser** rapporte ensuite le nombre d'actions effectuées et d'erreurs rencontrées.
+
+---
+
+## Notifications cross-serveur
+
+Ces réglages désignent les salons du **serveur staff** qui recevront les notifications du serveur principal :
+
+| Réglage | Contenu |
+| --- | --- |
+| **Miroir du modlog** | Copie des alertes automod, ghost ping et honeypot. |
+| **Rapports de sanction** | Un encart posté à chaque nouveau rapport. |
+| **Alertes de candidatures** | Une notification à chaque nouvelle candidature. |
+| **Alerte départ staff** | Une alerte avec bouton d'expulsion quand un membre perd tous ses rôles staff. |
+| **Salon d'invitation onboarding** | Salon source des invitations envoyées aux nouveaux staff. |
+| **Catégorie des entretiens de recrutement** | Catégorie du serveur staff où créer les salons d'entretien. |
+
+---
+
+## Onboarding et recrutement
+
+* **Invitation d'onboarding automatique** : envoie une invitation au serveur staff en message privé dès le premier rôle staff obtenu.
+* **Entretiens de recrutement sur le serveur staff** : crée les salons d'entretien du module [Recrutement](/dashboard/staff/recrutement/) sur le serveur staff plutôt que sur le serveur principal.
+
+---
+
+## Supprimer une liaison
+
+:::danger[Les rôles cessent d'être synchronisés]
+Supprimer un lien arrête la synchronisation entre les deux serveurs. Les rôles déjà attribués restent en place, mais ils ne suivront plus aucun changement.
+:::

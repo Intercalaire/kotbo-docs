@@ -1,0 +1,77 @@
+---
+title: Modération des pseudos
+description: Renommez automatiquement les pseudos non conformes à l'arrivée d'un membre ou lors d'un changement de pseudo.
+---
+
+<p class="doc-lead">Le module <strong>Modération des pseudos</strong> renomme automatiquement les pseudos non conformes dès qu'un membre rejoint le serveur ou modifie son pseudo. Il se règle depuis l'onglet <strong>Pseudos</strong> de la page Filtres.</p>
+
+:::note[Où la trouver]
+Section **Sécurité → Filtres → Pseudos** : [Ouvrir la modération des pseudos ↗](https://dash.kotbo.fr/security/filters/nicknames).
+Kotbo a besoin de la permission **Gérer les pseudos** pour renommer un membre.
+:::
+
+---
+
+## Activation
+
+Une fois le module activé, le bot vérifie les pseudos et remplace un pseudo non conforme par `pseudo non conforme | automod`.
+
+Une commande Discord permet aussi de lancer une vérification manuelle sur un membre.
+
+:::caution[Limitation Discord]
+Le bot ne peut pas renommer le propriétaire du serveur. Les administrateurs et les bots sont ignorés par défaut.
+:::
+
+---
+
+## Quand le bot vérifie
+
+Deux déclencheurs, indépendants l'un de l'autre :
+
+* **Nouveaux membres rejoignant le serveur**
+* **Membres modifiant leur pseudo**
+
+Si les deux sont coupés, Kotbo affiche un avertissement : *aucun déclencheur, le bot ne vérifiera jamais les pseudos*.
+
+---
+
+## Ce qu'il refuse
+
+Trois critères, à activer séparément :
+
+* **Pseudos composés uniquement de caractères invisibles** : bloque les pseudos vides qui remontent en tête de la liste des membres.
+* **Mots de la liste globale** : racisme, menaces, insultes, contenu sexuel, LGBTphobie, haine. Cette liste est maintenue par Kotbo et partagée entre tous les serveurs.
+* **Vos mots personnalisés** : la liste propre à votre serveur.
+
+Si aucun critère n'est actif, Kotbo prévient que le bot vérifie les pseudos mais n'a rien à y chercher.
+
+### Règle d'AutoMod native de Discord
+
+Une option supplémentaire crée la règle d'AutoMod Discord sur les pseudos. Elle affiche la pop-up native de Discord et bloque l'accès textuel et vocal aux membres qui enfreignent la règle.
+
+---
+
+## Gérer les mots bannis
+
+Le bloc **Mots bannis** propose deux onglets :
+
+### Personnalisés
+
+* Saisissez un mot ou un fragment de mot, puis cliquez sur **Ajouter**.
+* Chaque entrée affiche son **mot**, sa **catégorie** (Personnalisé, Racisme, Menace, Sexuel, LGBTphobie, Haine, Insulte) et son état **Actif**.
+* Un mot supprimé peut être rétabli immédiatement via le bouton **Annuler** du message de confirmation.
+
+### Globaux
+
+Ces mots sont gérés globalement par Kotbo et sont en **lecture seule** : ils ne peuvent pas être modifiés depuis votre serveur.
+
+---
+
+## Exceptions (whitelist)
+
+Le bloc **Exceptions de modération** évite les faux positifs.
+
+* **Pseudos autorisés (exacts)** : ces pseudos complets ne seront jamais modérés, même s'ils contiennent un mot banni. Utile pour un pseudonyme légitime qu'un fragment de mot fait remonter à tort.
+* **Membres exemptés (bypass)** : saisissez l'identifiant Discord d'un membre (17 à 20 chiffres). Il ne sera jamais renommé, quel que soit le pseudo choisi.
+
+Chaque retrait d'une exception peut lui aussi être annulé juste après l'action.

@@ -1,0 +1,57 @@
+---
+title: Recherche de messages
+description: Recherchez dans tous les messages enregistrés par le bot, filtrez par salon, auteur ou pièce jointe, et retrouvez les messages supprimés.
+---
+
+<p class="doc-lead">La page <strong>Recherche messages</strong> effectue une recherche globale dans tous les messages enregistrés par Kotbo, y compris ceux qui ont été supprimés depuis.</p>
+
+:::note[Où la trouver]
+Section **Modération → Recherche messages** : [Ouvrir la recherche ↗](https://dash.kotbo.fr/message-search).
+Cette page expose le contenu des messages de vos membres : réservez-la à votre équipe de modération.
+:::
+
+---
+
+## Activer la journalisation
+
+Sans journalisation, la page reste vide : Kotbo n'a rien à chercher.
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Activez l'interrupteur Journalisation</h3><p>Kotbo commence à enregistrer les messages, et lance en arrière-plan une <strong>indexation rétroactive</strong> de l'historique du serveur.</p></div></div>
+  <div class="step-item"><div><h3>Réglez la rétention</h3><p>Le champ <strong>Rétention (jours)</strong> limite la durée de conservation. L'indexation rétroactive ne remonte pas au-delà de cette limite.</p></div></div>
+  <div class="step-item"><div><h3>Laissez travailler</h3><p>Pendant l'indexation, une bannière affiche le <strong>salon en cours</strong>, le nombre de <strong>salons parcourus</strong> et de <strong>messages importés</strong>. Les résultats s'enrichissent au fur et à mesure.</p></div></div>
+</div>
+
+Le compteur **messages enregistrés** indique la taille de la base.
+
+:::caution[Journalisation récente]
+Si vous venez de l'activer, seuls les messages envoyés à partir de maintenant sont disponibles tant que l'indexation n'a pas progressé. Kotbo l'indique clairement dans un encart.
+:::
+
+---
+
+## Rechercher
+
+Saisissez votre texte dans le champ **Rechercher dans les messages**, puis affinez avec le bouton **Filtres** :
+
+* **Salon** : un salon précis ou *Tous les salons*.
+* **ID auteur** : l'identifiant Discord de l'auteur.
+* **Type d'auteur** : *Tous*, *Humains uniquement* ou *Bots uniquement*.
+* **Tri** : *Plus récents d'abord* ou *Plus anciens d'abord*.
+* **Avec pièces jointes** : ne garde que les messages contenant un fichier.
+* **Inclure les messages supprimés** : les messages effacés apparaissent avec le badge <span class="dash-badge kick">SUPPRIMÉ</span>.
+* **Réinitialiser les filtres** remet la recherche à zéro.
+
+Un message modifié depuis son envoi est signalé par la mention *(modifié)*.
+
+Le bouton **Charger plus** en bas de liste récupère les résultats suivants.
+
+---
+
+## Supprimer un message de l'historique
+
+Le bouton **Supprimer de l'historique** retire un message de la base de Kotbo. Cela n'affecte pas le message sur Discord : il s'agit uniquement de l'index de recherche.
+
+:::tip[Vie privée]
+La rétention est le principal levier de confidentialité de cette page. Choisissez une durée cohérente avec ce que votre communauté attend, et annoncez-la dans votre règlement.
+:::
