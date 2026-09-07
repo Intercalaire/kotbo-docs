@@ -1,76 +1,134 @@
 ---
-title: Déclencheurs (Triggers)
-description: Déclenchez des actions instantanées à partir d'un mot-clé, d'un formulaire ou de l'ouverture d'un ticket.
+title: Déclencheurs (Automatisations)
+description: Faites réagir le bot tout seul aux arrivées, aux messages, aux sanctions ou à une heure fixe, sans écrire une ligne de code.
 ---
 
-<p class="doc-lead">Un <strong>déclencheur</strong> associe une condition à une ou plusieurs actions : répondre, attribuer un rôle, supprimer un message, fermer un ticket, exclure temporairement un membre, et bien d'autres.</p>
+<p class="doc-lead">Une <strong>automatisation</strong> associe un déclencheur à une suite d'étapes : quand tel événement se produit sur le serveur, le bot fait telle chose. Tout se compose visuellement, sans écrire de code.</p>
 
 :::note[Où la trouver]
-Section **Communauté → Déclencheurs** : [Ouvrir les déclencheurs ↗](https://dash.kotbo.fr/triggers).
-Cette page est marquée **WIP** dans le dashboard : son comportement peut encore évoluer.
+Section **Communauté → Déclencheurs** : [Ouvrir les déclencheurs ↗](https://dash.kotbo.fr/triggers). La page est en **bêta**.
+La configuration est réservée aux rôles autorisés à gérer les paramètres du serveur.
 :::
 
 ---
 
-## Créer un déclencheur
+## Deux façons d'écrire la même chose
 
-Le bouton **Nouveau déclencheur** ouvre une fenêtre à quatre onglets.
+Une automatisation est un graphe. Deux vues travaillent dessus, et rien n'est jamais converti de force :
 
-### Onglet Déclencheur
+* **Étapes** : l'automatisation se lit comme une suite de phrases - *Quand …*, *Si …*, *Alors …*. C'est la vue par défaut.
+* **Graphe** : un canevas de blocs reliés entre eux, avec une palette. Elle prend la main d'office sur les automatisations qui ne s'expriment pas linéairement - une boucle, un aiguillage - et Kotbo le signale : *Cette automatisation utilise des blocs qui ne s'expriment pas sous forme d'étapes.*
 
-Choisissez d'abord le **type de déclencheur** :
+---
 
-| Type | Ce qui le déclenche |
+## Créer une automatisation
+
+Le bouton **Nouvelle automatisation** propose de partir d'un **modèle prêt à l'emploi** ou d'une **page blanche**.
+
+| Modèle | Ce qu'il fait |
 | --- | --- |
-| **Message Discord (Mot-clé)** | Un message contenant le mot-clé. Le **type de correspondance** peut être *Contient le texte*, *Correspondance exacte* ou *Expression régulière*. |
-| **Soumission de Formulaire** | Une réponse à un formulaire donné. Vous précisez la **question** (libellé ou identifiant) et la **valeur à faire correspondre**. |
-| **Ouverture de Ticket** | L'ouverture d'un ticket. Vous précisez le **type de ticket** (ou tous), le **champ à vérifier** (*Raison* ou *Description*) et la valeur attendue. |
+| **Message de bienvenue** | Accueillir chaque arrivée dans un salon et lui donner son rôle de départ. |
+| **Surveiller les comptes récents** | Signaler au staff les arrivées dont le compte Discord a moins d'une semaine. |
+| **Bloquer les invitations** | Exclure temporairement qui poste un lien d'invitation vers un autre serveur. |
+| **Récompense de niveau** | Féliciter publiquement un membre qui monte de niveau. |
+| **Accueil des tickets** | Poster les consignes dès l'ouverture d'un ticket de support. |
 
-### Onglet Actions de Base
+Les modèles sont prêts à l'emploi : il ne reste qu'à choisir les salons et les rôles.
 
-* **Réponse(s) du Bot** : un ou plusieurs textes. Le bouton **Ajouter une réponse alternative** crée des variantes tirées au hasard, chacune avec son taux d'apparition (le total devrait idéalement faire 100 %).
-* **Destination du message** : *Message Privé*, *Salon actuel* ou *Salon précis*.
-* **Relayer sur le serveur staff** : envoie une copie au salon de logs du serveur staff lié.
-* **Rôle à ajouter** et **Rôle à retirer**.
-* **Supprimer le message**, **Fermer le ticket**, **Rejeter la candidature**.
-* **Activer le déclencheur** : actif dès l'enregistrement.
-
-Les variables utilisables dans les réponses sont `{user}` (mention), `{username}` (pseudo), `{server}` (nom du serveur) et `{channel}` (salon).
-
-:::caution[Un formulaire n'a pas de salon d'origine]
-Pour un déclencheur de type formulaire, le message part forcément en message privé.
+:::caution[Un modèle remplace tout]
+Appliquer un modèle sur une automatisation existante **remplace tout le graphe actuel**. Kotbo demande confirmation.
 :::
 
-### Onglet Réactions & Avancé
+---
 
-* **Réactions** : le bot réagit automatiquement au message avec les émojis indiqués, séparés par des virgules ou des espaces. Les émojis personnalisés du serveur sont proposés.
-* **Créer un Fil de discussion** : crée un fil public rattaché au message, avec un modèle de nom acceptant `{user}` et `{content}`.
-* **Envoyer un message privé** : un texte distinct de la réponse publique.
-* **Exclusion Temporaire (Timeout)** : durée en secondes.
-* **Attribuer des points d'XP**.
-* **Créer un salon / catégorie** : nom, type (*Texte*, *Vocal*, *Catégorie*) et catégorie parente.
-* **Supprimer un salon / catégorie**.
-* **Créer un rôle** : nom et couleur.
-* **Supprimer un rôle**.
+## Les déclencheurs
 
-### Onglet Filtres
+Une automatisation n'a qu'un seul déclencheur.
 
-Limite le déclenchement à certains contextes : **Rôles autorisés**, **Rôles interdits**, **Salons autorisés** et **Salons interdits**. Un champ vide signifie « tous ».
+| Déclencheur | Quand il part |
+| --- | --- |
+| **Arrivée d'un membre** | Un membre rejoint le serveur. |
+| **Départ d'un membre** | Un membre quitte le serveur. |
+| **Rôle attribué** / **Rôle retiré** | Un rôle est ajouté ou retiré à un membre. |
+| **Message envoyé** | À chaque message posté par un humain. |
+| **Réaction ajoutée** | Un membre réagit à un message. |
+| **Arrivée en vocal** / **Départ du vocal** | Un membre rejoint ou quitte un salon vocal. |
+| **Ticket créé** | Un ticket de support est ouvert. |
+| **Sanction appliquée** | Une sanction est prononcée. |
+| **Passage de niveau** | Un membre gagne un niveau. |
+| **Planification** | À heure fixe, selon une planification récurrente. |
+| **Pari tranché** / **Pari annulé** | Un arbitre désigne le camp gagnant, ou les mises sont rendues. |
+| **Dette de clan creusée** / **soldée** | Un membre mise des points qu'il n'a pas, ou finit de rembourser. |
 
-:::caution[Au moins une action est requise]
-Kotbo refuse d'enregistrer un déclencheur qui ne fait rien : il faut au minimum une réponse, un rôle, une suppression, une fermeture de ticket, un rejet, une réaction ou une action avancée.
+### La planification
+
+Le déclencheur **Planification** se règle de façon guidée - *toutes les heures*, *tous les jours*, *toutes les semaines*, *tous les mois*, avec l'heure et le jour - ou par un **motif avancé** : un motif cron à cinq champs.
+
+L'heure est interprétée dans le **fuseau du serveur**, réglé depuis l'[accueil du dashboard](/dashboard/general/accueil/).
+
+---
+
+## Les étapes
+
+Chaque déclencheur expose des valeurs - le membre, le message, le salon - que les étapes suivantes peuvent utiliser.
+
+### Actions
+
+Poster : **Envoyer un message**, **Envoyer un embed**, **Envoyer un message privé** (sans effet si les MP du membre sont fermés).
+
+Sur un membre : **Ajouter un rôle**, **Retirer un rôle**, **Changer le surnom**, **Exclure temporairement**, **Expulser**, **Bannir** (définitivement ou pour une durée donnée).
+
+Sur un message : **Supprimer un message**, **Réagir à un message**, **Épingler un message**, **Ouvrir un fil**.
+
+Enfin, **Ouvrir un ticket** crée un ticket de support au nom d'un membre.
+
+:::note[Les sanctions d'une automatisation comptent]
+Une exclusion, une expulsion ou un bannissement prononcé par une automatisation passe par le même service que les sanctions manuelles : le casier du membre, les statistiques, les alertes du staff et les comptes liés en tiennent compte.
+
+Une sanction identique prononcée dans les trente secondes est ignorée. C'est aussi ce qui empêche une automatisation branchée sur *Sanction appliquée* de boucler sur elle-même.
 :::
+
+### Conditions et contrôle de flux
+
+* **Si** : n'exécuter la suite que dans certains cas. Une condition se lit *toutes ces conditions* ou *au moins une condition*, et se range en **Alors** / **Sinon**.
+* **Aiguillage** : compare une valeur texte à une liste de cas.
+* **Pour chaque** : parcourt une liste et exécute le corps de boucle pour chaque élément.
+* **Attendre** : suspend l'exécution. Elle reprend même après un redémarrage du bot.
+
+Les tests disponibles couvrent **Possède le rôle**, **Salon est**, **Texte contient**, **Texte est égal à**, **Comparer** deux nombres, **ET / OU**, **NON**, ainsi que la longueur d'un texte ou la taille d'une liste.
+
+### Valeurs
+
+Les blocs de données fournissent un **Texte**, un **Nombre**, un **Booléen**, un **Texte composé** (dans lequel des valeurs du contexte viennent s'insérer), **Un rôle** ou **Un salon** du serveur, et les propriétés du membre, du message, du salon ou du serveur.
+
+Dans la vue Étapes, salons, rôles et textes se saisissent directement sur la carte, sans créer de bloc de donnée.
+
+---
+
+## Enregistrer
+
+Kotbo valide le graphe avant d'enregistrer et liste les **problèmes à corriger** : *Commencez par poser un bloc déclencheur*, *Un champ de cette étape reste à remplir*, *N étape(s) restent à compléter avant l'enregistrement*. Quand tout est correct : *Le graphe est valide.*
+
+Une automatisation enregistrée démarre **en pause** ; l'interrupteur de sa carte l'active.
+
+---
+
+## Suivre ce qui s'exécute
+
+La liste filtre par **Toutes**, **Actives** ou **En pause**, et chaque carte affiche son nombre d'exécutions, son taux de réussite et sa dernière exécution.
+
+:::tip[« Ça ne marche pas »]
+Une automatisation active qui n'a jamais rien produit depuis plus d'un jour l'annonce sur sa carte : **N'a jamais démarré** - *Actif mais aucune exécution : vérifiez le déclencheur et ses conditions.*
+:::
+
+L'onglet **Exécutions** liste les passages avec leur statut - *En cours*, *En attente*, *Terminée*, *Échouée*, *Annulée* - et le nombre de blocs parcourus. Cliquez sur une exécution pour la **rejouer sur le graphe** : le parcours se replay étape par étape, avec les entrées et sorties consignées à chaque bloc.
 
 ---
 
 ## Gérer la liste
 
-Chaque déclencheur affiche son type, sa condition et des badges résumant ses actions : **Message**, **Relayé au staff**, **Ajouter *rôle***, **Retirer *rôle***, **Supprimer le message**, **Fermer le ticket**, **Rejeter la candidature**, ainsi que le nombre de rôles et salons filtrés.
+Chaque carte propose **Modifier**, **Dupliquer**, **Mettre en pause** ou **Activer**, et **Supprimer**.
 
-### Actions groupées
-
-Cochez plusieurs déclencheurs (ou utilisez **Tout sélectionner**) pour les **Activer**, les **Désactiver** ou les **Supprimer** en une fois.
-
-:::danger[Suppression groupée]
-Les déclencheurs sélectionnés sont supprimés définitivement, après confirmation.
+:::danger[La suppression emporte l'historique]
+*Supprimer définitivement ce workflow et son historique ?* Les exécutions passées disparaissent avec l'automatisation.
 :::

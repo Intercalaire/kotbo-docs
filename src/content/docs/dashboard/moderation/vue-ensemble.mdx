@@ -37,7 +37,7 @@ Cliquez sur une catégorie pour filtrer la liste des constats sur celle-ci. Cliq
 
 ## Traiter les constats
 
-Le bloc **Constats** liste chaque contrôle avec sa gravité, sa catégorie et une explication.
+Le bloc **Constats** présente chaque contrôle sous forme de tuile, avec sa gravité, sa catégorie et une explication. Les constats critiques occupent une tuile plus large.
 
 <div class="step-list">
   <div class="step-item"><div><h3>Filtrez</h3><p>Utilisez les puces de gravité (<strong>Critique</strong>, <strong>Avertissement</strong>, <strong>Information</strong>, <strong>Conforme</strong>) pour ne garder que ce qui vous intéresse. Une case permet aussi d'afficher ou non les contrôles déjà conformes.</p></div></div>
@@ -45,9 +45,13 @@ Le bloc **Constats** liste chaque contrôle avec sa gravité, sa catégorie et u
   <div class="step-item"><div><h3>Corrigez</h3><p>Quand un constat propose un bouton de correction, un clic applique le réglage sans quitter la page.</p></div></div>
 </div>
 
+Le bouton **Tout activer** applique en une fois les correctifs **sans risque**, après un récapitulatif de ce qui va changer.
+
 :::warning[Corrections sensibles]
-Certaines corrections modifient des permissions existantes du serveur. Kotbo affiche alors une confirmation avant d'agir. Relisez le libellé de l'action : ces changements s'appliquent immédiatement sur Discord.
+Certaines corrections modifient des permissions existantes du serveur : celles-là gardent leur confirmation individuelle et restent hors du geste groupé. Relisez le libellé de l'action, ces changements s'appliquent immédiatement sur Discord.
 :::
+
+Un constat qui pointe des détections de doubles comptes non tranchées renvoie directement vers [Multi-comptes](/dashboard/moderation/double-comptes/).
 
 ---
 

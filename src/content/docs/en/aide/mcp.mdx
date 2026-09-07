@@ -31,28 +31,40 @@ To connect an AI, you need to generate dedicated credentials from the Kotbo dash
 4. Configure the key's permissions. Only tick what the intended use actually requires.
 
 ### Read permissions (READ)
-*   **Server stats**: members, message statistics and overall activity level.
-*   **Members**: users' Discord profiles, search and recent messages.
-*   **Sanctions**: the history and list of sanctions applied on the server.
-*   **Staff**: the list of team members and their profiles.
-*   **Tickets**: viewing open tickets.
-*   **Community**: XP leaderboards, suggestions, events, quests and reputation.
-*   **Economy**: RPG profiles, inventories, the shop and the marketplace leaderboard.
-*   **Moderation**: AutoMod configuration, banned words, automatic replies.
-*   **Analytics**: detailed per-channel statistics, activity maps (Pulse), predictions.
+*   **Server Stats**: members, messages, activity.
+*   **Members & Messages**: profiles, recent messages, reading forums and posts.
+*   **Sanctions**: list and history.
+*   **Staff**: staff list and profiles.
+*   **Tickets**: list of open tickets.
+*   **Community**: leaderboards, suggestions, events, quests, reputation, custom onboarding, clan bets and debts.
+*   **Economy**: RPG profiles, shop, marketplace, economic leaderboards.
+*   **Moderation**: AutoMod, banned words, auto responses, CodePolice.
+*   **Analytics**: per-channel stats, hourly heatmap, Pulse, predictions.
+*   **Read automations**: view automations, their run history and the catalogue of available blocks.
 
 ### Write permissions (WRITE)
 :::warning[Sensitive permissions]
 Write permissions let the AI make real changes to your server. Be careful.
 :::
-*   **Sanction**: lets the AI apply or lift sanctions (warnings, bans, and so on).
-*   **Send messages**: lets the AI post messages in a Discord channel under the bot's name.
-*   **Manage tickets**: lets the AI reply to tickets and close them.
-*   **Manage community**: lets the AI approve suggestions and run giveaways and events.
-*   **Manage members**: lets the AI grant roles, change XP or add moderation notes.
+*   **Sanction**: apply or remove sanctions via the AI.
+*   **Manage Messages**: send, edit or delete messages, and manage forums, posts and tags.
+*   **Manage Tickets**: reply to and close tickets via the AI.
+*   **Manage Community**: answer suggestions, manage events and giveaways, the custom onboarding pipeline, settle and void clan bets.
+*   **Manage Members**: moderator notes, adding and removing roles, levels, invites.
+*   **Manage automations**: create, edit, enable and delete [automations](/en/dashboard/communaute/declencheurs/).
+
+:::danger[The permission that acts without you]
+**Manage automations** is the only one that leaves a lasting trace: an automation the AI enables then acts on its own, moderation included. Grant it only to a trusted key.
+:::
 
 5. Click **Generate Key**.
 6. **IMPORTANT**: a window appears with your **Client ID** and your **Client Secret** (which starts with `mcp_`). Copy and store this information straight away. **The Client Secret will never be shown in plain text again.**
+
+:::caution[A key follows its holder]
+A key is tied to the account that created it: it stops answering if that account loses access to the server.
+
+Keys created before this rule carry the **No owner** label: *it keeps answering even if whoever uses it loses access to the server*. Revoke and recreate it so it follows its holder.
+:::
 
 ---
 

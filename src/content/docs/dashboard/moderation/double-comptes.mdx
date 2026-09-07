@@ -45,6 +45,13 @@ C’est le panneau de contrôle de surveillance active.
   * <span class="dash-badge warn">Risque moyen (score ≥ 30)</span> : Comportements inhabituels à surveiller.
   * <span class="dash-badge active">Risque faible (score < 30)</span> : Anomalies mineures.
 * **Consulter les preuves (Evidence)** : Déroulez la carte pour voir précisément pourquoi le compte a été signalé (ex: *« Même adresse IP détectée avec l'utilisateur Jean#1234 »*).
+* **Lien constaté ailleurs** : si le staff d'un autre serveur de l'instance a déjà lié ce compte à un autre, Kotbo reprend son verdict comme signal de détection.
+
+Le bloc **Liens sur d'autres serveurs** du dossier membre détaille ces suggestions : le compte visé, le nombre de serveurs qui portent déjà le lien, et s'il y a été posé en **Auto** ou en **Manuel**. Chaque suggestion indique le bonus apporté à la note de détection (*+N pts*), qui augmente avec le nombre de serveurs concernés, et son état ici : **Absent d'ici**, **Déjà lié ici**, ou le bouton **Lier ici**.
+
+:::note[Rien n'est lié automatiquement]
+*Rien n'est lié automatiquement : à vous de valider.* Une liaison constatée ailleurs reste une suggestion tant qu'un membre du staff de ce serveur ne l'a pas reproduite.
+:::
 * **Prendre une décision** :
   * Cliquez sur **Lier les comptes** si vous confirmez qu'il s'agit d'un double compte avéré.
   * Cliquez sur **Ignorer la détection** (Dismiss) pour retirer le membre de la liste des menaces suspectées.
@@ -70,4 +77,10 @@ Ajustez la sensibilité du bot et les sanctions automatiques.
 * **Détection automatique** : Activez cet interrupteur pour laisser Kotbo scanner en continu chaque nouvelle arrivée.
 * **Rôle validation** : Sélectionnez le rôle temporaire ou le rôle d'attente à attribuer/retirer au membre pendant qu'il effectue sa vérification Captcha (ex : `@Non-Vérifié`).
 * **Rôle sanction** : Sélectionnez le rôle restrictif à attribuer automatiquement aux membres identifiés comme doubles comptes non autorisés.
+* **Expiration automatique des warns (jours)** : au-delà de ce délai, un warn est archivé automatiquement. Il quitte le casier actif sans être effacé. Vide ou `0` signifie *jamais*.
+* **Compter les sanctions archivées** : par défaut, une sanction archivée ne pèse plus dans le score de warns ni dans l'escalade. Cochez pour qu'elle continue de compter - l'archivage devient alors purement visuel.
 * Cliquez sur **Enregistrer** dans la barre inférieure verte après chaque modification.
+
+:::note[Le lien avec l'archivage manuel]
+Ces deux réglages commandent le même mécanisme que les actions groupées **Archiver** / **Désarchiver** de la page [Sanctions](/dashboard/moderation/sanctions/).
+:::

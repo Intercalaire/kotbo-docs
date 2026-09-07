@@ -18,16 +18,46 @@ Vous devez être administrateur du serveur pour créer ou modifier ces liens.
 
 ---
 
-## Fonctionnement du relais
+## Un pont, plusieurs salons
 
-Lorsque deux salons sont liés, Kotbo écoute les nouveaux messages et les renvoie instantanément dans le salon connecté. Deux modes de relais sont disponibles :
+Un lien n'est plus une paire mais un **pont** : un groupe de salons, sur autant de serveurs que nécessaire. Un message envoyé dans l'un est recopié dans tous les autres, et une édition, une suppression, une réaction ou un épinglage retrouve toutes ses copies - y compris depuis une copie.
 
-*   **Webhook (Miroir)** *(Recommandé)* : Le bot utilise un webhook Discord pour envoyer le message avec le pseudo et la photo de profil réels de l'auteur original. Le rendu est propre et naturel.
-*   **Embed** : Le message est encapsulé dans un encart (embed) stylisé envoyé au nom de Kotbo, mentionnant le serveur et l'auteur d'origine.
+Le pont porte un **Nom du pont**, facultatif, pour vous y retrouver, et affiche le nombre de serveurs qu'il relie. Le bloc **Salons du pont** liste ses participants ; le bouton **Ajouter un serveur au pont** en fait entrer un de plus.
 
-Vous pouvez configurer la direction du lien :
-*   **Bidirectionnel** : Les messages du salon A vont vers B, et inversement.
-*   **Unidirectionnel** : Les messages vont uniquement du salon source (A) vers le salon cible (B).
+À la création, le champ **Serveurs à relier** accepte autant de serveurs que vous voulez : tous les salons choisis se relaient entre eux.
+
+:::caution[Deux salons au minimum]
+*Un pont a besoin d'au moins deux salons : en retirer un de plus le supprimera.*
+:::
+
+Un salon dont le serveur n'est plus joignable apparaît **En pause** : le pont continue de tourner entre les autres.
+
+### La participation d'un salon
+
+Chaque salon du pont choisit son rôle :
+
+* **Émet et reçoit**
+* **Émet seulement**
+* **Reçoit seulement**
+
+### Le mode de relais
+
+*   **Webhook (miroir)** *(Recommandé)* : Kotbo utilise un webhook Discord pour envoyer le message avec le pseudo et la photo de profil réels de l'auteur original. Le rendu est propre et naturel.
+*   **Embed** : Le message est encapsulé dans un encart stylisé envoyé au nom de Kotbo, mentionnant le serveur et l'auteur d'origine.
+
+### Diagnostic des permissions
+
+Une pastille **Permissions** signale ce qui bride le relais, salon par salon :
+
+* *Le bot ne voit plus ce salon : plus rien n'y est relayé.*
+* *Le bot n'a pas ces permissions dans ce salon.* Le relais y sera incomplet.
+* *Discord retire les emojis et stickers venus d'autres serveurs tant que `@everyone` n'a pas ces permissions dans ce salon.* Le webhook du pont emprunte les droits d'`@everyone`, il n'a pas de rôle à lui.
+
+Kotbo ne modifie rien sur les serveurs reliés : ces droits appartiennent à leurs administrateurs. Le même diagnostic s'affiche sur Discord après chaque ajout de salon.
+
+### Serveurs en liaison seule
+
+Un serveur qui n'a pas de clé d'activation porte le badge **Liaison seule** : Kotbo n'y relaie que ce salon et n'y collecte rien.
 
 ---
 

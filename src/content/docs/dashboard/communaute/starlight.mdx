@@ -1,0 +1,63 @@
+---
+title: Starlight
+description: Republiez dans un salon dédié les messages qui font réagir, à partir d'un score de votes que vous fixez.
+---
+
+<p class="doc-lead">Le module <strong>Starlight</strong> surveille les réactions posées sur vos messages et republie en highlight ceux qui dépassent un score de votes, dans un salon que vous choisissez.</p>
+
+:::note[Où la trouver]
+Section **Communauté → Starlight** : [Ouvrir Starlight ↗](https://dash.kotbo.fr/starboard). Le module est en **bêta** et **désactivé par défaut**.
+:::
+
+:::caution[Sans salon, rien ne sort]
+*Sans salon de publication, Starlight ne republie rien.* C'est le seul réglage obligatoire : tant qu'il manque, le module reste inerte même allumé.
+:::
+
+---
+
+## Publication
+
+* **Salon des highlights** : où les messages mis en avant sont republiés.
+* **Seuil de mise en avant** : le score (votes positifs moins négatifs) à atteindre pour être republié.
+* **Couleur de l'embed** : la couleur du highlight publié.
+
+---
+
+## Barème de vote
+
+* **Emojis positifs** : au moins un est requis. Le premier sert de compteur sur le highlight.
+* **Emojis négatifs** : retranchés du score. Laissez vide pour désactiver le vote négatif.
+* **Compter les réactions du highlight** : les votes posés sur le message republié alimentent le même score. C'est souvent là que les membres votent.
+
+Les emojis se saisissent au clavier ou se choisissent parmi ceux du serveur ; un emoji personnalisé s'accepte aussi par son identifiant.
+
+---
+
+## Amorçage des réactions
+
+Poser les emojis de vote d'office, pour que personne n'ait à les chercher.
+
+* **Amorcer les highlights** : le bot pose les emojis de vote sur chaque message republié.
+* **Salons à amorcer** : chaque nouveau message y reçoit les emojis de vote. C'est ce qui transforme un salon en boîte à suggestions.
+
+---
+
+## Portée
+
+* **Salons surveillés** : laissez vide pour surveiller tout le serveur.
+* **Salons exclus** : toujours prioritaires sur les salons surveillés.
+* **Inclure les messages de bots** : prend en compte les messages postés par des bots et des webhooks. Désactivé par défaut.
+
+---
+
+## Cycle de vie
+
+**Retirer sous le seuil** : le highlight est supprimé si le score repasse sous le seuil. Sinon, il reste publié une fois atteint.
+
+---
+
+## Enregistrer
+
+Les modifications passent par la barre d'enregistrement en bas d'écran. Kotbo confirme par *Configuration Starlight enregistrée*.
+
+L'interrupteur du module se trouve en haut de la page, comme sur toutes les pages de module.

@@ -18,12 +18,13 @@ Access to the administration and configuration tabs is limited to administrators
 
 ## How the dashboard page is organised
 
-The page is split into five main tabs:
+The page is split into six main tabs:
 1. **Tickets**: the operational interface for reading, replying to and managing active tickets.
 2. **Transcripts**: the history of archived and closed tickets.
 3. **Satisfaction**: the ratings and comments left by your members after their ticket is closed.
-4. **Blacklist**: the list of members barred from opening a ticket.
-5. **Configuration**: the module's technical settings.
+4. **Macros**: the staff's ready-made replies, with their attached actions.
+5. **Blacklist**: the list of members barred from opening a ticket.
+6. **Configuration**: the module's technical settings.
 
 ---
 
@@ -43,6 +44,18 @@ Action buttons sit at the top right of the conversation:
 * **Close**: closes the ticket. A pop-up requires you to enter a **closing reason**.
 * **Rename**: changes the name of the linked Discord channel (for example from `#ticket-001` to `#bug-fixed`).
 * **Reopen**: for a closed ticket that needs further discussion.
+* **Overclaim**: take over a ticket already claimed by someone else, when the configuration allows it.
+* **Archive** / **Unarchive**: an archived ticket **keeps its channel**, which becomes read-only instead of being deleted. It then carries the **Archived** status.
+* **Lock** / **Unlock**: protects the ticket against deletion.
+
+### Protecting a ticket against deletion
+
+The **Lock** button opens a **Protect against deletion** dialog: *while the protection holds, this ticket cannot be deleted from the dashboard nor from Discord.*
+
+* **Protection duration**: *7 days*, *30 days*, *90 days* or *No expiry*.
+* **Reason** (optional), for example *ongoing dispute, part of a moderation case*.
+
+A protected ticket shows a **Protected against deletion** banner, with who locked it and until when. Any attempt to delete it returns: *this ticket is protected, lift the lock first.*
 * **Restore**: if the Discord channel was deleted by accident, instantly recreates it with the full message history intact.
 * **Delete**: permanently erases the ticket and its data from the database.
 
@@ -73,6 +86,43 @@ In the **Satisfaction** tab you can see:
 * The breakdown of ratings (Very dissatisfied 😡, Dissatisfied 😕, Neutral 😐, Satisfied 🙂, Very satisfied 🤩).
 * A chronological list of the detailed comments left by users.
 
+### Reposting reviews on Discord
+
+* **Reviews channel**: every review is reposted there as an embed - rating, author, assigned staff and comment. Leave empty to disable.
+* **Hide the review author**: the embed shows *Anonymous member* instead of the member. The dashboard still shows the author.
+
+---
+
+## Ready-made replies (Macros tab)
+
+A **macro** puts a reply the staff rewrites ticket after ticket one click away, and attaches whatever usually follows it.
+
+The **New macro** button asks for:
+
+* **Name**, **Category** and **Emoji**.
+* **Content**: the text sent, 2000 characters maximum - the limit of a Discord message. The `{user}`, `{staff}`, `{ticket_id}`, `{ticket_type}` and `{server}` variables are replaced in it.
+* **Ticket types concerned** and **Allowed roles**: left empty, the macro applies to every type and to the whole staff.
+* **Suggestion keywords**: macros whose keyword appears in the request move to the top of the picker.
+
+### Attached actions
+
+A macro can do more than write:
+
+* **Reclassify as**: change the ticket's type.
+* **Add the role** and **Remove the role**.
+* **Trigger the satisfaction survey**.
+* **Close the ticket**: applied last, the others needing a ticket that is still open.
+
+### Automatic sending
+
+**Send automatically on opening** posts the macro as soon as the ticket is created.
+
+:::note[Its actions are not applied]
+A macro sent on opening publishes its text but does not apply its actions: closing or reclassifying a ticket that has just been born would do more harm than good.
+:::
+
+In the ticket channel, the **Macros** button opens the picker. Discord only accepts 25 entries: the most used ones come first.
+
 ---
 
 ## Ticket blacklist (Blacklist tab)
@@ -82,6 +132,7 @@ The **Blacklist** tab stops specific members from opening a ticket, without goin
 * **Discord ID**: the ID of the member to block. A malformed ID is refused with the message *Invalid Discord ID*.
 * **Reason**: it is **shown to the member** when they try to open a ticket. Left empty, it displays as *No reason given*.
 * **Duration (days)** or **Permanent**: choose a temporary or permanent block.
+* **Allow reopening their past tickets**: the blacklist closes new ticket creation; tick this to still let them request the reopening of an already handled case. The entry then carries the **Reopening allowed** label.
 * Click **Add** to confirm.
 
 Every entry in the list shows who created it (*Added by …*), so a decision can be traced back. While the list is empty, the tab shows *No blacklisted member*.
@@ -122,8 +173,55 @@ You can configure several support options (for example "Report a bug", "Shop que
   * Tick **Required field** to force the user to answer.
   * If no custom question is configured, Kotbo shows the standard form with two default questions: *"Subject of the request"* and *"Detailed description"*.
 
+  **The five answer types** fall into two families:
 
-### 4. Inactivity handling (Follow-up accordion)
+  | Type | Where the question is asked |
+  | --- | --- |
+  | **Short line** and **Long paragraph** | In the opening window (Discord modal). |
+  | **Dropdown menu**, **Radio buttons** and **File attachment** | *Interactive*: the question is not part of the opening form, the bot asks it inside the ticket right after it is created. |
+
+  Choice types ask for the list of **Choices / options**, comma separated. Discord only renders the first **5** choices as radio buttons.
+
+  :::caution[A question with no label blocks saving]
+  *Question N of type "…" has no label: Discord would reject the form.*
+  :::
+
+
+### 4. Archiving (Archiving accordion)
+
+An archived ticket keeps its channel: it becomes read-only instead of being deleted.
+
+* **Archive category**: archived channels are moved there. Left empty, the channel stays put and only its permissions change.
+* **The opener keeps read access**: when on, the member keeps seeing their archived ticket without being able to write in it.
+
+### 5. Member-side history (History accordion)
+
+A button under the opening panel gives members access to their closed tickets, their transcripts, and the actions you allow here.
+
+* **"My past tickets" button**: adds the button under the opening embed. The panel it opens is ephemeral - everyone only sees their own tickets.
+* **Member-side reopening**: members can request the reopening of a closed ticket, capped at **3 reopenings** with increasing delays.
+* **Member-side deletion**: members can permanently erase one of their past tickets and its transcript. Locked tickets stay protected.
+
+### 6. Claiming (Mode accordion)
+
+* **Auto-claim on reply**: as soon as a staff member writes in an open ticket, it is automatically claimed by them.
+* **Lock until claimed**: the channel stays visible to the opener and staff, but nobody can write until a staff member claims it. The setting applies globally, or ticket type by ticket type.
+* **Allow overclaiming**: a staff member can take over an already claimed ticket. The **Who can overclaim?** sub-setting opens the gesture to *All staff* or to *Higher or equal grade* only.
+
+### 7. Quotas (Quotas accordion)
+
+Opening limits on the member side, and a load ceiling on the staff side. Each switch commands its own threshold.
+
+| Quota | What it limits |
+| --- | --- |
+| **Simultaneously open tickets** | How many tickets a member can have running at once. |
+| **Delay between two openings** | Prevents chaining tickets without leaving time to answer. |
+| **Quota over a period** | Caps the number of openings over a sliding window (*Maximum tickets* over *N hours*). |
+| **Limit reopenings** | The maximum number of times a ticket can be reopened. |
+
+The **maximum load per moderator** counts tickets claimed and still open. Three modes: **Disabled**, **Warn** or **Block**. **Roles that bypass it** can be exempted.
+
+### 8. Inactivity handling (Follow-up accordion)
 Turn on **inactivity follow-ups** to automatically warn or close tickets for members who stop replying:
 * Set the delay in hours (for example 24 hours).
 * Write the automatic follow-up message (for example *"Hello <code>{'{user}'}</code>, your ticket has been inactive..."*).

@@ -32,9 +32,25 @@ This is a **core** module, it cannot be disabled.
 | **Latest news** | The Kotbo changelog. |
 | **Quick guide** | Checklist of recommended setup actions. |
 | **Clock** | Local date and time. |
+| **Bot language** | The language the bot replies in on this server. |
+| **Time zone** | The zone used for meetings, calls and reminders. |
 | **Economy**, **Levels**, **Tickets**, **Invites**, **Events**, **Polls**, **Staff server** | An overview of the matching module. |
 
 A widget whose module is disabled says so explicitly rather than showing empty figures.
+
+### Bot language
+
+The **Bot language** widget decides what language Kotbo replies in on this server. By default it is on **auto-detection** and follows the Discord server's language; an **explicit choice** - French or English - takes priority, and the **Switch to auto** button returns to detection.
+
+Changing the language re-publishes the panels already posted in the new language, and Kotbo reports how many were.
+
+### Time zone
+
+The **Server time zone** widget sets the server's reference time. It is what drives meeting, call and reminder times, as well as scheduled triggers and the opening of the weekly raid.
+
+:::caution[Without a time zone, everything is off]
+The bot runs in UTC. While the zone is unset, every date shown or entered is shifted - it is one of the three "Essentials" points on the [Getting set up](/en/dashboard/general/prise-en-main/) page.
+:::
 
 ---
 

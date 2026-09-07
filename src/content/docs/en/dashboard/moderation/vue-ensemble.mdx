@@ -12,14 +12,18 @@ Access is limited to administrators and authorised moderators.
 
 ---
 
+:::caution[This page is not translated]
+The security overview is displayed in French whatever your dashboard language. Its labels are quoted verbatim below.
+:::
+
 ## Reading the score
 
 At the top of the page, a ring shows a **score out of 100** and a **grade** (letter). Below the ring, four counters break down the checks that were run:
 
-* <span class="dash-badge kick">Critical</span>: gaps to fix first (missing log channel, dangerous permissions left on `@everyone`…).
-* <span class="dash-badge warn">Warnings</span>: settings that could be better but do not put the server at immediate risk.
-* <span class="dash-badge active">Information</span>: convenience or usage notes.
-* <span class="dash-badge active">Compliant</span>: checks that already pass.
+* <span class="dash-badge kick">Critiques</span>: gaps to fix first (missing log channel, dangerous permissions left on `@everyone`…).
+* <span class="dash-badge warn">Avertissements</span>: settings that could be better but do not put the server at immediate risk.
+* <span class="dash-badge active">Informations</span>: convenience or usage notes.
+* <span class="dash-badge active">Conformes</span>: checks that already pass.
 
 Kotbo also tells you how many findings are **fixable in one click**, and how many score points that would earn.
 
@@ -29,7 +33,7 @@ The date and duration of the last analysis are shown under the score. Use the **
 
 ## Score by category
 
-The **Score by category** block sorts categories from lowest to highest: the first row is the one to work on first.
+The **Score par catégorie** block sorts categories from lowest to highest: the first row is the one to work on first.
 
 Click a category to filter the findings list on it. Click again to return to the full list.
 
@@ -37,17 +41,21 @@ Click a category to filter the findings list on it. Click again to return to the
 
 ## Handling findings
 
-The **Findings** block lists every check with its severity, its category and an explanation.
+The **Constats** block shows every check as a tile, with its severity, its category and an explanation. Critical findings get a wider tile.
 
 <div class="step-list">
-  <div class="step-item"><div><h3>Filter</h3><p>Use the severity chips (<strong>Critical</strong>, <strong>Warning</strong>, <strong>Information</strong>, <strong>Compliant</strong>) to keep only what matters. A checkbox also lets you show or hide the checks that already pass.</p></div></div>
+  <div class="step-item"><div><h3>Filter</h3><p>Use the severity chips (<strong>Critiques</strong>, <strong>Avertissements</strong>, <strong>Informations</strong>, <strong>Conformes</strong>) to keep only what matters. A checkbox also lets you show or hide the checks that already pass.</p></div></div>
   <div class="step-item"><div><h3>Read the finding</h3><p>Each entry explains what was checked and, where relevant, the channels or roles involved.</p></div></div>
   <div class="step-item"><div><h3>Fix it</h3><p>When a finding offers a fix button, one click applies the setting without leaving the page.</p></div></div>
 </div>
 
+The **Tout activer** button applies the **risk-free** fixes in one go, after a summary of what is about to change (*Activer les recommandations*).
+
 :::warning[Sensitive fixes]
-Some fixes change existing server permissions. Kotbo asks for confirmation before acting. Read the action label carefully: these changes apply to Discord immediately.
+Some fixes change existing server permissions: those keep their individual confirmation and stay out of the bulk action. Read the action label carefully, these changes apply to Discord immediately.
 :::
+
+A finding that points at undecided alt-account detections links straight to [Alt accounts](/en/dashboard/moderation/double-comptes/).
 
 ---
 

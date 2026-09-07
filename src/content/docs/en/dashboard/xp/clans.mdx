@@ -26,6 +26,12 @@ It depends on the [Leveling & XP](/en/dashboard/xp/leveling/) module: clan point
 * **Giveaway Boost**: improves the winning clan's odds in giveaways.
 * **Clan Leader Role**: grants the leader role to the top contributor.
 
+### Weekly digest
+
+The **Weekly digest** posts each Monday, in every clan's HQ, the week's points, top contributors and standing.
+
+Kotbo names the clans without an HQ: with no channel, they will get nothing.
+
 ### Creating a clan
 
 The **New clan** button opens a form: **Clan Name**, **Description**, **Associated Discord Role**, **Clan General (HQ)** and **Clan Leader Role**.
@@ -76,12 +82,70 @@ The **Plan the clan season** block offers quick fills (**1 month**, **Quarter**,
 
 ### Daily Algo points
 
-If the [Daily Algo](/en/dashboard/communaute/daily-algo/) module is on, you can **convert Daily Algo points** into clan points at the end of the week, with a **conversion rate** and a **bonus**. Without this setting, the two modules run unconnected.
+If the [Daily Algo](/en/discord/communaute/daily-algo/) module is on, you can **convert Daily Algo points** into clan points at the end of the week, with a **conversion rate** and a **bonus**. Without this setting, the two modules run unconnected.
 
 ### Manual adjustments
 
-* **Adjust Clan points**: adds an amount to a clan's total.
-* **Adjust Member points**: adjusts a specific member's contribution, searched by nickname.
+* **Adjust Clan points**: adds an amount to a clan's total. The **Remove Clan points** button does the opposite.
+* **Adjust Member points**: adjusts a specific member's contribution, searched by nickname, with the same add / **Remove Member points** pair.
+
+:::note[A member in debt is repaid first]
+If the member carries a clan-point debt from bets, the addition goes to repayment first: *addition recorded, but N point(s) went towards repaying the member's debt*.
+:::
+
+---
+
+## Bets tab
+
+Two members challenge each other on any subject and stake clan points; only a referee settles it. Members open a bet with the `/paris` command.
+
+:::note[The Clans module must be on]
+*The Clans module is off: bets stay inactive until it is turned back on.*
+:::
+
+### Bet formats
+
+* **Duels with no named opponent**: duels started without naming an opponent, which anyone can take up.
+* **Pool bets**: several bettors, a single winner who takes the whole pot.
+* **Team bets**: sides facing off. The winning side shares the pot in proportion to what each member staked.
+
+The **stake mode** decides the balance:
+
+* **Per person**: everyone stakes the same amount, so an outnumbered side gets better odds.
+* **Per side**: the stake is split across the side's seats, which requires declaring how many there are when the bet is created.
+
+### Limits
+
+**Minimum** and **maximum stake**, **Concurrent bets**, **Players per bet**, **Sides per bet** and **Reply window (h)**.
+
+### Channels
+
+* **Bets channel**: where `/paris` is accepted. With no setting, the command works everywhere and the bet is posted where it was started.
+* **Announcements channel**: where the summary is posted once the verdict is in.
+
+### Refereeing
+
+The **Roles allowed to manage bets** block hands refereeing to a team without opening up server administration: naming the winner of a running bet, or cancelling it and returning the stakes. Administrators keep this right in every case.
+
+### Betting on credit
+
+**Betting on credit** allows a member to stake more points than they hold: the shortfall becomes a **debt**, taken from their later gains.
+
+* **Debt ceiling**: past it, no further bet on credit is accepted.
+* **Clear debts at season end**: off, a debt survives seasons; otherwise waiting for the close is enough to owe nothing.
+
+The **Open debts** list lets you clear a member's debt. The share still staked on running bets stays owed until the verdict, unless you explicitly tick the box to clear that too.
+
+### End-of-season rewards
+
+When a season closes, the top bettors receive a title and a bonus. Only a positive net gain is rewarded: a season where everyone lost crowns nobody.
+
+* **1st**, **2nd** and **3rd place bonus**, paid into the **next season**. At zero, only the title is awarded.
+* **Top bettor role**: optional. It is removed from its previous holders at every closure, then given to the winner - or to all of them on a tie.
+
+A winner in debt sees their bonus go to repayment first.
+
+The **Latest bets** list keeps the history with the stake, the pot, the season and the status: *Pending*, *Ongoing*, *Processing*, *Settled*, *Declined*, *Withdrawn*, *Expired* or *Voided*.
 
 ---
 
@@ -98,4 +162,18 @@ Both actions on this tab require typing a confirmation word.
 
 ## Public page
 
-A public link lets your members follow the clan war live: ranking by clan, season XP, latest recorded scores and time remaining. The **View the page** and **Copy the link** buttons are available from the dashboard.
+The **Clan board** is a public page, outside the signed-in dashboard, that your members can follow live. It refreshes on its own and brings together in a single screen what used to be split between the clans page and the RPG one.
+
+It holds:
+
+* the season's **ranking by clan**: season XP, latest recorded scores, time remaining, with the breakdown of a clan's members;
+* two tabs, **Raid** and **Adventurers**: how far each clan got on the week's boss - damage, top strikers, boss down or not - and the individual player ranking;
+* the **running clan quests**, with their reset countdown;
+* the **latest settled bets** (*who challenged whom, on what, and for how much*), the season's **bettor standings** and the open debts;
+* a search, to find a member.
+
+The **View the page** and **Copy the link** buttons are available from the dashboard, on the Clans page as well as on the [Economy & RPG](/en/dashboard/economie/economie/) page.
+
+:::note[Each block has its own guard]
+Clans and RPG are two separate modules: turning clans off removes the ranking, the bets and the debts, but leaves the adventurer ranking. The screen is only truly empty when both are off - *this server has enabled neither clans nor the RPG*.
+:::

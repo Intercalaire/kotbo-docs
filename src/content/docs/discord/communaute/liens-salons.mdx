@@ -26,7 +26,7 @@ Pour afficher la liste des liaisons actives sur votre serveur et obtenir leur id
 ### 1. Lier deux salons locaux
 Pour connecter deux salons situés sur votre serveur actuel :
 <DiscordCommand
-  command="/link salon salon-source:#salon-A salon-cible:#salon-B direction:Bidirectionnel mode:Webhook"
+  command="/link salon salon-source:#salon-A salon-cible:#salon-B participation:Émet et reçoit mode:Webhook"
   botResponse="**Liaison établie avec succès !**\nLe salon #salon-A est désormais connecté à #salon-B en mode bidirectionnel (Webhook)."
 />
 
@@ -40,7 +40,7 @@ Si vous êtes administrateur sur les deux serveurs, utilisez l'identifiant (ID) 
 ### 3. Liaison par invitation (Serveur A — Initiation)
 Pour proposer une liaison à un administrateur tiers, générez un code de liaison :
 <DiscordCommand
-  command="/link invite salon:#salon-local direction:Bidirectionnel mode:Webhook invitation-serveur:Vrai"
+  command="/link invite salon:#salon-local participation:Émet et reçoit mode:Webhook invitation-serveur:Vrai"
   botResponse="**Code d'invitation généré !**\nCode : `A1B2C3D4`\n\nTransmettez ce code à l'administrateur de l'autre serveur pour qu'il l'accepte."
 />
 *Le bot renvoie un code unique (ex: `A1B2C3D4`) à transmettre au destinataire.*
@@ -52,12 +52,34 @@ Pour accepter la demande d'un autre serveur en utilisant le code d'invitation re
   botResponse="**Invitation acceptée !**\nLe salon local #salon-local-cible est désormais lié au salon d'origine."
 />
 
-### 5. Supprimer une liaison active
+### 5. Ajouter un serveur à un pont existant
+Un pont n'est pas limité à deux salons. Pour y faire entrer un salon d'un autre serveur :
+<DiscordCommand
+  command="/link ajouter id:ID_DU_PONT serveur:ID_SERVEUR salon:ID_SALON participation:Émet et reçoit"
+  botResponse="**Salon ajouté au pont !**\nLe salon `ID_SALON` participe désormais au pont `ID_DU_PONT`."
+/>
+
+### 6. Retirer un salon d'un pont
+Pour sortir un salon de ce serveur du pont, sans casser le reste :
+<DiscordCommand
+  command="/link retirer salon:#salon-local"
+  botResponse="**Salon retiré du pont.**\nLes autres salons du pont continuent de se relayer entre eux."
+/>
+
+### 7. Supprimer un pont entier
 Pour rompre un pont de salons en utilisant son identifiant (que vous pouvez trouver via `/link list`) :
 <DiscordCommand
   command="/link remove id:ID_DU_LIEN"
   botResponse="**Lien de salon supprimé !**\nLe pont avec l'identifiant `ID_DU_LIEN` a été désactivé."
 />
+
+:::note[La participation d'un salon]
+L'option `participation` remplace l'ancienne direction : **Émet et reçoit**, **Émet seulement** ou **Reçoit seulement**. Elle se règle salon par salon, ce qui permet à un pont de trois serveurs d'avoir deux émetteurs et un simple lecteur.
+:::
+
+:::tip[Diagnostic des permissions]
+`/link list` signale, pour chaque salon du pont, les permissions qui manquent au bot ou à `@everyone`. Le webhook du pont emprunte les droits d'`@everyone` : sans **Utiliser des emojis externes**, Discord retire les emojis venus d'autres serveurs avant publication.
+:::
 
 ---
 

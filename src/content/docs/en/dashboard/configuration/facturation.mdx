@@ -1,0 +1,90 @@
+---
+title: Plans & billing
+description: Understand the Kotbo plans, subscribe, use the free trial and manage your subscription.
+---
+
+<p class="doc-lead">A server's plan determines which modules are available. The <strong>Billing</strong> page shows the current plan, offers the higher ones, and hands everything payment-related over to Stripe.</p>
+
+:::note[Where to find it]
+The **Billing** entry sits at the bottom of the sidebar, above your profile: [Open billing ↗](https://dash.kotbo.fr/billing).
+It is not visible to everyone - see *Who can access it* below.
+:::
+
+:::caution[This page is not translated]
+Billing is displayed in French whatever your dashboard language, and prices are shown in euros. Its labels are quoted verbatim below.
+:::
+
+---
+
+## One all-in-one product, one price per size
+
+Every paid plan opens the **whole catalogue**, including modules added later. What changes from one plan to the next is not what it contains, but **the server size it is meant for**.
+
+| Plan | For a server of | What it opens |
+| --- | --- | --- |
+| **Gratuit** | - | No module at all. Only the core pages stay reachable, long enough to pick a plan. |
+| **Plus** | up to 1,000 members | The whole catalogue, at a small server's price. |
+| **Pro** | 1,001 to 10,000 members | The whole catalogue. |
+| **Ultimate** | 10,001 to 100,000 members | The same product, sized for a large community. |
+| **Sur mesure** | above 100,000 members | The whole catalogue, on terms agreed case by case. Never bought online. |
+
+:::caution[Without a subscription, the bot stays idle]
+A server on the **Gratuit** plan has no active module: the bot is present, but its commands, events and settings pages stay closed. Only the dashboard, the module catalogue, the settings and the billing page answer.
+:::
+
+The server's size decides which plan is offered: a single card carries a purchase button, the one for your tier. The others show *Offre inférieure*, point to the portal through **Changer d'offre** for a change mid-subscription, or read *Compris dans votre accord* on a server on the Sur mesure plan.
+
+---
+
+## The free trial
+
+Kotbo offers a **15-day trial**, once per Discord account.
+
+Pick a plan: the first fifteen days are not billed. Stripe asks for a card, but only charges it at the end of the trial, and cancelling before then costs nothing.
+
+When the trial is not offered, the page says why:
+
+* *Vous avez déjà utilisé votre essai gratuit sur un serveur.*
+* *Ce serveur a déjà bénéficié de son essai gratuit.*
+* *Ce serveur est déjà abonné : le changement d'offre se fait au prorata depuis le portail Stripe.*
+* *Cette offre ne comporte pas d'essai gratuit.*
+
+---
+
+## Subscribing and managing
+
+The **Mensuel / Annuel** switch changes the prices shown; the saving announced on the yearly option is the **smallest** of the discounts, the one true for every plan. Prices include tax and are **per Discord server**.
+
+The purchase button opens a Stripe-hosted checkout page, then brings you back to billing. While Stripe confirms, the plan may take a few seconds to update on screen.
+
+The checkout page asks you to accept the terms of service: Kotbo opens the modules as soon as the payment is confirmed, which requires your express request for immediate delivery.
+
+Once subscribed, **Gérer mon abonnement** opens the Stripe portal: payment method, invoices, prorated plan changes and cancellation. Access is kept until the end of the period already paid for.
+
+The subscription status is spelled out next to the plan name: *Actif*, *Période d'essai*, *Paiement en échec*, *Impayé*, *Résilié*, *Paiement incomplet*, *Paiement abandonné* or *En pause*.
+
+### Annual renewal
+
+An **annual** subscription about to renew triggers a prior notice, sent by DM to the payer - or, failing that, posted in a server channel - between two and three months before the due date.
+
+The notice recalls the due date, that renewal is automatic unless cancelled, and that access stays open until that date if you cancel. A subscription already scheduled for cancellation gets none.
+
+:::caution[Payment failed]
+When a charge fails, the server keeps its access while Stripe retries. Update your payment method before the cut-off.
+:::
+
+---
+
+## Who can access it
+
+Billing is not open to the whole staff:
+
+* **Server administrators** can reach it and do everything there.
+* **The payer** - the account that subscribed - can reach it too, even without being an administrator.
+* **Moderators** only reach it if the server opened billing to them, and **read-only**: they see the plan and its status, but cannot pay, change plan or cancel.
+
+---
+
+## Self-hosted instances
+
+On an installation without a Stripe key - self-hosted or white-label - the page shows *Facturation non activée sur cette instance*. Every module then follows the server configuration, with no commercial plan. That is normal behaviour, not an error.

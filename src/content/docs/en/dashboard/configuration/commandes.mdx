@@ -19,34 +19,54 @@ Only members with administration rights, or roles allowed to configure the bot, 
 ## How the page is organised
 
 The page is split into two main tabs, below the title:
-* **Structure**: the full list of Kotbo commands available on your server, along with their description and their parameters (arguments).
 * **Permissions**: the configuration interface where you define the access rules.
+* **Structure**: the full list of Kotbo commands available on your server, with their description, their **parameters** and their **subcommands**. Every parameter is described by its type (*Text*, *Number*, *Member*, *Channel*, *Role*, *Attachment*…) and its status, **Required** or **Optional**.
 
-You can use the **search bar** or the **category filter** to quickly find the command you want to configure.
+Three figures sum the server up at the top of the page: **Commands**, **Restrictions** and **Disabled**.
+
+A **search bar**, **categories** (*All*, *Moderation*, *Administration*, *Community*, *Economy*, *Fun*, *Utility*) and status filters (*With restrictions*, *No restrictions*, *Disabled*) help you find a command quickly.
+
+---
+
+## Turning a command off
+
+Every command card carries a switch. Turned off, it disables the command for the whole server.
+
+:::caution[Administrators included]
+*Command turned off for the whole server, administrators included. Re-enable it to configure access.* A disabled command carries the **Disabled** badge and its access settings are hidden.
+:::
 
 ---
 
 ## Restricting a command
 
-Select a command in the list on the left to load its access rules on the right. By default, commands inherit their standard Discord access level (shown by a badge: **Admin** in red, **Mod** in orange, or **Everyone** in green).
+On an enabled command's card, the **Allowed roles** are set directly. The **Advanced restrictions** block expands for channels, blocked roles and members.
 
 You can restrict a command against three criteria, which stack:
 
-### 1. Channels
-Determines the channels where the command is active:
-* **Neutral** *(default)*: the command can be used anywhere (subject to global Discord permissions).
-* **Allowed only**: the command can *only* be run in the selected channels.
-* **Blocked only**: the command cannot be used in the selected channels, but works everywhere else.
-
-### 2. Roles
+### 1. Roles
 Determines which groups of users can run the command:
-* **Neutral**: keeps the default behaviour tied to the required level (Admin/Mod/Everyone).
-* **Allowed only**: only members holding one of the selected roles can use the command.
-* **Blocked only**: members holding one of the selected roles are blocked, even if they have the default Discord rights.
+* **Allowed roles**: only members holding one of these roles can use the command.
+* **Blocked roles**: members holding one of these roles are blocked, even if they have the default Discord rights.
 
-### 3. Users
-Lets you target specific members precisely by their unique Discord user ID.
-* **Allowed only** / **Blocked only**: enter the member's Discord ID and confirm to add them to the rule.
+*No role selected* means **default Discord behaviour**, based on the command's permissions. Administrators always keep access to enabled commands.
+
+### 2. Channels
+Determines the channels where the command is active:
+* No channel: *Executable anywhere*.
+* **Allowed channels**: *Restricted to configured channels*.
+* **Blocked channels**: *Forbidden in configured channels*.
+
+### 3. Members
+Lets you target specific members by their Discord ID. Enter the **Discord ID**, then **Allow** or **Block**.
+
+A **Rule summary** recalls in one line what the configuration produces: roles, channels and members allowed or blocked.
+
+The **Quick actions** wipe things clean: **Clear channels**, **Clear roles**, **Clear members** or **Clear all**.
+
+:::tip[Discord can do it too]
+These permissions can also be managed directly in Discord, under **Server Settings → Integrations**.
+:::
 
 ---
 
@@ -56,15 +76,6 @@ A configuration can sometimes end up with contradictory rules (for example if yo
 
 * **Conflict alert**: the dashboard detects these anomalies automatically and shows a red warning alert.
 * **Resolve conflicts**: a button appears in the alert to clean up the configuration automatically, removing the conflicting duplicates in one click.
-
----
-
-## Managing subcommands
-
-Some complex commands have subcommands (for example `/staffadd` and `/staffremove` under the root `/staff` command).
-
-* Commands that contain subcommands are shown with a chevron icon.
-* Click the title to expand the accordion and configure each subcommand's permissions completely independently.
 
 ---
 

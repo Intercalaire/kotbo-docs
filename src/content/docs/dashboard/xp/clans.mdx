@@ -26,6 +26,12 @@ Il dépend du module [Leveling & XP](/dashboard/xp/leveling/) : les points de cl
 * **Boost de Giveaways** : augmente les chances du clan gagnant dans les giveaways.
 * **Rôle de Chef de Clan** : attribue le rôle de chef au meilleur contributeur.
 
+### Bilan hebdomadaire
+
+Le **Bilan hebdomadaire** publie chaque lundi, dans le QG de chaque clan, les points de la semaine, les meilleurs contributeurs et la place au classement.
+
+Kotbo nomme les clans sans QG : sans salon, ils ne recevront rien.
+
 ### Créer un clan
 
 Le bouton **Nouveau clan** ouvre un formulaire : **Nom du Clan**, **Description**, **Rôle Discord Associé**, **Général de clan (QG)** et **Rôle du Chef de Clan**.
@@ -76,12 +82,70 @@ Le **Renouvellement automatique** clôture la saison dès la date de fin dépass
 
 ### Points du Daily Algo
 
-Si le module [Daily Algo](/dashboard/communaute/daily-algo/) est actif, vous pouvez **convertir les points du Daily Algo** en points de clan à la clôture de la semaine, avec un **taux de conversion** et un **bonus**. Sans ce réglage, les deux modules tournent sans lien.
+Si le module [Daily Algo](/discord/communaute/daily-algo/) est actif, vous pouvez **convertir les points du Daily Algo** en points de clan à la clôture de la semaine, avec un **taux de conversion** et un **bonus**. Sans ce réglage, les deux modules tournent sans lien.
 
 ### Ajustements manuels
 
-* **Points de Clan (Global)** : ajoute un montant au total d'un clan.
-* **Points d'un Membre** : ajuste la contribution d'un membre précis, recherché par pseudo.
+* **Points de Clan (Global)** : ajoute un montant au total d'un clan. Le bouton **Retirer des points au Clan** fait l'inverse.
+* **Points d'un Membre** : ajuste la contribution d'un membre précis, recherché par pseudo, avec le même couple ajouter / **Retirer des points au Membre**.
+
+:::note[Un membre endetté est remboursé d'abord]
+Si le membre a une dette de points de clan issue des paris, l'ajout part en priorité en remboursement : *ajout enregistré, mais N point(s) sont partis en remboursement de la dette du membre*.
+:::
+
+---
+
+## Onglet Paris
+
+Deux membres se défient sur un sujet libre et misent des points de clan ; seul un arbitre tranche. Les membres ouvrent un pari avec la commande `/paris`.
+
+:::note[Le module Clans doit être allumé]
+*Le module Clans est éteint : les paris resteront inactifs tant qu'il ne sera pas rallumé.*
+:::
+
+### Formats de pari
+
+* **Duels sans adversaire désigné** : des duels lancés sans nommer d'adversaire, que le premier venu peut relever.
+* **Paris en pool** : plusieurs parieurs, un seul gagnant qui rafle le pot.
+* **Paris en équipes** : des camps qui s'affrontent. Le camp gagnant se partage le pot au prorata de ce que chacun a engagé.
+
+Le **mode de mise** décide de l'équilibre :
+
+* **Par personne** : chacun mise le même montant, un camp en sous-nombre gagne donc une meilleure cote.
+* **Par camp** : la mise est divisée entre les places du camp, ce qui impose de déclarer leur nombre à la création du pari.
+
+### Bornes
+
+**Mise minimale** et **maximale**, **Paris simultanés**, **Participants par pari**, **Camps par pari** et **Délai de réponse (h)**.
+
+### Salons
+
+* **Salon des paris** : le salon où `/paris` est acceptée. Sans réglage, la commande fonctionne partout et le pari est publié là où il a été lancé.
+* **Salon des annonces** : celui du récapitulatif publié une fois le verdict rendu.
+
+### Arbitrage
+
+Le bloc **Rôles autorisés à gérer les paris** confie l'arbitrage à une équipe sans lui ouvrir l'administration du serveur : désigner le gagnant d'un pari en cours, ou l'annuler et rendre les mises. Les administrateurs gardent ce droit dans tous les cas.
+
+### Mise à crédit
+
+La **mise à crédit** autorise un membre à miser plus de points qu'il n'en a : le manque devient une **dette**, prélevée sur ses gains suivants.
+
+* **Plafond de dette** : au-delà, plus aucun pari à crédit n'est accepté.
+* **Effacer les dettes en fin de saison** : désactivé, une dette survit aux saisons, sinon il suffit d'attendre la clôture pour ne rien devoir.
+
+La liste **Dettes en cours** permet d'effacer la dette d'un membre. La part encore engagée dans des paris en cours reste due jusqu'au verdict, sauf à cocher explicitement de l'effacer aussi.
+
+### Récompenses de fin de saison
+
+À la clôture d'une saison, le podium des parieurs reçoit un titre et une prime. Seul un gain net positif est récompensé : une saison où tout le monde a perdu ne sacre personne.
+
+* **Prime du 1er**, **du 2e** et **du 3e**, versées sur la **saison suivante**. À zéro, seul le titre est remis.
+* **Rôle du meilleur parieur** : facultatif. Il est retiré à ses porteurs précédents à chaque clôture, puis attribué au premier - ou à tous les premiers en cas d'égalité.
+
+Un lauréat endetté voit sa prime partir d'abord en remboursement.
+
+Les **Derniers paris** listent l'historique avec la mise, l'enjeu, la saison et le statut : *En attente*, *En cours*, *Traitement*, *Tranché*, *Refusé*, *Retiré*, *Expiré* ou *Annulé*.
 
 ---
 
@@ -98,4 +162,18 @@ Les deux actions de cet onglet demandent la saisie d'un mot de confirmation.
 
 ## Page publique
 
-Un lien public permet à vos membres de suivre la guerre des clans en direct : classement par clan, XP de saison, derniers scores enregistrés et temps restant. Les boutons **Voir la page** et **Copier le lien** sont disponibles depuis le dashboard.
+Le **Tableau des clans** est une page publique, hors du dashboard connecté, que vos membres peuvent suivre en direct. Elle se rafraîchit toute seule et rassemble en un seul écran ce qui était auparavant réparti entre la page des clans et celle du RPG.
+
+On y trouve :
+
+* le **classement par clan** de la saison : XP de saison, derniers scores enregistrés, temps restant, avec le détail des membres d'un clan ;
+* deux onglets **Raid** et **Aventuriers** : l'avancement de chaque clan sur le boss de la semaine - dégâts, meilleurs frappeurs, boss abattu ou non - et le classement individuel des joueurs ;
+* les **quêtes de clan en cours**, avec leur remise à zéro ;
+* les **derniers paris tranchés** (*qui a défié qui, sur quoi, et pour combien*), le **palmarès des parieurs** de la saison et les dettes en cours ;
+* une recherche, pour retrouver un membre.
+
+Les boutons **Voir la page** et **Copier le lien** sont disponibles depuis le dashboard, sur la page Clans comme sur la page [Économie & RPG](/dashboard/economie/economie/).
+
+:::note[Chaque bloc a sa propre garde]
+Clans et RPG sont deux modules distincts : éteindre les clans retire le classement, les paris et les dettes, mais laisse le classement des aventuriers. L'écran n'est vraiment vide que si les deux sont coupés - *ce serveur n'a activé ni les clans, ni le RPG*.
+:::

@@ -32,9 +32,25 @@ C'est un module **cœur**, il ne peut pas être désactivé.
 | **Dernières Nouvelles** | Journal des mises à jour Kotbo. |
 | **Guide de Démarrage** | Checklist des actions recommandées. |
 | **Horloge** | Date et heure locale. |
+| **Langue du bot** | Langue des réponses du bot sur ce serveur. |
+| **Fuseau horaire** | Fuseau utilisé pour les réunions, appels et rappels. |
 | **Économie**, **Niveaux**, **Tickets**, **Invitations**, **Événements**, **Sondages**, **Serveur Staff** | Un aperçu du module correspondant. |
 
 Un widget dont le module est désactivé le signale explicitement plutôt que d'afficher des chiffres vides.
+
+### Langue du bot
+
+Le widget **Langue du bot** décide de la langue des réponses de Kotbo sur ce serveur. Par défaut, il est en **détection automatique** et suit la langue du serveur Discord ; un **choix explicite** - Français ou Anglais - est prioritaire, et le bouton **Repasser en auto** revient à la détection.
+
+Changer de langue republie les panneaux déjà publiés dans la nouvelle langue, et Kotbo indique combien l'ont été.
+
+### Fuseau horaire
+
+Le widget **Fuseau du serveur** fixe l'heure de référence du serveur. C'est lui qui est utilisé pour l'heure des réunions, des appels et des rappels, ainsi que pour les déclencheurs planifiés et l'ouverture du raid hebdomadaire.
+
+:::caution[Sans fuseau, tout est décalé]
+Le bot tourne en UTC. Tant que le fuseau n'est pas réglé, toute date affichée ou saisie est décalée - c'est l'un des trois points « Essentiel » de la page [Prise en main](/dashboard/general/prise-en-main/).
+:::
 
 ---
 

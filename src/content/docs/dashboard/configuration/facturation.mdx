@@ -1,0 +1,86 @@
+---
+title: Offres & facturation
+description: Comprendre les offres Kotbo, souscrire, profiter de l'essai gratuit et gérer son abonnement.
+---
+
+<p class="doc-lead">L'offre d'un serveur détermine les modules disponibles. La page <strong>Facturation</strong> affiche l'offre en cours, propose les offres supérieures, et renvoie vers Stripe pour tout ce qui touche au paiement.</p>
+
+:::note[Où la trouver]
+L'entrée **Facturation** vit en bas de la barre latérale, au-dessus de votre profil : [Ouvrir la facturation ↗](https://dash.kotbo.fr/billing).
+Elle n'est pas visible par tout le monde - voir *Qui y a accès* plus bas.
+:::
+
+---
+
+## Un produit tout-en-un, un tarif par taille
+
+Toutes les offres payantes ouvrent **l'intégralité du catalogue**, y compris les modules ajoutés plus tard. Ce qui change d'une offre à l'autre, ce n'est pas ce qu'elle contient, c'est **la taille du serveur à laquelle elle s'adresse**.
+
+| Offre | Pour un serveur de | Ce qu'elle ouvre |
+| --- | --- | --- |
+| **Gratuit** | - | Aucun module. Seules les pages du cœur restent accessibles, le temps de choisir une offre. |
+| **Plus** | jusqu'à 1 000 membres | Tout le catalogue, au tarif d'un petit serveur. |
+| **Pro** | de 1 001 à 10 000 membres | Tout le catalogue. |
+| **Ultimate** | de 10 001 à 100 000 membres | Le même produit, dimensionné pour une grande communauté. |
+| **Sur mesure** | au-delà de 100 000 membres | Tout le catalogue, sur des conditions convenues au cas par cas. Jamais souscrit en ligne. |
+
+:::caution[Sans abonnement, le bot est inerte]
+Un serveur en offre **Gratuit** n'a aucun module actif : le bot est présent, mais ses commandes, ses événements et ses pages de configuration restent fermés. Seuls le tableau de bord, le catalogue des modules, les réglages et la facturation répondent.
+:::
+
+C'est la taille du serveur qui décide de l'offre proposée : une seule carte porte un bouton d'achat, celle de votre palier. Les autres affichent *Offre inférieure*, renvoient vers le portail par **Changer d'offre** pour un changement en cours d'abonnement, ou portent *Compris dans votre accord* sur un serveur en offre Sur mesure.
+
+---
+
+## L'essai gratuit
+
+Kotbo offre **15 jours d'essai**, une seule fois par compte Discord.
+
+Choisissez une offre : les quinze premiers jours ne sont pas facturés. Une carte est demandée par Stripe, mais n'est débitée qu'à la fin de l'essai, et résilier avant n'entraîne aucun prélèvement.
+
+Quand l'essai n'est pas proposé, la page dit pourquoi :
+
+* *Vous avez déjà utilisé votre essai gratuit sur un serveur.*
+* *Ce serveur a déjà bénéficié de son essai gratuit.*
+* *Ce serveur est déjà abonné : le changement d'offre se fait au prorata depuis le portail Stripe.*
+* *Cette offre ne comporte pas d'essai gratuit.*
+
+---
+
+## Souscrire et gérer
+
+Le sélecteur **Mensuel / Annuel** bascule les prix affichés ; l'économie annoncée sur l'option annuelle est la **plus faible** des remises, celle qui vaut pour toutes les offres. Les prix sont TTC, **par serveur Discord**.
+
+Le bouton d'achat ouvre une page de paiement hébergée par Stripe, puis vous ramène sur la facturation. Le temps que Stripe confirme, l'offre peut mettre quelques secondes à changer d'affichage.
+
+La page de paiement demande d'accepter les conditions générales : Kotbo ouvre les modules dès la confirmation du paiement, ce qui suppose votre demande expresse d'exécution immédiate.
+
+Une fois abonné, **Gérer mon abonnement** ouvre le portail Stripe : moyen de paiement, factures, changement d'offre au prorata et résiliation. L'accès est conservé jusqu'à la fin de la période déjà réglée.
+
+L'état de l'abonnement est affiché en clair à côté du nom de l'offre : *Actif*, *Période d'essai*, *Paiement en échec*, *Impayé*, *Résilié*, *Paiement incomplet*, *Paiement abandonné* ou *En pause*.
+
+### Reconduction annuelle
+
+Un abonnement **annuel** qui va se reconduire donne lieu à un avis préalable, envoyé en message privé au payeur - à défaut, publié dans un salon du serveur - entre deux et trois mois avant l'échéance.
+
+L'avis rappelle la date d'échéance, que la reconduction est automatique sauf résiliation, et que l'accès reste ouvert jusqu'à cette date en cas de résiliation. Un abonnement dont la résiliation est déjà programmée n'en reçoit pas.
+
+:::caution[Paiement en échec]
+Quand un prélèvement échoue, le serveur garde son accès pendant que Stripe réessaie. Mettez à jour votre moyen de paiement avant la coupure.
+:::
+
+---
+
+## Qui y a accès
+
+La facturation n'est pas ouverte à tout le staff :
+
+* **Les administrateurs du serveur** y accèdent et peuvent tout y faire.
+* **Le payeur** - le compte qui a souscrit - y accède également, même sans être administrateur.
+* **Les modérateurs** n'y accèdent que si le serveur leur a ouvert la facturation, et uniquement **en lecture** : ils voient l'offre et son état, mais ne peuvent ni payer, ni changer d'offre, ni résilier.
+
+---
+
+## Instances auto-hébergées
+
+Sur une installation sans clé Stripe - auto-hébergée ou en marque blanche - la page affiche *Facturation non activée sur cette instance*. Tous les modules suivent alors la configuration du serveur, sans offre commerciale. C'est le fonctionnement normal, pas une erreur.

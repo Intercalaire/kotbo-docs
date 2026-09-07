@@ -54,6 +54,22 @@ Le bouton **Importer des sanctions** récupère un historique venu d'un autre bo
   <div class="step-item"><div><h3>Aperçu et import</h3><p>Le tableau indique les lignes valides et celles en erreur, qui seront ignorées. Lancez l'import : le résumé final compte les sanctions importées, les doublons ignorés et les erreurs.</p></div></div>
 </div>
 
+### Actions groupées
+
+Cochez une ou plusieurs infractions - ou utilisez **Tout sélectionner** - pour agir en une fois. La barre indique le nombre d'entrées sélectionnées et propose **Tout désélectionner**.
+
+| Action | Effet |
+| --- | --- |
+| **Archiver** | Les infractions sortent du casier actif et cessent de compter dans le score de warns, mais restent conservées et consultables. Elles portent alors le badge *archivée*. |
+| **Désarchiver** | Elles recomptent dans le score de warns et l'escalade automatique. |
+| **Verrouiller** | Le membre ne pourra plus jamais contester ces infractions, même après le délai d'attente. Badge *verrouillée*. |
+| **Déverrouiller** | Le membre pourra de nouveau demander leur réexamen. |
+| **Supprimer** | Les infractions disparaissent de la base et ne pourront pas être restaurées. |
+
+:::caution[Archiver plutôt que supprimer]
+La suppression est définitive. Préférez l'archivage pour retirer une infraction du casier actif tout en gardant la trace.
+:::
+
 ### Supprimer une infraction
 
 Réservée aux administrateurs, la suppression est irréversible et demande de taper le mot **SUPPRIMER** pour être validée.
@@ -65,6 +81,7 @@ Réservée aux administrateurs, la suppression est irréversible et demande de t
 * **Rôle Modérateur** : rôle requis pour utiliser les commandes de modération.
 * **Propagation des sanctions** : applique automatiquement les sanctions sur les serveurs liés.
 * **Rapports de sanction** : exige la création d'un rapport détaillé pour chaque sanction.
+* **Ignorer les sanctions sur les bots** : sanctionner un bot ne produit ni rapport ni rappel - il n'y a ni victime à documenter, ni membre à qui rendre des comptes. La sanction reste enregistrée au casier. Désactivé par défaut.
 * **DM du lien d'appel lors d'un ban définitif** : envoie au membre banni le lien du formulaire de contestation. Ce réglage est le même que celui de la page [Appels de bannissement](/dashboard/moderation/appels-ban/).
 
 ### Échelles de sanctions progressives

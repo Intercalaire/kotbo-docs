@@ -2,7 +2,7 @@
 title: Finding your way around the dashboard
 description: Understand the sidebar, the navigation and the Kotbo home page.
 sidebar:
-  order: 2
+  order: 3
 ---
 
 import DashboardScreenshot from '../../../../components/DashboardScreenshot.astro';
@@ -18,7 +18,7 @@ import DashboardScreenshot from '../../../../components/DashboardScreenshot.astr
 ## The four areas to know
 
 1. **The active server**, in the top bar. Click it to switch servers.
-2. **The sidebar**, grouped by purpose: General, Moderation, Security, XP system, Economy & RPG, Community, Staff, Cross-server and Configuration.
+2. **The sidebar**, grouped by purpose: General, Moderation, Security, XP system, Economy & RPG, Community, Staff, Cross-server and Configuration. Right at the bottom, outside those groups, sit **Administration** (reserved for the instance administrators), [**Billing**](../../dashboard/configuration/facturation/) and your profile.
 3. **The main area**, which shows the page you picked and its actions.
 4. **Your profile**, in the top right, to replay the tutorial, open your settings or sign out.
 
@@ -36,13 +36,32 @@ On configuration pages, a bar appears at the bottom of the screen as soon as a s
 
 | Shortcut | Action |
 | --- | --- |
+| <span class="kbd">/</span> | Search the sidebar |
+| <span class="kbd">Ctrl</span> + <span class="kbd">K</span> | Search the sidebar (twice: command palette) |
 | <span class="kbd">Ctrl</span> + <span class="kbd">G</span> | Switch server |
-| <span class="kbd">Ctrl</span> + <span class="kbd">Shift</span> + <span class="kbd">D</span> | Open the overview |
-| <span class="kbd">Ctrl</span> + <span class="kbd">Shift</span> + <span class="kbd">M</span> | Open members |
-| <span class="kbd">Ctrl</span> + <span class="kbd">Shift</span> + <span class="kbd">C</span> | Open settings |
+| <span class="kbd">G</span> then <span class="kbd">D</span>, or <span class="kbd">Ctrl</span> + <span class="kbd">Shift</span> + <span class="kbd">D</span> | Open the overview |
+| <span class="kbd">G</span> then <span class="kbd">M</span>, or <span class="kbd">Ctrl</span> + <span class="kbd">Shift</span> + <span class="kbd">M</span> | Open members |
+| <span class="kbd">G</span> then <span class="kbd">C</span>, or <span class="kbd">Ctrl</span> + <span class="kbd">Shift</span> + <span class="kbd">C</span> | Open the Management center |
+| <span class="kbd">G</span> then <span class="kbd">L</span>, or <span class="kbd">Ctrl</span> + <span class="kbd">Shift</span> + <span class="kbd">L</span> | View the activity logs |
 | <span class="kbd">Ctrl</span> + <span class="kbd">Shift</span> + <span class="kbd">N</span> | Show every shortcut |
 
 Shortcuts do not fire while you are typing in a field or a text area.
+
+:::tip[The command palette knows the tabs too]
+A page such as **Economy & RPG** or **Analytics** splits its content into tabs. The palette knows them: searching for "bestiary" or "retention" takes you straight to the right tab, without going through the page first.
+:::
+
+## The emoji picker
+
+Everywhere a setting asks for an emoji - reactions, ticket panels, rules, shop, welcome messages - the picker offers three sources:
+
+* **Emojis**: the standard Unicode emojis.
+* **Server**: your server's custom emojis, with the number of slots used.
+* **Upload**: create an emoji directly on the server from an image (PNG, JPEG, GIF or WEBP), giving it a name.
+
+:::note[Uploading needs a permission]
+*The bot lacks the "Manage Expressions" permission on this server, or you are not an administrator.* The Server tab shows *Server emojis unavailable* when Kotbo cannot read them.
+:::
 
 ## Badges and page states
 

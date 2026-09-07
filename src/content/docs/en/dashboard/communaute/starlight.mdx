@@ -1,0 +1,63 @@
+---
+title: Starlight
+description: Repost the messages people react to in a dedicated channel, from a vote score you define.
+---
+
+<p class="doc-lead">The <strong>Starlight</strong> module watches the reactions placed on your messages and reposts as highlights those that pass a vote score, in a channel you choose.</p>
+
+:::note[Where to find it]
+The **Community → Starlight** section: [Open Starlight ↗](https://dash.kotbo.fr/starboard). The module is in **beta** and **off by default**.
+:::
+
+:::caution[No channel, nothing published]
+*Without a publishing channel, Starlight reposts nothing.* It is the only mandatory setting: while it is missing, the module stays idle even when enabled.
+:::
+
+---
+
+## Publishing
+
+* **Highlights channel**: where highlighted messages are reposted.
+* **Highlight threshold**: the score (upvotes minus downvotes) required to get reposted.
+* **Embed color**: the colour of the published highlight.
+
+---
+
+## Vote scale
+
+* **Upvote emojis**: at least one is required. The first one is used as the highlight counter.
+* **Downvote emojis**: subtracted from the score. Leave empty to disable downvoting.
+* **Count reactions on the highlight**: votes cast on the reposted message feed the same score. That is often where members vote.
+
+Emojis can be typed in or picked among the server's own; a custom emoji is also accepted by its ID.
+
+---
+
+## Seeding reactions
+
+Add the vote emojis upfront, so nobody has to look for them.
+
+* **Seed highlights**: the bot adds the vote emojis to every reposted message.
+* **Channels to seed**: every new message there gets the vote emojis. This is what turns a channel into a suggestion box.
+
+---
+
+## Scope
+
+* **Watched channels**: leave empty to watch the whole server.
+* **Excluded channels**: always take precedence over watched channels.
+* **Include bot messages**: takes messages posted by bots and webhooks into account. Off by default.
+
+---
+
+## Lifecycle
+
+**Remove below threshold**: the highlight is deleted if the score falls back under the threshold. Otherwise it stays published once reached.
+
+---
+
+## Saving
+
+Changes go through the save bar at the bottom of the screen. Kotbo confirms with *Starlight configuration saved*.
+
+The module switch sits at the top of the page, as on every module page.

@@ -2,7 +2,7 @@
 title: Activer ses modules
 description: Choisir et activer les fonctionnalités utiles sur son serveur Kotbo.
 sidebar:
-  order: 3
+  order: 4
 ---
 
 import DashboardScreenshot from '../../../components/DashboardScreenshot.astro';
@@ -14,6 +14,10 @@ import DashboardScreenshot from '../../../components/DashboardScreenshot.astro';
   alt="Écran réel du catalogue des modules Kotbo"
   caption="Le catalogue réel des modules, avec ses presets et ses interrupteurs d’activation."
 />
+
+:::note[Le parcours en a déjà activé une partie]
+Sur un serveur qui vient d’être monté, le [parcours de configuration](../parcours/) a déjà mis en service les modules des pistes que vous aviez cochées. Ce catalogue sert à compléter, pas à tout reprendre de zéro.
+:::
 
 ## Activer un module
 
@@ -32,6 +36,10 @@ import DashboardScreenshot from '../../../components/DashboardScreenshot.astro';
 | Organiser la modération | Membres, Sanctions, Filtres, Logs Discord |
 | Animer le serveur | Leveling & XP, Giveaways, Suggestions |
 | Structurer une équipe | Tickets & Satisfaction, Recrutement, Planning, Annuaire |
+
+:::caution[Un module peut être hors de votre offre]
+Une carte portant un cadenas et la mention **Offre …** n’est pas désactivée : elle n’est pas comprise dans l’offre du serveur, et son interrupteur ne répond pas. Un serveur sans abonnement n’a **aucun** module actif. Voir [Offres & facturation](../../dashboard/configuration/facturation/).
+:::
 
 :::tip[Commencez petit]
 Activez deux ou trois modules, configurez-les complètement, puis ajoutez les suivants. Cela facilite les tests et la prise en main par votre staff.

@@ -1,0 +1,97 @@
+---
+title: Drops
+description: Faites tomber au hasard de l'XP, des points de clan, des pièces ou des objets RPG dans vos salons, à ramasser en un clic.
+---
+
+<p class="doc-lead">Le module <strong>Drops</strong> pose de lui-même des cadeaux dans vos salons : personne ne les déclenche, le bot les publie à une heure imprévisible, et les membres les ramassent en cliquant.</p>
+
+:::note[Où la trouver]
+Section **Système d'XP → Drops** : [Ouvrir les drops ↗](https://dash.kotbo.fr/drops). Le module est en **bêta** et **désactivé par défaut**.
+Il ne dépend d'aucun autre module : un serveur peut ne faire tomber que des pièces, sans niveaux ni clans. Chaque ressource a son propre interrupteur.
+:::
+
+---
+
+## Onglet Configuration globale
+
+### Réglages communs
+
+L'interrupteur en haut du bloc est le **maître** : éteint, aucun drop n'apparaît, quels que soient les réglages de chaque type.
+
+| Réglage | Rôle |
+| --- | --- |
+| **Salon par défaut** | Utilisé par les types de drop qui n'ont pas de salon à eux. |
+| **Rôle mentionné** | Mentionné à chaque apparition. Laissez vide pour ne prévenir personne. |
+| **Durée de vie (minutes)** | Au-delà, un drop que personne n'a ramassé se ferme. Le mode *Ouvert à tous* a sa propre durée. |
+
+:::caution[Cinq minutes, deux fois]
+Un drop reste ramassable **cinq minutes minimum** : en dessous, seuls les membres déjà devant leur écran auraient une chance de cliquer.
+Et deux drops d'un même serveur ne tombent **jamais à moins de cinq minutes d'écart**, tous types confondus. Sans ce garde-fou, plusieurs ressources réglées au plus court posteraient autant de messages dans le même quart d'heure, souvent dans le même salon.
+:::
+
+### Vue d'ensemble
+
+Un tableau récapitule les cinq types configurés, avec les colonnes **Type**, **État**, **Salon**, **Fréquence** et **Modes actifs**. Un type n'est *Actif* que si son propre interrupteur **et** le maître sont allumés.
+
+### Derniers drops
+
+L'historique montre ce qui est réellement tombé : **Date**, **Type**, **Mode**, **Montant** et **Ramassé** (le nombre de membres qui ont cliqué).
+
+---
+
+## Les cinq ressources
+
+Chaque type a son propre onglet, avec son salon, sa fréquence, ses montants et ses modes.
+
+| Onglet | Ce qui tombe |
+| --- | --- |
+| **XP** | XP de progression : compte pour les niveaux et les rôles de récompense. |
+| **XP RPG** | XP du module RPG, indépendante des niveaux du serveur. |
+| **Points de clan** | Points versés au clan du membre qui ramasse. Ils apparaissent avec la mention *Drop* sur la page publique. |
+| **Coins** | Monnaie de l'économie, créditée sur le solde du membre. |
+| **Objets RPG** | Un objet du jeu tombe dans le salon et rejoint l'inventaire du gagnant. |
+
+Kotbo prévient quand un drop n'aurait personne à créditer : *Les clans sont désactivés*, *Le RPG est désactivé*, ou *Le module … est désactivé : la récompense serait bien créditée, mais les membres ne pourraient pas s'en servir tant qu'il reste éteint.*
+
+---
+
+## Régler un type
+
+### Salon et fréquence
+
+* **Salon de ce type** : laissez sur *Salon par défaut* pour suivre le réglage global.
+* **Intervalle moyen (minutes)** : l'écart moyen entre deux drops. L'heure exacte est tirée entre la **moitié** et **une fois et demie** cet intervalle, pour que personne ne puisse camper le salon. La page affiche le nombre de drops par jour que cela représente.
+
+### Modes de ramassage
+
+Activez-en un ou plusieurs. À chaque apparition, le bot en tire un au sort parmi ceux activés, avec la fourchette de récompense réglée pour ce mode.
+
+| Mode | Effet |
+| --- | --- |
+| **Premier arrivé** | Un seul gagnant : le premier à cliquer repart avec tout. |
+| **Les N premiers** | Les premiers à cliquer touchent chacun le montant annoncé. Le **nombre de gagnants** va de 2 à 50. |
+| **Ouvert à tous** | Tout le monde peut se servir pendant la **durée d'ouverture** indiquée. |
+
+Chaque mode a sa **récompense minimale** et sa **récompense maximale** : une course au clic peut ainsi rapporter bien plus qu'un drop ouvert à tous pendant dix minutes.
+
+:::caution[Sans mode, sans drop]
+*Aucun mode de ramassage n'est actif : ce type ne produira aucun drop.* Le même avertissement apparaît quand ni le type ni les réglages globaux ne désignent de salon.
+:::
+
+---
+
+## Onglet Objets RPG
+
+Un drop d'objet ne tire pas au hasard dans tout le catalogue : vous listez explicitement ce qui a le droit de tomber.
+
+* Jusqu'à **25 objets** dans la liste. Liste vide, aucun drop d'objet n'est publié.
+* Chaque objet porte un **taux** en pourcentage, et la page exige que la somme fasse exactement 100 %. Le bouton **Répartir également** partage les cent points à parts égales.
+* Les montants de cet onglet sont un **nombre d'exemplaires** (de 1 à 10), pas des points.
+
+Un objet supprimé du catalogue s'affiche comme *Objet supprimé* et cesse d'être tiré, sans que les autres perdent leurs rapports entre eux.
+
+---
+
+## Enregistrer
+
+Les modifications passent par la barre d'enregistrement en bas d'écran. Kotbo confirme par *Configuration des drops enregistrée*.

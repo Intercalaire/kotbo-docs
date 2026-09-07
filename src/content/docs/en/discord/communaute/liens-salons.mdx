@@ -30,7 +30,7 @@ To list the active links on your server and get their unique IDs:
 ### 1. Link two local channels
 To connect two channels on your current server:
 <DiscordCommand
-  command="/link salon salon-source:#salon-A salon-cible:#salon-B direction:Bidirectionnel mode:Webhook"
+  command="/link salon salon-source:#salon-A salon-cible:#salon-B participation:Émet et reçoit mode:Webhook"
   botResponse="**Link established!**\nChannel #salon-A is now connected to #salon-B in bidirectional mode (Webhook)."
 />
 
@@ -44,7 +44,7 @@ If you are an administrator on both servers, use the ID of the target server and
 ### 3. Linking by invitation (Server A — initiating)
 To offer a link to a third-party administrator, generate a link code:
 <DiscordCommand
-  command="/link invite salon:#salon-local direction:Bidirectionnel mode:Webhook invitation-serveur:Vrai"
+  command="/link invite salon:#salon-local participation:Émet et reçoit mode:Webhook invitation-serveur:Vrai"
   botResponse="**Invitation code generated!**\nCode: `A1B2C3D4`\n\nPass this code to the administrator of the other server so they can accept it."
 />
 *The bot returns a unique code (for example `A1B2C3D4`) to pass on to the recipient.*
@@ -56,12 +56,34 @@ To accept another server's request using the invitation code you received:
   botResponse="**Invitation accepted!**\nThe local channel #salon-local-cible is now linked to the originating channel."
 />
 
-### 5. Remove an active link
+### 5. Add a server to an existing bridge
+A bridge is not limited to two channels. To bring in a channel from another server:
+<DiscordCommand
+  command="/link ajouter id:BRIDGE_ID serveur:SERVER_ID salon:CHANNEL_ID participation:Émet et reçoit"
+  botResponse="**Channel added to the bridge!**\nChannel `CHANNEL_ID` now takes part in bridge `BRIDGE_ID`."
+/>
+
+### 6. Remove a channel from a bridge
+To take a channel of this server out of the bridge, without breaking the rest:
+<DiscordCommand
+  command="/link retirer salon:#salon-local"
+  botResponse="**Channel removed from the bridge.**\nThe other channels in the bridge keep relaying to each other."
+/>
+
+### 7. Remove an entire bridge
 To break a channel bridge using its ID (which you can find with `/link list`):
 <DiscordCommand
   command="/link remove id:LINK_ID"
   botResponse="**Channel link removed!**\nThe bridge with ID `LINK_ID` has been disabled."
 />
+
+:::note[A channel's participation]
+The `participation` option replaces the old direction: **Émet et reçoit** (send and receive), **Émet seulement** (send only) or **Reçoit seulement** (receive only). It is set channel by channel, so a bridge across three servers can have two senders and one plain reader.
+:::
+
+:::tip[Permission diagnostics]
+`/link list` reports, for each channel in the bridge, the permissions the bot or `@everyone` is missing. The bridge webhook borrows `@everyone`'s rights: without **Use External Emojis**, Discord strips emojis from other servers before publishing.
+:::
 
 ---
 

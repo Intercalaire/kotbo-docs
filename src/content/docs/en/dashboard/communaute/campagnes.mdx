@@ -1,0 +1,82 @@
+---
+title: Campaigns
+description: Schedule a sequence of messages around a date, target an audience and measure what the campaign brought in.
+---
+
+<p class="doc-lead">A <strong>campaign</strong> chains several messages around a date: a teaser, the announcement, a follow-up. Each one goes out on its own at its due time, in a channel or as a direct message.</p>
+
+:::note[Where to find it]
+The **Community → Campagnes** section: [Open campaigns ↗](https://dash.kotbo.fr/campaigns). The page is in **beta**.
+:::
+
+:::caution[This page is not translated]
+Campaigns is displayed in French whatever your dashboard language. Its labels are quoted verbatim below.
+:::
+
+---
+
+## Following your campaigns
+
+Every campaign gets a card, with its status:
+
+| Status | Meaning |
+| --- | --- |
+| **Brouillon** | Nothing is scheduled. This is the only editable state. |
+| **Planifiée** | Launched: the sends will go out at their due time. |
+| **En cours** | At least one step has been sent. |
+| **Terminée** | Every step has gone out. |
+| **Annulée** | Stopped along the way; messages already posted stay in place. |
+
+The card shows how many steps were sent, the pivot date, the partner servers targeted, then the **step timeline**: offset, delivery mode and the start of the message, with the number of recipients served and failures for those already sent.
+
+On a running or completed campaign, four figures are computed: **Envoyés**, **Échecs**, **Réactions** and **Arrivées**.
+
+---
+
+## Creating a campaign
+
+The **Nouvelle campagne** button opens an editor in four blocks: what you say, to whom, and how you will know whether it worked.
+
+### General
+
+* **Nom** of the campaign.
+* **Date pivot (jour J)**: the date every offset is counted from.
+* **Description interne**: seen by the staff only.
+
+### Steps
+
+A step is one message and its moment. The **Décalage (min)** is counted in minutes from the pivot date, and it accepts negatives: `−10080` min places the step one week before D-day. The timeline spells that offset out (`J−7 j`, `Jour J`, `J+2 h`).
+
+Every step picks its **Diffusion**:
+
+* **Dans un salon**: the message is posted in the chosen channel.
+* **En message privé**: the message is sent to the computed audience by DM.
+
+In the text, `{server}` is replaced by the server name, and `{user}` by the recipient in direct messages.
+
+### Audience
+
+The criteria stack, and they only apply to **direct message steps**: a channel message is seen by everyone with access to it.
+
+* **Rôles visés** and **Rôles exclus**.
+* **Niveau minimum**, **Ancienneté (jours)**, **Inactif depuis (jours)**.
+
+The **Compter** button shows how many members match and a few names, without sending anything.
+
+### Measurement & partners
+
+* **Code d'invitation à créditer**: joins that went through this code since the pivot date are counted as conversions. Without it, no join can be attributed to the campaign, and the *Arrivées* figure stays empty.
+* **Diffuser aussi sur (IDs de serveurs)**: partner servers where Kotbo is present. Channel steps are posted there if a channel with the same ID exists; unreachable servers count as failures.
+
+---
+
+## Launching, cancelling, deleting
+
+The **Lancer** button asks for confirmation, recalling the number of steps and, if any, those going out as direct messages.
+
+:::caution[A missed send is not caught up]
+Sends go out automatically at their due time. A step whose time has already passed at launch will not be replayed.
+:::
+
+* **Annuler** stops a scheduled or running campaign. It can then be moved back to draft with **Repasser en brouillon**.
+* **Supprimer** erases the campaign and its measurements. Messages already posted stay in your channels.

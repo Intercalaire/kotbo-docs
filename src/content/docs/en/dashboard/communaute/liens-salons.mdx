@@ -18,16 +18,46 @@ You must be a server administrator to create or edit these links.
 
 ---
 
-## How the relay works
+## One bridge, several channels
 
-When two channels are linked, Kotbo listens for new messages and instantly reposts them in the connected channel. Two relay modes are available:
+A link is no longer a pair but a **bridge**: a group of channels, across as many servers as needed. A message sent in one is copied to all the others, and an edit, a deletion, a reaction or a pin finds every copy - including from a copy.
 
-*   **Webhook (mirror)** *(recommended)*: the bot uses a Discord webhook to send the message with the original author's real username and avatar. The result looks clean and natural.
+The bridge carries a **Bridge name**, optional, to help you find it back, and shows how many servers it connects. The **Bridge channels** block lists its participants; the **Add a server to the bridge** button brings in one more.
+
+When creating it, the **Servers to link** field accepts as many servers as you want: every channel picked relays to all the others.
+
+:::caution[Two channels minimum]
+*A bridge needs at least two channels: removing one more will delete it.*
+:::
+
+A channel whose server is no longer reachable shows as **Paused**: the bridge keeps running between the others.
+
+### A channel's participation
+
+Every channel in the bridge picks its role:
+
+* **Send and receive**
+* **Send only**
+* **Receive only**
+
+### The relay mode
+
+*   **Webhook (mirror)** *(recommended)*: Kotbo uses a Discord webhook to send the message with the original author's real username and avatar. The result looks clean and natural.
 *   **Embed**: the message is wrapped in a styled embed sent under Kotbo's name, naming the original server and author.
 
-You can configure the direction of the link:
-*   **Bidirectional**: messages from channel A go to B, and the other way round.
-*   **Unidirectional**: messages only travel from the source channel (A) to the target channel (B).
+### Permission diagnostics
+
+A **Permissions** badge flags whatever is holding the relay back, channel by channel:
+
+* *The bot can no longer see this channel: nothing is relayed there.*
+* *The bot lacks these permissions in this channel.* Relaying will be incomplete.
+* *Discord strips emojis and stickers from other servers as long as `@everyone` lacks these permissions in this channel.* The bridge webhook borrows `@everyone`'s rights, it has no role of its own.
+
+Kotbo changes nothing on the linked servers: those rights belong to their administrators. The same diagnostic is shown on Discord after every channel is added.
+
+### Link-only servers
+
+A server without an activation key carries the **Link-only** badge: Kotbo only relays that channel there and collects nothing.
 
 ---
 

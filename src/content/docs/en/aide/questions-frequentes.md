@@ -5,7 +5,15 @@ description: Solve the common problems people hit when using the Kotbo dashboard
 
 ## Why is a page missing from the sidebar?
 
-The page depends either on your access level or on a disabled module. Ask an administrator to check **Configuration → Modules** and the permissions tied to your role.
+The page depends on your access level, on a disabled module, or on the server's plan. Ask an administrator to check **Configuration → Modules**, the **Role access** matrix in the [Management center](/en/dashboard/configuration/centre-gestion/), and the current plan on the [Billing](/en/dashboard/configuration/facturation/) page.
+
+## The bot is there but responds to nothing
+
+A server without a subscription is on the **Free** plan, which opens no module: the bot is present but idle. Subscribe from the [Plans & billing](/en/dashboard/configuration/facturation/) page to open the catalogue.
+
+## The dashboard won't open, I'm sent through a series of screens instead
+
+That is normal on a server that has just installed Kotbo: while nothing is built, every address leads to the [setup journey](/en/premiers-pas/parcours/). The dashboard opens at activation.
 
 ## Why can't I see my server?
 
@@ -14,6 +22,10 @@ Check these three things:
 1. you are using the right Discord account;
 2. Kotbo is installed on the server;
 3. your role has dashboard access.
+
+When no server meets all three, Kotbo shows **No server available**: *your Discord account has no permissions on any server where Kotbo is installed*. Ask an administrator for a role, or invite the bot to your own server from **My servers**.
+
+On a specific page, the message is **Page not available**: *your role on this server does not grant access to this page*.
 
 Sign out and back in after a role change to refresh your session.
 

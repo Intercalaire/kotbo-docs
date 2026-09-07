@@ -1,0 +1,78 @@
+---
+title: Campagnes
+description: Programmez une suite de messages autour d'une date, ciblez une audience et mesurez ce que la campagne a rapporté.
+---
+
+<p class="doc-lead">Une <strong>campagne</strong> enchaîne plusieurs messages autour d'une date : un teaser, l'annonce, une relance. Chacun part tout seul à son échéance, dans un salon ou en message privé.</p>
+
+:::note[Où la trouver]
+Section **Communauté → Campagnes** : [Ouvrir les campagnes ↗](https://dash.kotbo.fr/campaigns). La page est en **bêta**.
+:::
+
+---
+
+## Suivre ses campagnes
+
+Chaque campagne occupe une carte, avec son état :
+
+| État | Signification |
+| --- | --- |
+| **Brouillon** | Rien n'est programmé. C'est le seul état modifiable. |
+| **Planifiée** | Lancée : les envois partiront à leur échéance. |
+| **En cours** | Au moins une étape est partie. |
+| **Terminée** | Toutes les étapes sont passées. |
+| **Annulée** | Arrêtée en cours de route ; les messages déjà postés restent en place. |
+
+La carte affiche le nombre d'étapes envoyées, la date pivot, les serveurs partenaires visés, puis la **frise des étapes** : décalage, mode de diffusion et début du message, avec le nombre de destinataires servis et d'échecs pour celles qui sont parties.
+
+Sur une campagne en cours ou terminée, quatre indicateurs se calculent : **Envoyés**, **Échecs**, **Réactions** et **Arrivées**.
+
+---
+
+## Créer une campagne
+
+Le bouton **Nouvelle campagne** ouvre un éditeur en quatre blocs : ce qu'on dit, à qui, et comment on saura si ça a marché.
+
+### Général
+
+* **Nom** de la campagne.
+* **Date pivot (jour J)** : la date depuis laquelle tous les décalages se comptent.
+* **Description interne** : vue par le staff seulement.
+
+### Étapes
+
+Une étape est un message et son moment. Le **décalage** se compte en minutes depuis la date pivot, et il accepte le négatif : `−10080` min place l'étape une semaine avant le jour J. La frise affiche ce décalage en clair (`J−7 j`, `Jour J`, `J+2 h`).
+
+Chaque étape choisit sa **diffusion** :
+
+* **Dans un salon** : le message est posté dans le salon désigné.
+* **En message privé** : le message part en MP à l'audience calculée.
+
+Dans le texte, `{server}` est remplacé par le nom du serveur, et `{user}` par le membre destinataire en message privé.
+
+### Audience
+
+Les critères se cumulent, et ne servent **qu'aux étapes en message privé** : un message en salon est vu par tous ceux qui y ont accès.
+
+* **Rôles visés** et **Rôles exclus**.
+* **Niveau minimum**, **Ancienneté (jours)**, **Inactif depuis (jours)**.
+
+Le bouton **Compter** affiche le nombre de membres retenus et quelques noms, sans rien envoyer.
+
+### Mesure & partenaires
+
+* **Code d'invitation à créditer** : les arrivées passées par ce code depuis la date pivot sont comptées comme conversions. Sans lui, aucune arrivée n'est attribuable à la campagne, et l'indicateur *Arrivées* reste vide.
+* **Diffuser aussi sur (IDs de serveurs)** : des serveurs partenaires où Kotbo est présent. Les étapes en salon y sont postées si le salon y existe sous le même identifiant ; les serveurs injoignables comptent comme des échecs.
+
+---
+
+## Lancer, annuler, supprimer
+
+Le bouton **Lancer** demande une confirmation qui rappelle le nombre d'étapes et, s'il y en a, celles qui partent en message privé.
+
+:::caution[Un envoi manqué ne se rattrape pas]
+Les envois partent automatiquement à leur échéance. Une étape dont l'heure est passée au moment du lancement ne sera pas rejouée.
+:::
+
+* **Annuler** arrête une campagne planifiée ou en cours. Elle peut ensuite **repasser en brouillon**.
+* **Supprimer** efface la campagne et ses mesures. Les messages déjà postés, eux, restent dans vos salons.

@@ -28,11 +28,31 @@ Les modules sont rangés en sept familles :
 
 Un champ de recherche filtre le catalogue. S'il ne reste rien, Kotbo affiche *Aucun module ne correspond à cette recherche*.
 
+Cinq filtres d'état complètent la recherche : **Tous**, **Actifs**, **Inactifs**, **Bloqués** et **Offre**, chacun avec son compteur.
+
+---
+
+## Modules compris dans l'offre
+
+Un module hors de l'offre du serveur porte un cadenas et la mention **Offre …** : *Ce module n'est pas compris dans l'offre actuelle du serveur.* Son interrupteur ne répond pas, et Kotbo renvoie vers **Voir les offres**.
+
+:::caution[Un serveur sans abonnement n'a aucun module]
+L'offre **Gratuit** n'ouvre rien : le bot est présent mais inerte. Toutes les offres payantes, elles, ouvrent l'intégralité du catalogue, y compris les modules ajoutés plus tard. Voir [Offres & facturation](/dashboard/configuration/facturation/).
+:::
+
+Un module **bloqué** est autre chose : il attend qu'un autre module soit rallumé, pas un changement d'offre. La carte nomme alors le module fautif.
+
 ---
 
 ## Activer ou désactiver
 
 Chaque carte porte un interrupteur, le rôle du module et, quand il y en a, la liste **Nécessite**.
+
+Trois états sont annoncés en clair :
+
+* **Actif** : commandes, événements et page de configuration disponibles.
+* **Inactif** : commandes refusées, événements ignorés, page inaccessible.
+* **Toujours actif** : module du cœur, il ne peut pas être désactivé.
 
 :::caution[Les dépendances suivent]
 Éteindre un module éteint ceux qui en dépendent ; rallumer un module dépendant rallume ses parents. Par exemple, couper **Leveling & XP** coupe aussi Saisons, Prestige et Clans.
@@ -47,6 +67,8 @@ Certains modules démarrent **éteints par défaut** : ce sont ceux qui demanden
 ## Accès par rôle
 
 Le bloc **Accès par rôle** d'un module définit qui peut le **consulter**, le **modérer** et le **configurer** depuis le dashboard. C'est ce réglage qui fait qu'un modérateur voit une page en lecture seule là où un administrateur peut l'éditer.
+
+La même matrice se règle d'un seul écran, tous modules confondus, dans le [Centre de gestion](/dashboard/configuration/centre-gestion/).
 
 Le lien **Ouvrir la configuration détaillée** mène directement à la page du module.
 
@@ -71,3 +93,5 @@ Appliquer une configuration type **remplace** les réglages concernés, modules 
 ## Ce que la désactivation ne fait pas
 
 Désactiver un module n'est **pas** une suppression de données. La page disparaît de la barre latérale et les automatismes cessent, mais les données restent. Pour repartir de zéro, cherchez l'option de réinitialisation propre au module.
+
+Kotbo le rappelle en tête de page : *Un module désactivé cesse réellement de fonctionner : ses commandes, ses boutons, ses tâches planifiées et sa page de configuration deviennent inaccessibles.*

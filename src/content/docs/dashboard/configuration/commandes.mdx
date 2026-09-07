@@ -19,34 +19,54 @@ Seuls les membres possédant les droits d'administration ou les rôles autorisé
 ## Structure de la page
 
 La page est divisée en deux onglets principaux, situés sous le titre :
-* **Structure** : Liste complète des commandes de Kotbo disponibles sur votre serveur, accompagnée de leur description et de la liste de leurs paramètres (arguments).
-* **Permissions** : L'interface de configuration permettant de définir les règles d'accès.
+* **Permissions** : l'interface de configuration permettant de définir les règles d'accès.
+* **Structure** : liste complète des commandes de Kotbo disponibles sur votre serveur, avec leur description, leurs **paramètres** et leurs **sous-commandes**. Chaque paramètre y est décrit par son type (*Texte*, *Nombre*, *Membre*, *Salon*, *Rôle*, *Fichier*…) et son statut, **Requis** ou **Optionnel**.
 
-Vous pouvez utiliser la **barre de recherche** ou le **filtre de catégorie** pour trouver rapidement la commande que vous souhaitez configurer.
+Trois indicateurs résument l'état du serveur en haut de page : **Commandes**, **Restrictions** et **Désactivées**.
+
+Une **barre de recherche**, des **catégories** (*Toutes*, *Modération*, *Administration*, *Communauté*, *Économie*, *Fun*, *Utilitaire*) et des filtres d'état (*Avec restrictions*, *Sans restriction*, *Désactivées*) permettent de retrouver rapidement une commande.
+
+---
+
+## Couper une commande
+
+Chaque carte de commande porte un interrupteur. Coupé, il désactive la commande pour tout le serveur.
+
+:::caution[Y compris pour les administrateurs]
+*Commande coupée pour tout le serveur, administrateurs compris. Réactivez-la pour configurer ses accès.* Une commande désactivée porte le badge **Désactivée** et ses réglages d'accès sont masqués.
+:::
 
 ---
 
 ## Configurer les restrictions d'une commande
 
-Sélectionnez une commande dans la liste de gauche pour charger ses règles d'accès à droite. Par défaut, les commandes héritent de leur niveau d'accès Discord standard (indiqué par un badge : **Admin** en rouge, **Mod** en orange, ou **Tous** en vert).
+Sur la carte d'une commande active, les **Rôles autorisés** se règlent directement. Le bloc **Restrictions avancées** se déplie pour les salons, les rôles bloqués et les membres.
 
 Vous pouvez restreindre une commande selon trois critères cumulatifs :
 
-### 1. Salons (Channels)
-Détermine dans quels salons la commande est active :
-* **Neutre** *(par défaut)* : La commande est utilisable partout (selon les permissions Discord globales).
-* **Autorisés uniquement** : La commande ne pourra être lancée *que* dans les salons sélectionnés.
-* **Bloqués uniquement** : La commande sera inutilisable dans les salons sélectionnés, mais disponible ailleurs.
-
-### 2. Rôles
+### 1. Rôles
 Détermine quels groupes d'utilisateurs peuvent exécuter la commande :
-* **Neutre** : Conserve le comportement par défaut lié au niveau requis (Admin/Mod/Tous).
-* **Autorisés uniquement** : Seuls les membres possédant l'un des rôles sélectionnés pourront utiliser la commande.
-* **Bloqués uniquement** : Les membres possédant l'un des rôles sélectionnés seront bloqués, même s'ils ont les droits Discord par défaut.
+* **Rôles autorisés** : seuls les membres possédant l'un de ces rôles pourront utiliser la commande.
+* **Rôles bloqués** : les membres possédant l'un de ces rôles seront bloqués, même s'ils ont les droits Discord par défaut.
 
-### 3. Utilisateurs
-Permet de cibler précisément des membres spécifiques par leur identifiant unique Discord (User ID).
-* **Autorisés uniquement** / **Bloqués uniquement** : Entrez l'ID Discord du membre et validez pour l'ajouter à la règle.
+*Aucun rôle sélectionné* signifie **comportement Discord par défaut**, selon les permissions de la commande. Les administrateurs gardent toujours accès aux commandes activées.
+
+### 2. Salons
+Détermine dans quels salons la commande est active :
+* Aucun salon : *Exécutable partout*.
+* **Salons autorisés** : *Limitée aux salons configurés*.
+* **Salons bloqués** : *Interdite dans les salons configurés*.
+
+### 3. Membres
+Permet de cibler précisément des membres par leur identifiant Discord. Saisissez l'**ID Discord**, puis **Autoriser** ou **Bloquer**.
+
+Un **Résumé de la règle** rappelle en une ligne ce que la configuration produit : rôles, salons et membres autorisés ou bloqués.
+
+Les **Actions rapides** remettent tout à zéro : **Vider salons**, **Vider rôles**, **Vider membres** ou **Tout supprimer**.
+
+:::tip[Discord sait aussi le faire]
+Ces permissions peuvent également se gérer directement dans Discord, via **Paramètres du serveur → Intégrations**.
+:::
 
 ---
 
@@ -56,15 +76,6 @@ Il arrive parfois qu'une configuration comporte des règles contradictoires (par
 
 * **Alerte de conflit** : Le dashboard détecte automatiquement ces anomalies et affiche une alerte d'avertissement rouge.
 * **Résoudre les conflits** : Un bouton apparaît dans l'alerte pour nettoyer automatiquement la configuration en supprimant les doublons conflictuels en un clic.
-
----
-
-## Gestion des sous-commandes
-
-Certaines commandes complexes possèdent des sous-commandes (par exemple, `/staffadd` et `/staffremove` sous la commande racine `/staff`).
-
-* Les commandes contenant des sous-commandes sont affichées avec une icône de flèche déroulante.
-* Cliquez sur le titre pour dérouler l'accordéon et configurer les permissions de chaque sous-commande de manière totalement indépendante.
 
 ---
 
