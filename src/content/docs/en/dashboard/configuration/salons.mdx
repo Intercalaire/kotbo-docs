@@ -13,11 +13,27 @@ To see how Auto-Thread, sticky messages, statistics channels, temporary channel 
 This module lives under the **Configuration → Channels** section of your dashboard: [Open the Channels module ↗](https://dash.kotbo.fr/channels-management).
 :::
 
-The interface is built around five main tabs, covered below.
+The interface is built around six main tabs, covered below.
 
 ---
 
-## 1. Auto-Thread (automatic threads)
+## 1. Par salon (by channel)
+
+The **Par salon** tab - its label stays in French - is open by default and answers the question "what affects this channel?" without having to go through the other tabs.
+
+It lists the server's channels; each one expands onto the features that affect it: automatic threads, log exclusion, the trap channel, and the seven games of the [Fun channels](/en/dashboard/communaute/salons-fun/) module.
+
+The other tabs are still there for the fine-grained configuration of each feature.
+
+:::note[A single-channel feature moves]
+Some settings name only one channel - the trap, a game. Enabling them on a channel removes them from the one that held them, and the list reloads to show it.
+:::
+
+Renaming and deleting a channel is also done from this tab.
+
+---
+
+## 2. Auto-Thread (automatic threads)
 
 The **Auto-Thread** tab lets you designate text or announcement channels where Kotbo will systematically and automatically create a thread for every new message posted.
 
@@ -30,7 +46,7 @@ The **Auto-Thread** tab lets you designate text or announcement channels where K
 
 ---
 
-## 2. Sticky message (a message pinned to the bottom of a channel)
+## 3. Sticky message (a message pinned to the bottom of a channel)
 
 The **Sticky message** tab keeps a message permanently visible at the bottom of a channel. The bot reposts it so it always stays the last message shown, which is handy for a rules reminder or a posting guideline.
 
@@ -78,7 +94,7 @@ Mentions written inside a sticky message notify nobody: the bot neutralises them
 
 ---
 
-## 3. Stats channels (live counters)
+## 4. Stats channels (live counters)
 
 The **Stats channels** sub-module displays key server metrics in real time (member count, active members, boosts, and so on) directly in the names of dedicated voice channels.
 
@@ -117,7 +133,7 @@ To respect the rate limits imposed by the Discord API, the bot refreshes statist
 
 ---
 
-## 4. Create your channel (temporary channels)
+## 5. Create your channel (temporary channels)
 
 This module lets users create their own temporary voice channel and configure it themselves using interactive buttons.
 
@@ -137,7 +153,7 @@ At the bottom of the tab, the **Active temporary channels** section lists every 
 
 ---
 
-## 5. Honeypot channel (anti-spam trap)
+## 6. Honeypot channel (anti-spam trap)
 
 The **Honeypot channel** is a blunt security tool designed to instantly detect and neutralise spam bots or compromised user accounts (self-bots) that join your server.
 

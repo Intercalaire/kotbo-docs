@@ -1,0 +1,92 @@
+---
+title: The setup journey
+description: Understand the screens you go through when Kotbo joins a server, and what they build.
+sidebar:
+  order: 2
+---
+
+<p class="doc-lead">When Kotbo joins a server, the dashboard does not exist yet: every address leads to the <strong>setup journey</strong>. One screen per question, one question per decision, up to activation.</p>
+
+:::note[Why no dashboard?]
+While the server has taken nothing on, there is nothing to steer: no sidebar, no header, no dashboard page. What activation opens is the steering; what you go through here is the setting up.
+:::
+
+:::caution[The journey is only partly translated]
+The track selection screen follows the dashboard language, but the phases and several screen titles stay in French whatever your language. Those are quoted verbatim below.
+:::
+
+---
+
+## Adding Kotbo to a server
+
+The **Mes serveurs** page lists every Discord server you administer, whether it has Kotbo or not. Those without it carry an invite button that already preselects the right server in the Discord window.
+
+The usual server switcher, on the other hand, only shows servers that are already equipped.
+
+---
+
+## The five phases
+
+The journey describes about thirty screens, but you never go through all of them: each one belongs to a track, and unticking a track removes its screens from the journey, progress bar included.
+
+| Phase | What happens |
+| --- | --- |
+| **Découverte** | Welcome, server type, recovery from the bots already present, choice of tracks. |
+| **Votre serveur** | The server's language, then its purpose. |
+| **Construction** | Support, mapping an inhabited server, the structure, moderation, logging, the team. |
+| **Personnalisation** | Welcome, rules, progression, the economy and its shop, quests and drops. |
+| **Lancement** | AI control, the recap, activation. |
+
+---
+
+## Choosing what you build
+
+The **What would you like to set up today?** screen presents eleven tracks, grouped in three intentions:
+
+* **Foundations** - what keeps the server standing: structure, moderation, logging.
+* **Server life** - what makes people stay: welcome, rules, support, progression, economy, activity.
+* **Control** - what keeps you in charge: your team, AI control.
+
+Every track states what it actually changes on Discord and how long it takes. The total is shown at the bottom (*≈ N min of setup*), along with **Select all** and **Essentials only**.
+
+:::note[Unticking disables nothing]
+An unticked track turns no module off: the question simply is not asked. The module keeps its default state, and its page stays there for later. Whatever you leave aside is listed again on the [Getting set up](/en/dashboard/general/prise-en-main/) page.
+:::
+
+Some tracks are ticked by default based on what Kotbo observes: rules only on a brand-new server, the team only where staff roles already exist. Economy and activity are always offered unticked.
+
+---
+
+## New server, inhabited server
+
+The **Votre serveur** screen asks whether the server is new or existing. But the bot decides on what it sees: as soon as there is something to match up, the **mapping** screens join the programme, whatever your answer was.
+
+These screens ask, section by section, which existing channel corresponds to what: the entrance, the team, support, welcome, counters, discussions, fun, voice. Without them, the setup would have to deduce everything from name matching, and would duplicate whatever it missed. Each screen removes itself when the chosen purpose does not keep its sections.
+
+### Recovering from other bots
+
+On an existing server, two screens come before Kotbo lays anything down: **What's already here** detects the other bots present, and **What we recover** lists what can be taken over from their configuration.
+
+That is the right moment - before the setup - and also the only one where anybody thinks of it. The **Reprise** page stays reachable at `/migration` for a second pass, for instance after a new bot arrives; it simply no longer has a menu entry.
+
+---
+
+## What the journey writes
+
+Every step writes as you validate it. A journey abandoned at the fourth screen therefore leaves a genuinely structured server, not a lost form, and coming back later resumes at the next step.
+
+:::caution["Back" undoes nothing]
+Going back replays a step without cancelling what it wrote. That is the price of a server built before your eyes.
+:::
+
+---
+
+## Activation
+
+The **récapitulatif** shows what was built. The next screen, **Mise en service**, offers to open the steering: payment goes through Stripe, and through Stripe only - no banking data passes through Kotbo.
+
+The free trial is decided server-side; see [Plans & billing](/en/dashboard/configuration/facturation/) for the details of each plan.
+
+Some servers have nothing to pay to finish: an instance without billing, a plan granted by hand, a subscription already running or a partnership code. They go through the journey like the others, but are not asked twice for what they already have.
+
+Once the journey is closed, it does not reopen: replaying the structure setup on a built server would duplicate channels. The rest is settled from the [Getting set up](/en/dashboard/general/prise-en-main/) page.

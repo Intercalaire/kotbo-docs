@@ -54,6 +54,22 @@ The **Import sanctions** button pulls in a history from another bot (Sapphire, M
   <div class="step-item"><div><h3>Preview and import</h3><p>The table shows valid rows and rows in error, which will be skipped. Run the import: the final summary counts imported sanctions, skipped duplicates and errors.</p></div></div>
 </div>
 
+### Bulk actions
+
+Tick one or more infractions - or use **Select all** - to act in one go. The bar shows how many entries are selected and offers **Clear selection**.
+
+| Action | Effect |
+| --- | --- |
+| **Archive** | The infractions leave the active record and stop counting towards the warn score, but stay stored and readable. They then carry the *archived* badge. |
+| **Unarchive** | They count again towards the warn score and automatic escalation. |
+| **Lock** | The member will never be able to appeal these infractions again, even after the waiting period. *Locked* badge. |
+| **Unlock** | The member will be able to request a review again. |
+| **Delete** | The infractions disappear from the database and cannot be restored. |
+
+:::caution[Archive rather than delete]
+Deletion is permanent. Prefer archiving to take an infraction out of the active record while keeping a trace.
+:::
+
 ### Deleting an infraction
 
 Reserved for administrators, deletion is irreversible and requires typing the word **DELETE** to be confirmed.
@@ -65,6 +81,7 @@ Reserved for administrators, deletion is irreversible and requires typing the wo
 * **Moderator role**: the role required to use the moderation commands.
 * **Sanction propagation**: automatically applies sanctions on linked servers.
 * **Sanction reports**: requires a detailed report for every sanction.
+* **Ignore sanctions on bots**: sanctioning a bot produces neither a report nor a reminder - there is no victim to document and nobody to answer to. The sanction is still recorded in the member's file. Off by default.
 * **DM the appeal link on a permanent ban**: sends the banned member the link to the appeal form. This setting is the same one as on the [Ban appeals](/en/dashboard/moderation/appels-ban/) page.
 
 ### Progressive sanction scales

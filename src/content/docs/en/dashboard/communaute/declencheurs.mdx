@@ -1,76 +1,138 @@
 ---
-title: Triggers
-description: Fire instant actions from a keyword, a form submission or a ticket being opened.
+title: Triggers (Automations)
+description: Make the bot react on its own to joins, messages, sanctions or a fixed time, without writing a line of code.
 ---
 
-<p class="doc-lead">A <strong>trigger</strong> pairs a condition with one or more actions: reply, grant a role, delete a message, close a ticket, time a member out, and much more.</p>
+<p class="doc-lead">An <strong>automation</strong> ties a trigger to a sequence of steps: when this event happens on the server, the bot does that. Everything is composed visually, with no code.</p>
 
 :::note[Where to find it]
-The **Community → Triggers** section: [Open triggers ↗](https://dash.kotbo.fr/triggers).
-This page is flagged **WIP** in the dashboard: its behaviour may still change.
+The **Community → Triggers** section: [Open triggers ↗](https://dash.kotbo.fr/triggers). The page is in **beta**.
+Configuring it is restricted to the roles allowed to manage the server settings.
+:::
+
+:::caution[Block names stay in French]
+The trigger, action and data blocks carry French labels in both languages, exactly as the dashboard shows them. They are quoted verbatim below.
 :::
 
 ---
 
-## Creating a trigger
+## Two ways to write the same thing
 
-The **New trigger** button opens a four-tab dialog.
+An automation is a graph. Two views work on it, and nothing is ever converted by force:
 
-### Trigger tab
+* **Étapes** (Steps): the automation reads as a sequence of sentences - *Quand …*, *Si …*, *Alors …*. This is the default view.
+* **Graphe** (Graph): a canvas of connected blocks, with a palette. It takes over on automations that cannot be expressed linearly - a loop, a switch - and Kotbo says so: *This automation uses blocks that cannot be written as steps.*
 
-First pick the **trigger type**:
+---
 
-| Type | What fires it |
+## Creating an automation
+
+The **New automation** button offers to start from a **ready-made template** or from **scratch**.
+
+| Template | What it does |
 | --- | --- |
-| **Discord Message (Keyword)** | A message containing the keyword. The **match type** can be *Contains the text*, *Exact match* or *Regular expression*. |
-| **Form Submission** | An answer to a given form. You specify the **question** (label or ID) and the **value to match**. |
-| **Ticket Opening** | A ticket being opened. You specify the **ticket type** (or all), the **field to check** (*Reason* or *Description*) and the expected value. |
+| **Welcome message** | Greet every arrival in a channel and grant their starting role. |
+| **Watch fresh accounts** | Flag to the staff any arrival whose Discord account is under a week old. |
+| **Block invitations** | Time out anyone posting an invitation link to another server. |
+| **Level reward** | Congratulate a member publicly when they level up. |
+| **Ticket greeting** | Post the guidelines as soon as a support ticket opens. |
 
-### Basic Actions tab
+Templates are ready to use - you only pick the channels and roles.
 
-* **Bot response(s)**: one or more texts. The **Add an alternative response** button creates variants picked at random, each with its own appearance rate (the total should ideally be 100%).
-* **Message destination**: *Direct Message*, *Current channel* or *Specific channel*.
-* **Relay to the staff server**: also sends a copy to the log channel of the linked staff server.
-* **Role to add** and **Role to remove**.
-* **Delete the message**, **Close the ticket**, **Reject the application**.
-* **Enable the trigger**: active as soon as you save.
-
-The variables usable in responses are `{user}` (mention), `{username}` (nickname), `{server}` (server name) and `{channel}` (channel).
-
-:::caution[A form has no source channel]
-For a form trigger, the message necessarily goes out as a direct message.
+:::caution[A template replaces everything]
+Applying a template to an existing automation **replaces the whole current graph**. Kotbo asks for confirmation.
 :::
 
-### Reactions & Advanced tab
+---
 
-* **Reactions**: the bot automatically reacts to the message with the listed emoji, separated by commas or spaces. The server's custom emoji are offered.
-* **Create a Thread**: creates a public thread attached to the message, with a name template accepting `{user}` and `{content}`.
-* **Send a direct message**: a text separate from the public reply.
-* **Timeout**: duration in seconds.
-* **Grant XP points**.
-* **Create a channel / category**: name, type (*Text*, *Voice*, *Category*) and parent category.
-* **Delete a channel / category**.
-* **Create a role**: name and colour.
-* **Delete a role**.
+## The triggers
 
-### Filters tab
+An automation has a single trigger.
 
-Restricts firing to certain contexts: **Allowed roles**, **Banned roles**, **Allowed channels** and **Banned channels**. An empty field means "all".
+| Trigger | When it fires |
+| --- | --- |
+| **Arrivée d'un membre** | A member joins the server. |
+| **Départ d'un membre** | A member leaves the server. |
+| **Rôle attribué** / **Rôle retiré** | A role is added to or removed from a member. |
+| **Message envoyé** | On every message posted by a human. |
+| **Réaction ajoutée** | A member reacts to a message. |
+| **Arrivée en vocal** / **Départ du vocal** | A member joins or leaves a voice channel. |
+| **Ticket créé** | A support ticket is opened. |
+| **Sanction appliquée** | A sanction is issued. |
+| **Passage de niveau** | A member gains a level. |
+| **Planification** | At a fixed time, on a recurring schedule. |
+| **Pari tranché** / **Pari annulé** | A referee names the winning side, or the stakes are returned. |
+| **Dette de clan creusée** / **soldée** | A member stakes points they do not hold, or finishes repaying. |
 
-:::caution[At least one action is required]
-Kotbo refuses to save a trigger that does nothing: it needs at least a response, a role, a deletion, a ticket close, a rejection, a reaction or an advanced action.
+### Scheduling
+
+The **Planification** trigger is set either through the guided choice - *every hour*, *every day*, *every week*, *every month*, with the hour and the day - or through an **advanced pattern**: a five-field cron pattern.
+
+The time is interpreted in the **server's time zone**, set from the [dashboard home](/en/dashboard/general/accueil/).
+
+---
+
+## The steps
+
+Every trigger exposes values - the member, the message, the channel - that the following steps can use.
+
+### Actions
+
+Posting: **Envoyer un message**, **Envoyer un embed**, **Envoyer un message privé** (no effect if the member's DMs are closed).
+
+On a member: **Ajouter un rôle**, **Retirer un rôle**, **Changer le surnom**, **Exclure temporairement**, **Expulser**, **Bannir** (permanently or for a given duration).
+
+On a message: **Supprimer un message**, **Réagir à un message**, **Épingler un message**, **Ouvrir un fil**.
+
+Finally, **Ouvrir un ticket** opens a support ticket on a member's behalf.
+
+:::note[Sanctions from an automation count]
+A timeout, kick or ban issued by an automation goes through the same service as manual sanctions: the member's record, the statistics, the staff alerts and the linked accounts all take it into account.
+
+An identical sanction issued within thirty seconds is ignored. That is also what stops an automation wired to *Sanction appliquée* from looping on itself.
 :::
+
+### Conditions and flow control
+
+* **Si**: only run the rest in certain cases. A condition reads as *all these conditions* or *at least one condition*, and is arranged into **Alors** / **Sinon** (Then / Otherwise).
+* **Aiguillage**: compares a text value against a list of cases.
+* **Pour chaque**: walks a list and runs the loop body for every element.
+* **Attendre**: suspends the run. It resumes even after a bot restart.
+
+The available tests cover **Possède le rôle**, **Salon est**, **Texte contient**, **Texte est égal à**, **Comparer** two numbers, **ET / OU**, **NON**, plus the length of a text or the size of a list.
+
+### Values
+
+The data blocks provide a **Texte**, a **Nombre**, a **Booléen**, a **Texte composé** (in which context values are inserted), **Un rôle** or **Un salon** from the server, and the properties of the member, the message, the channel or the server.
+
+In the Steps view, channels, roles and texts are typed straight onto the card, without creating a data block.
+
+---
+
+## Saving
+
+Kotbo validates the graph before saving and lists the **issues to fix**: *Start by placing a trigger block*, *A field of this step is still empty*, *N step(s) still need to be completed before saving*. When everything is right: *The graph is valid.*
+
+A saved automation starts **paused**; the switch on its card enables it.
+
+---
+
+## Following what runs
+
+The list filters by **All**, **Active** or **Paused**, and every card shows its number of runs, its success rate and its last run.
+
+:::tip["It doesn't work"]
+An enabled automation that has produced nothing for more than a day says so on its card: **Never started** - *Enabled but never ran: check the trigger and its conditions.*
+:::
+
+The **Runs** tab lists the passes with their status - *Running*, *Waiting*, *Completed*, *Failed*, *Cancelled* - and the number of blocks visited. Click a run to **replay it on the graph**: the path is replayed step by step, with the inputs and outputs recorded at each block.
 
 ---
 
 ## Managing the list
 
-Each trigger shows its type, its condition and badges summarising its actions: **Message**, **Relayed to staff**, **Add *role***, **Remove *role***, **Delete the message**, **Close the ticket**, **Reject the application**, plus the number of filtered roles and channels.
+Every card offers **Edit**, **Duplicate**, **Pause** or **Enable**, and **Delete**.
 
-### Bulk actions
-
-Tick several triggers (or use **Select all**) to **Enable**, **Disable** or **Delete** them at once.
-
-:::danger[Bulk deletion]
-The selected triggers are deleted permanently, after confirmation.
+:::danger[Deleting takes the history with it]
+*Permanently delete this workflow and its history?* Past runs disappear along with the automation.
 :::

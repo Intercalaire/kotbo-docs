@@ -28,11 +28,12 @@ Every request carries a status: **Pending**, **Accepted**, **Denied**, **Permane
 
 ## How does it work?
 
-1. A banned user visits your public ban appeal URL (for example `https://appeals.kotbo.fr/your-server`).
-2. They sign in with Discord. Kotbo automatically checks that they really are on your Discord server's ban list and retrieves the original ban reason.
-3. The user fills in your custom question form.
-4. An interactive notification (embed) is sent to your staff's Discord channel.
-5. Moderators click the Discord buttons to accept, deny or ask for more details.
+1. A sanctioned member visits your public appeal URL (for example `https://appeals.kotbo.fr/your-server`).
+2. They sign in with Discord. Kotbo reads the sanctions they can actually appeal and retrieves their original reason.
+3. They **tick the sanctions they are appealing** and write a statement for each, up to the maximum number of sanctions per request.
+4. They fill in the question form - the one for the first ticked type if it has one, otherwise the module form.
+5. An interactive notification (embed) is sent to your staff's Discord channel.
+6. Moderators decide **sanction by sanction**, from the dashboard or the Discord buttons.
 
 ---
 
@@ -48,10 +49,29 @@ In the dashboard's configuration tab, set up the following:
 * **Staff channel (inbox)**: your team's private Discord channel, where Kotbo posts the appeal request card with its action buttons.
 * **Invite channel**: the channel used as the anchor for generating a single-use invite link when an appeal is accepted.
 
-### 3. Rules and cooldown
-* **Delay before re-appealing (in days)**: how many days a user must wait after a denial before submitting a new appeal (default: 30 days).
+### 3. Appealable sanctions
 
-### 4. Custom text
+The **Appealable sanctions** block enables, one by one, the types members can appeal: **Warning**, **Timeout**, **Kick**, **Softban**, **Temporary ban** and **Ban**.
+
+:::note[Nothing changes if you leave it alone]
+With nothing but Ban ticked, the module behaves exactly as before.
+:::
+
+Every type carries its own settings:
+
+* **Wait before a new request (days)**.
+* **Dedicated form**: appealing a warning does not raise the same questions as appealing a ban. Without a form of its own, the public page falls back to the **module form**.
+
+### 4. Rules and cooldown
+* **Delay before re-appealing (in days)**: how many days a user must wait after a denial before submitting a new appeal (default: 30 days).
+* **Sanctions per request (max)**: how many sanctions a member can appeal at once.
+* **Appealable for (days)**: past that, a sanction can no longer be appealed. *No limit* leaves appeals open indefinitely.
+* **Notify the member by DM**: on every appealable sanction, the member gets a link to the appeal page, already pointing at the right sanction.
+* **Bar moderators from judging their own sanction**: whoever issued the sanction cannot decide the appeal against it.
+* **Notify the issuing moderator**: they get a DM when one of their sanctions is appealed, and can add context before the verdict.
+* **Store the device fingerprint**: stores browser and system details to detect alt accounts.
+
+### 5. Custom text
 Adapt how you communicate with users:
 * **Welcome text**: the explanation or rules shown at the top of the public sign-in page.
 * **Acceptance message (DM)**: the private message Kotbo sends automatically when the user is let back in. *Tip: use the `{invite}` variable to include the generated single-use invite automatically.*

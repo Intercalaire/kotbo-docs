@@ -28,11 +28,31 @@ Modules are sorted into seven families:
 
 A search field filters the catalogue. If nothing is left, Kotbo shows *No module matches this search*.
 
+Five status filters complete the search: **All**, **Active**, **Inactive**, **Blocked** and **Plan**, each with its own counter.
+
+---
+
+## Modules included in the plan
+
+A module outside the server's plan carries a padlock and the **… plan** label: *This module is not part of the server's current plan.* Its switch does not respond, and Kotbo points to **See the plans**.
+
+:::caution[A server without a subscription has no module at all]
+The **Free** plan opens nothing: the bot is present but idle. Every paid plan, on the other hand, opens the whole catalogue, including modules added later. See [Plans & billing](/en/dashboard/configuration/facturation/).
+:::
+
+A **blocked** module is something else: it is waiting for another module to be switched back on, not for a plan change. The card then names the module at fault.
+
 ---
 
 ## Turning modules on and off
 
 Each card carries a switch, the module's purpose and, where relevant, the **Requires** list.
+
+Three states are spelled out:
+
+* **Active**: commands, events and settings page available.
+* **Inactive**: commands refused, events ignored, page unreachable.
+* **Always on**: a core module, it cannot be turned off.
 
 :::caution[Dependencies follow]
 Turning a module off turns off the ones that depend on it; turning a dependent back on turns its parents back on. For example, switching off **Leveling & XP** also switches off Seasons, Prestige and Clans.
@@ -47,6 +67,8 @@ Some modules start **off by default**: those are the ones needing prior configur
 ## Access by role
 
 A module's **Access by role** block defines who can **view**, **moderate** and **configure** it from the dashboard. This is the setting that makes a moderator see a page read-only where an administrator can edit it.
+
+The same matrix can be set for every module from a single screen, in the [Management center](/en/dashboard/configuration/centre-gestion/).
 
 The **Open the detailed configuration** link goes straight to the module's page.
 
@@ -71,3 +93,5 @@ Applying a preset **replaces** the settings concerned, both modules and command 
 ## What disabling does not do
 
 Disabling a module is **not** a data deletion. The page leaves the sidebar and the automations stop, but the data stays. To start over, look for the module's own reset option.
+
+Kotbo says as much at the top of the page: *A disabled module really does stop working: its commands, buttons, scheduled tasks and settings page all become unavailable.*

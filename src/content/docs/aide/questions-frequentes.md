@@ -5,7 +5,15 @@ description: Résoudre les problèmes courants lors de l’utilisation du dashbo
 
 ## Pourquoi une page n’apparaît-elle pas dans la barre latérale ?
 
-La page dépend soit de votre niveau d’accès, soit d’un module désactivé. Demandez à un administrateur de vérifier **Configuration → Modules** et les permissions associées à votre rôle.
+La page dépend de votre niveau d’accès, d’un module désactivé, ou de l’offre du serveur. Demandez à un administrateur de vérifier **Configuration → Modules**, la matrice **Accès par rôle** du [Centre de gestion](/dashboard/configuration/centre-gestion/), et l’offre en cours sur la page [Facturation](/dashboard/configuration/facturation/).
+
+## Le bot est là mais ne répond à rien
+
+Un serveur sans abonnement est en offre **Gratuit**, qui n’ouvre aucun module : le bot est présent mais inerte. Souscrivez depuis la page [Offres & facturation](/dashboard/configuration/facturation/) pour ouvrir le catalogue.
+
+## Le dashboard ne s’ouvre pas, je suis renvoyé sur un parcours d’écrans
+
+C’est normal sur un serveur qui vient d’installer Kotbo : tant que rien n’est monté, toutes les adresses mènent au [parcours de configuration](/premiers-pas/parcours/). Le dashboard s’ouvre à la mise en service.
 
 ## Pourquoi je ne vois pas mon serveur ?
 
@@ -14,6 +22,10 @@ Vérifiez ces trois points :
 1. vous utilisez le bon compte Discord ;
 2. Kotbo est installé sur le serveur ;
 3. votre rôle dispose d’un accès au dashboard.
+
+Quand aucun serveur ne répond à ces trois points, Kotbo affiche **Aucun serveur accessible** : *votre compte Discord n’a de droits sur aucun serveur où Kotbo est installé*. Demandez un rôle à un administrateur, ou invitez le bot sur votre propre serveur depuis **Mes serveurs**.
+
+Sur une page précise, le message est **Page non accessible** : *votre rôle sur ce serveur ne donne pas accès à cette page*.
 
 Reconnectez-vous après une modification de rôle afin de rafraîchir votre session.
 

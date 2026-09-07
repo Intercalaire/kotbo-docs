@@ -13,11 +13,27 @@ Pour voir le fonctionnement de l'Auto-Thread, des messages sticky, des salons de
 Ce module est accessible depuis la section **Configuration → Salons** de votre dashboard : [Accéder au module Salons ↗](https://dash.kotbo.fr/channels-management).
 :::
 
-L'interface est structurée autour de cinq onglets principaux, détaillés ci-dessous.
+L'interface est structurée autour de six onglets principaux, détaillés ci-dessous.
 
 ---
 
-## 1. Auto-Thread (Fils automatiques)
+## 1. Par salon
+
+L'onglet **Par salon**, ouvert par défaut, répond à la question « qu'est-ce qui touche ce salon ? » sans avoir à parcourir les autres onglets.
+
+Il liste les salons du serveur ; chacun se déplie sur les fonctionnalités qui l'affectent : fils automatiques, exclusion des logs, salon piège, et les sept jeux du module [Salons Fun](/dashboard/communaute/salons-fun/).
+
+Les autres onglets restent là pour la configuration fine de chaque fonctionnalité.
+
+:::note[Une fonctionnalité unique se déplace]
+Certains réglages ne désignent qu'un seul salon - le piège, un jeu. Les activer sur un salon les retire de celui qui les portait, et la liste se recharge pour le montrer.
+:::
+
+Le renommage et la suppression d'un salon se font également depuis cet onglet.
+
+---
+
+## 2. Auto-Thread (Fils automatiques)
 
 L'onglet **Auto-Thread** permet de définir des salons textuels ou d'annonces dans lesquels Kotbo créera systématiquement et automatiquement un fil de discussion (thread) pour chaque nouveau message posté.
 
@@ -30,7 +46,7 @@ L'onglet **Auto-Thread** permet de définir des salons textuels ou d'annonces da
 
 ---
 
-## 2. Message Sticky (message collé en bas de salon)
+## 3. Message Sticky (message collé en bas de salon)
 
 L'onglet **Message Sticky** garde un message toujours visible en bas d'un salon. Le bot le republie pour qu'il reste le dernier message affiché, ce qui est pratique pour un rappel de règles ou une consigne de format.
 
@@ -78,7 +94,7 @@ Les mentions écrites dans un message sticky ne notifient personne : le bot les 
 
 ---
 
-## 3. Salons Stats (Compteurs en temps réel)
+## 4. Salons Stats (Compteurs en temps réel)
 
 Le sous-module **Salons Stats** permet d'afficher en temps réel des indicateurs clés de votre serveur (nombre de membres, d'actifs, de boosts, etc.) directement dans le nom de salons vocaux dédiés.
 
@@ -117,7 +133,7 @@ Pour respecter les limites de requêtes imposées par l'API Discord (Rate Limits
 
 ---
 
-## 4. Créer son salon (Salons temporaires)
+## 5. Créer son salon (Salons temporaires)
 
 Ce module permet aux utilisateurs de créer leur propre salon vocal temporaire et de le configurer de façon autonome à l'aide de boutons interactifs.
 
@@ -137,7 +153,7 @@ En bas de l'onglet, la section **Salons Temporaires Actifs** liste tous les salo
 
 ---
 
-## 5. Salon Honeypot (Piège Anti-Spam)
+## 6. Salon Honeypot (Piège Anti-Spam)
 
 Le **Salon Honeypot** est un outil de sécurité radical conçu pour détecter et neutraliser instantanément les bots de spam ou les comptes d'utilisateurs piratés (self-bots) qui rejoignent votre serveur.
 

@@ -7,7 +7,7 @@ description: Analyse your community's growth, engagement and activity, and expor
 
 :::note[Where to find it]
 The **General → Analytics** section: [Open Analytics ↗](https://dash.kotbo.fr/analytics).
-Collection is switched off from **Settings → Activity statistics**. Without it, nothing is recorded any more.
+Collection is switched off by disabling the **Analytics** module from **Configuration → Modules**. Without it, nothing is recorded any more.
 :::
 
 ---
@@ -15,6 +15,10 @@ Collection is switched off from **Settings → Activity statistics**. Without it
 ## Choosing the period
 
 The offered periods are **24 hours**, **7 days**, **30 days**, **90 days**, **365 days**, or a **custom** range. The **Live Feed** shows the time of the last update.
+
+:::note[Which time zone the hours are read in]
+The charts state *Hours shown in …*. That zone is **yours**, not the server's: you pick it in your user settings, either automatic (your browser's) or explicitly. It only changes how charts and heatmaps are displayed, never the data collected.
+:::
 
 ---
 
@@ -33,6 +37,7 @@ The offered periods are **24 hours**, **7 days**, **30 days**, **90 days**, **36
 
 ## Engagement
 
+* **Overall message activity** and **Overall voice activity**: the period's curve, with the **Total**, the **Peak**, the **Average / point** and the **Trend** against the start of the period. A **Raw / Average** toggle smooths the curve.
 * **Top chatters** and **Top voice users**, with the full ranking, a search by name and pagination.
 * **Popular text channels** and **popular voice channels**, by message volume and by time spent.
 * **Commands executed**: overall use of the bot's commands and a breakdown per command.
@@ -80,6 +85,6 @@ An export over an empty period is refused with the message *No chart data to exp
 
 ## Switching collection off
 
-The **Activity statistics** switch on the [Settings](/en/dashboard/configuration/parametres/) page stops all recording: messages, voice minutes, reactions, threads, joins and leaves, per-member statistics, word frequency and usage rankings.
+Turning the **Analytics** module off from the [module catalogue](/en/dashboard/configuration/modules/) stops all recording: messages, voice minutes, reactions, threads, joins and leaves, per-member statistics, word frequency and usage rankings.
 
 The other modules (moderation, tickets, levels and so on) keep working normally. Only the bot's technical measurements (execution times and errors, with no identity at all) are kept.

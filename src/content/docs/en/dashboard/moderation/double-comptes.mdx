@@ -46,6 +46,13 @@ This is the active monitoring control panel.
   * <span class="dash-badge warn">Medium risk (score ≥ 30)</span>: unusual behaviour worth watching.
   * <span class="dash-badge active">Low risk (score < 30)</span>: minor anomalies.
 * **Review the evidence**: expand the card to see exactly why the account was flagged (for example *"Same IP address detected as user Jean#1234"*).
+* **Link found elsewhere**: if the staff of another server on the instance already linked this account to another, Kotbo takes their verdict as a detection signal.
+
+The **Links on other servers** block in the member file details those suggestions: the account concerned, how many servers already carry the link, and whether it was set there **Auto**matically or **Manual**ly. Each suggestion shows the bonus it adds to the detection score (*+N pts*), which grows with the number of servers involved, and its status here: **Absent here**, **Already linked here**, or the **Link here** button.
+
+:::note[Nothing is linked automatically]
+*Nothing is linked automatically: it is up to you to confirm.* A link found elsewhere stays a suggestion until a staff member of this server reproduces it.
+:::
 * **Make a decision**:
   * Click **Link the accounts** if you confirm this really is an alt account.
   * Click **Dismiss** to remove the member from the list of suspected threats.
@@ -71,4 +78,10 @@ Tune the bot's sensitivity and the automatic sanctions.
 * **Automatic detection**: turn this toggle on to let Kotbo continuously scan every new arrival.
 * **Validation role**: pick the temporary or holding role to grant and remove while the member completes their Captcha verification (for example `@Unverified`).
 * **Sanction role**: pick the restrictive role to grant automatically to members identified as unauthorised alt accounts.
+* **Automatic warn expiry (days)**: past this delay a warn is archived automatically. It leaves the active record without being erased. Empty or `0` means *never*.
+* **Count archived sanctions**: by default an archived sanction no longer weighs on the warn score or escalation. Tick this to keep it counting - archiving then becomes purely visual.
 * Click **Save** in the green bottom bar after every change.
+
+:::note[The link with manual archiving]
+These two settings drive the same mechanism as the **Archive** / **Unarchive** bulk actions on the [Sanctions](/en/dashboard/moderation/sanctions/) page.
+:::

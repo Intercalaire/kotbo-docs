@@ -1,0 +1,107 @@
+---
+title: Management center
+description: Set the server's cross-cutting channels and roles, and decide which staff role reaches which dashboard section.
+---
+
+<p class="doc-lead">The <strong>Management center</strong> gathers the server's cross-cutting settings: the channels and roles several modules share, and each staff role's access rights to the dashboard.</p>
+
+:::note[Where to find it]
+The **Configuration → Management center** section: [Open the management center ↗](https://dash.kotbo.fr/management).
+The page is **restricted to administrators**: it hands out the rights of every other page, and the API enforces the same rule.
+:::
+
+Three sections, each addressable by URL: **Overview**, **Channels & Roles** and **Role access**. A **Modules** link points to the [module catalogue](/en/dashboard/configuration/modules/), where enabling happens.
+
+---
+
+## Overview
+
+Three figures sum the configuration up: **Active Modules**, **Restricted modules** and **Config Health**.
+
+When a cross-cutting channel is missing, an **Incomplete configuration** notice names it and points to the *Channels & Roles* tab.
+
+The **Feature status** block lists the modules with their state, *Active* or *Inactive*, and flags those whose access is **Restricted** to certain roles.
+
+---
+
+## Channels & Roles
+
+### Discord channels
+
+These channels act as the default for modules that do not declare one of their own:
+
+| Setting | Purpose |
+| --- | --- |
+| **Log Channel** | Main channel for bot logs. |
+| **Rules Channel** | Where the rules are published. |
+| **Meeting Announcements** | Staff meeting announcements. |
+| **Meeting Voice** | Default voice channel for meetings. |
+| **Digest Channel** | Where the news digest is published. |
+| **Public Channel** | General public channel. |
+| **Config Channel** | Internal configuration channel. |
+| **News channel** | Where patch notes and staff news are published. |
+| **Daily Algo channel** | Channel where daily challenges are published. |
+
+### Discord roles
+
+* **Moderator Role**: the base role for moderation.
+* **Base Staff Role**: the team's base role.
+* **Trial Staff Role**: the role for members on trial.
+
+These roles are what the [Staff directory](/en/dashboard/staff/annuaire/) and [Tutoring](/en/dashboard/staff/tutorat/) rely on.
+
+### Integrations
+
+* **GitHub Releases**: release notifications.
+* **Cross-server record**: share and view sanctions from the other servers of the instance.
+
+:::caution[Activity statistics]
+When the **Analytics** module is off, the page says so plainly: *No activity data is recorded*. Messages, voice minutes, reactions, threads, joins and leaves, per-member statistics, word frequency and usage rankings: nothing is written for this server any more.
+
+The other modules (moderation, tickets, levels…) keep working as usual. Only the bot's technical measurements - execution times and errors, with no identity attached - are kept. This is the server's main privacy lever; it is turned back on from the [module catalogue](/en/dashboard/configuration/modules/).
+:::
+
+### By feature
+
+Every module can have its **Main Channel**, its **Notification Role** and its alert methods:
+
+* **Discord Channel**: sent to the configured channel.
+* **Direct Messages**: sent via Discord DM.
+* **Discord Webhook URL**: relays a copy of the alert to an external webhook.
+
+A search field filters the list.
+
+---
+
+## Role access
+
+The **Access Matrix** defines, staff role by staff role, what is open in the dashboard. It reads either **By module** or **By role**.
+
+Only **declared staff roles** appear there: link a Discord role to a rank under [Hierarchy & roles](/en/dashboard/staff/hierarchie/) first, or the matrix stays empty.
+
+### The four rights
+
+| Right | What it allows |
+| --- | --- |
+| **View** | Open the section and read its data. Without it, the page leaves the navigation and the API refuses even reads. |
+| **Moderate** | Act on what the section holds day to day - handle, decide, answer - without touching its settings. |
+| **Configure** | Change the section settings. This is the right that allows saving. |
+| **Delete** | Erase within the section: meetings, automations, staff ranks and warnings, quests, ticket macros and blacklist. A role that configures a section may still not erase from it. |
+
+### The first-rule rule
+
+A feature with **no rule at all** stays visible to the whole staff. As soon as one role is granted **View**, the section becomes an allowlist: it closes to every other role.
+
+Discord administrators are never filtered out by this matrix.
+
+### Presets
+
+Three preset setups rewrite every access right in one go: **General community**, **Gaming / Esports** and **Dev / Tech**. They ask for confirmation, since *current access rules will be overwritten, and pending changes lost*, and apply immediately rather than waiting for the save bar.
+
+---
+
+## Saving
+
+A single save bar covers all three sections: a change made under *Channels & Roles* is not lost when you move to *Role access*. Kotbo confirms with *Changes saved*.
+
+After saving, the page is read back from the server: the server normalises what it receives, and a module may switch another one back on if it depends on it.

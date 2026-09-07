@@ -18,12 +18,13 @@ L'accès aux onglets d'administration et de configuration est restreint aux admi
 
 ## Fonctionnement général du dashboard
 
-La page est divisée en cinq onglets principaux :
+La page est divisée en six onglets principaux :
 1. **Tickets** : L'interface opérationnelle pour lire, répondre et gérer les tickets actifs.
 2. **Transcriptions** : L'historique des tickets archivés et fermés.
 3. **Satisfaction** : Le suivi des notes et commentaires laissés par vos membres après la fermeture de leur ticket.
-4. **Blacklist** : La liste des membres privés d'ouverture de ticket.
-5. **Configuration** : Les réglages techniques du module.
+4. **Macros** : Les réponses toutes prêtes du staff, avec leurs actions attachées.
+5. **Blacklist** : La liste des membres privés d'ouverture de ticket.
+6. **Configuration** : Les réglages techniques du module.
 
 ---
 
@@ -43,6 +44,18 @@ Des boutons d'action sont à votre disposition en haut à droite de la discussio
 * **Fermer** : Ferme le ticket. Une fenêtre surgissante vous demande obligatoirement de saisir un **motif de fermeture**.
 * **Renommer** : Modifie le nom du salon Discord associé (ex: de `#ticket-001` à `#bug-resolu`).
 * **Réouvrir** : Pour un ticket fermé qui nécessite de nouveaux échanges.
+* **Sur-revendiquer** : Reprendre un ticket déjà pris en charge par quelqu'un d'autre, quand la configuration l'autorise.
+* **Archiver** / **Désarchiver** : Un ticket archivé **garde son salon**, qui passe en lecture seule au lieu d'être supprimé. Il porte alors le statut **Archivé**.
+* **Verrouiller** / **Déverrouiller** : Protège le ticket contre la suppression.
+
+### Protéger un ticket contre la suppression
+
+Le bouton **Verrouiller** ouvre une fenêtre **Protéger contre la suppression** : *tant que la protection tient, ce ticket ne peut être supprimé ni depuis le dashboard ni depuis Discord.*
+
+* **Durée de la protection** : *7 jours*, *30 jours*, *90 jours* ou *Sans échéance*.
+* **Motif** (facultatif), par exemple *litige en cours, pièce d'un dossier de modération*.
+
+Un ticket protégé affiche un bandeau **Protégé contre la suppression**, avec l'auteur du verrou et son échéance. Toute tentative de suppression renvoie : *ce ticket est protégé, levez d'abord le verrou.*
 * **Restaurer** : Si le salon Discord a été supprimé accidentellement, recrée instantanément le salon avec tout l'historique des messages conservé.
 * **Supprimer** : Efface définitivement le ticket et ses données de la base.
 
@@ -73,6 +86,43 @@ Dans l'onglet **Satisfaction**, vous visualisez :
 * La répartition des évaluations (Très insatisfait 😡, Insatisfait 😕, Neutre 😐, Satisfait 🙂, Très satisfait 🤩).
 * La liste chronologique des commentaires détaillés laissés par les utilisateurs.
 
+### Republier les avis sur Discord
+
+* **Salon des avis** : chaque avis y est republié en embed - note, auteur, staff concerné et commentaire. Laissez vide pour désactiver.
+* **Masquer l'auteur de l'avis** : l'embed affiche *Membre anonyme* à la place du membre. Le dashboard, lui, continue d'afficher l'auteur.
+
+---
+
+## Réponses toutes prêtes (Onglet Macros)
+
+Une **macro** met à un clic une réponse que le staff réécrit ticket après ticket, et lui attache ce qui suit d'habitude.
+
+Le bouton **Nouvelle macro** demande :
+
+* **Nom**, **Catégorie** et **Emoji**.
+* **Contenu** : le texte envoyé, 2000 caractères maximum - la limite d'un message Discord. Les variables `{user}`, `{staff}`, `{ticket_id}`, `{ticket_type}` et `{server}` y sont remplacées.
+* **Types de ticket concernés** et **Rôles autorisés** : vide, la macro vaut pour tous les types et tout le staff.
+* **Mots-clés de suggestion** : les macros dont un mot-clé apparaît dans la demande remontent en tête du sélecteur.
+
+### Actions attachées
+
+Une macro peut faire plus qu'écrire :
+
+* **Requalifier en** : changer le type du ticket.
+* **Ajouter le rôle** et **Retirer le rôle**.
+* **Déclencher l'enquête de satisfaction**.
+* **Fermer le ticket** : appliquée en dernier, les autres ayant besoin d'un ticket encore ouvert.
+
+### Envoi automatique
+
+**Envoyer automatiquement à l'ouverture** poste la macro dès la création du ticket.
+
+:::note[Ses actions ne s'appliquent pas]
+Une macro envoyée à l'ouverture publie son texte mais n'applique pas ses actions : fermer ou requalifier un ticket qui vient de naître ferait plus de dégâts qu'autre chose.
+:::
+
+Dans le salon du ticket, le bouton **Macros** ouvre le sélecteur. Discord n'accepte que 25 entrées : les plus utilisées passent en tête.
+
 ---
 
 ## Blacklist des tickets (Onglet Blacklist)
@@ -82,6 +132,7 @@ L'onglet **Blacklist** empêche certains membres d'ouvrir un ticket, sans passer
 * **Identifiant Discord** : l'ID du membre à bloquer. Un identifiant mal formé est refusé avec le message *Identifiant Discord invalide*.
 * **Raison** : elle est **communiquée au membre** lorsqu'il tente d'ouvrir un ticket. Laissée vide, elle s'affiche comme *Aucune raison précisée*.
 * **Durée (jours)** ou **Définitif** : choisissez un blocage temporaire ou permanent.
+* **Autoriser la réouverture de ses anciens tickets** : la blacklist ferme la création de nouveaux tickets ; cochez pour lui laisser malgré tout demander la réouverture d'un dossier déjà traité. L'entrée porte alors la mention **Réouverture autorisée**.
 * Cliquez sur **Ajouter** pour valider.
 
 Chaque entrée de la liste indique qui l'a créée (*Ajouté par …*), ce qui permet de retracer la décision. Tant que la liste est vide, l'onglet affiche *Aucun membre blacklisté*.
@@ -122,8 +173,55 @@ Vous pouvez configurer plusieurs choix de support (ex: « Signaler un bug », «
   * Cochez la case **Champ obligatoire** pour forcer l'utilisateur à répondre.
   * Si aucune question personnalisée n'est configurée, Kotbo affichera le formulaire standard avec deux questions par défaut : *« Sujet de la demande »* et *« Description détaillée »*.
 
+  **Les cinq types de réponse** se répartissent en deux familles :
 
-### 4. Gestion de l'inactivité (Accordéon Relance)
+  | Type | Où la question est posée |
+  | --- | --- |
+  | **Ligne courte** et **Paragraphe long** | Dans la fenêtre d'ouverture (modal Discord). |
+  | **Menu déroulant**, **Boutons radios** et **Fichier joint** | *Interactif* : la question n'est pas posée dans le formulaire d'ouverture, le bot la pose dans le ticket juste après sa création. |
+
+  Les types à choix demandent la liste des **Choix / Options**, séparés par des virgules. Discord n'affiche que les **5 premiers** choix en boutons radios.
+
+  :::caution[Une question sans intitulé bloque l'enregistrement]
+  *La question N du type « … » n'a pas d'intitulé : Discord refuserait le formulaire.*
+  :::
+
+
+### 4. Archivage (Accordéon Archivage)
+
+Un ticket archivé garde son salon : il passe en lecture seule au lieu d'être supprimé.
+
+* **Catégorie d'archives** : les salons archivés y sont déplacés. Laissée vide, le salon reste où il est et seules ses permissions changent.
+* **L'auteur garde l'accès en lecture** : activé, le membre continue de voir son ticket archivé sans pouvoir y écrire.
+
+### 5. Historique côté membre (Accordéon Historique)
+
+Un bouton sous le panneau d'ouverture donne au membre accès à ses tickets clos, à leur transcription, et aux gestes que vous autorisez ici.
+
+* **Bouton « Mes anciens tickets »** : ajoute le bouton sous l'embed d'ouverture. Le panneau qui s'ouvre est éphémère - chacun ne voit que ses propres tickets.
+* **Réouverture par le membre** : le membre peut demander la réouverture d'un ticket clos, dans la limite de **3 réouvertures** avec des délais croissants.
+* **Suppression par le membre** : le membre peut effacer définitivement l'un de ses anciens tickets et sa transcription. Les tickets verrouillés restent protégés.
+
+### 6. Prise en charge (Accordéon Mode)
+
+* **Prise en charge automatique** : dès qu'un membre du staff écrit dans un ticket ouvert, il en devient automatiquement le référent.
+* **Verrouiller jusqu'à la prise en charge** : le salon reste visible par l'auteur et le staff, mais personne n'y écrit tant qu'aucun membre du personnel ne l'a pris en charge. Le réglage s'active globalement, ou type de ticket par type de ticket.
+* **Autoriser la sur-revendication** : un membre du staff peut reprendre un ticket déjà revendiqué. Le sous-réglage **Qui peut sur-revendiquer ?** ouvre le geste à *Tout le staff* ou au seul *Grade supérieur ou égal*.
+
+### 7. Quotas (Accordéon Quotas)
+
+Des limites d'ouverture côté membre, et un plafond de charge côté staff. Chaque interrupteur commande son seuil.
+
+| Quota | Ce qu'il limite |
+| --- | --- |
+| **Tickets ouverts simultanément** | Le nombre de tickets qu'un membre peut avoir en cours en même temps. |
+| **Délai entre deux ouvertures** | Empêche d'enchaîner les tickets sans laisser le temps de répondre. |
+| **Quota sur une période** | Plafonne le nombre d'ouvertures sur une fenêtre glissante (*Tickets maximum* sur *N heures*). |
+| **Limiter les réouvertures** | Le nombre maximum de réouvertures d'un même ticket. |
+
+Le **plafond de charge par modérateur** compte les tickets pris en charge et encore ouverts. Trois modes : **Désactivé**, **Avertir** ou **Bloquer**. Des **rôles qui passent outre** peuvent en être exemptés.
+
+### 8. Gestion de l'inactivité (Accordéon Relance)
 Activez les **relances d'inactivité** pour fermer ou avertir automatiquement les membres qui ne répondent plus :
 * Définissez le délai en heures (ex : 24 heures).
 * Saisissez le message de relance automatique (ex : *« Bonjour <code>{'{user}'}</code>, votre ticket est inactif... »*).

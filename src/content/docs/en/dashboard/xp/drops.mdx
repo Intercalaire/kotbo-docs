@@ -1,0 +1,97 @@
+---
+title: Drops
+description: Randomly drop XP, clan points, coins or RPG items into your channels for members to claim in one click.
+---
+
+<p class="doc-lead">The <strong>Drops</strong> module lays gifts in your channels on its own: nobody triggers them, the bot posts them at an unpredictable time, and members claim them by clicking.</p>
+
+:::note[Where to find it]
+The **XP system → Drops** section: [Open drops ↗](https://dash.kotbo.fr/drops). The module is in **beta** and **off by default**.
+It depends on no other module: a server may drop coins only, with no levels and no clans. Each resource has its own switch.
+:::
+
+---
+
+## Global settings tab
+
+### Shared settings
+
+The switch at the top of the block is the **master** one: turned off, no drop appears, whatever each type is set to.
+
+| Setting | Purpose |
+| --- | --- |
+| **Default channel** | Used by drop types that have no channel of their own. |
+| **Mentioned role** | Pinged on every drop. Leave empty to notify nobody. |
+| **Lifetime (minutes)** | After that, an unclaimed drop closes. The *Open to everyone* mode has its own duration. |
+
+:::caution[Five minutes, twice over]
+A drop stays claimable for **at least five minutes**: below that, only members already watching the channel would get a chance to click.
+And two drops on the same server never land **less than five minutes apart**, all types combined. Without that safeguard, several resources set to the shortest interval would post as many messages within the same quarter of an hour, often in the same channel.
+:::
+
+### Overview
+
+A table sums up the five configured types, with the **Type**, **Status**, **Channel**, **Frequency** and **Active modes** columns. A type is only *Active* when its own switch **and** the master one are on.
+
+### Recent drops
+
+The history shows what actually landed: **Date**, **Type**, **Mode**, **Amount** and **Claimed** (how many members clicked).
+
+---
+
+## The five resources
+
+Each type has its own tab, with its channel, frequency, amounts and modes.
+
+| Tab | What drops |
+| --- | --- |
+| **XP** | Progression XP: counts towards levels and role rewards. |
+| **RPG XP** | RPG module XP, independent from server levels. |
+| **Clan points** | Points credited to the claimer's clan. They show up tagged as *Drop* on the public page. |
+| **Coins** | Economy currency, credited to the member's balance. |
+| **RPG items** | A game item drops in the channel and lands in the winner's inventory. |
+
+Kotbo warns you when a drop would have nobody to credit: *Clans are disabled*, *The RPG is disabled*, or *The … module is disabled: the reward would still be credited, but members could not use it while it stays off.*
+
+---
+
+## Setting up a type
+
+### Channel and frequency
+
+* **Channel for this type**: leave it on *Default channel* to follow the global setting.
+* **Average interval (minutes)**: the average gap between two drops. The exact time is drawn between **half** and **one and a half times** this interval, so nobody can camp the channel. The page shows how many drops per day that represents.
+
+### Claim modes
+
+Enable one or several. On each drop the bot picks one at random among those enabled, using the reward range set for that mode.
+
+| Mode | Effect |
+| --- | --- |
+| **First to claim** | A single winner: the first to click takes it all. |
+| **First N members** | The first to click each receive the announced amount. The **number of winners** ranges from 2 to 50. |
+| **Open to everyone** | Anyone can help themselves for the **open duration** given. |
+
+Each mode has its own **minimum reward** and **maximum reward**: a click race can therefore pay far more than a drop left open to everyone for ten minutes.
+
+:::caution[No mode, no drop]
+*No claim mode is active: this type will not produce any drop.* The same warning appears when neither the type nor the global settings name a channel.
+:::
+
+---
+
+## RPG items tab
+
+An item drop does not roll at random across the whole catalogue: you list explicitly what is allowed to fall.
+
+* Up to **25 items** in the list. With an empty list, no item drop is published.
+* Every item carries a **rate** in percent, and the page requires the total to be exactly 100%. The **Split evenly** button shares the hundred points equally.
+* Amounts in this tab are a **number of copies** (from 1 to 10), not points.
+
+An item removed from the catalogue shows as *Deleted item* and stops being rolled, without the others losing their ratios to each other.
+
+---
+
+## Saving
+
+Changes go through the save bar at the bottom of the screen. Kotbo confirms with *Drops configuration saved*.

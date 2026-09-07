@@ -27,6 +27,22 @@ The **Configuration → Schedules** section: [Open the schedules ↗](https://da
 | **Channel reset (nuke)** | Clones the target channel, deletes the original, then posts a message in the new channel announcing the reset. |
 | **Full server backup** | Creates a [backup](/en/dashboard/configuration/sauvegardes/) automatically. It includes members, roles, channels, emoji and stickers, but **never messages**. |
 | **Data export (Logs & Profiles)** | Produces an export of the logs and profiles. |
+| **Message programmé** | Posts a message in a channel, with an optional embed. |
+
+#### Message programmé
+
+:::caution[This task type is not translated]
+The scheduled-message form stays in French whatever your dashboard language. Its labels are quoted verbatim below.
+:::
+
+The **Message programmé** type asks for a target channel and a **Message** - *le texte posté dans le salon*. An **Embed (facultatif)** can be added, with its title, description, colour and image.
+
+Two safeguards specific to a message that repeats:
+
+* **Autoriser les mentions**, refused by default: without it, `@everyone`, `@here` and role mentions are written but notify nobody. A repeating message must not ping the whole server by accident.
+* **Envoyer une seule fois**: the task disables itself right after sending. Tick it for a dated message, whose cron expression would otherwise fire again the following year.
+
+A message with neither text nor embed is refused at save time, rather than at the scheduled hour where the failure would go unnoticed.
 
 :::caution[The target channel is required]
 A channel reset needs a **destination channel**. Kotbo refuses to save the task without one, and thread channels are not supported.

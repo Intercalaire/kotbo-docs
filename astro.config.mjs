@@ -46,6 +46,11 @@ export default defineConfig({
               slug: 'premiers-pas/connexion',
             },
             {
+              label: 'Le parcours de configuration',
+              translations: { en: 'The setup journey' },
+              slug: 'premiers-pas/parcours',
+            },
+            {
               label: 'Prendre en main le dashboard',
               translations: { en: 'Find your way around' },
               slug: 'premiers-pas/interface',
@@ -76,9 +81,9 @@ export default defineConfig({
                   slug: 'dashboard/general/accueil',
                 },
                 {
-                  label: 'Créer mon serveur',
-                  translations: { en: 'Build my server' },
-                  slug: 'dashboard/general/creer-serveur',
+                  label: 'Prise en main',
+                  translations: { en: 'Getting set up' },
+                  slug: 'dashboard/general/prise-en-main',
                 },
                 {
                   label: 'Pulse & IA',
@@ -208,12 +213,22 @@ export default defineConfig({
                   translations: { en: 'Clans' },
                   slug: 'dashboard/xp/clans',
                 },
+                {
+                  label: 'Drops',
+                  translations: { en: 'Drops' },
+                  slug: 'dashboard/xp/drops',
+                },
               ],
             },
             {
               label: 'Économie & RPG',
               translations: { en: 'Economy & RPG' },
               items: [
+                {
+                  label: 'Configuration rapide',
+                  translations: { en: 'Quick setup' },
+                  slug: 'dashboard/economie/configuration-rapide',
+                },
                 {
                   label: 'Économie & RPG',
                   translations: { en: 'Economy & RPG' },
@@ -261,11 +276,6 @@ export default defineConfig({
                   slug: 'dashboard/communaute/tickets',
                 },
                 {
-                  label: 'Daily Algo',
-                  translations: { en: 'Daily Algo' },
-                  slug: 'dashboard/communaute/daily-algo',
-                },
-                {
                   label: 'Formulaires & Style Custom',
                   translations: { en: 'Forms & custom styling' },
                   slug: 'dashboard/communaute/formulaires',
@@ -309,6 +319,16 @@ export default defineConfig({
                   label: 'Déclencheurs',
                   translations: { en: 'Triggers' },
                   slug: 'dashboard/communaute/declencheurs',
+                },
+                {
+                  label: 'Starlight',
+                  translations: { en: 'Starlight' },
+                  slug: 'dashboard/communaute/starlight',
+                },
+                {
+                  label: 'Campagnes',
+                  translations: { en: 'Campaigns' },
+                  slug: 'dashboard/communaute/campagnes',
                 },
               ],
             },
@@ -374,6 +394,11 @@ export default defineConfig({
               translations: { en: 'Configuration' },
               items: [
                 {
+                  label: 'Centre de gestion',
+                  translations: { en: 'Management center' },
+                  slug: 'dashboard/configuration/centre-gestion',
+                },
+                {
                   label: 'Catalogue des modules',
                   translations: { en: 'Module catalogue' },
                   slug: 'dashboard/configuration/modules',
@@ -387,11 +412,6 @@ export default defineConfig({
                   label: 'Accès aux commandes',
                   translations: { en: 'Command access' },
                   slug: 'dashboard/configuration/commandes',
-                },
-                {
-                  label: 'Paramètres généraux',
-                  translations: { en: 'General settings' },
-                  slug: 'dashboard/configuration/parametres',
                 },
                 {
                   label: 'Sauvegardes',
@@ -412,6 +432,11 @@ export default defineConfig({
                   label: 'Custom Bot',
                   translations: { en: 'Custom Bot' },
                   slug: 'dashboard/configuration/custom-bot',
+                },
+                {
+                  label: 'Offres & facturation',
+                  translations: { en: 'Plans & billing' },
+                  slug: 'dashboard/configuration/facturation',
                 },
               ],
             },

@@ -1,0 +1,88 @@
+---
+title: Le parcours de configuration
+description: Comprendre les écrans traversés à l'arrivée de Kotbo sur un serveur, et ce qu'ils construisent.
+sidebar:
+  order: 2
+---
+
+<p class="doc-lead">À l'arrivée de Kotbo sur un serveur, le dashboard n'existe pas encore : toutes les adresses mènent au <strong>parcours de configuration</strong>. Un écran par question, une question par décision, jusqu'à la mise en service.</p>
+
+:::note[Pourquoi pas de tableau de bord ?]
+Tant que le serveur n'a rien pris, il n'y a rien à piloter : pas de barre latérale, pas d'en-tête, aucune page du dashboard. Ce qu'on ouvre à la mise en service, c'est le pilotage ; ce qu'on traverse ici, c'est la mise en place.
+:::
+
+---
+
+## Ajouter Kotbo à un serveur
+
+La page **Mes serveurs** liste tous les serveurs Discord que vous administrez, qu'ils aient Kotbo ou non. Ceux qui ne l'ont pas portent un bouton d'invitation qui présélectionne déjà le bon serveur dans la fenêtre Discord.
+
+Le sélecteur de serveurs habituel, lui, ne montre que les serveurs déjà équipés.
+
+---
+
+## Les cinq phases
+
+Le parcours décrit une trentaine d'écrans, mais on ne les traverse jamais tous : chacun est rattaché à une piste, et une piste décochée retire ses écrans du parcours, barre de progression comprise.
+
+| Phase | Ce qu'on y fait |
+| --- | --- |
+| **Découverte** | Bienvenue, type de serveur, reprise des bots en place, choix des pistes. |
+| **Votre serveur** | La langue du serveur, puis sa vocation. |
+| **Construction** | Le support, le mappage d'un serveur habité, la structure, la modération, la journalisation, l'équipe. |
+| **Personnalisation** | L'accueil, le règlement, la progression, l'économie et sa boutique, les quêtes et les drops. |
+| **Lancement** | Le pilotage par IA, le récapitulatif, la mise en service. |
+
+---
+
+## Choisir ce que l'on monte
+
+L'écran **Que voulez-vous monter aujourd'hui ?** présente onze pistes, groupées en trois intentions :
+
+* **Les fondations** - ce qui tient le serveur debout : la structure, la modération, la journalisation.
+* **La vie du serveur** - ce qui donne envie d'y rester : l'accueil, le règlement, le support, la progression, l'économie, l'animation.
+* **Le pilotage** - ce qui vous garde la main dessus : votre équipe, le pilotage par IA.
+
+Chaque piste annonce ce qu'elle change réellement sur Discord et sa durée indicative. Le total est affiché en bas (*≈ N min de configuration*), avec **Tout cocher** et **L'essentiel**.
+
+:::note[Décocher ne désactive rien]
+Une piste décochée ne coupe aucun module : on ne pose simplement pas la question. Le module garde son état par défaut, et sa page reste là pour plus tard. Ce que vous laissez de côté vous est rappelé sur la page [Prise en main](/dashboard/general/prise-en-main/).
+:::
+
+Certaines pistes sont cochées d'office selon ce que Kotbo observe : le règlement seulement sur un serveur neuf, l'équipe seulement là où des rôles de staff existent déjà. L'économie et l'animation sont toujours proposées décochées.
+
+---
+
+## Serveur neuf, serveur habité
+
+L'écran **Votre serveur** demande si le serveur est neuf ou existant. Mais c'est le bot qui tranche sur ce qu'il voit : dès qu'il y a quelque chose à rapprocher, les écrans de **mappage** entrent au programme, quelle que soit votre réponse.
+
+Ces écrans demandent, section par section, quel salon existant correspond à quoi : l'entrée, l'équipe, le support, l'accueil, les compteurs, les discussions, le fun, les vocaux. Sans eux, la pose devrait tout déduire d'un rapprochement de noms, et doublerait ce qu'elle raterait. Chaque écran se retire de lui-même quand la vocation choisie n'en retient pas les sections.
+
+### La reprise des autres bots
+
+Sur un serveur existant, deux écrans s'imposent avant que Kotbo ne pose quoi que ce soit : **Ce qui est déjà là** détecte les autres bots présents, et **Ce qu'on récupère** liste ce qui peut être repris de leur configuration.
+
+C'est le bon moment - avant la pose - et c'est aussi le seul où l'on y pense. La page **Reprise** reste accessible à l'adresse `/migration` pour un second passage, par exemple après l'arrivée d'un nouveau bot ; elle n'a simplement plus d'entrée dans le menu.
+
+---
+
+## Ce que le parcours écrit
+
+Chaque étape écrit en la validant. Un parcours abandonné au quatrième écran laisse donc un serveur réellement structuré, pas un formulaire perdu, et revenir plus tard reprend à l'étape suivante.
+
+:::caution[« Retour » ne défait rien]
+Revenir en arrière relit une étape sans annuler ce qu'elle a écrit. C'est le prix d'un serveur qui se construit sous vos yeux.
+:::
+
+---
+
+## La mise en service
+
+Le **récapitulatif** montre ce qui a été construit. L'écran suivant propose d'ouvrir le pilotage : le paiement passe par Stripe, et par lui seul - aucune donnée bancaire ne transite par Kotbo.
+
+L'essai gratuit est décidé côté serveur ; voir [Offres & facturation](/dashboard/configuration/facturation/) pour le détail des offres.
+
+Certains serveurs n'ont rien à payer pour finir : instance sans facturation, offre posée à la main, abonnement déjà en cours ou code de partenariat. Ils traversent le parcours comme les autres, mais on ne leur réclame pas une seconde fois ce qu'ils ont déjà.
+
+Une fois le parcours clos, il ne se rouvre pas : rejouer la pose de structure sur un serveur monté doublerait des salons. La suite se règle depuis la page [Prise en main](/dashboard/general/prise-en-main/).

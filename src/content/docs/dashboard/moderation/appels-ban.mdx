@@ -28,11 +28,12 @@ Chaque demande porte un statut : **En attente**, **Accepté**, **Refusé**, **Re
 
 ## Comment ça fonctionne ?
 
-1. Un utilisateur banni se rend sur votre URL publique d'appel de ban (ex: `https://appeals.kotbo.fr/votre-serveur`).
-2. Il se connecte via Discord. Kotbo vérifie automatiquement s'il est bien présent dans la liste des bannissements de votre serveur Discord et récupère la raison originale du bannissement.
-3. L'utilisateur remplit le formulaire de questions personnalisé.
-4. Une notification interactive (Embed) est envoyée dans le salon Discord de votre staff.
-5. Les modérateurs cliquent sur les boutons Discord pour accepter, refuser ou demander des détails.
+1. Un membre sanctionné se rend sur votre URL publique d'appel (ex: `https://appeals.kotbo.fr/votre-serveur`).
+2. Il se connecte via Discord. Kotbo lit ses sanctions réellement contestables et récupère leur motif d'origine.
+3. Il **coche les sanctions qu'il conteste** et rédige sa déclaration pour chacune, dans la limite du nombre de sanctions par demande.
+4. Il remplit le formulaire de questions - celui du premier type coché s'il en a un, sinon le formulaire du module.
+5. Une notification interactive (Embed) est envoyée dans le salon Discord de votre staff.
+6. Les modérateurs tranchent **sanction par sanction**, depuis le dashboard ou les boutons Discord.
 
 ---
 
@@ -48,10 +49,29 @@ Dans l'onglet de configuration du dashboard, paramétrez les éléments suivants
 * **Salon Staff (Réception)** : Le salon Discord privé de votre équipe dans lequel Kotbo enverra la fiche de demande d'appel avec les boutons d'action.
 * **Salon d'invitation** : Le salon qui servira de point de chute pour générer un lien d'invitation à usage unique lors de l'acceptation d'un appel.
 
-### 3. Règles et Cooldown
-* **Délai avant ré-appel (en jours)** : Le nombre de jours qu'un utilisateur doit attendre après un refus avant de pouvoir soumettre un nouvel appel (par défaut : 30 jours).
+### 3. Sanctions contestables
 
-### 4. Textes personnalisés
+Le bloc **Sanctions contestables** active un par un les types que les membres peuvent contester : **Avertissement**, **Exclusion temporaire**, **Expulsion**, **Softban**, **Bannissement temporaire** et **Bannissement**.
+
+:::note[Rien ne change sans y toucher]
+Sans rien de coché à part le bannissement, le module se comporte exactement comme avant.
+:::
+
+Chaque type porte ses propres réglages :
+
+* **Délai avant nouvelle demande (jours)**.
+* **Formulaire dédié** : contester un avertissement ne soulève pas les mêmes questions que contester un bannissement. Sans formulaire propre au type, la page publique retombe sur le **formulaire du module**.
+
+### 4. Règles et Cooldown
+* **Délai avant ré-appel (en jours)** : Le nombre de jours qu'un utilisateur doit attendre après un refus avant de pouvoir soumettre un nouvel appel (par défaut : 30 jours).
+* **Sanctions par demande (max)** : le nombre de sanctions qu'un membre peut contester en une fois.
+* **Contestable pendant (jours)** : au-delà, une sanction n'est plus contestable. *Sans limite* laisse la contestation ouverte indéfiniment.
+* **Prévenir le membre en message privé** : à chaque sanction contestable, le membre reçoit le lien vers la page d'appel, déjà pointé sur la bonne sanction.
+* **Interdire au modérateur de juger sa propre sanction** : celui qui a prononcé la sanction ne peut pas trancher l'appel qui la vise.
+* **Prévenir le modérateur émetteur** : il reçoit un message privé quand une de ses sanctions est contestée, et peut apporter son contexte avant le verdict.
+* **Sauvegarder l'empreinte de l'appareil** : enregistre les détails du navigateur et du système pour détecter les doubles comptes.
+
+### 5. Textes personnalisés
 Adaptez la communication avec les utilisateurs :
 * **Texte d'accueil** : Le texte d'explication ou règlement affiché en haut de la page publique de connexion.
 * **Message d'acceptation (DM)** : Le message privé que Kotbo enverra automatiquement à l'utilisateur lors de sa réintégration. *Astuce : utilisez la variable `{invite}` pour y inclure automatiquement l'invitation à usage unique générée.*

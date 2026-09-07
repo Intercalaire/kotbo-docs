@@ -7,7 +7,7 @@ description: Analysez la croissance, l'engagement et l'activité de votre commun
 
 :::note[Où la trouver]
 Section **Général → Analytics** : [Ouvrir Analytics ↗](https://dash.kotbo.fr/analytics).
-La collecte se coupe depuis **Paramètres → Statistiques d'activité**. Sans elle, plus rien n'est enregistré.
+La collecte se coupe en désactivant le module **Analytics** depuis **Configuration → Modules**. Sans elle, plus rien n'est enregistré.
 :::
 
 ---
@@ -15,6 +15,10 @@ La collecte se coupe depuis **Paramètres → Statistiques d'activité**. Sans e
 ## Choisir la période
 
 Les périodes proposées sont **24 heures**, **7 jours**, **30 jours**, **90 jours**, **365 jours**, ou une plage **personnalisée**. Le **Live Feed** indique l'heure de la dernière mise à jour.
+
+:::note[Dans quel fuseau les heures sont lues]
+Les graphiques annoncent *Heures affichées en …*. Ce fuseau est **le vôtre**, pas celui du serveur : il se choisit dans vos paramètres utilisateur, en automatique (celui du navigateur) ou explicitement. Il ne change que l'affichage des graphiques et des heatmaps, jamais les données collectées.
+:::
 
 ---
 
@@ -33,6 +37,7 @@ Les périodes proposées sont **24 heures**, **7 jours**, **30 jours**, **90 jou
 
 ## Engagement
 
+* **Activité globale des messages** et **Activité vocale globale** : la courbe de la période, avec le **Total**, le **Pic**, la **Moyenne / point** et la **Tendance** face au début de la période. Une bascule **Brut / Moyenne** lisse la courbe.
 * **Top messagers** et **Top vocalistes**, avec le classement complet, une recherche par nom et une pagination.
 * **Salons textuels populaires** et **salons vocaux populaires**, par volume de messages et par temps passé.
 * **Commandes exécutées** : usage global des commandes du bot et répartition par commande.
@@ -80,6 +85,6 @@ Un export sur une période vide est refusé avec le message *Aucune donnée de g
 
 ## Couper la collecte
 
-L'interrupteur **Statistiques d'activité** de la page [Paramètres](/dashboard/configuration/parametres/) arrête tout enregistrement : messages, minutes vocales, réactions, threads, arrivées et départs, statistiques par membre, fréquence des mots et classements d'usage.
+Éteindre le module **Analytics** depuis le [catalogue des modules](/dashboard/configuration/modules/) arrête tout enregistrement : messages, minutes vocales, réactions, threads, arrivées et départs, statistiques par membre, fréquence des mots et classements d'usage.
 
 Les autres modules (modération, tickets, niveaux…) continuent de fonctionner normalement. Seules les mesures techniques du bot (durées d'exécution et erreurs, sans aucune identité) restent conservées.

@@ -1,0 +1,134 @@
+---
+title: Prise en main
+description: Voir ce qu'il reste à configurer, par quoi commencer, et monter toute l'arborescence du serveur en une fois.
+---
+
+<p class="doc-lead">La page <strong>Prise en main</strong> répond à deux questions : par quoi commencer maintenant, et qu'est-ce qui manque encore. Elle lit la configuration réelle du serveur, pas un compteur d'étapes franchies : un réglage effacé redevient « à faire ».</p>
+
+:::note[Où la trouver]
+Section **Général → Prise en main** : [Ouvrir la prise en main ↗](https://dash.kotbo.fr/setup). La page est en **bêta**.
+L'ancienne page *Créer mon serveur* y a été fusionnée : monter la structure et vérifier ce qu'il reste à régler sont le même moment.
+:::
+
+---
+
+## Les trois prochaines actions
+
+En haut de la page, trois cartes désignent les points qui manquent le plus, dans l'ordre conseillé. Chacune dit ce que le réglage apporte, ce qui manque exactement, et mène directement à la page concernée. La première porte la mention **À faire maintenant**.
+
+## L'avancement
+
+Un anneau affiche le pourcentage de points réglés et le décompte `fait / total`. À côté, Kotbo nomme le prochain point à traiter, ou annonce *Tout est configuré* quand il n'en reste aucun.
+
+---
+
+## Monter le serveur
+
+Le bloc **Créer mon serveur** pose toute l'arborescence en une seule opération : catégories, salons, rôles et permissions, déjà reliés aux modules Kotbo.
+
+:::caution[Réservé aux administrateurs]
+Poser des salons demande les droits d'administration : un modérateur ne voit pas ce bloc.
+:::
+
+:::danger[Une seule fois par serveur]
+La mise en place ne peut être lancée **qu'une fois**. Une fois exécutée, le bloc se replie et affiche qui l'a lancée et quand ; le bouton **Revoir** rouvre le détail de ce qui a été créé. Contactez le support s'il faut la relancer.
+:::
+
+### Vérifier les permissions
+
+Kotbo indique en haut du bloc s'il dispose des permissions nécessaires. S'il en manque, il les liste et rappelle que **le plus simple reste de lui donner le rôle Administrateur le temps de la mise en place**.
+
+Les salons seront nommés dans la langue du serveur.
+
+### Choisir ce qui sera créé
+
+Le panneau **Ce que Kotbo va créer** liste tout ce qui sera posé, par section :
+
+* **Accès au serveur** et le rôle **Membre**
+* **Vérification** (captcha)
+* **Sécurité** (dont le salon honeypot)
+* **Bienvenue**
+* **Staff**
+* **Tickets**
+* **Statistiques** (compteurs tenus à jour dans le nom des salons)
+* **Salons textuels**
+* **Fun**
+* **Bots**
+* **Salons vocaux**
+* **Rôles**
+
+Décochez ce dont vous n'avez pas besoin : l'**Aperçu** à droite suit en direct et montre le serveur tel que vos membres le verront. Les boutons **Tout cocher**, **Tout décocher** et **Revenir à la sélection par défaut** accélèrent la sélection.
+
+Certains éléments sont verrouillés : ils vont de pair avec leur section et se décochent avec elle.
+
+Chaque salon indique son audience :
+
+| Mention | Signification |
+| --- | --- |
+| **Ouvert à tous** | Visible même sans aucun rôle. |
+| **Fermé : réservé au rôle Membre** | Accessible une fois le rôle Membre obtenu. |
+| **Fermé : réservé au rôle Staff** | Réservé à l'équipe. |
+| **Fermé : visible du seul rôle Non vérifié** | Disparaît une fois le captcha réussi. |
+| **Lecture seule** | Seul Kotbo y écrit ; les membres peuvent réagir avec des emojis. |
+
+Plusieurs salons arrivent déjà branchés : le salon de highlights sur [Starlight](/dashboard/communaute/starlight/), le salon d'annonces en auto-thread, le générateur de salons vocaux temporaires, ou le salon piège placé hors catégorie tout en haut du serveur.
+
+### Comment on obtient le rôle Membre
+
+Tous les salons sont fermés à `@everyone` et rouverts au rôle **Membre**. Deux façons de l'obtenir :
+
+* **À l'arrivée** : chaque arrivant reçoit le rôle dès qu'il rejoint, via l'auto-rôle du module Bienvenue. Rien à passer, rien à créer.
+* **Après un captcha** : l'arrivant reçoit d'abord un rôle *Non vérifié* et ne voit que le salon de vérification. Le rôle Membre lui est donné une fois le code recopié.
+
+:::caution[Sans rôle Membre]
+Si vous décochez le rôle Membre, tous les salons sont créés **ouverts à `@everyone`** et il n'y a plus d'accès à donner.
+:::
+
+Le captcha démarre en mode image, et son journal part dans le salon de log du staff. Le salon vocal est prêt : vous pourrez basculer en mode vocal depuis la page [Anti-raid](/dashboard/moderation/anti-raid/).
+
+### Modules activés
+
+Le bloc **Modules activés** coche les modules à mettre en service pour tout le serveur :
+
+* **Tickets**, **Niveaux et XP**, **Économie et RPG**
+* **AutoMod**, sur le préréglage recommandé : Kotbo se mettra à modérer les messages
+* **Modération des pseudos**
+* **Santé des salons**, analyse seulement : aucun salon n'est créé ni archivé sans votre accord
+
+Certains modules sont activés automatiquement parce que vous créez le salon correspondant.
+
+:::note[Décocher ne désactive rien]
+Un module décoché est laissé **tel quel**, actif ou non. La mise en place n'éteint jamais un module déjà en service.
+:::
+
+### Lancer la mise en place
+
+Le bouton **Créer le serveur** demande une confirmation en rappelant le nombre d'éléments à créer et la liste des modules activés.
+
+À l'issue, Kotbo indique combien d'éléments ont été **créés** et combien ont été **repris** (déjà présents). Le panneau de tickets est publié automatiquement.
+
+Si l'opération est interrompue, relancez-la : rien ne sera créé en double.
+
+Le règlement n'est pas publié tout de suite : rédigez vos articles sur la page [Règlement](/dashboard/communaute/reglement/), puis publiez-les dans le salon créé.
+
+---
+
+## Les points à régler
+
+Sous le bloc de mise en place, les points sont rangés en trois groupes, chacun avec son compteur :
+
+| Groupe | Ce qu'il couvre |
+| --- | --- |
+| **Essentiel** | Sans ces trois-là, le reste fonctionne mal ou en silence : salon de logs, rôle modérateur, fuseau horaire. |
+| **Modération** | De quoi encadrer le serveur et rendre les décisions défendables : règlement publié, protection activée, salon des alertes de sanction. |
+| **Vie du serveur** | Ce qui fait revenir les membres : tickets opérationnels, quotas de tickets, accueil des arrivants. |
+
+Chaque ligne dit **pourquoi** le point compte, et affiche l'étiquette *manque : …* tant qu'il n'est pas réglé. Un clic ouvre la page où le régler.
+
+---
+
+## Ce que vous n'avez pas encore configuré
+
+Si vous avez laissé des pistes de côté pendant le [parcours de configuration](/premiers-pas/parcours/), elles sont rappelées ici, avec ce qu'elles apporteraient et un lien vers la page qui fait le même travail en plus complet.
+
+Le parcours, lui, ne se rouvre pas : rejouer la pose de structure sur un serveur déjà monté doublerait des salons.

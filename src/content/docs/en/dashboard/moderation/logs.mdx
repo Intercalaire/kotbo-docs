@@ -54,6 +54,14 @@ This tab only appears for members allowed to manage server settings. Moderators 
 
 Set the **general log channel**, used for every event that has no specific channel of its own.
 
+### Excluded channels
+
+The **Excluded channels** field takes channels out of logging: no message event (deletion, edit, purge) and no voice event (join, leave, move) coming from those channels will be logged, message content recording included. Threads follow their parent channel's exclusion.
+
+:::note[Collection carries on]
+It is the logging that stops, not the collection: the statistics and the members' records are unchanged.
+:::
+
 ### Per-event configuration
 
 You can enable each event separately and give it its own **Destination channel**. Events are grouped by category:

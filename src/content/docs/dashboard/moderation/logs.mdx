@@ -54,6 +54,14 @@ Cet onglet n'apparaît que pour les membres autorisés à gérer les paramètres
 
 Définissez le **salon de logs général**, utilisé pour tous les événements qui n'ont pas de salon spécifique.
 
+### Salons exclus
+
+Le champ **Salons exclus** retire des salons de la journalisation : aucun événement de message (suppression, édition, purge) ni de vocal (arrivée, départ, déplacement) venant de ces salons ne sera journalisé, l'enregistrement du contenu des messages compris. Les fils suivent l'exclusion de leur salon parent.
+
+:::note[La collecte continue]
+C'est la journalisation qui est coupée, pas la collecte : les statistiques et le casier des membres ne changent pas.
+:::
+
 ### Configuration par événement
 
 Vous pouvez activer chaque événement séparément et lui attribuer son propre **salon de destination**. Les événements sont regroupés par catégorie :
