@@ -387,6 +387,11 @@ export default defineConfig({
                   translations: { en: 'Staff servers' },
                   slug: 'dashboard/cross-serveur/serveurs-staff',
                 },
+                {
+                  label: 'Partenariats',
+                  translations: { en: 'Partnerships' },
+                  slug: 'dashboard/cross-serveur/partenariats',
+                },
               ],
             },
             {
