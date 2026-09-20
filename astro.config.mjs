@@ -100,6 +100,11 @@ export default defineConfig({
                   translations: { en: 'Analytics' },
                   slug: 'dashboard/general/analytics',
                 },
+                {
+                  label: 'Mon profil & préférences',
+                  translations: { en: 'My profile & preferences' },
+                  slug: 'dashboard/general/profil',
+                },
               ],
             },
             {
@@ -537,6 +542,17 @@ export default defineConfig({
                   label: 'Niveaux, classements et réputation',
                   translations: { en: 'Levels, leaderboards and reputation' },
                   slug: 'discord/xp/progression',
+                },
+              ],
+            },
+            {
+              label: 'Staff',
+              translations: { en: 'Staff' },
+              items: [
+                {
+                  label: 'Commandes du staff',
+                  translations: { en: 'Staff commands' },
+                  slug: 'discord/staff/commandes-staff',
                 },
               ],
             },
