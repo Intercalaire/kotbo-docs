@@ -465,6 +465,11 @@ export default defineConfig({
                   translations: { en: 'Alt accounts' },
                   slug: 'discord/moderation/double-comptes',
                 },
+                {
+                  label: 'Sanctionner un membre',
+                  translations: { en: 'Sanctioning a member' },
+                  slug: 'discord/moderation/sanctions',
+                },
               ],
             },
             {
@@ -557,6 +562,11 @@ export default defineConfig({
           label: 'Aide',
           translations: { en: 'Help' },
           items: [
+            {
+              label: 'Commandes utiles',
+              translations: { en: 'Everyday commands' },
+              slug: 'aide/commandes-utiles',
+            },
             {
               label: 'Questions fréquentes',
               translations: { en: 'Frequently asked questions' },

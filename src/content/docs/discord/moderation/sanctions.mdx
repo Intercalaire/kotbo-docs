@@ -1,0 +1,86 @@
+---
+title: Sanctionner et suivre un membre
+description: Les commandes de modération de Kotbo sur Discord : sanctions, casier, notes, nettoyage et transcriptions.
+---
+
+import DiscordCommand from '../../../../components/DiscordCommand.astro';
+
+<p class="doc-lead">Toutes les sanctions passent par une seule commande, <strong>/sanction</strong>, et laissent une trace dans le casier du membre. Ce que vous faites depuis Discord et ce que vous faites depuis le dashboard alimentent le même dossier.</p>
+
+:::tip[Côté dashboard]
+L'historique, les rapports de sanction, les échelles progressives et l'archivage sont détaillés sur la page [Sanctions](/dashboard/moderation/sanctions/).
+:::
+
+---
+
+## Prononcer une sanction
+
+<DiscordCommand command="/sanction warn" />
+
+| Sous-commande | Ce qu'elle fait |
+| --- | --- |
+| `/sanction warn` | Ajoute un avertissement. L'option **gravite** pèse dans le score quand la pondération est active. |
+| `/sanction to` | Applique une exclusion temporaire, renouvelée automatiquement si la durée dépasse ce que Discord accepte. |
+| `/sanction kick` | Exclut le membre du serveur. |
+| `/sanction ban` | Bannit définitivement. |
+| `/sanction tempban` | Bannit pour une durée donnée. |
+| `/sanction softban` | Bannit puis débannit aussitôt, ce qui supprime les messages du membre des **sept derniers jours**. |
+| `/sanction tableau` | Applique le palier suivant d'une **échelle progressive**, en la nommant. L'option **bypass** force un palier précis. |
+| `/sanction list` | Liste les sanctions d'un membre. |
+
+Chaque sanction accepte une **raison**, et les durées s'écrivent en clair : `30m`, `2h`, `3j`, `1 semaine`.
+
+Discord masque `/sanction` à qui n'a pas la permission **Exclure des membres**, et `/clear` à qui n'a pas **Gérer les messages**. Les restrictions plus fines - par rôle, par salon - se posent dans [Accès aux commandes](/dashboard/configuration/commandes/).
+
+:::note[Le menu contextuel va plus vite]
+Un clic droit sur un message, puis **Applications → Sanctionner**, ouvre la même fenêtre sans quitter la conversation. Le message visé est joint à la sanction comme preuve.
+:::
+
+---
+
+## Consulter et annoter
+
+| Commande | Ce qu'elle fait |
+| --- | --- |
+| `/casier voir` | Ouvre le dossier complet d'un membre. L'option **id** permet de consulter quelqu'un qui a déjà quitté le serveur. |
+| `/note` | Écrit ou modifie la note de modération d'un membre, visible du seul staff. |
+| `/rescan` | Relance un scan des membres du serveur. |
+| `/request-verification` | Demande une vérification de sécurité à un membre. Il est mis en exclusion temporaire le temps de la passer. |
+
+Le menu contextuel **Voir le Casier** ouvre le même dossier depuis un message.
+
+---
+
+## Nettoyer un salon
+
+<DiscordCommand command="/clear nombre:50" />
+
+`/clear` supprime un nombre défini de messages dans le salon courant. L'option **membre** limite la suppression aux messages d'une seule personne.
+
+:::caution[Discord ne supprime pas les vieux messages en masse]
+Au-delà de quatorze jours, l'API de Discord refuse la suppression groupée. Pour archiver une conversation avant de la nettoyer, passez d'abord par une transcription.
+:::
+
+---
+
+## Transcrire une conversation
+
+| Sous-commande | Ce qu'elle fait |
+| --- | --- |
+| `/transcript generer` | Génère la transcription du salon courant, sur un **nombre** de messages ou une plage de **temps**. |
+| `/transcript liste` | Les dernières transcriptions du serveur. |
+| `/transcript rechercher` | Cherche une transcription par nom de salon. |
+| `/transcript supprimer` | Supprime une transcription, réservé aux administrateurs. |
+
+Deux menus contextuels complètent l'ensemble : **Transcrire depuis ce message** et **Transcrire avec contexte**, qui partent du message visé.
+
+Les transcriptions se relisent ensuite depuis le dashboard, page [Transcriptions](/dashboard/moderation/transcriptions/).
+
+---
+
+## Rôles, salons et signalements
+
+* `/role add` et `/role remove` ajoutent ou retirent un rôle à **plusieurs membres** d'un coup.
+* `/channel` gère les salons du serveur depuis Discord.
+* `/report` signale un membre au staff du serveur ; le menu contextuel **Signaler ce message** fait la même chose depuis un message. Le salon de réception et le délai entre deux signalements se règlent dans l'[anti-raid](/dashboard/moderation/anti-raid/).
+* `/signal` remonte un utilisateur à l'administrateur du bot, et non au staff du serveur : à réserver aux cas qui dépassent votre communauté.
