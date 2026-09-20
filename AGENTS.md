@@ -11,7 +11,7 @@ The dashboard source used as the product reference is located at `../Kotbo/apps/
 ## Project structure
 
 - `src/content/docs/`: pages de documentation écrites en Markdown ou MDX.
-- `src/components/`: composants Astro réutilisables pour les pages de documentation (ex: `DashboardScreenshot.astro`, `DiscordCommand.astro`). `LanguageSelect.astro` surcharge le sélecteur de langue de Starlight (bouton drapeau + menu déroulant).
+- `src/components/`: composants Astro réutilisables pour les pages de documentation (ex: `DashboardScreenshot.astro`, `DiscordCommand.astro`). `LanguageSelect.astro` surcharge le sélecteur de langue de Starlight (bouton FR/EN + menu déroulant).
 - `src/styles/`: feuilles de style modulaires :
   - `css.rooting.css` : Feuille de style principale important les autres fichiers.
   - `variables.css` : Variables de thèmes, couleurs, polices.
