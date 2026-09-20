@@ -70,3 +70,37 @@ Kotbo posts a string of emojis in the channel, and members guess the phrase behi
 :::note[Answers are matched loosely]
 Accents, case and punctuation are ignored. Staff can declare several accepted wordings for one riddle, and write their own riddles from the dashboard - see [Fun channels](/en/dashboard/communaute/salons-fun/).
 :::
+
+---
+
+## 5. Word Chain (Chaîne de mots)
+
+Every word must start with the **last letter** of the previous one.
+
+### Writing rules
+1. One word per message and nothing else: punctuation, digits or whole sentences are ignored by the game.
+2. The same member cannot play twice in a row.
+3. Accents do not count when comparing, words with ligatures (`cœur`, `œuvre`) are accepted, and a word cannot end with a hyphen.
+
+### How Kotbo reacts
+* Wrong letter, or a second turn in a row: the bot says so and, if **punitive mode** is on, the chain restarts from zero. Otherwise the offending message is set aside without breaking the progress.
+
+---
+
+## 6. Never Say Yes/No (Ni Oui Ni Non)
+
+The channel bans two words, and nothing else.
+
+### Writing rules
+1. Any message containing the French words "oui" or "non" is deleted at once.
+2. The bot reminds the author of the rule, then deletes its own warning a few seconds later to keep the channel clear.
+
+---
+
+## 7. Emoji Only (Emoji Uniquement)
+
+Only emojis are allowed in the channel.
+
+### Writing rules
+1. Any message containing anything but emojis is deleted.
+2. Server emojis, skin tones, flags and keycap digits are all accepted.

@@ -70,3 +70,37 @@ Kotbo poste une suite d'emojis dans le salon, et les membres devinent l'expressi
 :::note[Les réponses sont comparées souplement]
 Les accents, les majuscules et la ponctuation sont ignorés. Le staff peut déclarer plusieurs formulations acceptées pour un même rébus, et écrire ses propres rébus depuis le dashboard - voir [Salons Fun](/dashboard/communaute/salons-fun/).
 :::
+
+---
+
+## 5. Chaîne de mots (Word Chain)
+
+Chaque mot doit commencer par la **dernière lettre** du mot précédent.
+
+### Règles d'écriture
+1. Un seul mot par message, et rien d'autre : ponctuation, chiffres ou phrases entières sont ignorés par le jeu.
+2. Le même membre ne peut pas jouer deux fois de suite.
+3. Les accents ne comptent pas dans la comparaison, les mots à ligature (`cœur`, `œuvre`) sont acceptés, et un mot ne peut pas se terminer par un tiret.
+
+### Réaction de Kotbo
+* Mauvaise lettre ou deuxième tour d'affilée : le bot le dit et, si le **mode punitif** est actif, la chaîne repart de zéro. Sinon, le message fautif est écarté sans casser la progression.
+
+---
+
+## 6. Ni Oui Ni Non (Never Say Yes/No)
+
+Le salon interdit deux mots, et rien d'autre.
+
+### Règles d'écriture
+1. Tout message contenant « oui » ou « non » est supprimé sur-le-champ.
+2. Le bot rappelle la règle à l'auteur, puis efface son propre avertissement quelques secondes plus tard pour ne pas encombrer le salon.
+
+---
+
+## 7. Emoji Uniquement (Emoji Only)
+
+Seuls les emojis sont admis dans le salon.
+
+### Règles d'écriture
+1. Tout message contenant autre chose que des emojis est supprimé.
+2. Les emojis du serveur, les teintes de peau, les drapeaux et les touches numérotées sont acceptés sans réserve.

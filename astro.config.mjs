@@ -501,6 +501,38 @@ export default defineConfig({
                   translations: { en: 'Daily Algo' },
                   slug: 'discord/communaute/daily-algo',
                 },
+                {
+                  label: 'Clans, saisons et paris',
+                  translations: { en: 'Clans, seasons and bets' },
+                  slug: 'discord/communaute/clans',
+                },
+              ],
+            },
+            {
+              label: 'Économie & RPG',
+              translations: { en: 'Economy & RPG' },
+              items: [
+                {
+                  label: 'Jouer au RPG',
+                  translations: { en: 'Playing the RPG' },
+                  slug: 'discord/economie/rpg',
+                },
+                {
+                  label: 'Monnaie, boutique et jeux',
+                  translations: { en: 'Currency, shop and games' },
+                  slug: 'discord/economie/economie',
+                },
+              ],
+            },
+            {
+              label: "Système d'XP",
+              translations: { en: 'XP system' },
+              items: [
+                {
+                  label: 'Niveaux, classements et réputation',
+                  translations: { en: 'Levels, leaderboards and reputation' },
+                  slug: 'discord/xp/progression',
+                },
               ],
             },
             {
