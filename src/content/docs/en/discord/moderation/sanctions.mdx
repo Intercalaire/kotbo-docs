@@ -19,18 +19,20 @@ The history, the sanction reports, the progressive scales and the archiving are 
 
 ## Issuing a sanction
 
-<DiscordCommand command="/sanction warn" />
+<DiscordCommand
+  command="/sanction warn membre:@Camille raison:Spam in #general gravite:Light"
+  embedTitle="Warn recorded"
+  embedDescription="Camille received a warning.\n\n**Reason**: Spam in #general\n**Total number of warns**: 2"
+/>
 
-| Subcommand | What it does |
-| --- | --- |
-| `/sanction warn` | Adds a warning. The **gravite** option weighs into the score when weighting is enabled. |
-| `/sanction to` | Applies a timeout, auto-renewed when the duration exceeds what Discord accepts. |
-| `/sanction kick` | Kicks the member from the server. |
-| `/sanction ban` | Bans permanently. |
-| `/sanction tempban` | Bans for a given duration. |
-| `/sanction softban` | Bans then immediately unbans, which deletes the member's messages from the **last seven days**. |
-| `/sanction tableau` | Applies the next step of a **progressive scale**, named in the command. The **bypass** option forces a specific tier. |
-| `/sanction list` | Lists a member's sanctions. |
+* `/sanction warn`: Adds a warning. The **gravite** option weighs into the score when weighting is enabled.
+* `/sanction to`: Applies a timeout, auto-renewed when the duration exceeds what Discord accepts.
+* `/sanction kick`: Kicks the member from the server.
+* `/sanction ban`: Bans permanently.
+* `/sanction tempban`: Bans for a given duration.
+* `/sanction softban`: Bans then immediately unbans, which deletes the member's messages from the **last seven days**.
+* `/sanction tableau`: Applies the next step of a **progressive scale**, named in the command. The **bypass** option forces a specific tier.
+* `/sanction list`: Lists a member's sanctions.
 
 Every sanction takes a **raison** (reason), and durations are written plainly: `30m`, `2h`, `3d`, `1 week`.
 
@@ -44,12 +46,10 @@ Right-click **a member**, then **Apps → Sanction**, and the same dialog opens 
 
 ## Reading and annotating
 
-| Command | What it does |
-| --- | --- |
-| `/casier voir` | Opens a member's full case file. The **id** option looks up somebody who already left the server. |
-| `/note` | Writes or edits a member's moderation note, visible to the staff only. The **Moderator note** context menu does the same on a right-click. |
-| `/rescan` | Runs a fresh scan of the server's members. |
-| `/request-verification` | Asks a member to pass a security verification. They are timed out while it lasts. Context menu: **Request verification**. |
+* `/casier voir`: Opens a member's full case file. The **id** option looks up somebody who already left the server.
+* `/note`: Writes or edits a member's moderation note, visible to the staff only. The **Moderator note** context menu does the same on a right-click.
+* `/rescan`: Runs a fresh scan of the server's members.
+* `/request-verification`: Asks a member to pass a security verification. They are timed out while it lasts. Context menu: **Request verification**.
 
 The **View Case File** context menu, on a right-click **on a member**, opens the same record.
 
@@ -57,7 +57,11 @@ The **View Case File** context menu, on a right-click **on a member**, opens the
 
 ## Clearing a channel
 
-<DiscordCommand command="/clear nombre:50" />
+<DiscordCommand
+  command="/clear nombre:50"
+  embedTitle="Messages deleted"
+  embedDescription="**50** message(s) were deleted."
+/>
 
 `/clear` deletes a set number of messages in the current channel. The **membre** option limits the purge to one person's messages.
 
@@ -69,12 +73,10 @@ Past fourteen days, Discord's API refuses bulk deletion. To archive a conversati
 
 ## Transcribing a conversation
 
-| Subcommand | What it does |
-| --- | --- |
-| `/transcript generer` | Generates the current channel's transcript, over a **nombre** of messages or a **temps** window. |
-| `/transcript liste` | The server's latest transcripts. |
-| `/transcript rechercher` | Searches transcripts by channel name. |
-| `/transcript supprimer` | Deletes a transcript, administrators only. |
+* `/transcript generer`: Generates the current channel's transcript, over a **nombre** of messages or a **temps** window.
+* `/transcript liste`: The server's latest transcripts.
+* `/transcript rechercher`: Searches transcripts by channel name.
+* `/transcript supprimer`: Deletes a transcript, administrators only.
 
 Two context menus round it off, this time on a right-click **on a message**: **Transcribe from this message** and **Transcribe with context**.
 
@@ -84,30 +86,28 @@ Transcripts are then read back from the dashboard, on the [Transcripts](/en/dash
 
 ## The Kotbo actions context menu
 
-A right-click opens **Apps → ⚡ Kotbo actions**, a panel gathering the everyday gestures with no command to type. It comes in two flavours, depending on what you clicked, and only shows the actions your permissions allow.
+A right-click opens **Apps → Kotbo actions**, a panel gathering the everyday gestures with no command to type. It comes in two flavours, depending on what you clicked, and only shows the actions your permissions allow.
 
-| On a **message** | Permission required |
-| --- | --- |
-| **Traduire le message** (translate) | none |
-| **Sauvegarder en MP** (save to DM) | none |
-| **Donner de la réputation** (give reputation) | none |
-| **Signaler ce message** (report) | none |
-| **Épingler / désépingler** (pin) | Manage Messages |
-| **Purger jusqu'ici** (purge up to here) | Manage Messages |
-| **Créer un thread** (create a thread) | Create Public Threads |
-| **Supprimer + avertir** (delete and warn) | Timeout Members |
+### On a message
 
-| On a **member** | Permission required |
-| --- | --- |
-| **Niveau et rang** (level and rank) | none |
-| **Infos du compte** (account info) | none |
-| **Donner de la réputation** (give reputation) | none |
-| **Timeout rapide** (quick timeout) | Timeout Members |
-| **Détection de double compte** (alt detection) | Timeout Members |
-| **Comptes liés** (linked accounts) | Timeout Members |
-| **Renommer** (rename) | Manage Nicknames |
-| **Envoyer un MP via le bot** (DM through the bot) | Manage Server |
-| **Historique d'invitation** (invite history) | Manage Server |
+Open to everyone: **Traduire le message** (translate), **Sauvegarder en MP** (save to DM), **Donner de la réputation** (give reputation) and **Signaler ce message** (report).
+
+Staff only:
+
+* **Épingler / désépingler** (pin): requires *Manage Messages*.
+* **Purger jusqu'ici** (purge up to here): requires *Manage Messages*.
+* **Créer un thread** (create a thread): requires *Create Public Threads*.
+* **Supprimer + avertir** (delete and warn): requires *Timeout Members*.
+
+### On a member
+
+Open to everyone: **Niveau et rang** (level and rank), **Infos du compte** (account info) and **Donner de la réputation** (give reputation).
+
+Staff only:
+
+* **Timeout rapide** (quick timeout), **Détection de double compte** (alt detection) and **Comptes liés** (linked accounts): require *Timeout Members*.
+* **Renommer** (rename): requires *Manage Nicknames*.
+* **Envoyer un MP via le bot** (DM through the bot) and **Historique d'invitation** (invite history): require *Manage Server*.
 
 :::tip["Purger jusqu'ici" beats counting]
 On a mess that dragged on, click the message where it started and purge up to there: no more guessing a message count for `/clear`.

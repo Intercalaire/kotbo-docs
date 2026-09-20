@@ -11,7 +11,10 @@ import DiscordCommand from '../../../../../components/DiscordCommand.astro';
 
 ## Your rank card
 
-<DiscordCommand command="/rank" />
+<DiscordCommand
+  command="/rank"
+  botResponse="*The card is sent as an image: username, title, badges, level, XP bar and rank on the server.*"
+/>
 
 The card shows the level, the XP of the current tier, the rank on the server and, where set, the badges, title, frame and background you picked.
 
@@ -25,12 +28,10 @@ Background, pattern, frame, XP bar, font, emojis and badges are set under **My p
 
 ## Leaderboards
 
-| Command | What it ranks |
-| --- | --- |
-| `/leaderboard` | Server activity: **Messages**, **Voice**, **Mixed** or **XP / Levels**. |
-| `/top` | The game: **Money**, **RPG** (level and XP), **Items**, **Monsters** slain, **Fishing**. |
-| `/prestige` | Prestige points, their tiers and the streaks in progress. |
-| `/richest` | The richest members, a shortcut to the money ranking. |
+* `/leaderboard`: Server activity: **Messages**, **Voice**, **Mixed** or **XP / Levels**.
+* `/top`: The game: **Money**, **RPG** (level and XP), **Items**, **Monsters** slain, **Fishing**.
+* `/prestige`: Prestige points, their tiers and the streaks in progress.
+* `/richest`: The richest members, a shortcut to the money ranking.
 
 `/leaderboard` takes three settings: the **type**, the **style** - *Image (Modern)* or *Text (V2)* - and the **period**, 7, 30 or 90 days. The period is ignored for the XP ranking, which is global. One more option refreshes the leaderboard **every hour** in the channel where it was posted.
 
@@ -40,13 +41,15 @@ Background, pattern, frame, XP bar, font, emojis and badges are set under **My p
 
 Reputation does not reward the amount of activity, but how useful others found someone.
 
-<DiscordCommand command="/rep give" />
+<DiscordCommand
+  command="/rep give membre:@Camille raison:Helped out in the support channel"
+  embedTitle="Reputation given"
+  embedDescription="Alex gave a +rep to Camille\n\nCamille total reputation: 47"
+/>
 
-| Subcommand | What it does |
-| --- | --- |
-| `/rep give` | Give a +rep to a member. |
-| `/rep check` | View a member's reputation. |
-| `/rep top` | The reputation leaderboard. |
+* `/rep give`: Give a +rep to a member.
+* `/rep check`: View a member's reputation.
+* `/rep top`: The reputation leaderboard.
 
 :::caution[Three votes a day]
 The count is kept in the server's time zone. Past that, the vote is refused. Nobody can vote for themselves, nor for a bot.

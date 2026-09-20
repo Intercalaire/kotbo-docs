@@ -19,18 +19,20 @@ None of the commands below is localised: they are typed the same in both languag
 
 ## Meetings
 
-| Subcommand | What it does |
-| --- | --- |
-| `/meeting create` | Schedules a staff meeting, with its title, date and description. |
-| `/meeting list` | The upcoming meetings. |
-| `/meeting checkin` | Confirms your attendance at the meeting in progress by hand. |
-| `/meeting sync` | Forces a sync of the absences declared for the next meeting. |
+* `/meeting create`: Schedules a staff meeting, with its title, date and description.
+* `/meeting list`: The upcoming meetings.
+* `/meeting checkin`: Confirms your attendance at the meeting in progress by hand.
+* `/meeting sync`: Forces a sync of the absences declared for the next meeting.
 
 ---
 
 ## Absences and departures
 
-<DiscordCommand command="/absent declarer" />
+<DiscordCommand
+  command="/absent declarer type:Congés debut:12/07/2026 fin:19/07/2026 superieur:@Alex"
+  embedTitle="Absence déclarée"
+  embedDescription="Absence déclarée du **12/07/2026** au **19/07/2026**. Supérieur notifié : Alex. ID : `ABS-142`."
+/>
 
 `/absent declarer` opens the declaration: the **type** of absence, its **debut** and **fin** dates, the **raison** and the **superieur** to notify. `/absent terminer` closes it early.
 
@@ -40,11 +42,9 @@ None of the commands below is localised: they are typed the same in both languag
 
 ## Evaluations
 
-| Subcommand | What it does |
-| --- | --- |
-| `/evaluations me` | Your own evaluation. |
-| `/evaluations check` | A staff member's evaluation. |
-| `/evaluations generate` | Generates an evaluation over a given **periode**. |
+* `/evaluations me`: Your own evaluation.
+* `/evaluations check`: A staff member's evaluation.
+* `/evaluations generate`: Generates an evaluation over a given **periode**.
 
 ---
 
@@ -58,20 +58,18 @@ None of the commands below is localised: they are typed the same in both languag
 
 These commands require the **Administrator** permission.
 
-| Command | What it does |
-| --- | --- |
-| `/setup` | The bot's step-by-step setup assistant. |
-| `/config` | Configures Kotbo's features from Discord, without the dashboard. |
-| `/audit` | Reviews the server's security and suggests improvements. |
-| `/backup` | Backs the server up - roles, channels, permissions, emojis, stickers - and restores it: `create`, `list`, `restore`, `delete`, `export`, `import`. See [Backups](/en/dashboard/configuration/sauvegardes/). |
-| `/leveling` | Adjusts members' XP and levels. |
-| `/prestige-admin` | Sets up the prestige ranking. |
-| `/link` | Links channels together. See [Channel links](/en/discord/communaute/liens-salons/). |
-| `/protection` | Captcha, raid mode, locks and lockdown. See [Anti-raid protection](/en/dashboard/moderation/anti-raid/). |
-| `/channelhealth` | Channel analysis and archiving. See [Channel health](/en/dashboard/configuration/sante-salons/). |
-| `/activate` | Activates the bot on the server with an activation code. |
-| `/staffserver` | Links a staff server to the main one and drives the sync: `setup`, `mode`, `sync`, `mapping`, `unmap`, `remove`. See [Staff servers](/en/dashboard/cross-serveur/serveurs-staff/). |
-| `/status` | Checks the HTTP status of a URL. |
+* `/setup`: The bot's step-by-step setup assistant.
+* `/config`: Configures Kotbo's features from Discord, without the dashboard.
+* `/audit`: Reviews the server's security and suggests improvements.
+* `/backup`: Backs the server up - roles, channels, permissions, emojis, stickers - and restores it: `create`, `list`, `restore`, `delete`, `export`, `import`. See [Backups](/en/dashboard/configuration/sauvegardes/).
+* `/leveling`: Adjusts members' XP and levels.
+* `/prestige-admin`: Sets up the prestige ranking.
+* `/link`: Links channels together. See [Channel links](/en/discord/communaute/liens-salons/).
+* `/protection`: Captcha, raid mode, locks and lockdown. See [Anti-raid protection](/en/dashboard/moderation/anti-raid/).
+* `/channelhealth`: Channel analysis and archiving. See [Channel health](/en/dashboard/configuration/sante-salons/).
+* `/activate`: Activates the bot on the server with an activation code.
+* `/staffserver`: Links a staff server to the main one and drives the sync: `setup`, `mode`, `sync`, `mapping`, `unmap`, `remove`. See [Staff servers](/en/dashboard/cross-serveur/serveurs-staff/).
+* `/status`: Checks the HTTP status of a URL.
 
 :::note[The dashboard stays the reference]
 These commands help out when nobody has the dashboard at hand. For anything set finely - per-role permissions, sanction scales, modules - the dashboard shows the whole picture, where a command only shows one field at a time.

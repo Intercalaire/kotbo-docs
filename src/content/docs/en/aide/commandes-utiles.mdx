@@ -11,7 +11,12 @@ import DiscordCommand from '../../../../components/DiscordCommand.astro';
 
 ## Finding your way
 
-<DiscordCommand command="/help" />
+<DiscordCommand
+  command="/help"
+  embedTitle="Kotbo help centre"
+  embedDescription="Pick a module in the menu below to see its commands and their syntax."
+  buttons="Moderation, Community, Economy & RPG, Staff"
+/>
 
 `/help` opens the interactive help centre: the available commands, sorted by module, with their syntax. That is the reflex to teach your members, rather than keeping a list up to date by hand.
 
@@ -28,11 +33,9 @@ A client set to French types `/aide` and `/langue`; an English one types `/help`
 
 ## Personal reminders
 
-| Subcommand | What it does |
-| --- | --- |
-| `/reminder create` | Schedules a reminder. The **temps** field takes `15m` or `2h` as happily as a full date, `12/07/2026-18:00`. The **message** and **salon** options fill in the rest, and **planning** ties the reminder to a staff planning item. |
-| `/reminder list` | Your open reminders. |
-| `/reminder delete` | Deletes a reminder by its ID. |
+* `/reminder create`: Schedules a reminder. The **temps** field takes `15m` or `2h` as happily as a full date, `12/07/2026-18:00`. The **message** and **salon** options fill in the rest, and **planning** ties the reminder to a staff planning item.
+* `/reminder list`: Your open reminders.
+* `/reminder delete`: Deletes a reminder by its ID.
 
 ---
 
@@ -46,7 +49,11 @@ A client set to French types `/aide` and `/langue`; an English one types `/help`
 
 ## Privacy
 
-<DiscordCommand command="/privacy" />
+<DiscordCommand
+  command="/privacy"
+  embedTitle="Your data at Kotbo"
+  embedDescription="This reply is visible to you alone.\n\n**What Kotbo keeps** · **Your rights** · **Requesting deletion** · **What is retained, and why**"
+/>
 
 `/privacy` answers in four blocks: **what Kotbo keeps**, **your rights**, **how to request deletion** and **what is retained, and why**, with links to the privacy policy and the contact address.
 

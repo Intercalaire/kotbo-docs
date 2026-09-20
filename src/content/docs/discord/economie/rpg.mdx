@@ -7,11 +7,16 @@ import DiscordCommand from '../../../../components/DiscordCommand.astro';
 
 <p class="doc-lead">Tout le jeu tient dans une seule commande. <strong>/rpg</strong> ouvre un panneau de boutons : votre personnage, votre sac, la boutique, les combats, la guilde. Aucune autre commande à retenir.</p>
 
-<DiscordCommand command="/rpg" />
+<DiscordCommand
+  command="/rpg"
+  embedTitle="Hub RPG - Camille"
+  embedDescription="Niveau **12** · 340/500 XP · **85** énergie · **2 480** pièces\nClasse : **Rôdeur** · 3 point(s) de caractéristique à répartir"
+  buttons="Personnage, Inventaire, Boutique, Combat, Plus"
+/>
 
 L'option **membre** ouvre le hub sur le profil de quelqu'un d'autre, en lecture.
 
-:::tip[Côté staff]
+:::tip[Côté dashboard]
 Les monstres, les objets, les recettes, le raid et les réglages d'économie se configurent depuis le dashboard : voir [Économie & RPG](/dashboard/economie/economie/).
 :::
 
@@ -19,12 +24,10 @@ Les monstres, les objets, les recettes, le raid et les réglages d'économie se 
 
 ## Les ressources du personnage
 
-| Ressource | À quoi elle sert |
-| --- | --- |
-| **Pièces** | Acheter, fabriquer, forger, enchanter, changer de classe. |
-| **XP** | Monter de niveau. Chaque niveau rapporte **3 points de caractéristique** et **1 point de compétence**. |
-| **PV** | Tomber à court de points de vie interdit le combat jusqu'au repos ou à une potion. |
-| **Énergie** | Se régénère avec le temps. Un combat coûte **15** énergie, un duel d'arène **20**, une partie de pêche **5**. |
+* **Pièces** : Acheter, fabriquer, forger, enchanter, changer de classe.
+* **XP** : Monter de niveau. Chaque niveau rapporte **3 points de caractéristique** et **1 point de compétence**.
+* **PV** : Tomber à court de points de vie interdit le combat jusqu'au repos ou à une potion.
+* **Énergie** : Se régénère avec le temps. Un combat coûte **15** énergie, un duel d'arène **20**, une partie de pêche **5**.
 
 Le serveur règle lui-même l'énergie maximale, la vitesse de récupération et les gains : ces valeurs varient d'un serveur à l'autre.
 
@@ -38,11 +41,9 @@ L'onglet **Personnage** porte la fiche : statistiques de base (ATQ, DÉF, VIT, P
 
 La classe se choisit au **niveau 5** et décide des statistiques, du passif et des compétences de combat.
 
-| Classe | Passif | Compétences |
-| --- | --- | --- |
-| **Guerrier** | *Peau de fer* : réduit de 15 % tous les dégâts subis. | *Frappe Brutale* (200 % de dégâts) et *Cri de Guerre* (défense doublée un tour, 10 % des PV rendus). |
-| **Rôdeur** | *Œil de lynx* : +12 % de chances de coup critique. | *Tir Précis* (ignore la défense adverse) et *Esquive* (évite la prochaine attaque). |
-| **Mage** | *Percée arcanique* : les attaques ignorent 30 % de la défense adverse. | *Boule de Feu* (230 % de dégâts) et *Drain de Vie* (150 % de dégâts, la moitié rendue en PV). |
+* **Guerrier** : passif *Peau de fer*, qui réduit de 15 % tous les dégâts subis. Compétences : *Frappe Brutale*, un coup à 200 % de dégâts, et *Cri de Guerre*, qui double la défense pour un tour et rend 10 % des PV.
+* **Rôdeur** : passif *Œil de lynx*, qui ajoute 12 % de chances de coup critique. Compétences : *Tir Précis*, qui ignore la défense adverse, et *Esquive*, qui évite entièrement la prochaine attaque.
+* **Mage** : passif *Percée arcanique*, dont les attaques ignorent 30 % de la défense adverse. Compétences : *Boule de Feu*, à 230 % de dégâts, et *Drain de Vie*, à 150 % de dégâts dont la moitié revient en PV.
 
 :::caution[Changer de classe se paie]
 La reconversion coûte **2 500 pièces**, et l'arbre de compétences repart à zéro : les branches appartiennent à la classe. Les points investis vous sont rendus.
@@ -84,14 +85,14 @@ L'onglet **Inventaire** liste le sac et sert à **équiper** une arme, une armur
 
 Les **accessoires** occupent trois emplacements, débloqués aux **niveaux 1, 12 et 24**.
 
-| Atelier | Ce qu'il fait |
-| --- | --- |
-| **Boutique** | Achète ce que le serveur a mis en vente : armes, armures, potions, objets de quête. |
-| **Artisanat** | Transforme les butins de combat en équipement, selon les recettes du serveur. Chaque recette demande un niveau et un coût. |
-| **Forge** | Améliore l'équipement **porté** jusqu'à **+10**. Un échec ne détruit rien : seules les pièces sont perdues. |
-| **Autel d'enchantement** | Pose un parchemin sur l'équipement porté. L'enchantement suit l'objet, et se retire contre **750 pièces**. |
-| **Vendre** | Revend un objet du sac. |
-| **Marché noir** | Une sélection personnelle, à prix cassés, ouverte par intermittence : *elle rouvrira sans prévenir, un jour, à une heure que personne ne connaît*. |
+Le reste du matériel s'obtient et s'améliore dans les ateliers du hub :
+
+* **Boutique** : Achète ce que le serveur a mis en vente : armes, armures, potions, objets de quête.
+* **Artisanat** : Transforme les butins de combat en équipement, selon les recettes du serveur. Chaque recette demande un niveau et un coût.
+* **Forge** : Améliore l'équipement **porté** jusqu'à **+10**. Un échec ne détruit rien : seules les pièces sont perdues.
+* **Autel d'enchantement** : Pose un parchemin sur l'équipement porté. L'enchantement suit l'objet, et se retire contre **750 pièces**.
+* **Vendre** : Revend un objet du sac.
+* **Marché noir** : Une sélection personnelle, à prix cassés, ouverte par intermittence : *elle rouvrira sans prévenir, un jour, à une heure que personne ne connaît*.
 
 ---
 
@@ -116,13 +117,11 @@ Une **guilde RPG** se crée pour **500 pièces** ou se rejoint par son nom. Elle
 
 Le **village de guilde** ouvre cinq bâtiments, à bâtir et à agrandir sur le trésor commun. Chacun a trois niveaux, qui demandent un niveau de guilde et un coût croissants :
 
-| Bâtiment | Ce qu'il apporte |
-| --- | --- |
-| **Échoppe** | Une remise sur la boutique, jusqu'à -18 %. |
-| **Forge de guilde** | Des améliorations qui ratent moins, jusqu'à +12 % de réussite. |
-| **Taverne** | De l'XP de combat en plus, jusqu'à +22 %. |
-| **Caserne** | Des statistiques offertes à tous les membres, jusqu'à +14 ATQ, +14 DÉF et +80 PV. |
-| **Chambre forte** | Des pièces de combat en plus, jusqu'à +25 %. |
+* **Échoppe** : Une remise sur la boutique, jusqu'à -18 %.
+* **Forge de guilde** : Des améliorations qui ratent moins, jusqu'à +12 % de réussite.
+* **Taverne** : De l'XP de combat en plus, jusqu'à +22 %.
+* **Caserne** : Des statistiques offertes à tous les membres, jusqu'à +14 ATQ, +14 DÉF et +80 PV.
+* **Chambre forte** : Des pièces de combat en plus, jusqu'à +25 %.
 
 Seul le chef de guilde bâtit, et chaque niveau annonce son effet et son coût avant d'être payé.
 

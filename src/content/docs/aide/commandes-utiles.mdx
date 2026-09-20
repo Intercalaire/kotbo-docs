@@ -11,7 +11,12 @@ import DiscordCommand from '../../../components/DiscordCommand.astro';
 
 ## Se repérer
 
-<DiscordCommand command="/aide" />
+<DiscordCommand
+  command="/aide"
+  embedTitle="Centre d'aide Kotbo"
+  embedDescription="Choisissez un module dans le menu ci-dessous pour voir ses commandes et leur syntaxe."
+  buttons="Modération, Communauté, Économie & RPG, Staff"
+/>
 
 `/aide` ouvre le centre d'aide interactif : les commandes disponibles, rangées par module, avec leur syntaxe. C'est le réflexe à donner à vos membres plutôt qu'une liste à tenir à jour.
 
@@ -24,11 +29,9 @@ import DiscordCommand from '../../../components/DiscordCommand.astro';
 
 ## Rappels personnels
 
-| Sous-commande | Ce qu'elle fait |
-| --- | --- |
-| `/reminder create` | Programme un rappel. Le champ **temps** accepte aussi bien `15m` ou `2h` qu'une date complète, `12/07/2026-18:00`. Les options **message** et **salon** complètent, et **planning** rattache le rappel à un élément du planning staff. |
-| `/reminder list` | Vos rappels en cours. |
-| `/reminder delete` | Supprime un rappel par son identifiant. |
+* `/reminder create` : Programme un rappel. Le champ **temps** accepte aussi bien `15m` ou `2h` qu'une date complète, `12/07/2026-18:00`. Les options **message** et **salon** complètent, et **planning** rattache le rappel à un élément du planning staff.
+* `/reminder list` : Vos rappels en cours.
+* `/reminder delete` : Supprime un rappel par son identifiant.
 
 ---
 
@@ -42,7 +45,11 @@ import DiscordCommand from '../../../components/DiscordCommand.astro';
 
 ## Confidentialité
 
-<DiscordCommand command="/privacy" />
+<DiscordCommand
+  command="/privacy"
+  embedTitle="Tes données chez Kotbo"
+  embedDescription="Cette réponse n'est visible que par toi.\n\n**Ce que Kotbo garde** · **Tes droits** · **Demander la suppression** · **Ce qui est conservé, et pourquoi**"
+/>
 
 `/privacy` répond en quatre blocs : **ce que Kotbo garde**, **vos droits**, **comment demander la suppression** et **ce qui est conservé, et pourquoi**, avec les liens vers la politique de confidentialité et le contact.
 

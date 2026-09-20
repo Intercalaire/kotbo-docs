@@ -15,13 +15,11 @@ Créer les clans, régler les saisons, les points et les récompenses se fait de
 
 ## Suivre son clan
 
-| Commande | Ce qu'elle affiche |
-| --- | --- |
-| `/clan list` | Tous les clans configurés sur le serveur, avec leur effectif. |
-| `/clan info` | La fiche d'un clan et le classement de ses membres. |
-| `/clan leaderboard` | Le classement des clans pour la saison en cours. |
-| `/clan historique` | Les saisons passées, avec l'option **saison** pour en viser une. |
-| `/clan paris` | Vos paris en cours, votre dette et votre bilan. |
+* `/clan list` : Tous les clans configurés sur le serveur, avec leur effectif.
+* `/clan info` : La fiche d'un clan et le classement de ses membres.
+* `/clan leaderboard` : Le classement des clans pour la saison en cours.
+* `/clan historique` : Les saisons passées, avec l'option **saison** pour en viser une.
+* `/clan paris` : Vos paris en cours, votre dette et votre bilan.
 
 Du côté des saisons, `/seasons current` donne la saison en cours, `/seasons list` toutes les saisons, et `/seasons leaderboard` le classement d'une saison précise.
 
@@ -31,13 +29,16 @@ Du côté des saisons, `/seasons current` donne la saison en cours, `/seasons li
 
 Un pari met en jeu des **points de clan**, pas des pièces. Un arbitre tranche ensuite pour désigner le camp gagnant.
 
-<DiscordCommand command="/paris duel" />
+<DiscordCommand
+  command="/paris duel sujet:Premier au classement vendredi mise:250 adversaire:@Dominique"
+  embedTitle="Pari ouvert"
+  embedDescription="**Premier au classement vendredi**\nMise : **250** points de clan · Duel Alex contre Dominique\nUn arbitre devra désigner le camp gagnant."
+  buttons="Accepter le duel, Annuler"
+/>
 
-| Format | Ce qu'il propose |
-| --- | --- |
-| `/paris duel` | Un face-à-face. L'option **adversaire** défie quelqu'un en particulier ; laissée vide, le défi est ouvert à tous. |
-| `/paris pool` | Une cagnotte à plusieurs, avec un nombre de **places** à pourvoir. |
-| `/paris equipes` | Des camps nommés, séparés par des virgules, et leurs places après deux-points : `Rouge:1, Bleu:3`. |
+* `/paris duel` : Un face-à-face. L'option **adversaire** défie quelqu'un en particulier ; laissée vide, le défi est ouvert à tous.
+* `/paris pool` : Une cagnotte à plusieurs, avec un nombre de **places** à pourvoir.
+* `/paris equipes` : Des camps nommés, séparés par des virgules, et leurs places après deux-points : `Rouge:1, Bleu:3`.
 
 Chaque pari porte un **sujet** et une **mise** en points de clan.
 

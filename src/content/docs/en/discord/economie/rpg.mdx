@@ -7,11 +7,16 @@ import DiscordCommand from '../../../../../components/DiscordCommand.astro';
 
 <p class="doc-lead">The whole game lives in one command. <strong>/rpg</strong> opens a panel of buttons: your character, your bag, the shop, the fights, the guild. There is nothing else to remember.</p>
 
-<DiscordCommand command="/rpg" />
+<DiscordCommand
+  command="/rpg"
+  embedTitle="RPG hub - Camille"
+  embedDescription="Level **12** · 340/500 XP · **85** energy · **2,480** coins\nClass: **Rôdeur** · 3 stat point(s) to spend"
+  buttons="Character, Inventory, Shop, Fight, More"
+/>
 
 The **membre** option opens the hub on somebody else's profile, read-only.
 
-:::tip[For the staff]
+:::tip[On the dashboard]
 Monsters, items, recipes, the raid and the economy settings are configured from the dashboard: see [Economy & RPG](/en/dashboard/economie/economie/).
 :::
 
@@ -23,12 +28,10 @@ Class names, passives, skills and skill-tree branches are written in French in b
 
 ## Your character's resources
 
-| Resource | What it is for |
-| --- | --- |
-| **Coins** | Buying, crafting, forging, enchanting, switching class. |
-| **XP** | Levelling up. Every level grants **3 stat points** and **1 skill point**. |
-| **HP** | Running out of health blocks fighting until you rest or drink a potion. |
-| **Energy** | Regenerates over time. A fight costs **15** energy, an arena duel **20**, a fishing trip **5**. |
+* **Coins**: Buying, crafting, forging, enchanting, switching class.
+* **XP**: Levelling up. Every level grants **3 stat points** and **1 skill point**.
+* **HP**: Running out of health blocks fighting until you rest or drink a potion.
+* **Energy**: Regenerates over time. A fight costs **15** energy, an arena duel **20**, a fishing trip **5**.
 
 The server sets the maximum energy, the recovery rate and the payouts itself: these values differ from one server to the next.
 
@@ -42,11 +45,9 @@ The **Character** tab holds the sheet: base stats (ATQ, DÉF, VIT, PV - attack, 
 
 The class is chosen at **level 5** and decides your stats, your passive and your combat skills.
 
-| Class | Passive | Skills |
-| --- | --- | --- |
-| **Guerrier** (Warrior) | *Peau de fer*: cuts all damage taken by 15%. | *Frappe Brutale* (200% damage) and *Cri de Guerre* (defence doubled for a turn, 10% of HP restored). |
-| **Rôdeur** (Ranger) | *Œil de lynx*: +12% critical chance. | *Tir Précis* (ignores the enemy's defence) and *Esquive* (dodges the next attack entirely). |
-| **Mage** | *Percée arcanique*: attacks ignore 30% of the enemy's defence. | *Boule de Feu* (230% damage) and *Drain de Vie* (150% damage, half of it returned as HP). |
+* **Guerrier** (Warrior): passive *Peau de fer*, cutting all damage taken by 15%. Skills: *Frappe Brutale*, a hit at 200% damage, and *Cri de Guerre*, which doubles defence for a turn and restores 10% of HP.
+* **Rôdeur** (Ranger): passive *Œil de lynx*, adding 12% critical chance. Skills: *Tir Précis*, which ignores the enemy's defence, and *Esquive*, which dodges the next attack entirely.
+* **Mage**: passive *Percée arcanique*, whose attacks ignore 30% of the enemy's defence. Skills: *Boule de Feu*, at 230% damage, and *Drain de Vie*, at 150% damage with half returned as HP.
 
 :::caution[Switching class has a price]
 Reclassing costs **2,500 coins**, and the skill tree resets: branches belong to a class. The points you had invested are handed back.
@@ -88,14 +89,14 @@ The **Inventory** tab lists the bag and is where you **equip** a weapon, an armo
 
 **Accessories** take three slots, unlocked at **levels 1, 12 and 24**.
 
-| Workshop | What it does |
-| --- | --- |
-| **Shop** | Buys what the server put up for sale: weapons, armour, potions, quest items. |
-| **Crafting workshop** | Turns combat loot into gear, following the server's recipes. Each recipe asks for a level and a cost. |
-| **Forge** | Upgrades **equipped** gear up to **+10**. A failure destroys nothing: only the coins are lost. |
-| **Enchanting Altar** | Applies a scroll to equipped gear. The enchantment follows the item, and comes off for **750 coins**. |
-| **Sell** | Sells an item back from the bag. |
-| **Black market** | A personal selection at cut prices, open now and then: *it will reopen without warning, one day, at an hour nobody knows*. |
+The rest of the gear is obtained and improved in the hub's workshops:
+
+* **Shop**: Buys what the server put up for sale: weapons, armour, potions, quest items.
+* **Crafting workshop**: Turns combat loot into gear, following the server's recipes. Each recipe asks for a level and a cost.
+* **Forge**: Upgrades **equipped** gear up to **+10**. A failure destroys nothing: only the coins are lost.
+* **Enchanting Altar**: Applies a scroll to equipped gear. The enchantment follows the item, and comes off for **750 coins**.
+* **Sell**: Sells an item back from the bag.
+* **Black market**: A personal selection at cut prices, open now and then: *it will reopen without warning, one day, at an hour nobody knows*.
 
 ---
 
@@ -120,13 +121,11 @@ An **RPG guild** is founded for **500 coins**, or joined by its name. It carries
 
 The **guild village** opens five buildings, to raise and upgrade out of the shared treasury. Each has three levels, asking for a rising guild level and cost:
 
-| Building | What it brings |
-| --- | --- |
-| **Échoppe** (shop) | A discount on the shop, up to -18%. |
-| **Forge de guilde** (guild forge) | Upgrades that fail less often, up to +12% success. |
-| **Taverne** (tavern) | Extra combat XP, up to +22%. |
-| **Caserne** (barracks) | Stats granted to every member, up to +14 ATQ, +14 DÉF and +80 PV. |
-| **Chambre forte** (vault) | Extra combat coins, up to +25%. |
+* **Échoppe** (shop): A discount on the shop, up to -18%.
+* **Forge de guilde** (guild forge): Upgrades that fail less often, up to +12% success.
+* **Taverne** (tavern): Extra combat XP, up to +22%.
+* **Caserne** (barracks): Stats granted to every member, up to +14 ATQ, +14 DÉF and +80 PV.
+* **Chambre forte** (vault): Extra combat coins, up to +25%.
 
 Only the guild leader builds, and each level states its effect and its cost before being paid for.
 

@@ -67,7 +67,10 @@ This is the one command Discord localises: a client set to French shows it as `/
 
 A server that wants to propose a partnership uses:
 
-<DiscordCommand command="/partnership proposer" />
+<DiscordCommand
+  command="/partnership proposer"
+  botResponse="*A dialog opens: server or project name, invitation link, member count and what you are offering.*\n\nYour request has been sent to the staff."
+/>
 
 The form asks for the server or project name, an invitation link, a member count and what is being offered. If requests are closed, Kotbo answers that this server does not take them.
 

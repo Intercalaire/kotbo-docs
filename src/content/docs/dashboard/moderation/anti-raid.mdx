@@ -37,7 +37,11 @@ Sous les bascules, trois compteurs rappellent le nombre de **signalements en att
 
 Le verrouillage de salons se commande depuis Discord, et non depuis le dashboard. Il refuse à `@everyone` l'écriture, les fils et les réactions dans les salons textuels, la connexion et la parole dans les vocaux.
 
-<DiscordCommand command="/protection lockdown on" />
+<DiscordCommand
+  command="/protection lockdown on portee:Tout le serveur"
+  embedTitle="Lockdown activé"
+  embedDescription="**12** salon(s) verrouillé(s) dans tout le serveur.\n2 l'étaient déjà.\nLes membres administrateurs, ou autorisés explicitement dans un salon, peuvent toujours y écrire."
+/>
 
 * **portee** : *Le salon* (par défaut), *Sa catégorie entière* ou *Tout le serveur*.
 * **salon** : le salon ou la catégorie visé, le salon actuel par défaut.

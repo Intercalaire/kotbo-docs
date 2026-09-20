@@ -15,18 +15,20 @@ L'historique, les rapports de sanction, les échelles progressives et l'archivag
 
 ## Prononcer une sanction
 
-<DiscordCommand command="/sanction warn" />
+<DiscordCommand
+  command="/sanction warn membre:@Camille raison:Spam dans #general gravite:Légère"
+  embedTitle="Warn enregistré"
+  embedDescription="Camille a reçu un avertissement.\n\n**Raison** : Spam dans #general\n**Nombre total de warns** : 2"
+/>
 
-| Sous-commande | Ce qu'elle fait |
-| --- | --- |
-| `/sanction warn` | Ajoute un avertissement. L'option **gravite** pèse dans le score quand la pondération est active. |
-| `/sanction to` | Applique une exclusion temporaire, renouvelée automatiquement si la durée dépasse ce que Discord accepte. |
-| `/sanction kick` | Exclut le membre du serveur. |
-| `/sanction ban` | Bannit définitivement. |
-| `/sanction tempban` | Bannit pour une durée donnée. |
-| `/sanction softban` | Bannit puis débannit aussitôt, ce qui supprime les messages du membre des **sept derniers jours**. |
-| `/sanction tableau` | Applique le palier suivant d'une **échelle progressive**, en la nommant. L'option **bypass** force un palier précis. |
-| `/sanction list` | Liste les sanctions d'un membre. |
+* `/sanction warn` : Ajoute un avertissement. L'option **gravite** pèse dans le score quand la pondération est active.
+* `/sanction to` : Applique une exclusion temporaire, renouvelée automatiquement si la durée dépasse ce que Discord accepte.
+* `/sanction kick` : Exclut le membre du serveur.
+* `/sanction ban` : Bannit définitivement.
+* `/sanction tempban` : Bannit pour une durée donnée.
+* `/sanction softban` : Bannit puis débannit aussitôt, ce qui supprime les messages du membre des **sept derniers jours**.
+* `/sanction tableau` : Applique le palier suivant d'une **échelle progressive**, en la nommant. L'option **bypass** force un palier précis.
+* `/sanction list` : Liste les sanctions d'un membre.
 
 Chaque sanction accepte une **raison**, et les durées s'écrivent en clair : `30m`, `2h`, `3j`, `1 semaine`.
 
@@ -40,12 +42,10 @@ Un clic droit sur **un membre**, puis **Applications → Sanctionner**, ouvre la
 
 ## Consulter et annoter
 
-| Commande | Ce qu'elle fait |
-| --- | --- |
-| `/casier voir` | Ouvre le dossier complet d'un membre. L'option **id** permet de consulter quelqu'un qui a déjà quitté le serveur. |
-| `/note` | Écrit ou modifie la note de modération d'un membre, visible du seul staff. Le menu contextuel **Note Modérateur** fait la même chose sur un clic droit. |
-| `/rescan` | Relance un scan des membres du serveur. |
-| `/request-verification` | Demande une vérification de sécurité à un membre. Il est mis en exclusion temporaire le temps de la passer. Menu contextuel : **Demander vérification**. |
+* `/casier voir` : Ouvre le dossier complet d'un membre. L'option **id** permet de consulter quelqu'un qui a déjà quitté le serveur.
+* `/note` : Écrit ou modifie la note de modération d'un membre, visible du seul staff. Le menu contextuel **Note Modérateur** fait la même chose sur un clic droit.
+* `/rescan` : Relance un scan des membres du serveur.
+* `/request-verification` : Demande une vérification de sécurité à un membre. Il est mis en exclusion temporaire le temps de la passer. Menu contextuel : **Demander vérification**.
 
 Le menu contextuel **Voir le Casier**, sur un clic droit **sur un membre**, ouvre le même dossier.
 
@@ -53,7 +53,11 @@ Le menu contextuel **Voir le Casier**, sur un clic droit **sur un membre**, ouvr
 
 ## Nettoyer un salon
 
-<DiscordCommand command="/clear nombre:50" />
+<DiscordCommand
+  command="/clear nombre:50"
+  embedTitle="Messages supprimés"
+  embedDescription="**50** message(s) ont été supprimés."
+/>
 
 `/clear` supprime un nombre défini de messages dans le salon courant. L'option **membre** limite la suppression aux messages d'une seule personne.
 
@@ -65,12 +69,10 @@ Au-delà de quatorze jours, l'API de Discord refuse la suppression groupée. Pou
 
 ## Transcrire une conversation
 
-| Sous-commande | Ce qu'elle fait |
-| --- | --- |
-| `/transcript generer` | Génère la transcription du salon courant, sur un **nombre** de messages ou une plage de **temps**. |
-| `/transcript liste` | Les dernières transcriptions du serveur. |
-| `/transcript rechercher` | Cherche une transcription par nom de salon. |
-| `/transcript supprimer` | Supprime une transcription, réservé aux administrateurs. |
+* `/transcript generer` : Génère la transcription du salon courant, sur un **nombre** de messages ou une plage de **temps**.
+* `/transcript liste` : Les dernières transcriptions du serveur.
+* `/transcript rechercher` : Cherche une transcription par nom de salon.
+* `/transcript supprimer` : Supprime une transcription, réservé aux administrateurs.
 
 Deux menus contextuels complètent l'ensemble, cette fois sur un clic droit **sur un message** : **Transcrire depuis ce message** et **Transcrire avec contexte**.
 
@@ -80,30 +82,28 @@ Les transcriptions se relisent ensuite depuis le dashboard, page [Transcriptions
 
 ## Le menu contextuel Actions Kotbo
 
-Un clic droit ouvre **Applications → ⚡ Actions Kotbo**, un panneau qui rassemble les gestes courants sans commande à taper. Il existe en deux versions, selon ce sur quoi vous cliquez, et n'affiche que les actions permises par vos permissions.
+Un clic droit ouvre **Applications → Actions Kotbo**, un panneau qui rassemble les gestes courants sans commande à taper. Il existe en deux versions, selon ce sur quoi vous cliquez, et n'affiche que les actions permises par vos permissions.
 
-| Sur un **message** | Permission requise |
-| --- | --- |
-| **Traduire le message** | aucune |
-| **Sauvegarder en MP** | aucune |
-| **Donner de la réputation** | aucune |
-| **Signaler ce message** | aucune |
-| **Épingler / désépingler** | Gérer les messages |
-| **Purger jusqu'ici** | Gérer les messages |
-| **Créer un thread** | Créer des fils publics |
-| **Supprimer + avertir** | Exclure des membres |
+### Sur un message
 
-| Sur un **membre** | Permission requise |
-| --- | --- |
-| **Niveau et rang** | aucune |
-| **Infos du compte** | aucune |
-| **Donner de la réputation** | aucune |
-| **Timeout rapide** | Exclure des membres |
-| **Détection de double compte** | Exclure des membres |
-| **Comptes liés** | Exclure des membres |
-| **Renommer** | Gérer les pseudos |
-| **Envoyer un MP via le bot** | Gérer le serveur |
-| **Historique d'invitation** | Gérer le serveur |
+Ouvert à tous : **Traduire le message**, **Sauvegarder en MP**, **Donner de la réputation** et **Signaler ce message**.
+
+Réservé au staff :
+
+* **Épingler / désépingler** : demande *Gérer les messages*.
+* **Purger jusqu'ici** : demande *Gérer les messages*.
+* **Créer un thread** : demande *Créer des fils publics*.
+* **Supprimer + avertir** : demande *Exclure des membres*.
+
+### Sur un membre
+
+Ouvert à tous : **Niveau et rang**, **Infos du compte** et **Donner de la réputation**.
+
+Réservé au staff :
+
+* **Timeout rapide**, **Détection de double compte** et **Comptes liés** : demandent *Exclure des membres*.
+* **Renommer** : demande *Gérer les pseudos*.
+* **Envoyer un MP via le bot** et **Historique d'invitation** : demandent *Gérer le serveur*.
 
 :::tip[« Purger jusqu'ici » plutôt que compter]
 Sur un dérapage qui dure, cliquez sur le message où tout a commencé et purgez jusque-là : plus besoin d'estimer un nombre de messages pour `/clear`.

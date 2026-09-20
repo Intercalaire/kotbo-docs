@@ -11,7 +11,10 @@ import DiscordCommand from '../../../../components/DiscordCommand.astro';
 
 ## Sa carte de niveau
 
-<DiscordCommand command="/rank" />
+<DiscordCommand
+  command="/rank"
+  botResponse="*La carte est envoyée en image : pseudo, titre, badges, niveau, barre d'XP et rang sur le serveur.*"
+/>
 
 La carte affiche le niveau, l'XP du palier en cours, le rang sur le serveur et, s'il y en a, les badges, le titre, le cadre et le fond que vous avez choisis.
 
@@ -25,12 +28,10 @@ Fond, motif, cadre, barre d'XP, police, emojis et badges se règlent dans **Mon 
 
 ## Les classements
 
-| Commande | Ce qu'elle classe |
-| --- | --- |
-| `/leaderboard` | L'activité du serveur : **Messages**, **Vocal**, **Mixte** ou **XP / Niveaux**. |
-| `/top` | Le jeu : **Argent**, **RPG** (niveau et XP), **Items**, **Monstres** tués, **Pêche**. |
-| `/prestige` | Les points de prestige, leurs paliers et les séries en cours. |
-| `/richest` | Les plus riches, raccourci vers le classement d'argent. |
+* `/leaderboard` : L'activité du serveur : **Messages**, **Vocal**, **Mixte** ou **XP / Niveaux**.
+* `/top` : Le jeu : **Argent**, **RPG** (niveau et XP), **Items**, **Monstres** tués, **Pêche**.
+* `/prestige` : Les points de prestige, leurs paliers et les séries en cours.
+* `/richest` : Les plus riches, raccourci vers le classement d'argent.
 
 `/leaderboard` accepte trois réglages : le **type**, le **style** - *Image (Modern)* ou *Texte (V2)* - et la **période**, 7, 30 ou 90 jours. La période est ignorée pour le classement d'XP, qui est global. Une option supplémentaire réactualise le classement **toutes les heures** dans le salon où il a été posté.
 
@@ -40,13 +41,15 @@ Fond, motif, cadre, barre d'XP, police, emojis et badges se règlent dans **Mon 
 
 La réputation ne récompense pas la quantité d'activité, mais l'utilité perçue par les autres.
 
-<DiscordCommand command="/rep give" />
+<DiscordCommand
+  command="/rep give membre:@Camille raison:Aide sur le salon support"
+  embedTitle="Réputation donnée"
+  embedDescription="Alex a donné un +rep à Camille\n\nRéputation totale de Camille : 47"
+/>
 
-| Sous-commande | Ce qu'elle fait |
-| --- | --- |
-| `/rep give` | Donner un +rep à un membre. |
-| `/rep check` | Voir la réputation d'un membre. |
-| `/rep top` | Le classement des réputations. |
+* `/rep give` : Donner un +rep à un membre.
+* `/rep check` : Voir la réputation d'un membre.
+* `/rep top` : Le classement des réputations.
 
 :::caution[Trois votes par jour]
 Le compte est tenu dans le fuseau du serveur. Au-delà, le vote est refusé. On ne peut ni se voter soi-même, ni voter pour un bot.
