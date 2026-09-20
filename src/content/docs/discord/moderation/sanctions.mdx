@@ -33,7 +33,7 @@ Chaque sanction accepte une **raison**, et les durées s'écrivent en clair : `3
 Discord masque `/sanction` à qui n'a pas la permission **Exclure des membres**, et `/clear` à qui n'a pas **Gérer les messages**. Les restrictions plus fines - par rôle, par salon - se posent dans [Accès aux commandes](/dashboard/configuration/commandes/).
 
 :::note[Le menu contextuel va plus vite]
-Un clic droit sur un message, puis **Applications → Sanctionner**, ouvre la même fenêtre sans quitter la conversation. Le message visé est joint à la sanction comme preuve.
+Un clic droit sur **un membre**, puis **Applications → Sanctionner**, ouvre la même fenêtre sans taper la commande. Kotbo refuse de sanctionner un bot par avertissement, de se sanctionner soi-même ou de viser le bot.
 :::
 
 ---
@@ -43,11 +43,11 @@ Un clic droit sur un message, puis **Applications → Sanctionner**, ouvre la m�
 | Commande | Ce qu'elle fait |
 | --- | --- |
 | `/casier voir` | Ouvre le dossier complet d'un membre. L'option **id** permet de consulter quelqu'un qui a déjà quitté le serveur. |
-| `/note` | Écrit ou modifie la note de modération d'un membre, visible du seul staff. |
+| `/note` | Écrit ou modifie la note de modération d'un membre, visible du seul staff. Le menu contextuel **Note Modérateur** fait la même chose sur un clic droit. |
 | `/rescan` | Relance un scan des membres du serveur. |
-| `/request-verification` | Demande une vérification de sécurité à un membre. Il est mis en exclusion temporaire le temps de la passer. |
+| `/request-verification` | Demande une vérification de sécurité à un membre. Il est mis en exclusion temporaire le temps de la passer. Menu contextuel : **Demander vérification**. |
 
-Le menu contextuel **Voir le Casier** ouvre le même dossier depuis un message.
+Le menu contextuel **Voir le Casier**, sur un clic droit **sur un membre**, ouvre le même dossier.
 
 ---
 
@@ -72,9 +72,42 @@ Au-delà de quatorze jours, l'API de Discord refuse la suppression groupée. Pou
 | `/transcript rechercher` | Cherche une transcription par nom de salon. |
 | `/transcript supprimer` | Supprime une transcription, réservé aux administrateurs. |
 
-Deux menus contextuels complètent l'ensemble : **Transcrire depuis ce message** et **Transcrire avec contexte**, qui partent du message visé.
+Deux menus contextuels complètent l'ensemble, cette fois sur un clic droit **sur un message** : **Transcrire depuis ce message** et **Transcrire avec contexte**.
 
 Les transcriptions se relisent ensuite depuis le dashboard, page [Transcriptions](/dashboard/moderation/transcriptions/).
+
+---
+
+## Le menu contextuel Actions Kotbo
+
+Un clic droit ouvre **Applications → ⚡ Actions Kotbo**, un panneau qui rassemble les gestes courants sans commande à taper. Il existe en deux versions, selon ce sur quoi vous cliquez, et n'affiche que les actions permises par vos permissions.
+
+| Sur un **message** | Permission requise |
+| --- | --- |
+| **Traduire le message** | aucune |
+| **Sauvegarder en MP** | aucune |
+| **Donner de la réputation** | aucune |
+| **Signaler ce message** | aucune |
+| **Épingler / désépingler** | Gérer les messages |
+| **Purger jusqu'ici** | Gérer les messages |
+| **Créer un thread** | Créer des fils publics |
+| **Supprimer + avertir** | Exclure des membres |
+
+| Sur un **membre** | Permission requise |
+| --- | --- |
+| **Niveau et rang** | aucune |
+| **Infos du compte** | aucune |
+| **Donner de la réputation** | aucune |
+| **Timeout rapide** | Exclure des membres |
+| **Détection de double compte** | Exclure des membres |
+| **Comptes liés** | Exclure des membres |
+| **Renommer** | Gérer les pseudos |
+| **Envoyer un MP via le bot** | Gérer le serveur |
+| **Historique d'invitation** | Gérer le serveur |
+
+:::tip[« Purger jusqu'ici » plutôt que compter]
+Sur un dérapage qui dure, cliquez sur le message où tout a commencé et purgez jusque-là : plus besoin d'estimer un nombre de messages pour `/clear`.
+:::
 
 ---
 
@@ -83,4 +116,4 @@ Les transcriptions se relisent ensuite depuis le dashboard, page [Transcriptions
 * `/role add` et `/role remove` ajoutent ou retirent un rôle à **plusieurs membres** d'un coup.
 * `/channel` gère les salons du serveur depuis Discord.
 * `/report` signale un membre au staff du serveur ; le menu contextuel **Signaler ce message** fait la même chose depuis un message. Le salon de réception et le délai entre deux signalements se règlent dans l'[anti-raid](/dashboard/moderation/anti-raid/).
-* `/signal` remonte un utilisateur à l'administrateur du bot, et non au staff du serveur : à réserver aux cas qui dépassent votre communauté.
+* `/signal` remonte un utilisateur à l'administrateur du bot, et non au staff du serveur : à réserver aux cas qui dépassent votre communauté. Menu contextuel : **Signaler cet utilisateur**.

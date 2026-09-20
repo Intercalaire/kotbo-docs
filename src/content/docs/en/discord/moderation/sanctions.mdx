@@ -37,7 +37,7 @@ Every sanction takes a **raison** (reason), and durations are written plainly: `
 Discord hides `/sanction` from anyone without the **Timeout Members** permission, and `/clear` without **Manage Messages**. Finer restrictions - per role, per channel - are set in [Command access](/en/dashboard/configuration/commandes/).
 
 :::note[The context menu is faster]
-Right-click a message, then **Apps → Sanction**, and the same dialog opens without leaving the conversation. The message is attached to the sanction as evidence.
+Right-click **a member**, then **Apps → Sanction**, and the same dialog opens without typing the command. Kotbo refuses to warn a bot, to sanction yourself, or to target the bot.
 :::
 
 ---
@@ -47,11 +47,11 @@ Right-click a message, then **Apps → Sanction**, and the same dialog opens wit
 | Command | What it does |
 | --- | --- |
 | `/casier voir` | Opens a member's full case file. The **id** option looks up somebody who already left the server. |
-| `/note` | Writes or edits a member's moderation note, visible to the staff only. |
+| `/note` | Writes or edits a member's moderation note, visible to the staff only. The **Moderator note** context menu does the same on a right-click. |
 | `/rescan` | Runs a fresh scan of the server's members. |
-| `/request-verification` | Asks a member to pass a security verification. They are timed out while it lasts. |
+| `/request-verification` | Asks a member to pass a security verification. They are timed out while it lasts. Context menu: **Request verification**. |
 
-The **View Case File** context menu opens the same record from a message.
+The **View Case File** context menu, on a right-click **on a member**, opens the same record.
 
 ---
 
@@ -76,9 +76,42 @@ Past fourteen days, Discord's API refuses bulk deletion. To archive a conversati
 | `/transcript rechercher` | Searches transcripts by channel name. |
 | `/transcript supprimer` | Deletes a transcript, administrators only. |
 
-Two context menus round it off: **Transcribe from this message** and **Transcribe with context**, both starting from the message you clicked.
+Two context menus round it off, this time on a right-click **on a message**: **Transcribe from this message** and **Transcribe with context**.
 
 Transcripts are then read back from the dashboard, on the [Transcripts](/en/dashboard/moderation/transcriptions/) page.
+
+---
+
+## The Kotbo actions context menu
+
+A right-click opens **Apps → ⚡ Kotbo actions**, a panel gathering the everyday gestures with no command to type. It comes in two flavours, depending on what you clicked, and only shows the actions your permissions allow.
+
+| On a **message** | Permission required |
+| --- | --- |
+| **Traduire le message** (translate) | none |
+| **Sauvegarder en MP** (save to DM) | none |
+| **Donner de la réputation** (give reputation) | none |
+| **Signaler ce message** (report) | none |
+| **Épingler / désépingler** (pin) | Manage Messages |
+| **Purger jusqu'ici** (purge up to here) | Manage Messages |
+| **Créer un thread** (create a thread) | Create Public Threads |
+| **Supprimer + avertir** (delete and warn) | Timeout Members |
+
+| On a **member** | Permission required |
+| --- | --- |
+| **Niveau et rang** (level and rank) | none |
+| **Infos du compte** (account info) | none |
+| **Donner de la réputation** (give reputation) | none |
+| **Timeout rapide** (quick timeout) | Timeout Members |
+| **Détection de double compte** (alt detection) | Timeout Members |
+| **Comptes liés** (linked accounts) | Timeout Members |
+| **Renommer** (rename) | Manage Nicknames |
+| **Envoyer un MP via le bot** (DM through the bot) | Manage Server |
+| **Historique d'invitation** (invite history) | Manage Server |
+
+:::tip["Purger jusqu'ici" beats counting]
+On a mess that dragged on, click the message where it started and purge up to there: no more guessing a message count for `/clear`.
+:::
 
 ---
 
@@ -87,4 +120,4 @@ Transcripts are then read back from the dashboard, on the [Transcripts](/en/dash
 * `/role add` and `/role remove` grant or remove a role to **several members** at once.
 * `/channel` manages the server's channels from Discord.
 * `/report` reports a member to the server staff; the **Report this message** context menu does the same from a message. The receiving channel and the delay between two reports are set in the [anti-raid](/en/dashboard/moderation/anti-raid/) page.
-* `/signal` escalates a user to the bot's administrator, not to the server staff: keep it for cases that go beyond your community.
+* `/signal` escalates a user to the bot's administrator, not to the server staff: keep it for cases that go beyond your community. Context menu: **Report this user**.
